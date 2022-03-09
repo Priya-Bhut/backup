@@ -27,12 +27,15 @@
 }
 .side-menu .side-box-container > * {
   margin: 3px 0 0 0;
-  padding: 2px;
+  padding: 7px;
   font-weight: 400;
 }
 .side-menu .side-box-header {
   background-color: #f0f0f0;
-  border-radius: 15px;
+  border-radius: 5px;
+}
+.side-menu .side-box-item:hover {
+  background-color: rgba(238, 232, 232, 0.972);
 }
 .side-menu .expander {
   position: absolute;
