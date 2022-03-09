@@ -1,0 +1,191 @@
+.Main {
+  height: auto;
+  border-radius: 10px;
+  margin-top: 100px;
+}
+.MainOKR {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.267);
+  border: 2px solid gray;
+  border-radius: 15px;
+  box-shadow: 0 0 5px 2px gray;
+}
+.All-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 20px;
+}
+.Parent:hover {
+  background-color: rgba(126, 126, 126, 0.342);
+  min-height: fit-content;
+  border-radius: 10px;
+}
+.Child:hover {
+  background-color: rgba(126, 126, 126, 0.342);
+  min-height: fit-content;
+  border-radius: 10px;
+}
+/* -------------------------------------- INSIDE >> All-content -------------------------------------- */
+.Name-tree {
+  flex-grow: 7;
+  width: 0%;
+  text-align: left;
+}
+.Note-alignment {
+  flex-grow: 1;
+  float: right;
+  align-items: center;
+}
+.Dateandtime {
+  display: flex;
+  justify-content: space-around;
+  flex-grow: 1;
+  width: 1%;
+  align-items: center;
+}
+.Track {
+  flex-grow: 1;
+  width: 10%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+.Progress {
+  flex-grow: 1;
+  justify-content: center;
+  display: flex;
+  width: 20%;
+  align-items: center;
+}
+.Name-tree1 {
+  flex-grow: 7;
+  width: 0%;
+  text-align: left;
+}
+.Name-tree2 {
+  flex-grow: 7;
+  width: 0%;
+  text-align: left;
+}
+.Range-slider {
+  --min: 0;
+  --max: 100;
+  --step: 5;
+  --value: 75;
+  --text-value: "75";
+}
+.Showrange {
+  background-color: rgb(119, 159, 172);
+  color: white;
+  border-radius: 5px;
+}
+
+/* -------------------------------------- TREE CREATE -------------------------------------- */
+.Main-tree {
+  margin-left: 26.5px;
+  margin-top: -31px;
+  border: 3px solid rgb(136, 136, 136);
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  min-height: 60px;
+  position: absolute;
+}
+.Connect-tree {
+  margin-left: 7px;
+  margin-top: 5px;
+  border: 3px solid rgb(136, 136, 136);
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  min-height: 30px;
+  display: inline-block;
+  position: absolute;
+}
+.Child-tree {
+  margin-left: 7px;
+  margin-top: 29px;
+  border: 3px solid rgb(136, 136, 136);
+  border-top: 0;
+  border-right: 0;
+  border-bottom-left-radius: 8px;
+  height: 20px;
+  width: 25px;
+  display: inline-block;
+  position: absolute;
+}
+.Main-tree1 {
+  margin-left: 65px;
+  margin-top: -30px;
+  border: 3px solid rgb(136, 136, 136);
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  min-height: 58px;
+  position: absolute;
+}
+.Connect-tree1 {
+  margin-left: 45px;
+  margin-top: 5px;
+  border: 3px solid rgb(136, 136, 136);
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  min-height: 31px;
+  display: inline-block;
+  position: absolute;
+}
+.Connect-tree1-1 {
+  margin-left: 7px;
+  margin-top: -59px;
+  border: 3px solid rgb(136, 136, 136);
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  height: 120px;
+  display: inline-block;
+  position: absolute;
+}
+.Child-tree1 {
+  margin-left: 45px;
+  margin-top: 29px;
+  border: 3px solid rgb(136, 136, 136);
+  border-top: 0;
+  border-right: 0;
+  border-bottom-left-radius: 8px;
+  height: 20px;
+  width: 25px;
+  display: inline-block;
+  position: absolute;
+}
+/* ------------------------------------- Fa Fa ICONE -------------------------------------- */
+.fa-dot-circle {
+  color: #47aaf9;
+}
+.fa-user {
+  cursor: pointer;
+}
+
+.fa-plus-circle {
+  color: rgb(136, 136, 136);
+  cursor: pointer;
+}
+.fa-calendar-alt {
+  font-size: larger;
+  cursor: pointer;
+}
+.fa-plus-circle {
+  display: flex;
+  align-items: flex-start;
+  position: absolute;
+  margin-left: 100px;
+}
+.Name-tree1 .fa-dot-circle {
+  margin-left: 39px;
+  margin-top: 40px;
+}
+.Name-tree2 .fa-dot-circle {
+  margin-left: 79px;
+  margin-top: 38px;
+}
