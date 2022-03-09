@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Route } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import CFR from "../initialComponents/cfr";
+import DashBoard from "../initialComponents/dashboard";
 import HOME from "../initialComponents/home";
 import OKR from "../initialComponents/okr";
 import TASK from "../initialComponents/task";
