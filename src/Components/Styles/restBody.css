@@ -1,0 +1,10 @@
+.rest-body {
+  position: fixed;
+  left: 50px;
+  right: 0;
+  top: 50px;
+  bottom: 50px;
+}
+.shrinked {
+  left: 220px;
+}

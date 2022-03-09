@@ -1,0 +1,23 @@
+.top-nav {
+  background-color: white;
+  left: 50px;
+  right: 0;
+  position: fixed;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.shrinked {
+  left: 220px;
+}
+.top-nav .logo-text {
+  font-size: 1.25rem;
+}
+.top-nav > * {
+  margin: 10px;
+}
+.top-nav .profile-container > * {
+  margin: 3px;
+  color: #0d6efd;
+}
