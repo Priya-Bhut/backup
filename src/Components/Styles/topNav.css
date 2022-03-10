@@ -28,7 +28,7 @@
   align-items: center;
 }
 .inner-bottom-right {
-  width: 300px;
+  width: fit-content;
   display: flex;
   justify-content: space-evenly;
 }
@@ -37,8 +37,9 @@
   border: 1px solid black;
   border-radius: 5px;
   align-items: center;
-  width: 200px;
+  width: 300px;
   padding: 5px;
+  height: 40px;
   margin-right: 10px;
 }
 .top-nav .filter-search {
@@ -49,7 +50,7 @@
 }
 .top-nav .search-container .fa-search {
   position: relative;
-  font-size: 15px;
+  font-size: 20px;
   cursor: pointer;
   margin-left: 5px;
 }
