@@ -23,6 +23,7 @@
 .inner-top,
 .inner-bottom {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -30,6 +31,7 @@
 .inner-bottom-right {
   width: fit-content;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 }
 .top-nav .search-container {
