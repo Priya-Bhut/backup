@@ -3,7 +3,7 @@ import './Components/Styles/style.css';
 import SideMenu from './Components/NavBar/SideMenu';
 import RightBody from './Components/RightBody/RightBody';
 import { useState } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import Home from './Components/initialComponents/Home';
 import Okr from './Components/initialComponents/Okr';
 import Task from './Components/initialComponents/Task';
@@ -15,21 +15,13 @@ function App() {
     <div className='App'>
       <RightBody doShrink={showExpandedMenu} />
       <SideMenu showExpandedMenu={showExpandedMenu} setExpendedMenu={setExpendedMenu} />
-      <Route exact path='/'>
-        <Home />
-      </Route>
-      <Route exact path='/Home'>
-        <Home />
-      </Route>
-      <Route exact path='/okrs'>
-        <Okr />
-      </Route>
-      <Route exact path='/tasks'>
-        <Task />
-      </Route>
-      <Route exact path='/cfrs'>
-        <Cfr />
-      </Route>
+      <Routes>
+        <Route exact path='/Home' element={<Home />} />
+        <Route exact path='/okrs' element={<Okr />} />
+        <Route exact path='/tasks' element={<Task />} />
+        <Route exact path='/cfrs' element={<Cfr />} />
+        <Route path='*' element={<Home />} />
+      </Routes>
     </div>
   );
 }

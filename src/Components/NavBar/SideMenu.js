@@ -19,10 +19,12 @@ function SideMenu(props) {
 
       <div className='container'>
         <div className={`data-left${showExpandedMenu ? '-opened' : ''}`}>
-          <NavLink to='/home' className='side-menu-item'>
-            <span className='link internal-item-left' onClick={() => handleSubMenu('home')}>
-              <i className='fa fa-home' />
-            </span>
+          <div className='side-menu-item'>
+            <NavLink to='/home'>
+              <span className='link internal-item-left' onClick={() => handleSubMenu('home')}>
+                <i className='fa fa-home' />
+              </span>
+            </NavLink>
             {!showExpandedMenu && (
               <div className='side-box-container'>
                 <span className='side-box-header'>Home</span>
@@ -64,13 +66,15 @@ function SideMenu(props) {
                 )}
               </span>
             )}
-          </NavLink>
-          <NavLink to='/okrs' className='side-menu-item'>
-            <span className='link internal-item-left' onClick={() => handleSubMenu('okr')}>
-              <i className='fa fa-crosshairs' />
-            </span>
+          </div>
+          <div className='side-menu-item'>
+            <NavLink to='/okrs'>
+              <span className='link internal-item-left' onClick={() => handleSubMenu('okr')}>
+                <i className='fa fa-crosshairs' />
+              </span>
+            </NavLink>
             {!showExpandedMenu && (
-              <div className='side-box-container'>
+              <span className='side-box-container'>
                 <span className='side-box-header'>OKRs</span>
                 <Link to='/okrs/all' className='side-box-item'>
                   All My OKRs
@@ -84,7 +88,7 @@ function SideMenu(props) {
                 <Link to='/okrs/org' className='side-box-item'>
                   {`My Org's OKRs`}
                 </Link>
-              </div>
+              </span>
             )}
             {showExpandedMenu && (
               <span className='internal-item-right'>
@@ -110,11 +114,13 @@ function SideMenu(props) {
                 )}
               </span>
             )}
-          </NavLink>
-          <NavLink to='/tasks' className='side-menu-item'>
-            <span className='link internal-item-left' onClick={() => handleSubMenu('task')}>
-              <i className='fa fa-tasks' />
-            </span>
+          </div>
+          <div className='side-menu-item'>
+            <NavLink to='/tasks'>
+              <span className='link internal-item-left' onClick={() => handleSubMenu('task')}>
+                <i className='fa fa-tasks' />
+              </span>
+            </NavLink>
             {!showExpandedMenu && (
               <div className='side-box-container'>
                 <span className='side-box-header'>Tasks</span>
@@ -156,11 +162,13 @@ function SideMenu(props) {
                 )}
               </span>
             )}
-          </NavLink>
-          <NavLink to='/cfrs' className='side-menu-item'>
-            <span className='link internal-item-left' onClick={() => handleSubMenu('cfr')}>
-              <i className='fa fa-calendar' />
-            </span>
+          </div>
+          <div className='side-menu-item'>
+            <NavLink to='/cfrs'>
+              <span className='link internal-item-left' onClick={() => handleSubMenu('cfr')}>
+                <i className='fa fa-calendar' />
+              </span>
+            </NavLink>
             {!showExpandedMenu && (
               <div className='side-box-container'>
                 <span className='side-box-header'>CFRs</span>
@@ -202,7 +210,7 @@ function SideMenu(props) {
                 )}
               </span>
             )}
-          </NavLink>
+          </div>
         </div>
       </div>
     </div>

@@ -22,6 +22,9 @@
   padding: 5px;
   margin-top: -23px;
 }
+.side-menu .side-menu-item .fa {
+  color: white;
+}
 .side-menu .side-menu-item:hover .side-box-container {
   display: flex;
 }
