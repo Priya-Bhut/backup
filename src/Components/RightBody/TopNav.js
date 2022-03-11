@@ -4,13 +4,16 @@ import ProfileDropDown from "./ProfileDropDown";
 function TopNav(props) {
   const { doShrink } = props;
   const [expandProfile, setExpandProfile] = useState(false);
+  const profileDropDownExpand = () => {
+    setExpandProfile(!expandProfile);
+  };
   return (
     <div className={`top-nav ${doShrink && "shrinked"}`}>
       <div className="inner-top">
         <span className="logo-text">BrilworksOKR</span>
         <div
           className="profile-container"
-          onClick={() => setExpandProfile(!expandProfile)}
+          onClick={() => profileDropDownExpand()}
         >
           <span className="profile-name">Brilworks</span>
           <span className="profile-expand">
