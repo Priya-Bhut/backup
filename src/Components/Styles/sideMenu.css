@@ -34,6 +34,10 @@
   background-color: #f0f0f0;
   border-radius: 5px;
 }
+.side-menu .side-box-item {
+  color: black;
+  text-decoration: none;
+}
 .side-menu .side-box-item:hover {
   background-color: rgba(238, 232, 232, 0.972);
 }
@@ -73,6 +77,8 @@
   margin-top: 20px;
 }
 .side-menu .internal-sub-item {
+  color: #f0f8ff;
+  text-decoration: none;
   margin: 15px 0;
 }
 .side-menu .data-left-opened {

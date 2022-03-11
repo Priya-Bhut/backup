@@ -28,6 +28,9 @@
   justify-content: space-between;
   align-items: center;
 }
+.inner-top .logo-text {
+  margin-left: 10px;
+}
 .inner-bottom-right {
   width: fit-content;
   display: flex;
@@ -39,7 +42,7 @@
   border: 1px solid black;
   border-radius: 5px;
   align-items: center;
-  width: 300px;
+  width: 200px;
   padding: 5px;
   height: 40px;
   margin-right: 10px;
@@ -47,7 +50,7 @@
 .top-nav .filter-search {
   width: 100%;
   height: 23px;
-  font-size: 1.08em;
+  font-size: 1.2em;
   border: none;
   outline: none;
 }
@@ -55,6 +58,7 @@
   position: relative;
   font-size: 1.08em;
   cursor: pointer;
+  margin-right: 5px;
   margin-left: 5px;
 }
 .top-nav .project-button {

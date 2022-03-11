@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import ProfileDropDown from "./profileDropDown";
+import ProfileDropDown from "./ProfileDropDown";
 
 function TopNav(props) {
   const { doShrink } = props;
   const [expandProfile, setExpandProfile] = useState(false);
   return (
-    <div className={`top-nav ${doShrink ? "shrinked" : null}`}>
+    <div className={`top-nav ${doShrink && "shrinked"}`}>
       <div className="inner-top">
         <span className="logo-text">BrilworksOKR</span>
         <div
@@ -13,9 +13,15 @@ function TopNav(props) {
           onClick={() => setExpandProfile(!expandProfile)}
         >
           <span className="profile-name">Brilworks</span>
-          <span className="profile-expand">{expandProfile ? "▴" : "▾"}</span>
+          <span className="profile-expand">
+            {expandProfile ? (
+              <i className="fa fa-caret-up" />
+            ) : (
+              <i className="fa fa-caret-down" />
+            )}
+          </span>
         </div>
-        {expandProfile ? <ProfileDropDown /> : null}
+        {expandProfile && <ProfileDropDown />}
       </div>
       <hr width="100%" />
       <div className="inner-bottom">
