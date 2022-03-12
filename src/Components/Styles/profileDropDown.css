@@ -1,0 +1,10 @@
+.profile-drop-down {
+  position: fixed;
+  top: 30px;
+  right: 0;
+  width: 130px;
+  height: 65px;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid grey;
+}

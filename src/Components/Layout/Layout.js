@@ -1,16 +1,18 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
+import SideMenu from '../SideMenu';
+// import TopNavbar from '../TopNavbar';
 
 function Layout() {
   return (
     <Container fluid>
       <Row className='gridStyle'>
-        <Col xs={1} lg='2' className={`sidebar ${menuType && 'reduce-sidebar'}`}>
-          {/* <SideMenu params={params} menuType={menuType} handleMenu={this.handleMenu} /> */}
+        <Col xs={1} lg='2' className={`sidebar`}>
+          <SideMenu />
         </Col>
-        <Col xs={11} className={`mainPart ${menuType && `extendMainPart`}`}>
-          {/* <TopNavbar params={params} setIsOpen={this.setIsOpen} /> */}
+        <Col xs={11} className={`mainPart`}>
+          {/* <TopNavbar /> */}
           <div className='layout-content'>
             <Outlet />
           </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../style/IndividualOKR.css';
+import '../Styles/IndividualOKR.css';
 import IndividualOKRmain from './IndividualOKRmain';
 import IndividualORKchild from './IndividualORKchild';
 import DatePicker from 'react-datepicker';
