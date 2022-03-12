@@ -5,6 +5,9 @@
 
 @import './sideMenu.css';
 @import './utility.css';
+@import './graph.css';
+@import './SideBar.css';
+
 
 
 
@@ -116,10 +119,11 @@ nav {
 }
 
 .mainPart {
-  /* position: absolute; */
+  position: absolute;
   width: 100% !important;
   height: 100% !important;
-  left: 15%;
+  left: 3%;
+  top:3%;
   overflow-y: scroll;
   scrollbar-width: none;
   padding: 0 !important;
@@ -751,6 +755,7 @@ td .leave-status {
 
 .layout-content {
   min-height: 88vh;
+  width: 95%;
   /* padding-left: 1rem;
   padding-right : 1rem; */
 }
