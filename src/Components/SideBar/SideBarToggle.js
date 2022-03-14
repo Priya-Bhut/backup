@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { GoCalendar } from 'react-icons/go';
 import { Editor } from '@tinymce/tinymce-react';
+import SearchSelectSequenceModal from './SearchSelectSequenceModal';
+import { Button } from 'react-bootstrap';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 function SideBarToggle(props) {
   const handleClicked = (e) => {
@@ -9,6 +11,7 @@ function SideBarToggle(props) {
   };
   const [expandPerTracked, setexpandPerTracked] = useState(false);
   const [Tracked, setTracked] = useState('percentage');
+  const [openSequence, setOpenSequence] = useState(false);
 
   const expandPertageTracked = () => {
     return (
@@ -37,7 +40,7 @@ function SideBarToggle(props) {
           </div>
           <div className='dropdown_list'>
             <div id='circle3'>
-              <i className='fa fa-regular fa-calendar '></i>
+              <i className='fa fa-calendar'></i>
             </div>
             <div className='keyPercentage'>
               <span className='span-key' onClick={() => handleClicked('task')}>
@@ -154,17 +157,24 @@ function SideBarToggle(props) {
                   {Tracked === 'percentage' ? (
                     'Percentage Tracked'
                   ) : Tracked === 'milestone' ? (
-                    <a href='#'>{`Search Select Sequence`}</a>
+                    <div className='searchSequence'>
+                      <span onClick={() => setOpenSequence(!openSequence)}>Search Select Sequence</span>
+                    </div>
                   ) : Tracked === 'task' ? (
                     'Task Tracked'
                   ) : null}
                 </span>
               </div>
+              <div>
+                {openSequence && (
+                  <SearchSelectSequenceModal setOpenSequence={setOpenSequence} openSequence={openSequence} />
+                )}
+              </div>
             </div>
 
             <div className='sideBar-Type3'>
               <div id='circle'>
-                <GoCalendar id='calendarIcon' />
+                <i className='fa fa-calendar'></i>
               </div>
               <div className='key'>
                 <span className='span-key'>Target Date1</span>
@@ -207,7 +217,7 @@ function SideBarToggle(props) {
           </div>
 
           <div className='User'>
-            <div id='circleTag'>
+            <div id='circleLocation'>
               <i className='fa fa-light fa-user' />
             </div>
             <div className='key'>
@@ -219,16 +229,17 @@ function SideBarToggle(props) {
           </div>
           <div className='tag'>
             <div id='circleTag'>
-              <i className='fa fa-solid fa-tags'>
+              <i className='fa fa-tags'>
                 <span className='tooltiptext'>Tags</span>
               </i>
             </div>
           </div>
 
           <div className='Location'>
-            <div id='circleLocation'>
-              {/* <WhereToVoteIcon /> */}
-              <span className='tooltiptext'>Frequency</span>
+            <div id='circleTag'>
+              <i className='fa fa-map-marker fa-lg Icons' aria-hidden='true'>
+                <span className='tooltiptext'>Frequency</span>
+              </i>
             </div>
             <div className='key'>
               <span className='span-key'>Check-in Frequency</span>
@@ -244,6 +255,7 @@ function SideBarToggle(props) {
           <div className='SideBar-btn'>
             <button className='graph-btn'>Cancel</button>
             <button className='graph-btn'>Update</button>
+            <Button variant='primary'>Primary</Button>
           </div>
         </div>
       </div>

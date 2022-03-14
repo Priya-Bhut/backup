@@ -193,13 +193,10 @@ span {
   border-radius: 50%;
   width: 30px;
   height: 30px;
-}
-.fa-tags {
-  margin-top: 6px;
-  margin-left: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  position: relative;
-  display: inline-block;
 }
 
 .overlay {
@@ -219,6 +216,7 @@ span {
   position: relative;
   display: inline-block;
 }
+
 .frequency {
   margin-left: 5px;
   cursor: pointer;
@@ -274,11 +272,29 @@ span {
   padding: 5px 0;
   position: absolute;
   z-index: 1;
-  top: 160%;
-  left: 30%;
+  top: 495px;
+  left: 36px;
   margin-left: -30px;
 }
 .fa-tags:hover .tooltiptext {
+  visibility: visible;
+}
+
+.Icons .tooltiptext {
+  visibility: hidden;
+  width: 80px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 51px;
+  left: 9px;
+  margin-left: -30px;
+}
+.Icons:hover .tooltiptext {
   visibility: visible;
 }
 .SearchAssignee {
@@ -332,11 +348,20 @@ span {
   white-space: pre-wrap;
   resize: none;
   border: 2px solid rgba(189, 178, 178, 0.583);
+  width: 93%;
+  overflow-y: scroll;
 }
 .Editor {
   margin-left: 35px;
   height: 100px;
   margin-right: 35px;
+}
+.searchSequence {
+  cursor: pointer;
+  color: blue;
+}
+.searchSequence:hover {
+  color: red;
 }
 .User {
   height: 50px;

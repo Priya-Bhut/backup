@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import Layout from './Components/Layout/Layout';
 import IndividualOKR from './Components/OKR/IndividualOKR';
 import Graph from './Components/Graph/Graph';
+import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <div>
