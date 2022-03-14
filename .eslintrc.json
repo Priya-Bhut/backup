@@ -1,0 +1,159 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "prettier"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "react-hooks", "jsx-a11y", "prettier"],
+  // "rules": {
+  //   "react/no-unescaped-entities" : "off",
+  //   "react/prop-types" : "off",
+  //   "semi": "warn",
+  // "max-len": "off",
+  // "no-console": "off",
+  // "no-use-before-define": "off",
+  // "@typescript-eslint/explicit-module-boundary-types": "off",
+  // "no-shadow":"off",
+  // "no-nested-ternary":"off",
+  // "consistent-return":"off"
+  // }
+  "rules": {
+    "semi": "warn",
+    "max-len": 0,
+    "no-use-before-define": 0,
+    // "jsx-a11y/rule-name": 2,
+    // "@typescript-eslint/explicit-module-boundary-types": 0,
+    "react/prop-types": 0,
+    "no-shadow": 0,
+    "react/react-in-jsx-scope": "off",
+    "no-nested-ternary": 0,
+    "consistent-return": 0,
+    "react/no-unescaped-entities": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "jsxSingleQuote": true,
+        "usePrettierrc": true
+      }
+    ],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "off", // Checks effect dependencies
+    "no-underscore-dangle": 0,
+    "react/destructuring-assignment": 0,
+    "jsx-a11y/href-no-hash": 0,
+    "react/no-array-index-key": 0,
+    "eslint-disable-next-line": 0,
+    "jsx-a11y/label-has-for": 0,
+    "no-plusplus": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "no-useless-escape": 0,
+    "array-callback-return": 0,
+    "no-restricted-globals": 0,
+    "prefer-destructuring": 0,
+    "react/no-access-state-in-setstate": 0,
+    "no-unused-expressions": 0,
+    "no-param-reassign": 0,
+    "no-restricted-syntax": 0,
+    "react/jsx-closing-tag-location": 0,
+    "react/sort-comp": 0,
+    "react/jsx-indent": 0,
+    "react/no-danger": 0,
+    "prefer-template": "error",
+    // Not supporting nested package.json yet
+    // https://github.com/benmosher/eslint-plugin-import/issues/458
+    "import/no-extraneous-dependencies": "off",
+    "react/jsx-curly-brace-presence": "off",
+    "jsx-a11y/img-redundant-alt": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "react/jsx-wrap-multilines": 0,
+    "jsx-a11y/label-has-associated-control": 0,
+    "react/jsx-no-bind": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "camelcase": 0,
+    "no-loop-func": 0,
+    "react/no-string-refs": 0,
+    "no-return-assign": 0,
+    "react/no-find-dom-node": 0,
+    "no-debugger": 0,
+    "react/no-multi-comp": 0,
+    "jsx-a11y/rule-name": "off",
+    "jsx-a11y/control-has-associated-label": "off",
+    "react/static-property-placement": "off",
+    "no-constant-condition": "off",
+    "import/no-unresolved": [
+      // 2,
+      "off",
+      // { "caseSensitive": false },
+      {
+        "caseSensitive": false,
+        "ignore": [
+          "components",
+          "images",
+          "consts",
+          "modules",
+          "routes",
+          "static",
+          "store",
+          "styles",
+          "utils",
+          "translate",
+          "clientConfig",
+          "history.js",
+          "graphql",
+          "import",
+          "export"
+        ]
+      }
+    ],
+    "max-classes-per-file": "off",
+    "react/jsx-props-no-spreading": "off",
+    "jsx-a11y/media-has-caption": "off",
+    // Recommend not to leave any console.log in your code
+    // Use console.error, console.warn and console.info instead
+    "no-console": [
+      "error",
+      {
+        "allow": ["warn", "error", "info", "log"]
+      }
+    ],
+    "jsx-a11y/no-noninteractive-element-interactions": [
+      "error",
+      {
+        "handlers": [
+          // "onClick",
+          "onMouseDown",
+          "onMouseUp",
+          "onKeyPress",
+          "onKeyDown",
+          "onKeyUp"
+        ]
+      }
+    ],
+    // Allow js files to use jsx syntax, too
+    // ‘react/jsx-filename-extension’: ‘on’,
+    // https://github.com/kriasoft/react-starter-kit/pull/961
+    // You can reopen this if you still want this rule
+    "react/prefer-stateless-function": "off"
+  }
+}
