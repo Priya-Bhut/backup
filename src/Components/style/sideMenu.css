@@ -56,9 +56,6 @@
   border-radius: 50%;
   cursor: pointer;
 }
-.internal-menu-dropdown span {
-  word-wrap: break-word;
-}
 .reduce-sidebar .sidebar-profile-section > span > i {
   left: 60%;
   top: -5%;
@@ -79,25 +76,28 @@
   padding: 0.3rem 0 0.3rem 1.8rem;
 }
 
+.internal-menu-dropdown {
+  width: 9rem;
+}
 .nav-link a span,
 .nav-link p i,
 .nav-link a i {
+  display: inline-block;
+  width: 28p;
   margin-right: 0.55rem;
-  width: 28px;
   font-size: 1.1rem;
   padding-left: 0.1rem;
   margin-top: 5px;
-  word-wrap: break-word;
+  white-space: pre-wrap;
+  text-align: start;
 }
 .nav-link a span {
-  width: max-content;
   margin-top: 2px;
   font-size: 1rem;
 }
 .nav-link a img {
   margin-right: 0.7rem;
 }
-
 .nav-link p {
   display: flex;
   align-items: center;
