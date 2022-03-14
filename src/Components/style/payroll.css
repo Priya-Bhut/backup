@@ -1,0 +1,185 @@
+:root {
+  --main-color: #406ae8e6;
+  --sidemenu-color: #132746;
+  /* --main-color: #132746; */
+  /* 406ae8e6 */
+  --second-color: aliceblue;
+  --lato-font: 'Lato', sans-serif;
+  --M-plus-font: 'M PLUS 2', sans-serif;
+}
+.payrollSearchContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: auto;
+  position: absolute;
+  top: 16px;
+  right: 1rem;
+  z-index: 2;
+}
+.payrollSearchContainer input {
+  width: 20rem;
+  border: 1px solid black;
+  outline: none !important;
+  border-radius: 0.25rem;
+  margin-right: 10px;
+  padding-right: 2.5rem;
+}
+
+.payrollSearchContainer input:focus {
+  outline: 0;
+  -webkit-box-shadow: inset 0 0px 0px rgb(0, 0, 0), 0 0 0px rgb(0, 0, 0) !important;
+  box-shadow: inset 0 0px 0px rgb(0, 0, 0), 0 0 0px rgb(0, 0, 0) !important;
+}
+
+.payrollSearchIcon {
+  position: absolute;
+  right: 1.5rem;
+  opacity: 0.3;
+  top: 0.8rem;
+}
+
+.dashboard-btn {
+  background-color: var(--sidemenu-color);
+  padding: 0.5rem 1.3rem;
+  border-radius: 10px;
+}
+.dashboard-btn i {
+  margin-right: 0.6rem;
+  font-size: rem;
+}
+.editButton,
+.deleteButton {
+  margin-right: 1rem;
+  font-size: 0.8rem;
+  border-radius: 50%;
+  color: #5dd39ec2;
+  cursor: pointer;
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+.deleteButton {
+  color: #f87575;
+  margin: 0.5 rem;
+}
+.editButton{
+  margin: 0.5rem;
+}
+
+
+.bankDetailsTable thead tr {
+  color: gray;
+  text-align: center;
+}
+.bankDetailsTable tbody tr:hover {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+}
+.bankDetailsTable thead .caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-top: 4px solid \9;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+.bankDetailsTable thead .dropup .caret,
+.bankDetailsTable thead .navbar-fixed-bottom .dropdown .caret {
+  border-top: 0;
+  border-bottom: 4px dashed;
+  border-bottom: 4px solid \9;
+  content: '';
+}
+
+.bankDetailsTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 1em;
+  font-family: var(--lato-font);
+  /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); */
+}
+
+.bankDetailsTable td {
+  text-align: center;
+}
+
+.sidebarUpdate h1 {
+  margin: 0;
+  font-size: 1.5rem !important;
+}
+.sidebarUpdate {
+  position: fixed;
+  top: 56px;
+  right: -40%;
+  width: 35%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  z-index: 100;
+  animation: moveLeft 0.3s ease-in-out forwards;
+  padding: 1.5rem;
+  overflow-y: scroll;
+  padding-bottom: 5rem;
+}
+@keyframes moveLeft {
+  from {
+    right: -40%;
+  }
+  to {
+    right: 0;
+  }
+}
+.closeModel {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #36363687;
+  /* font-weight: bold; */
+}
+
+.sidebarUpdate form {
+  margin-top: 1.5rem;
+}
+.sidebarUpdate form label {
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+.sidebarUpdate form input,
+.sidebarUpdate form select,
+.sidebarUpdate form textarea {
+  padding: 0.55rem 0.75rem;
+  line-height: 1;
+  font-size: 1rem;
+  border: transparent;
+  border-radius: 0;
+  font-weight: 400;
+  border-bottom: 1px solid #d5d5d5;
+  color: #686868;
+  font-family: var(--lato-font);
+}
+
+.form-control {
+  color: #686868 !important;
+}
+
+.sidebarUpdate form input:focus,
+.sidebarUpdate form select:focus,
+.sidebarUpdate form textarea:focus,
+.multipleSelect div:focus {
+  -webkit-box-shadow: inset 0 2px 0px rgba(0, 0, 0, 0.075), 0 2px 0px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 2px 0px rgba(0, 0, 0, 0.075), 0 2px 0px rgba(102, 175, 233, 0.6);
+}
+
+.addBankButton {
+  background-color: var(--sidemenu-color) !important;
+}
+
+.noBankInfoAlert{
+  z-index: -1;
+  margin-top: 3rem;
+}

@@ -1,0 +1,49 @@
+.overviewNav {
+  width: 100%;
+}
+.overviewNav .overviewNavContainer {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+}
+
+.overviewNav .overviewNavContainer li {
+  list-style: none;
+  padding: 10px;
+  margin-inline: 10px;
+  cursor: pointer;
+}
+
+.overviewNav .overviewNavContainer .ovActive {
+  border-bottom: 2px solid var(--main-color);
+}
+
+.overviewNav hr {
+  margin: 0;
+  width: 100%;
+}
+
+.ovNavLink {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.overviewContainer {
+  padding: 1em;
+}
+.personalInfo-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  border-width: 2px !important;
+  /* border-bottom: 2px solid grey !important; */
+}
+
+.peronalInfo-table {
+  border-collapse: initial;
+}
+.workInfoCursor {
+  color: blue;
+  cursor: pointer;
+}

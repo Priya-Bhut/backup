@@ -1,0 +1,304 @@
+.dashboard-container {
+  display: grid;
+  grid-template-rows: max-content auto;
+  grid-gap: 1rem;
+  padding: 0.5rem;
+  margin: 0;
+}
+
+.two-column-dashboard-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+.three-column-dashboard-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+.dashboard-container .card{
+  height: 100%;
+  width: 100%;
+  border: none;
+  background-color: white !important;
+  /* box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px; */
+  /* box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; */
+  /* box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px; */
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+}
+
+.dashboard-container .card:hover{
+  transform: scale(1.05);
+}
+
+.db-animation-line{
+  margin: auto;
+  width: 100%;
+  border: 0.1px solid rgba(211, 207, 207, 0.664);
+  animation: dashbord-card-line 0.3s linear 0s 1 forwards;
+  margin-bottom: 1rem;
+}
+
+.card:focus > .card-body > .db-animation-line{
+  /* display: none; */
+  animation: dashbord-card-hover-line 0.5s linear 0s 0.5 forwards !important;
+}
+
+@keyframes dashbord-card-line {
+  0%{
+    width: 0;
+  }
+  100%{
+    width: 100%;
+  }
+}
+
+@keyframes  dashbord-card-hover-line{
+  0%{
+    width: 0;
+  }
+  100%{
+    width: 100%;
+  }
+}
+
+.dashboard-container .card-body{
+  padding: 0 0.5rem !important;
+}
+
+.db-card {
+  min-width: 20rem;
+  height: max-content;
+  border: 0.5px solid rgba(128, 128, 128, 0.37);
+  padding: 1rem;
+}
+
+.db-card-title {
+  display: flex;
+  justify-content: space-between;
+  /* background-color: rgba(223, 223, 223, 0.432); */
+  padding: 1rem 0rem;
+  font-weight: 500;
+}
+
+
+
+.db-card-title > span {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.db-card-body {
+  display: flex;
+  flex-direction: column;
+  height: 17.1rem;
+  align-items: center;
+  overflow: scroll;
+}
+.db-logo {
+  height: 150px;
+  width: 150px;
+  opacity: 0.6;
+}
+
+.db-empty-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: grey;
+}
+
+.db-card-data {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  padding: 0.2rem;
+}
+
+.db-card-item {
+  width: 100%;
+  padding: 0.6rem;
+  height: 2.5rem;
+}
+
+.db-card-item:hover {
+  box-shadow: rgba(50, 50, 93, 0.151) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.11) 0px 1px 3px -1px;
+}
+
+.db-user-profile-photo{
+  border: 1px solid red;
+  background-color: blue;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+}
+
+.db-card-content{
+  padding: 0.5rem 1rem;
+  display: grid;
+  grid-template-columns: auto max-content;
+  width: 100%;
+  grid-gap: 0.5rem;
+  place-items: center start;
+  cursor: pointer;
+}
+
+.db-card-content:hover {
+  box-shadow: rgba(50, 50, 93, 0.151) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.11) 0px 1px 3px -1px;
+}
+
+.db-details-content{
+  display:grid;
+  grid-template-columns: max-content;
+}
+
+
+.db-details-box{
+  display:grid;
+  grid-template-columns: max-content;
+}
+
+.db-details-box span:first-child{
+  font-size: 0.9rem;
+  color: rgb(79, 79, 216);
+  font-weight: 400;
+}
+
+.db-details-box span:last-child{
+  font-size: 0.8rem;
+}
+
+.db-card-scrollbar-content{
+  height: 13rem;
+  overflow: scroll;
+}
+/* <---------------------------- task part css ---------------------------->*/
+
+.task-remaining-label{
+  font-size: 0.8rem;
+  color: rgb(236, 67, 67);
+}
+
+.db-total-leaves-label{
+  font-size: 0.8rem;
+  color: rgb(255, 145, 0);
+}
+
+/*<------------------------------ birthday part css ----------------------------->*/
+
+.db-birthday-card{
+  background: url(../../images/happy-birthday-background.jpg) center center no-repeat;
+  background-size: cover;
+  opacity: 0.9;
+}
+
+.db-birthday-card .db-animation-line{
+  display: none;
+}
+
+.db-birthday-user-image{
+  border: 2px solid red;
+  width: 6rem;
+  height: 6rem;
+  background-color: rgb(79, 79, 223);
+  border-radius: 50%;
+}
+
+.db-birthday-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.db-birthday-content{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.db-birthday-user-name{
+  font-size: 1.4rem;
+  font-family: var(--dancing-font);
+  margin: 0.5rem 0;
+  font-weight:800;
+  letter-spacing:0.1rem;
+}
+
+.db-birthday-content button {
+  border: none;
+  outline: none;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: 0.3rem;
+  padding: 0.5rem 1rem;
+  background-color:#90dbf4;
+}
+
+.handleBirthdayWallpaper .carousel-caption{
+  position:static;
+}
+.handleBirthdayWallpaper .carousel-indicators{
+  margin-bottom: 0;
+}
+
+
+
+/*<--------------------------------------- file card css ---------------------------> */
+
+.db-file-card-navbar{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+}
+.db-file-card-navbar span{
+ width: 100%;
+ text-align: center;
+ cursor: pointer;
+ padding-bottom: 0.3rem;
+ border-bottom: 1px solid grey;
+}
+
+.db-active-file-tab{
+  border-bottom: 3px solid blue !important;
+}
+
+.db-file-content-box i{
+  width: 1rem;
+}
+
+/*<------------------------------------- New Hire Css --------------------------> */
+
+.db-new-hire-content{
+  grid-template-columns: max-content auto;
+}
+
+/* <------------------------------------- leave ---------------------------------> */
+
+.leave-availble-div{
+  background-color: white !important;
+  /* border: 4px solid rgba(214, 203, 203, 0.377); */
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+  border-radius: 50%;
+  padding: 0.3rem 0.6rem;
+  text-align: center;
+  color: rgba(219, 101, 101, 0.959);
+}
+
+@media (max-width:425px) {
+  .three-column-dashboard-container, .two-column-dashboard-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 2rem;
+  }
+}
+
+

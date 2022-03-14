@@ -1,0 +1,578 @@
+/* ============================ userRole navigation css ============================  */
+
+.user-role-navbar {
+  /* border: 2px solid red; */
+  border-bottom: 2px solid rgb(195, 192, 192);
+  height: 2rem;
+  margin: 1rem 0;
+}
+
+.user-role-navbar a {
+  height: 2rem;
+  color: inherit;
+  text-decoration: none;
+  padding: 0.45rem 2rem;
+}
+
+/* <-------------------------------------------- Role Table --------------------------------------------------------------> */
+
+.roleNavbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0rem 1rem;
+  padding-bottom: 0.5rem;
+  box-shadow: 0 4px 2px -2px rgba(99, 99, 99, 0.2);
+  margin-bottom: 2rem;
+}
+.roleNavbar h5 {
+  margin: 0;
+}
+
+.roleAssignBtn {
+  height: 2.2rem;
+}
+
+.roleTableDesign {
+  width: 60%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 1em;
+  font-family: var(--M-plus-font);
+}
+
+.roleTableDesign thead tr {
+  color: gray;
+}
+.roleTableDesign thead th {
+  padding: 12px 12px;
+  outline: none;
+  font-size: 1.08rem;
+}
+.roleTableDesign thead th:first-child {
+  width: 4rem;
+}
+.roleTableDesign thead th:nth-child(2) {
+  width: 6rem;
+}
+
+.roleTableDesign tbody td {
+  padding: 19px 10px;
+  font-size: 0.99rem;
+  z-index: 10;
+}
+.roleTableDesign tbody td:nth-child(2) {
+  overflow: hidden;
+}
+
+.roleTableDesign thead th:last-child {
+  width: 30px;
+}
+.roleTableDesign tbody tr {
+  /* border-bottom: 1px solid #333; */
+  /* border-style: solid; */
+  font-family: var(--M-plus-font);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.roleTableDesign tbody tr:hover {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+.roleTableDesign thead {
+  border: 2px solid;
+}
+
+
+
+.roleTableIconDiv i {
+  /* border-radius: 50%; */
+  /* width: 31px; */
+  margin-right: 1.5rem;
+  font-size: 0.9rem;
+  /* background-color: #b1d1e36b; */
+  /* padding: 0.5rem; */
+  border-radius: 50%;
+  color: #5dd39ec2;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.roleTableIconDiv i:last-child {
+  color: #f87575;
+}
+
+.roleTableDesign tbody td:last-child {
+  position: relative;
+}
+
+
+.roleTableIconDiv::before {
+  left: 52%;
+}
+
+/* <----------------------------------------- Role Create Page -----------------------------------------------------------> */
+
+.roleAssignContainer {
+  width: 100%;
+  height: 95%;
+  overflow: scroll;
+}
+
+.roleAssignNavbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.roleAssignNavbar > h2 {
+  width: 100%;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  box-shadow: 0 4px 2px -2px rgba(99, 99, 99, 0.2);
+}
+.roleAssignNavbar > i {
+  font-size: 1.5rem;
+  position: relative;
+  right: 3rem;
+  top: 0.5rem;
+}
+
+.roleAssignInputField form {
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 2.5rem;
+}
+
+.roleAssignInputField {
+  padding: 1rem;
+}
+
+.twoColumnInputContainer {
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  grid-gap: 1.5rem;
+}
+.twoColumnInputContainer > label > span {
+  color: red;
+}
+
+.roleAssignInputField form label {
+  font-size: 16px !important;
+}
+.roleAssignInputField form input[type='text'] {
+  box-shadow: rgba(99, 99, 99, 0.479) 0px 2px 8px 0px;
+  height: 2.5rem;
+  width: 40%;
+  border: none;
+  outline: none;
+  padding: 0.5rem 1rem;
+}
+.roleAssignInputField form textarea[type='text'] {
+  box-shadow: rgba(99, 99, 99, 0.479) 0px 2px 8px 0px;
+  height: 8rem;
+  width: 40%;
+  border: none;
+  outline: none;
+  padding: 0.5rem 1rem;
+}
+
+.roleAssignTableContainer {
+  width: 100%;
+}
+
+.roleAssignTableContainer > p {
+  border: 1px solid #dfdddb;
+  padding: 1rem 2rem;
+}
+
+.roleAssignTableInputDiv {
+  border: 1px solid #dfdddb;
+  padding: 1rem 2rem;
+}
+
+.roleAssignTableContainer h5 {
+  background-color: #d9d9d9;
+  padding: 1rem 2rem;
+  margin: 0;
+}
+
+.sevenColumnRoleAssignTable {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 8fr;
+}
+
+.eightColumnRoleAssignTable {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr 1fr 1fr 1fr 7fr;
+}
+
+.fourColumnRoleAssignTable {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr;
+}
+
+.fourColumnRoleAssignTable span,
+.sevenColumnRoleAssignTable span,
+.eightColumnRoleAssignTable span {
+  padding: 0.5rem 1rem;
+  border: 1px solid #dfdddb;
+}
+
+.fourColumnRoleAssignTable p,
+.sevenColumnRoleAssignTable p,
+.eightColumnRoleAssignTable p {
+  margin: 0;
+  padding: 0.5rem 0.8rem;
+  text-align: center;
+  border: 1px solid #dfdddb;
+}
+.fourColumnRoleAssignTable p:nth-child(2),
+.sevenColumnRoleAssignTable p:nth-child(2),
+.eightColumnRoleAssignTable p:nth-child(2) {
+  background-color: #eeeded;
+}
+
+.oneColumnGridContainer {
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 0.3rem;
+}
+
+.adjustSettingDiv {
+  padding: 1rem 2rem;
+  border: 2px solid #dfdddb;
+}
+
+.roleAssignBtns {
+  margin-bottom: 1rem;
+}
+
+.roleAssignBtns button:first-child {
+  background-color: #0a72e9;
+  color: white;
+}
+.roleAssignBtns button:last-child {
+  background-color: #344b64;
+  color: white;
+}
+
+.roleAssignBtns button {
+  width: 8%;
+  border: none;
+  padding: 0.5rem 0;
+  margin-right: 1rem;
+  font-weight: 500 !important;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  letter-spacing: 0.1rem;
+  border-radius: 0.3rem;
+}
+
+.roleAssignAccountantUsers {
+  background-color: #c4e3f1;
+  padding: 1rem;
+}
+
+.roleAssignTableDarkText {
+  font-weight: 900 !important;
+}
+
+.roleAssignTableDarkText p {
+  margin: 0;
+}
+.roleAssignTableDarkText p input {
+  margin-right: 0.5rem;
+}
+.roleAssignTableDarkText span {
+  margin-left: 1.5rem;
+  font-size: 14px;
+}
+
+.roleAssignTableBlueText {
+  color: rgb(66, 66, 153);
+  position: relative;
+}
+
+.roleAssignTableNoneBorder {
+  border: none !important;
+  padding: 0 !important;
+  cursor: pointer;
+}
+
+.roleAssignExtraPermission {
+  /* visibility: none; */
+  /* display: inline-block; */
+  z-index: 10;
+  width: max-content;
+  position: absolute;
+  top: 10.5rem;
+  left: 2rem;
+  transform: translate3d(8rem, -9rem, 0px);
+  box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+  /* background-color: #f0efeb; */
+  background-color: white;
+  padding: 0.5rem 1rem;
+  /* border: 2px solid red !important; */
+}
+
+.roleAssignExtraPermission > i {
+  visibility: visible;
+  font-size: 1.5rem;
+  color: #f0efeb;
+  position: relative;
+  right: 2rem;
+  padding: 0.5rem;
+}
+
+.morePermissionInputContainer {
+  border: none !important;
+  visibility: visible;
+  display: block;
+  margin: 0.2rem 0;
+}
+.morePermissionInputContainer > input {
+  margin-right: 0.5rem;
+}
+
+.roleAssignHeaderInput {
+  margin-right: 0.3rem;
+}
+
+.roleAssignErrorMessage {
+  color: red;
+  margin: 0;
+  padding: 0.3rem 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* react tag autocomplete */
+
+.permissionSelectContainer {
+  width: 48.5%;
+  box-shadow: rgba(99, 99, 99, 0.479) 0px 2px 8px 0px;
+  padding: 0.5rem;
+}
+.react-tags {
+  width: 100%;
+  position: relative;
+  padding: 6px 0 0 6px;
+  border: 1px solid #d1d1d1;
+  border-radius: 1px;
+
+  /* shared font styles */
+  font-size: 1em;
+  line-height: 1.2;
+
+  /* clicking anywhere will focus the input */
+  cursor: text;
+}
+
+.react-tags.is-focused {
+  border-color: #b1b1b1;
+}
+
+.react-tags__selected {
+  display: inline;
+}
+
+.react-tags__selected-tag {
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0 6px 6px 0 !important;
+  /* padding: 6px 8px; */
+  border: 1px solid #d2d2d2;
+  border-radius: 2px;
+  background: #f1f1f1;
+
+  /* match the font styles */
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.react-tags__selected-tag:after {
+  content: '\2715';
+  color: #aaa;
+  margin-left: 8px;
+}
+
+.react-tags__selected-tag:hover,
+.react-tags__selected-tag:focus {
+  border-color: #b1b1b1;
+}
+
+.react-tags__search {
+  display: inline-block;
+  width: max-content;
+  /* match tag layout */
+  padding: 7px 2px;
+  margin-bottom: 6px;
+
+  /* prevent autoresize overflowing the container */
+  max-width: 100%;
+}
+
+@media screen and (min-width: 30em) {
+  .react-tags__search {
+    /* this will become the offsetParent for suggestions */
+    position: relative;
+  }
+}
+
+.react-tags__search-input {
+  /* prevent autoresize overflowing the container */
+  max-width: 100%;
+  width: 5rem;
+  /* remove styles and layout from this element */
+  margin: 0;
+  padding: 0 !important;
+  border: none !important;
+  outline: none;
+
+  /* match the font styles */
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.react-tags__search-input:focus {
+  box-shadow: none !important;
+}
+
+.react-tags__search-wrapper > div,
+.react-tags__search-wrapper > input {
+  width: 70% !important;
+}
+
+.react-tags__search-input::-ms-clear {
+  display: none;
+}
+
+.react-tags__suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  z-index: 5;
+}
+
+@media screen and (min-width: 30em) {
+  .react-tags__suggestions {
+    width: 240px;
+  }
+}
+
+.react-tags__suggestions ul {
+  margin: 4px -1px;
+  padding: 0;
+  list-style: none;
+  background: white;
+  border: 1px solid #d1d1d1;
+  border-radius: 2px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.react-tags__suggestions li {
+  border-bottom: 1px solid #ddd;
+  padding: 6px 8px;
+}
+
+.react-tags__suggestions li mark {
+  width: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  background: none;
+  font-weight: 500;
+  letter-spacing: 0 !important;
+}
+
+.react-tags__suggestions li:hover {
+  cursor: pointer;
+  background: #eee;
+}
+
+.react-tags__suggestions li.is-active {
+  background: #b7cfe0;
+}
+
+.react-tags__suggestions li.is-disabled {
+  opacity: 0.5;
+  cursor: auto;
+}
+
+/* <-------------------------------------------- Role Sidebar -----------------------------------------------------> */
+
+/* .roleSidebarContainer {
+    padding: 2rem 0.5rem;
+}
+
+.roleSidebarContainer h2 {
+    padding: 0.5rem;
+    border-bottom: 2px solid grey;
+    margin: 0;
+}
+
+.roleDescriptionSection p {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+.roleDescriptionSection {
+    padding: 2rem 0.5rem;
+}
+
+.roleLessDescriptionShow {
+    max-height: 3rem;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+.roleMoreDescriptionShow {
+    word-wrap: break-word;
+}
+
+.toggleDescriptionText {
+    font-weight: 800;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #0a72e9;
+} */
+
+.roleAssignPermissionContainer {
+  margin: 1rem 0;
+  padding: 0.5rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.roleAssignPermissionContainer p {
+  padding: 0 0.5rem;
+  width: fit-content;
+  border: 2px solid black;
+  border-radius: 8rem;
+  font-size: 0.9rem;
+  margin: 0 0.5rem;
+}
+
+.roleAssignSidebarContainer {
+  display: grid;
+  grid-auto-rows: max-content;
+  grid-gap: 1rem;
+}
+
+.roleAssignSidebarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.roleAssignSidebarForm {
+  display: grid;
+  grid-template-columns: auto;
+  grid-auto-rows: max-content;
+  grid-gap: 0.5rem;
+  margin: 2rem 0 !important;
+}
+
+@media (max-width: 425px) {
+  .roleTableDesign {
+    width: auto;
+  }
+}

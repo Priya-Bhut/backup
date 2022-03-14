@@ -1,0 +1,1070 @@
+.leaveNav {
+  box-shadow: none !important;
+  padding: 0.5rem 0;
+}
+.leave-application-nav {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+.alBackBtn {
+  background-color: transparent;
+  border: none !important;
+  outline: none !important;
+  font-weight: 500 !important;
+  padding: 0.45rem !important;
+}
+.alBackBtn > i {
+  margin-right: 10px;
+  color: var(--main-color);
+}
+.applyLeaveCloseBtn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 1.5rem;
+  margin-right: 50px;
+}
+.applyLeaveCloseBtn i {
+  color: rgba(221, 28, 28, 0.822) !important;
+}
+.employeeId {
+  /* border: 1px solid rgba(128, 128, 128, 0.363); */
+  font-size: 0.8rem;
+  border: none;
+  border-bottom: 1px solid rgba(180, 178, 178, 0.609);
+  border-radius: 0px;
+  width: 100% !important;
+}
+/* .form-select:focus {
+    border-color: #ecf1f5;
+    outline: 0;
+    -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075),
+      0 0 0px rgba(102, 175, 233, 0.6);
+    box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075),
+      0 0 0px rgba(102, 175, 233, 0.6);
+  } */
+.leaveType,
+.leaveApprover,
+.employeeId {
+  /* font-size: 0.8rem; */
+  border: 1px solid #ced4da;
+  /* border-bottom: 1px solid rgba(180, 178, 178, 0.609); */
+  border-radius: 2px;
+  background-color: #ffffff;
+  color: #5e6472;
+  font-size: 1rem;
+  width: 102%;
+  padding: 0.5em !important;
+}
+.leaveType:focus,
+.employeeId:focus,
+.leaveApprover:focus {
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.leaveTypeCol,
+.employeeIdCol,
+.leaveFromCol,
+.leaveToCol,
+.leaveApproverCol {
+  display: grid;
+  grid-template-columns: 0.23fr 1fr !important;
+  place-items: center start;
+  grid-gap: 20px;
+}
+
+.leaveTypeCol label span,
+.employeeIdCol label span,
+.leaveFromCol label span,
+.leaveToCol label span,
+.leaveReason label span
+{
+  color: #e63946;
+  font-size: 1.1rem;
+}
+
+.lt-label-col {
+  width: 20% !important;
+}
+.empId-label-col {
+  width: 22% !important;
+}
+.leave-from-label-col {
+  width: 22% !important;
+}
+.leave-to-label-col {
+  width: 20% !important;
+}
+.leaveReasonLabelCol {
+  width: 9.1% !important;
+  font-family: var(--lato-font);
+}
+.leaveReason {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 6.8rem 1fr;
+  place-items: center start;
+  grid-gap: 47px;
+  margin-top: 30px;
+}
+.leaveReason textarea {
+  overflow-y: scroll;
+  /* resize: none; */
+  width: 42.8%;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  color: #5e6472;
+  padding: 0.7em;
+  margin-left: 15px;
+}
+.leaveReason textarea:focus {
+  outline: none;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.leaveReason label {
+  margin-left: 13px;
+}
+.leaveSubmitBtn {
+  background-color: var(--main-color) !important;
+}
+.leaveForm {
+  width: 90% !important;
+  margin-inline: auto;
+}
+
+.leaveForm label {
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+.leaveCancelBtn {
+  color: #e63946;
+  background-color: #f1f3f5;
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 0.3em;
+  border-radius: 4px;
+}
+.leaveCancelBtn:hover {
+  background-color: rgba(207, 33, 33, 0.808);
+  color: #ffffff;
+}
+.leaveFrom:focus {
+  border-color: #ecf1f5;
+  outline: 0;
+  -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
+}
+.leaveTo:focus {
+  border-color: #ecf1f5;
+  outline: 0;
+  -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
+}
+
+.reactDatePickerInput {
+  width: 100% !important;
+  border: none !important;
+  padding: 0.61em !important;
+  outline: none !important;
+  color: #5e6472;
+}
+
+.reactDatePickerInput:focus {
+  -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
+}
+.reactDatepickerWrapper {
+  border: 1px solid #ced4da !important;
+  padding: 0.12em 0.5em !important;
+  border-radius: 3px !important;
+}
+.userNamePic {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.userNamePic p {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
+  line-height: 0;
+}
+.userPic {
+  height: 35px;
+  width: 35px;
+  background-color: rgb(150, 218, 207);
+  border-radius: 50%;
+  margin-right: 3px;
+}
+.daterange {
+  display: grid;
+  grid-template-columns: 1rem 7rem 1rem 7rem 1rem;
+  place-items: center;
+  width: 18.9%;
+}
+.daterange i {
+  color: #4895ef;
+}
+.daterange p {
+  margin-bottom: 0;
+  font-family: var(--lato-font);
+}
+.applyLeaveContainer {
+  width: 98%;
+  margin: 10px auto 20px auto;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  padding: 0.7em;
+  border-radius: 3px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: max-content;
+  min-height: 42.5rem;
+}
+.showDates {
+  height: 81%;
+  overflow-y: scroll;
+  padding: 1rem;
+}
+.showDateRow {
+  height: 18rem;
+  margin-bottom: 1.2rem;
+  padding-top: 0.5rem;
+  background-color: #e5e5e5;
+}
+.totalLeaves {
+  background-color: var(--main-color);
+  color: white;
+  padding: 0.7rem;
+  margin-top: 0.8rem;
+}
+.totalLeaves .row {
+  margin-bottom: 0 !important;
+}
+.totalLeaves p {
+  /* text-align: center; */
+  margin-bottom: 0;
+}
+.applyLeaveFooter {
+  width: 100%;
+}
+.leave-setting-container {
+  margin: 0.5rem 0;
+}
+.leave-setting-container button {
+  width: 15%;
+  font-size: 1.1rem;
+  font-family: var(--lato-font);
+  font-weight: bold !important;
+  background-color: var(--main-color) !important;
+  outline: none !important;
+  border-color: #ffffff !important;
+  border: none !important;
+}
+.showLeaveAppContainer {
+  width: 98%;
+  margin: 20px auto;
+  padding: 0.5em;
+  position: relative;
+  height: 81vh;
+}
+.leaveApplicationTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 1em;
+  font-family: var(--M-plus-font);
+}
+
+.leaveApplicationTable tbody tr:hover {
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+}
+/* .leaveApplicationTable i {
+    opacity: 0;
+  } */
+/* .leaveApplicationTable thead tr {
+
+
+} */
+.leaveApplicationTable thead th {
+  padding: 3px 10px;
+  outline: none;
+  text-align: left;
+  color: #919191;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.leaveApplicationTable tbody td.totalLeavesTaken,
+.leaveApplicationTable thead th.totalLeavesTaken,
+.leaveApplicationTable tbody td.type,
+.leaveApplicationTable thead th.type,
+.leaveApplicationTable tbody td.dor,
+.leaveApplicationTable thead th.dor {
+  text-align: center !important;
+}
+
+.leaveApplicationTable tbody td {
+  padding: 19px 10px;
+  font-size: 0.9rem;
+  text-align: left;
+  text-transform: capitalize;
+}
+
+.leaveApplicationTable tbody td:last-child {
+  width: 10px;
+}
+.leaveApplicationTable tbody tr {
+  /* border-bottom: 1px solid #333; */
+  /* border-style: solid; */
+  text-align: center;
+  font-family: var(--M-plus-font);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+.leaveApplicationTable tbody tr:hover td:first-child {
+  color: #004cffec;
+}
+/* 
+  .leaveApplicationTable tbody tr:nth-of-type(even) {
+      background-color: #e3f2fd;
+  } */
+.leaveApplicationTable tbody .showEdit i,
+.leaveApplicationTable tbody .showDelete i {
+  /* width: 31px; */
+  margin-right: 1.5rem;
+  font-size: 1.1rem;
+  /* background-color: #b1d1e36b; */
+  /* padding: 0.5rem; */
+  border-radius: 50%;
+  color: #406ae8e6;
+  cursor: pointer;
+}
+
+.leaveApplicationTable tbody .showDelete i {
+  color: #f87575;
+}
+
+.leaveApplicationTable tbody .showEdit i {
+  color: #5dd39ec2;
+}
+
+.leaveApplicationTable tbody .showEdit::before,
+.leaveApplicationTable tbody .showDelete::before {
+  content: '';
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  /* background-color: #dae9ff8a; */
+  position: absolute;
+  top: 20%;
+  left: 3%;
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+.leavePeriod {
+  width: 14rem;
+}
+.leaveEdit {
+  width: 60px;
+}
+.leaveDelete {
+  width: 60px;
+}
+/* .leaveApplicationTable tbody td:last-child {
+      margin-right: 0;
+    } */
+.leavePending {
+  color: #eeba1a;
+}
+.leaveApproved {
+  color: #52b788;
+}
+.leaveRejected {
+  color: #f56960;
+}
+
+.leaveCanceled {
+  color: #e56b6f;
+}
+
+.leaveStatusNavContainer p i {
+  margin-left: 10px;
+}
+
+.leaveApplicationTable tbody tr td .leaveStatus {
+  margin-left: 10px;
+}
+
+.leaveStatusHeader {
+  width: 11%;
+}
+.showEdit {
+  color: #406ae8;
+  font-size: 1.1rem;
+  position: relative;
+}
+.showDelete {
+  color: #f56960;
+  font-size: 1.1rem;
+  position: relative;
+}
+.change-leave-type-btn {
+  background-color: var(--main-color) !important;
+  font-weight: bold !important;
+  font-family: var(--lato-font);
+  outline: none !important;
+}
+
+.leaveApplicationTable thead .caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-top: 4px solid \9;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+.leaveApplicationTable thead .dropup .caret,
+.leaveApplicationTable thead .navbar-fixed-bottom .dropdown .caret {
+  border-top: 0;
+  border-bottom: 4px dashed;
+  border-bottom: 4px solid \9;
+  content: '';
+}
+.userLeaveRecordContainer {
+  width: 90% !important;
+  margin-inline: auto;
+}
+
+.sdHalfDayContainer {
+  display: grid;
+  grid-template-columns: 10px 1fr 10px 1fr 10px;
+}
+
+.sdFullDayContainer {
+  display: grid;
+  grid-template-columns: 10px 1fr 10px;
+  margin-top: 9px;
+}
+.sdDot {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background-color: #adb5bd;
+  place-self: center;
+  margin-inline: 3px;
+}
+.sdLine {
+  height: 2px;
+  width: 97.6%;
+  background-color: #4895ef;
+  place-self: center;
+}
+
+.sdHalfLine {
+  height: 2px;
+  width: 97.6%;
+  background-color: #adb5bd;
+  place-self: center;
+}
+
+.sd-dot-half-day {
+  position: absolute;
+  left: 45%;
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background-color: #adb5bd;
+  top: 26%;
+  z-index: 100;
+  place-self: center;
+}
+
+.ltRow {
+  width: 100%;
+  margin: auto;
+}
+
+.approvalStatusUserInfo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.approvalStatusUserInfo .approvalPendingInfo {
+  margin-left: 10px;
+}
+
+.approvalStatusUserInfo .approvalPendingInfo p {
+  font-weight: 500;
+  margin: 0;
+  font-family: var(--lato-font);
+}
+
+.approvalStatusUserInfo .approvalPendingInfo span {
+  font-size: 0.7rem;
+  color: #797b7e;
+}
+.approvalTimelineAdminSection {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  margin-top: 20px;
+  position: relative;
+}
+
+.approvalAdminSection {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.adminInfoCommentSection {
+  margin-left: 10px;
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 80%;
+}
+.adminInfoCommentSection p {
+  font-weight: 500;
+  margin: 0;
+  font-family: var(--lato-font);
+}
+
+.adminInfoCommentSection span {
+  font-size: 0.7rem;
+  color: #797b7e;
+}
+
+.adminInfoCommentSection textarea {
+  border: 1px solid #a7acb3;
+  outline: none;
+  width: 100%;
+  padding: 0.3em;
+  border-radius: 3px;
+  margin-top: 15px !important;
+}
+
+.adminInfoCommentSection textarea:focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.adminStatusBtn {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 8px;
+  padding: 0.3em;
+}
+
+.statusApproveBtn,
+.statusRejectBtn {
+  border: none;
+  outline: none;
+  padding: 0.4em;
+  background-color: #52b788;
+  color: #ffffff;
+  font-weight: bold !important;
+  margin-right: 10px;
+  width: 50%;
+  border-radius: 3px;
+}
+
+.statusRejectBtn {
+  background-color: #e63946 !important;
+}
+
+.userComment {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #f4f1de;
+  padding: 0.3em;
+  border-radius: 8px;
+}
+
+.userComment p {
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.userComment input {
+  border: 1px solid #a7acb3;
+  outline: none;
+  width: 88%;
+  padding: 0.3em 0.7em;
+  border-radius: 15px;
+  margin-left: 10px;
+  font-size: 0.9em;
+}
+
+.userComment input:focus {
+  outline: 0;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+/* .approval-timeline{
+    position: relative;
+  } */
+
+.approvalLine {
+  position: absolute;
+  border-left: 3px solid #d7dadf;
+  height: 211px;
+  left: 3.1%;
+  top: -12%;
+}
+
+.pendingDot {
+  position: absolute;
+  height: 13px;
+  width: 13px;
+  left: 2.2%;
+  top: 4.25%;
+  background-color: #eeba1a;
+  border-radius: 50%;
+}
+
+.approvedDot {
+  position: absolute;
+  height: 13px;
+  width: 13px;
+  left: 2.2%;
+  top: 4.25%;
+  background-color: #52b788;
+  border-radius: 50%;
+}
+
+.rejectedDot {
+  position: absolute;
+  height: 13px;
+  width: 13px;
+  left: 2.2%;
+  top: 4.25%;
+  background-color: #e63946;
+  border-radius: 50%;
+}
+
+.canceledDot {
+  position: absolute;
+  height: 13px;
+  width: 13px;
+  left: 2.2%;
+  top: 4.25%;
+  background-color: #e56b6f;
+  border-radius: 50%;
+}
+
+.approvalStatusAdminSection {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.approvalStatus p {
+  margin-bottom: 6px;
+}
+
+.approvedContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  height: 12rem;
+  grid-template-rows: 1.5rem;
+}
+
+.statusTime p {
+  font-weight: 500;
+  margin: 0;
+  font-family: var(--lato-font);
+}
+
+.statusTime span {
+  font-size: 0.7rem;
+  color: #797b7e;
+}
+
+.approvedStatus {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.behalf span {
+  padding: 0.3em;
+  background-color: #81b4ee;
+  border-radius: 20px;
+  font-size: 0.7rem;
+}
+
+.adminPicNameEmail {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.adminNameEmail {
+  margin-left: 10px;
+}
+
+.adminNameEmail p {
+  font-weight: 500;
+  margin: 0;
+  font-family: var(--lato-font);
+}
+
+.adminNameEmail span {
+  font-size: 0.7rem;
+  color: #797b7e;
+}
+
+.adminEmailRoleContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 10px;
+}
+
+.adminRolePic {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.adminRole {
+  margin-left: 10px;
+}
+
+.adminRole p {
+  font-weight: 500;
+  margin: 0;
+  font-family: var(--lato-font);
+}
+.adminRole span {
+  font-size: 0.7rem;
+  color: #797b7e;
+}
+
+.adminComment {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  height: 2rem;
+}
+.adminComment p {
+  margin: 0;
+}
+
+.adminCommentSection textarea:focus {
+  border-color: #ecf1f5;
+  outline: 0;
+  -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
+}
+
+.approvedComment {
+  background-color: #f4f1de;
+  padding: 0.3em;
+  border-radius: 1px;
+  border-left: 3px solid #52b788;
+}
+
+.rejectedComment {
+  background-color: #f4f1de;
+  padding: 0.3em;
+  border-radius: 1px;
+  border-left: 3px solid #e63946;
+}
+
+.canceledComment {
+  background-color: #f4f1de;
+  padding: 0.3em;
+  border-radius: 1px;
+  border-left: 3px solid #e56b6f;
+}
+
+.userCmntBtn {
+  margin-top: 15px;
+  border: none;
+  outline: none;
+  padding: 0.4em;
+  background-color: #4895ef;
+  color: #ffffff;
+  font-weight: bold !important;
+  width: 30%;
+  border-radius: 3px;
+  margin-right: 18px;
+}
+
+.userCmntBtnContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.leaveSearchContainer {
+  width: 95%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0.5rem;
+  position: relative;
+}
+
+.leaveSearchContainer input {
+  width: 20%;
+  border: 1px solid black;
+  outline: none !important;
+  border-radius: 0.25rem;
+  margin-right: 10px;
+}
+
+.leaveSearchContainer input:focus {
+  outline: 0;
+  -webkit-box-shadow: inset 0 0px 0px rgb(0, 0, 0), 0 0 0px rgb(0, 0, 0) !important;
+  box-shadow: inset 0 0px 0px rgb(0, 0, 0), 0 0 0px rgb(0, 0, 0) !important;
+}
+
+.leaveSearchContainer button {
+  padding: 0.2em;
+  background-color: #ffffff;
+  border: 2px solid #e56b6f !important;
+  width: 7%;
+  font-size: 1.2rem !important;
+  border: none;
+  border-radius: 20px;
+  color: #3d5a80;
+  font-weight: 500 !important;
+}
+.leaveSearchContainer button:hover {
+  background-color: #e56b6f;
+  color: #ffffff;
+}
+
+.leaveSaerchIcon {
+  position: absolute;
+  right: 1.5rem;
+  opacity: 0.3;
+  top: 0.8rem;
+  color: var(--main-color);
+}
+
+.changeLeaveTypeBtn {
+  background-color: var(--main-color) !important;
+  font-weight: bold !important;
+  font-family: var(--lato-font);
+  outline: none !important;
+}
+
+.react-bs-table-sizePerPage-dropdown {
+  visibility: hidden !important;
+}
+
+.appRejbtn {
+  border: none;
+  background-color: #2667ff;
+  outline: none;
+  padding: 0.5em;
+  font-size: 1rem !important;
+  color: #fffdf7;
+  border-radius: 3px;
+}
+
+.noDataFound {
+  padding: 15em;
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 4px;
+  z-index: 10;
+}
+
+.noDataFound h4 {
+  position: fixed;
+  left: 45%;
+  top: 50%;
+  color: #f56960;
+  font-weight: 700;
+  font-family: var(--lato-font);
+  font-size: 1.6rem;
+}
+
+.leaveAppHeader {
+  position: absolute;
+  top: 2.3%;
+  width: 10%;
+}
+
+.viewRecordLoadingOverlay {
+  position: fixed;
+  top: 56px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(66 79 116 / 70%);
+}
+
+.shapes7 {
+  width: 40px;
+  height: 40px;
+  color: #c9f2c7;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(from 134deg at top, currentColor 92deg, #0000 0) top,
+    conic-gradient(from -46deg at bottom, currentColor 92deg, #0000 0) bottom;
+  background-size: 100% 50%;
+  background-repeat: no-repeat;
+}
+.shapes7:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(from -135deg at top 0 left 22px, #0000, currentColor 1deg 90deg, #0000 0),
+    conic-gradient(from -45deg at right 0 top 22px, #0000, currentColor 1deg 90deg, #0000 0),
+    conic-gradient(from 45deg at bottom 0 right 22px, #0000, currentColor 1deg 90deg, #0000 0),
+    conic-gradient(from 135deg at left 0 bottom 20px, #0000, currentColor 1deg 90deg, #0000 0);
+  animation: sh7 1.5s infinite cubic-bezier(0.3, 1, 0, 1);
+}
+@keyframes sh7 {
+  33% {
+    inset: -10px;
+    transform: rotate(0deg);
+  }
+  66% {
+    inset: -10px;
+    transform: rotate(90deg);
+  }
+  100% {
+    inset: 0;
+    transform: rotate(90deg);
+  }
+}
+
+.spinner10 {
+  position: fixed;
+  left: 52%;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 6px solid #1e88e5;
+  animation: s10-1 0.8s infinite linear alternate, s10-2 1.6s infinite linear;
+}
+@keyframes s10-1 {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%);
+  }
+  12.5% {
+    clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0%);
+  }
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 100% 100%, 100% 100%);
+  }
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
+  }
+  62.5% {
+    clip-path: polygon(50% 50%, 100% 0, 100% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%);
+  }
+  75% {
+    clip-path: polygon(50% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50% 100%, 0% 100%);
+  }
+  100% {
+    clip-path: polygon(50% 50%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 0% 100%);
+  }
+}
+@keyframes s10-2 {
+  0% {
+    transform: scaleY(1) rotate(0deg);
+  }
+  49.99% {
+    transform: scaleY(1) rotate(135deg);
+  }
+  50% {
+    transform: scaleY(-1) rotate(0deg);
+  }
+  100% {
+    transform: scaleY(-1) rotate(-135deg);
+  }
+}
+
+.teamEmail input {
+  width: 98% !important;
+  color: #5e6472 !important;
+  border: 1px solid #ced4da !important;
+  border-radius: 3px !important;
+  margin-left: 15px;
+}
+
+.teamEmail input:focus {
+outline: none !important;
+-webkit-box-shadow: none !important;
+box-shadow: none !important;
+}
+
+.teamEmail {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 6.8rem 1fr;
+  place-items: center start;
+  grid-gap: 47px;
+}
+
+.leaveApproverDetails span i{
+  margin-left: 2rem;
+  color: #1e88e5;
+}
+
+@media (max-width:425px){
+  .leaveNav{
+    width: max-content;
+  }
+
+  .leaveSearchContainer{
+    width: 100%;
+  }
+
+  .leaveSearchContainer input{
+    width: 50%;
+  }
+
+  .leaveApplicationTable{
+    width: max-content;
+  }
+  .applyLeaveContainer{
+    width: max-content;
+  }
+
+  .leaveTypeCol{
+    grid-template-columns: 7rem 1fr !important;
+  }
+  .teamEmail{
+    grid-template-columns: 6rem 1fr !important;
+  }
+
+  .leaveFromCol{
+    grid-template-columns: 7rem 1fr !important;
+  }
+
+  .leaveToCol{
+    grid-template-columns: 4rem 1fr !important;
+  }
+  .leaveReason{
+    grid-template-columns: 6rem 1fr !important;
+  }
+
+  .leaveSubmitBtn{
+    margin: 6 px 0;
+  }
+  .showDates{
+    height: 75%;
+  }
+  .daterange{
+    width: auto;
+  }
+
+  .statusApproveBtn, .statusRejectBtn, .userCmntBtn{
+    width: auto;
+  }
+}

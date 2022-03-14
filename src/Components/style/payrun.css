@@ -1,0 +1,611 @@
+.salaryDetailsContainer {
+  padding: 1em;
+}
+
+.payRunNav {
+  width: 100%;
+}
+.payRunNav .payRunNavContainer {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+}
+
+.sdNavLink {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.payRunNav .payRunNavContainer li {
+  list-style: none;
+  padding: 10px;
+  margin-inline: 10px;
+  cursor: pointer;
+  color: #146efd;
+  letter-spacing: 0.5px;
+}
+
+.payRunNav hr {
+  margin: 0;
+  width: 100%;
+}
+.payRunNav .payRunNavContainer .sdActive {
+  border-bottom: 3px solid var(--main-color);
+  margin-bottom: -0.075rem;
+  color: black;
+}
+
+.salaryDetailsViewcontainer h6 {
+  font-weight: 600;
+  font-family: var(--M-plus-font);
+  margin-bottom: 2px;
+}
+
+.salaryDetailsViewHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 14%;
+}
+
+.salaryDetailsViewHeader span i {
+  margin-right: 1.5rem;
+  font-size: 1rem;
+  background-color: #b1d1e36b;
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: #406ae8e6;
+  cursor: pointer;
+}
+
+.salaryDetailsTableViewContainer {
+  margin-top: 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 3px 5px;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  width: 102rem;
+}
+
+.salaryDetailsTableViewHeader {
+  display: grid;
+  grid-template-columns: 35rem 27rem 1fr;
+  gap: 3rem;
+}
+.salaryDetailsTableViewHeader p {
+  margin: 0;
+  padding: 0.5em;
+  font-size: 0.8rem;
+  color: #686868;
+  font-weight: 600;
+}
+
+.salaryDetailsTableViewHeader p:nth-child(2) {
+  text-align: right;
+}
+
+.salaryDetailsTableViewHeader p:last-child {
+  text-align: right;
+}
+
+.salaryDetailsTableViewContainer hr {
+  margin: 0;
+  width: 100%;
+}
+
+.salaryDetailsViewContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.salaryDetailsViewContainer .salaryRowDetails,
+.salaryDetailsViewContainer .epfAdminCharge,
+.salaryDetailsViewContainer .ctcView,
+.salaryDetailsViewContainer .edliContribution {
+  display: grid;
+  grid-template-columns: 35rem 27rem 1fr;
+  gap: 3rem;
+}
+
+.salaryDetailsViewContainer .salaryRowDetails p:nth-child(2),
+.salaryDetailsViewContainer .epfAdminCharge p:nth-child(2),
+.salaryDetailsViewContainer .ctcView p:nth-child(2),
+.salaryDetailsViewContainer .edliContribution p:nth-child(2) {
+  text-align: right;
+}
+
+.salaryDetailsViewContainer .salaryRowDetails p:last-child,
+.salaryDetailsViewContainer .epfAdminCharge p:last-child,
+.salaryDetailsViewContainer .ctcView p:last-child,
+.salaryDetailsViewContainer .edliContribution p:last-child {
+  text-align: right;
+}
+
+.ctcView p {
+  font-weight: 600;
+}
+.payRunHeading p {
+  font-weight: 600;
+}
+/* ============================== run PayRoll css ============================== */
+
+.payRunHeading {
+  margin: 1.5rem 0;
+}
+.payRunHeading p {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.7px;
+  margin-bottom: 0;
+}
+.payRunHeading p span {
+  font-weight: 400;
+  font-size: 1.4rem;
+  margin-left: 0.3rem;
+  color: var(--main-color);
+}
+.payrunDetailsContainer .onlyDetails .incomeDetail p {
+  margin-bottom: 0;
+}
+.incomeDetailsType {
+  /* font-weight: 200; */
+  /* font-size: small; */
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem !important;
+  opacity: 0.5;
+}
+.netPayAmount {
+  font-weight: 500;
+  /* font-size: medium; */
+  font-size: 1.1rem;
+}
+
+.netPayAmount i {
+  margin-right: 0.2rem;
+}
+
+/* ============================== run PayRoll css ============================== */
+.detailsTag {
+  font-size: small;
+  font-weight: 130;
+}
+.incomeDetailsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.salaryTemplateContainer i {
+  opacity: 0.5;
+  margin-right: 0.5rem;
+}
+.salaryTemplateContainer span {
+  font-weight: 550;
+}
+.salaryTemplateContainer p {
+  font-weight: 250;
+}
+
+.onlyDetails {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 8rem;
+  justify-content: space-around;
+}
+
+.payrunDetailsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 70%;
+  height: 8rem;
+  padding: 0 2rem;
+  justify-content: space-between;
+  border-radius: 0.5rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  /* border-left: 0.3rem solid cornflowerblue; */
+  border-left: 0.3rem solid var(--main-color);
+  background-color: #e9efff;
+}
+.payrunSummaryNav {
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+.alBackBtn {
+  background-color: transparent;
+  border: none !important;
+  outline: none !important;
+  font-weight: 400 !important;
+  font-size: 1.3rem !important;
+}
+.alBackBtn > i {
+  margin-right: 10px;
+  color: var(--main-color);
+  font-size: 0.8rem;
+}
+
+.submitAndApproveButton {
+  font: optional;
+}
+
+/* ================ totalPayrun ================ */
+
+.topPayrollDetail {
+  display: flex;
+  margin-top: 2rem;
+}
+.topPayrollDetail .totalCostCard {
+  padding: 2rem 2.5rem;
+  width: 530px;
+  height: 180px;
+  border-radius: 5px;
+  background-color: #e9efff;
+}
+.topPayrollDetail .datePeriod {
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+.topPayrollDetail .datePeriod span {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--main-color);
+}
+.topPayrollDetail .totalCostCard .payrunCosts {
+  display: flex;
+  justify-content: space-between;
+}
+.topPayrollDetail .totalCostCard .payrunCosts .netPay {
+  margin-top: 1.5rem;
+}
+.topPayrollDetail .totalCostCard .payrunCosts .netPay h4 {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.topPayrollDetail .totalCostCard .payrunCosts .netPay h4 i {
+  font-size: 1rem;
+}
+.topPayrollDetail .totalCostCard .payrunCosts .netPay p {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  opacity: 0.6;
+}
+
+/* ================ totalPayrun ================ */
+
+/* ====================== DateOfPayRoll ====================== */
+
+.topPayrollDetail .cardOfPayrollDate {
+  padding: 1rem 2rem;
+  height: 180px;
+  /* background-color: rgb(172, 172, 172); */
+  margin: 0 2rem;
+  border: 1px solid #d7d7d7;
+  border-radius: 5px;
+  text-align: center;
+}
+.topPayrollDetail .cardOfPayrollDate .simpleText {
+  text-transform: uppercase;
+  opacity: 0.7;
+  font-size: 0.85rem;
+  margin-bottom: 0.4rem !important;
+}
+.topPayrollDetail .cardOfPayrollDate .payDate {
+  text-align: center;
+  font-weight: 300;
+  font-size: 2rem;
+}
+.topPayrollDetail .cardOfPayrollDate .payMonth {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+.topPayrollDetail .cardOfPayrollDate .payTotalEmployee {
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  margin-bottom: 0 !important;
+  margin-top: 1.7rem !important;
+}
+
+/* ====================== DateOfPayRoll ====================== */
+/* ===================== tax and Deduction ===================== */
+
+.topPayrollDetail .texesAndDeduction {
+  /* background-color: gray; */
+  width: 100%;
+  max-width: 320px;
+  padding: 0.8rem 0;
+}
+.topPayrollDetail .texesAndDeduction h4 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  /* color: gray; */
+  color: var(--main-color);
+  margin-bottom: 1.2rem;
+}
+.topPayrollDetail .texesAndDeduction .taxes {
+  display: flex;
+  justify-content: space-between;
+}
+.topPayrollDetail .texesAndDeduction .taxes .texName {
+  font-size: 0.92rem;
+  opacity: 0.8;
+  letter-spacing: 0.2px;
+}
+.topPayrollDetail .texesAndDeduction .taxes .taxPrice {
+  font-size: 0.95rem;
+}
+.topPayrollDetail .texesAndDeduction .taxes .taxPrice i {
+  font-size: 0.8rem;
+  margin-right: 0.2rem;
+}
+
+/* ===================== tax and Deduction ===================== */
+/*================= Employee Summary Pay Detail Table================= */
+/*================= Employee Summary Pay Detail Table================= */
+.payRunSummaryNav {
+  margin-top: 0.6rem;
+}
+.employeeSummary {
+  margin-top: 1rem;
+  position: relative;
+}
+.employeeSummary .dropdownControler {
+  width: 200px;
+  position: relative;
+}
+.employeeSummary .dropdownControler .dropdownBtn {
+  border: 1px solid #d4d4d4;
+  padding: 0.5rem 0.5rem;
+  font-size: 0.9rem;
+  border-radius: 5px;
+}
+.employeeSummary .dropdownControler .arrow {
+  border-color: #999 transparent transparent;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  content: ' ';
+  display: block;
+  margin-top: 0.3rem;
+  position: absolute;
+  right: 12px;
+  top: 13px;
+}
+.employeeSummary .dropdownControler .arrow.open {
+  border-color: transparent transparent #999;
+  border-width: 0 5px 5px;
+}
+.employeeSummary .dropdownControler .dropdownList {
+  display: none;
+}
+.employeeSummary .dropdownControler .dropdownList.open {
+  display: block;
+}
+.employeePayTableSearch {
+  top: 0;
+  left: 14rem;
+  position: absolute;
+  display: inline-block;
+}
+.employeePayTableSearch input {
+  border: 1px solid #d4d4d4;
+  border-radius: 5px;
+}
+.employeePayTableSearch i {
+  left: 18rem;
+  top: 0.63rem;
+}
+.employeeSummary .employeePayTable {
+  font-size: 0.9rem;
+}
+/* .employeeSummary .employeePayTable tbody {
+  overflow-y: hidden !important;
+  max-height: 100px;
+  height: 100%;
+} */
+.employeeSummary .employeePayTable .payrunTableHead {
+  text-align: end;
+  opacity: 0.7;
+}
+.employeeSummary .employeePayTable .employeeTableBody {
+  text-align: end;
+  padding: 1.1rem 0.8rem;
+  cursor: pointer;
+}
+.employeeSummary .employeePayTable .activeEmployee {
+  text-align: start;
+}
+.employeeSummary .employeePayTable .paidDaysColumn {
+  width: 125px !important;
+}
+.employeeSummary .employeePayTable tr:hover .activeEmployee {
+  color: #146efd !important;
+}
+.employeeSummary .employeePayTable tr:hover {
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+}
+.employeeSummary .employeePayTable .employeeTableBody i {
+  margin-right: 0.2rem;
+  font-size: 0.7rem;
+}
+.employeeSummary .employeePayTable .employeeName {
+  width: 300px;
+  text-align: initial;
+}
+/*================= Employee Summary Pay Detail Table================= */
+.employeePayDetail {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.8rem;
+  box-shadow: rgb(17 17 26 / 31%) 0px 1px 0px;
+}
+.employeePayDetail h4 {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+.employeePayDetail p {
+  margin-bottom: 0.3rem;
+}
+.employeePayDetail h3 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+.employeePayDetail h3 i {
+  font-size: 1.3rem;
+  margin-right: 0.3rem;
+}
+.employeePayDetail .employeeNameDetail p {
+  font-weight: 300;
+}
+.employeePayDetail .employeeNetPayDetail {
+  text-align: end;
+}
+.lopDays {
+  margin-top: 1rem;
+}
+.lopDays .allowanceList {
+  display: grid;
+  grid-template-columns: 70% 25% 5%;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+.lopDays .allowanceList img {
+  margin-left: 0.5rem;
+}
+.lopDays p {
+  margin-bottom: 0;
+}
+.lopDays .allowanceList .col1 {
+  font-size: 1.1rem;
+  letter-spacing: 0.3px;
+  font-weight: 300;
+  border: 1px solid transparent;
+}
+.col2 {
+  text-align: end;
+  font-size: 1.1rem;
+  color: #1e1e1e;
+  border: 1px solid transparent;
+}
+.col2:focus {
+  outline: none;
+  border: 1px solid #d5d5d5;
+  border-radius: 5px;
+  box-shadow: none;
+}
+.employeeEarning {
+  margin-top: 1.1rem;
+}
+.employeeEarning .earningList,
+.employeeDeductions .earningList {
+  display: grid;
+  grid-template-columns: 70% 25% 5%;
+  align-items: center;
+}
+
+.employeeEarning hr:nth-child(1),
+.employeeDeductions hr:nth-child(1) {
+  margin-top: 0;
+  margin-bottom: 3px;
+}
+.employeeEarning .edHr2,
+.employeeDeductions .edHr2 {
+  margin-bottom: 1rem;
+  margin-top: 3px;
+}
+.employeeEarning .earningList .earning,
+.employeeEarning .earningList .amount,
+.employeeEarning .earningDetailAndAllowances,
+.employeeDeductions .earningList .deduction,
+.employeeDeductions .earningList .amount {
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+.employeeDeductions .earningList .deduction {
+  color: #f25c54;
+}
+
+.totalEaringNameLists,
+.totalAmountLists {
+  margin-bottom: 0;
+}
+
+.employeeEarning .earningDetailAndAllowances,
+.employeeDeductions .earningDetailAndAllowances,
+.payAmount {
+  font-weight: normal;
+  font-size: 0.92rem;
+  margin-bottom: 0.8rem;
+}
+.payAmount i {
+  margin-right: 0.3rem;
+}
+.earningDetailAndAllowances .earningList p {
+  margin-bottom: 0.8rem;
+}
+.employeeEarning .earningList .earning {
+  color: rgb(0, 182, 0);
+}
+.employeeEarning .earningList .amount {
+  opacity: 0.8;
+}
+
+.selectEarningAllowances {
+  width: 75%;
+  outline: none;
+  border: 1px solid #ced4da;
+  background-color: transparent;
+  border-radius: 5px;
+}
+
+.selectEarningAllowances:focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.addEarningAmount {
+  border: 1px solid #ced4da;
+  padding: 0.65em;
+  outline: none;
+  text-align: end;
+  border-radius: 5px;
+}
+
+.addEarningAmount:focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+}
+
+.selectAllowanceContainer {
+  margin-bottom: 16px;
+}
+
+.selectAllowanceContainer img {
+  margin-left: 0.5rem;
+}
+
+.addEarningbtn {
+  color: #146efd;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.addEarningbtn i {
+  margin-right: 0.3rem;
+}
+
+.pretaxDeductionHeader,
+.taxesHeader,
+.postTaxDeductionHeader {
+  font-weight: 500;
+}
+
+.preTaxDeductionContainer,
+.taxesContainer {
+  margin-bottom: 1.2rem;
+}

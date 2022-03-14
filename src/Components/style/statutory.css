@@ -1,0 +1,737 @@
+/* ========================================= Statutory Components =================================================== */
+
+.statutoryComponentsNav {
+  width: 100%;
+}
+.statutoryComponentsNav .statutoryComponentsNavContainer {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  margin: 0;
+}
+
+.statutoryComponentsNav .statutoryComponentsNavContainer li {
+  list-style: none;
+  padding: 10px;
+  margin-inline: 10px;
+  cursor: pointer;
+}
+
+.statutoryComponentsNav .statutoryComponentsNavContainer .scActive {
+  border-bottom: 2px solid var(--main-color);
+}
+
+.statutoryComponentsNav hr {
+  margin: 0;
+  width: 100%;
+}
+
+.scNavLink {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.scNavLink:hover {
+  color: inherit;
+}
+
+.statutoryCmponentsContainer {
+  padding: 1em;
+}
+
+.epfContainer h6,
+.esiContainer h6 {
+  font-weight: 500;
+  font-family: var(--M-plus-font);
+  margin-bottom: 2px;
+}
+
+.epfHeader,
+.esiHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 19.5%;
+}
+
+.esiHeader {
+  width: 20.5%;
+}
+
+.epfHeader span i,
+.esiHeader span i,
+.ptCardHeaderState i {
+  margin-right: 1.5rem;
+  font-size: 1rem;
+  background-color: #b1d1e36b;
+  padding: 0.5rem;
+  border-radius: 50%;
+  color: #406ae8e6;
+  cursor: pointer;
+}
+
+/* .epfDetailsContainer,
+.esiDetailsContainer {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  margin-top: 15px;
+} */
+
+.esiDetailsContainer {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  grid-gap: 7px;
+  padding: 1em;
+  width: 80%;
+  margin-bottom: 10px;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.epfDetailsContainer hr,
+.esiDetailsContainer hr {
+  width: 100%;
+}
+
+.esiDetailsContainer hr {
+  margin: 0;
+}
+
+.epfDetailsContainer p,
+.esiDetailsContainer p {
+  margin-bottom: 0.7rem;
+  font-family: var(--lato-font);
+}
+
+.epfDetailsContainer .epfNumber,
+.epfDetailsContainer .epfDeductionStyle,
+.epfDetailsContainer .epfOtherDetails,
+.epfDetailsContainer .epfProRate,
+.epfDetailsContainer .epfAllowOverride,
+.epfDetailsContainer .epfCalculation,
+.esiDetailsContainer .esiNumber,
+.esiDetailsContainer .esiDeductionStyle,
+.esiDetailsContainer .esiEmployeesContribution,
+.esiDetailsContainer .esiEmployersContribution,
+.esiDetailsContainer .esiOtherDetails {
+  display: grid;
+  grid-template-columns: 0.23fr 1fr;
+}
+
+.esiDetailsContainer .esiNumber p:nth-child(1),
+.esiDetailsContainer .esiDeductionStyle p:nth-child(1),
+.esiDetailsContainer .esiEmployeesContribution p:nth-child(1),
+.esiDetailsContainer .esiEmployersContribution p:nth-child(1),
+.esiDetailsContainer .esiOtherDetails p:nth-child(1) {
+  color: #7f7f7f;
+}
+
+.epfSubComponentContainer {
+  margin-top: 15px;
+}
+
+.epfSubComponentContainer hr {
+  margin: 0;
+}
+.epfSubComponentHeader {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.epfSubComponentHeader p {
+  margin: 0;
+  padding: 0.5em;
+  font-size: 0.8rem;
+  color: #686868;
+  font-weight: 600;
+}
+
+.epfSubComponentDetailsContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.epfSubComponentDetailsContainer .epfWage,
+.epfSubComponentDetailsContainer .epfPensionSchemeWage,
+.epfSubComponentDetailsContainer .epfAdminCharge,
+.epfSubComponentDetailsContainer .edliContribution {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.epfWage p,
+.epfPensionSchemeWage p,
+.epfAdminCharge p,
+.edliContribution p {
+  margin: 0;
+  padding: 0.4em;
+}
+
+.edliContribution {
+  margin-bottom: 15px;
+}
+
+.enableEpfContainer,
+.enableEsiContainer {
+  width: 40%;
+  margin: 200px auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  text-align: center;
+}
+.enableEpfContainer h5,
+.enableEsiContainer h5 {
+  font-family: var(--lato-font);
+}
+.enableEpfDetails,
+.enableEsiDetails {
+  margin-top: 15px;
+}
+.enableEpfDetails p,
+.enableEsiDetails p {
+  margin: 0;
+  font-family: var(--lato-font);
+}
+
+.enableEpfDetails button,
+.enableEsiDetails button {
+  border: none;
+  outline: none;
+  background-color: var(--main-color);
+  color: #ffffff;
+  padding: 0.5em;
+  font-size: 1rem !important;
+  margin-top: 15px;
+  border-radius: 2px;
+  font-weight: 600 !important;
+  font-family: var(--lato-font);
+}
+
+.epfDetailsContainer,
+.ptDetailsContainer {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: 60px;
+}
+.epfDetailsContainer {
+  margin-bottom: 15px;
+}
+.epfDetailsHeader,
+.esiDetailsHeader,
+.ptDetailsHeader {
+  margin-bottom: 20px;
+}
+
+.epfNumberCycleContainer,
+.esiNumberCycleContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 25rem);
+}
+
+.epfNumberContainer label,
+.esiNumberContainer label,
+.esiEmployeeContributionContainer label,
+.esiEmployerContributionContainer label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.epfNumberInput,
+.esiNumberInput,
+.esiEmployeeContributionInput,
+.esiEmployerContributionInput {
+  border: 1px solid #c0b8b8;
+  border-radius: 3px;
+  padding: 0.3em;
+  font-size: 1rem;
+  outline: none;
+  width: 80%;
+}
+
+.epfNumberInput:focus,
+.epfDeductionCycleInput:focus,
+.esiNumberInput:focus,
+.esiDeductionCycleInput:focus,
+.esiEmployeeContributionInput:focus,
+.esiEmployerContributionInput:focus {
+  border-color: #c0b8b8;
+  outline: 0;
+  -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
+}
+
+.epfDeductionCycleContainer label,
+.esiDeductionCycleContainer label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.epfDeductionCycleInput,
+.esiDeductionCycleInput {
+  border: 1px solid #c0b8b8;
+  border-radius: 3px;
+  padding: 0.3em;
+  font-size: 1rem;
+  outline: none;
+  width: 70%;
+}
+
+.epfContributionContainer {
+  width: 100%;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 20px;
+  position: relative;
+}
+
+.contributionDetailsDropdown {
+  color: var(--main-color);
+  cursor: pointer;
+  margin-top: 20px;
+  width: max-content;
+}
+
+.contributionDetailsDropdown i {
+  margin-left: 10px;
+  font-size: 1.2rem;
+}
+
+.employerContributionContainer label,
+.employeeContributionContainer label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600 !important;
+}
+
+.employerContributionContainer .employerContribution,
+.employeeContributionContainer .employeeContribution {
+  border: 1px solid #c0b8b8;
+  outline: none;
+  background-color: #ffffff;
+  padding: 0.3em;
+  font-size: 1rem !important;
+  border-radius: 3px;
+  width: 26%;
+  color: #5c6168;
+}
+.employerContributionContainer .employerContribution:focus,
+.employeeContributionContainer .employeeContribution:focus {
+  border-color: #c0b8b8;
+  outline: 0;
+  -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
+}
+
+.incEmperContriCTCCOntainer,
+.overridePfContributionContainer,
+.edliContributionContainer,
+.adminChargesContainer,
+.restrictedPfContainer .restrictedpf,
+.considerAllPfContainer .considerAllPf,
+.esiEmployerContributionIncContainer {
+  display: flex;
+  width: 12.5rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.incEmperContriCTCCOntainer {
+  width: 18.2rem;
+}
+
+.incEmperContriCTCCOntainer label,
+.overridePfContributionContainer label,
+.edliContributionContainer label,
+.adminChargesContainer label,
+.restrictedPfContainer .restrictedpf label,
+.considerAllPfContainer .considerAllPf label,
+.esiEmployerContributionIncContainer label {
+  font-size: 1rem !important;
+}
+
+.overridePfContributionContainer {
+  width: 19.8rem;
+}
+
+.incEmperContriCTCCOntainer .incEmperContriCTCCHeck,
+.overridePfContributionContainer .overridePfContribution,
+.edliContributionContainer .edliContributionCheck,
+.adminChargesContainer .adminChargesCheck,
+.restrictedPfContainer .restrictedpf .restrictedPfWage,
+.considerAllPfContainer .considerAllPf .considerAllPfWage,
+.esiEmployerContributionIncContainer .esiEmployerIncContribution {
+  height: 17px;
+  width: 17px;
+}
+
+.edliAdminChargeContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-left: 33px;
+  grid-gap: 10px;
+}
+
+.edliAdminChargeContainer::before {
+  content: '';
+  position: absolute;
+  border-left: 2.7px solid #d1c9c9;
+  height: 60px;
+  top: 46.5%;
+  left: 0.5%;
+}
+.edliContributionContainer {
+  width: 19.8rem;
+}
+.edliContributionContainer::before {
+  content: '';
+  position: absolute;
+  border-bottom: 2.7px solid #d1c9c9;
+  width: 15px;
+  top: 52.8%;
+  left: 0.5%;
+}
+.adminChargesContainer {
+  width: 14.8rem;
+}
+
+.adminChargesContainer::before {
+  content: '';
+  position: absolute;
+  border-bottom: 2.7px solid #d1c9c9;
+  width: 15px;
+  top: 60.2%;
+  left: 0.5%;
+}
+
+.pfConfigContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 10px;
+  grid-gap: 10px;
+}
+
+.pfConfigContainer p {
+  margin-bottom: 0;
+}
+.restrictedPfContainer,
+.considerAllPfContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.restrictedPfContainer .restrictedpf {
+  width: 15.5rem;
+}
+
+.restrictedPfContainer span,
+.considerAllPfContainer span {
+  margin-left: 27px;
+  color: #66666e;
+}
+
+.considerAllPfContainer .considerAllPf {
+  width: 42.8rem;
+}
+
+.considerAllPfContainer span {
+  width: 51rem;
+}
+
+.epfDemoCalculationContainer,
+.esiNote {
+  width: 53rem;
+  background-color: #f0d4714f;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 01em;
+}
+
+.epfDemoCalculationContainer span {
+  color: #434443;
+  margin-bottom: 10px;
+}
+
+.epfDemoCalculationContainer p {
+  color: #000000;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.epfEnableFooterBtn,
+.epfEnableFooterCancelBtn,
+.esiEnableFooterBtn,
+.esiEnableFooterCancelBtn {
+  border: none;
+  outline: none;
+  background-color: var(--main-color);
+  color: #ffffff;
+  padding: 0.5em;
+  font-size: 1rem !important;
+  border-radius: 2px;
+  font-weight: 600 !important;
+  font-family: var(--lato-font);
+}
+
+.epfEnableFooterCancelBtn,
+.esiEnableFooterCancelBtn {
+  background-color: #f76c5e;
+  color: #ffffff;
+  margin-left: 15px;
+}
+
+.esiEmpContInCont {
+  width: 20rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.esiEmpContInCont .esiEmployeeContributionInput,
+.esiEmpContInCont .esiEmployerContributionInput {
+  width: 12.5rem;
+}
+
+.esiEmployerContributionIncContainer {
+  width: 18rem;
+}
+
+.esiNote {
+  width: 44rem;
+}
+.esiNote p {
+  color: #434443;
+}
+.esiNote p span {
+  color: #000000;
+}
+
+.ptContainer,
+.lwfContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.ptHeader p,
+.lwfHeader p {
+  margin-bottom: 3px;
+  color: #000000;
+  font-weight: 500;
+}
+
+.ptHeader span {
+  color: #8d99ae;
+}
+
+.ptCard,
+.lwfCard {
+  display: grid;
+  grid-template-columns: 1fr;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  margin-top: 20px;
+  width: 40%;
+  padding: 0.8em;
+  grid-gap: 15px;
+}
+
+.ptCardHeaderState {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.lwfCardHeaderState {
+  color: #343a40;
+  font-weight: 500;
+}
+
+.ptNumber,
+.ptState,
+.ptDeducyionCycle,
+.ptSlabs {
+  display: grid;
+  grid-template-columns: 15rem 1.5rem 1fr;
+}
+
+.ptNumber span,
+.ptState span,
+.ptDeducyionCycle span,
+.ptSlabs span {
+  text-align: center;
+}
+
+.ptNumber p,
+.ptState p,
+.ptDeducyionCycle p,
+.ptSlabs p,
+.lwfEmpCont p,
+.lwfDeducyionCycle p,
+.lwfSlabs p {
+  margin: 0;
+}
+
+.ptViewTaxSlab {
+  color: #4361ee;
+  cursor: pointer;
+}
+
+.ptViewTaxSlab i {
+  margin-left: 10px;
+}
+
+.ptDetailsContainer {
+  grid-gap: 20px;
+  width: 60%;
+}
+
+.ptWorkLocationContainer,
+.ptNumberDedCycleConainer {
+  width: 80%;
+}
+
+.ptNumberDedCycleConainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ptNumberContainer {
+  width: 60%;
+}
+
+.ptWorkLocationContainer label,
+.ptNumberContainer label,
+.ptDeductionCycleContainer label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.ptWorkLocationInput,
+.ptNumberInput,
+.ptDeductionCycleInput {
+  border: 1px solid #c0b8b8;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.ptNumberInput:focus {
+  border-color: #c0b8b8;
+  outline: 0;
+  -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
+}
+.ptTaxSlabDetailsContainer {
+  widows: 80%;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.ptTaxSlabDetailsContainer hr {
+  width: 80%;
+  margin: 0;
+}
+
+.ptTaxSlabDetailsHeader,
+.ptSlabContainer {
+  display: grid;
+  grid-template-columns: 10rem 0.5rem 10rem 14rem 1rem;
+  padding: 0.7em;
+  column-gap: 1.7rem;
+  align-items: center;
+}
+
+.ptTaxSlabDetailsHeader p {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.ptSlabContainer input {
+  border: 1px solid #c0b8b8;
+  border-radius: 3px;
+}
+
+.ptSlabContainer input:focus {
+  border-color: #c0b8b8;
+  outline: 0;
+  -webkit-box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(102, 175, 233, 0.6);
+}
+
+.ptSlabContainer span {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.ptSlabRemoveIcon {
+  color: #c0b8b8;
+}
+
+.addPtSlabContainer {
+  width: 10.2rem;
+  padding: 0.7em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #4361ee;
+  cursor: pointer;
+}
+
+.ptDetailsContainer hr {
+  margin: 0;
+}
+
+.editPtSlabFooter {
+  width: 11rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.saveEditPtSlabBtn,
+.cancelEditPtSlabBtn {
+  padding: 0.4em;
+  background-color: #4361ee;
+  font-weight: 600;
+  font-size: 1rem !important;
+  width: 5rem;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  color: #ffffff;
+}
+
+.cancelEditPtSlabBtn {
+  background-color: #f76c5e;
+}
+.lwfEmpCont,
+.lwfDeducyionCycle,
+.lwfSlabs {
+  display: grid;
+  grid-template-columns: 15rem 1fr;
+}
+
+.lwfEmpCont i {
+  margin-right: 7px;
+}
+
+.lwfDisable {
+  color: #f76c5e;
+}
+
+.lwfEnableContainer {
+  cursor: pointer;
+}
+
+.lwfEnable {
+  color: #52b69a;
+}
+
+.epfDisableBtn {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  padding: 0.5em;
+  color: #4362ee93;
+  font-weight: 600 !important;
+  border-radius: 3px;
+  margin-top: 5px;
+  cursor: pointer;
+}
