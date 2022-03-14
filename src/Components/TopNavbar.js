@@ -16,7 +16,7 @@ const TopNavbar = (props) => {
     <>
       <Navbar className='upper-navbar'>
         <div className='nav-container'>
-          <Navbar.Brand href=''>BrilworksCRM</Navbar.Brand>
+          <Navbar.Brand href=''>BrilOKR</Navbar.Brand>
 
           <div className='top-nav-dropdown'>
             <DropdownButton
@@ -29,7 +29,7 @@ const TopNavbar = (props) => {
             >
               <Dropdown.Item onClick={handleProfile}>
                 <div className='workflow-options'>
-                  <i className='far fa-user-circle	' />
+                  <i className='fa fa-user-circle	' />
                   My profile
                 </div>
               </Dropdown.Item>
