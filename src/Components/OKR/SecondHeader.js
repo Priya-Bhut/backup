@@ -7,7 +7,7 @@ function SecondHeader() {
       <h5>OKR</h5>
       <Button className='addDesignationButton brilCrmButton'>
         <i className='fa fa-plus-square' />
-        <span style={{ marginLeft: '10px' }}>Add OKR</span>
+        <span className='m-l-10'>Add OKR</span>
       </Button>
     </div>
   );

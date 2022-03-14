@@ -8,6 +8,7 @@
 @import './SideBar.css';
 @import './graph.css';
 @import './IndividualOKR.css';
+@import './utility.css';
 
 * {
   margin: 0;
