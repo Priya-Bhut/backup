@@ -3,12 +3,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=M+PLUS+2:wght@300;400;500;600&family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
-@import './designation.css';
 @import './inviteUser.css';
 @import './sideMenu.css';
 @import './SideBar.css';
 @import './graph.css';
 @import './IndividualOKR.css';
+
 * {
   margin: 0;
   padding: 0;
@@ -713,6 +713,8 @@ td .leave-status {
   background-color: var(--main-color) !important;
   /* padding: 0.5rem 1.3rem; */
   border-radius: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .brilCrmButton:focus {
@@ -853,7 +855,7 @@ td .leave-status {
 .table-panel-container tbody tr:hover {
   background-color: #f7faff;
 }
-.dropdown-myaccount-menu > * {
+.dropdown-myaccount-menu > button {
   display: flex;
   align-items: center;
 }
