@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Nav, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 const SideMenu = (props) => {
-  const { params, menuType } = props;
-  const { organisationUrl } = params || {};
+  const { menuType } = props;
+  const { organisationUrl } = useParams() || {};
   const [isOpen, setIsOpen] = useState(false);
   const [dropdown, setDropdown] = useState('');
   // const [menuType, setMenuType] = useState(false);

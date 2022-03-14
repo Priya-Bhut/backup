@@ -10,7 +10,9 @@ function App() {
   return (
     <div className='App'>
       <Routes>
-        <Route exact restricted={true} path='/:organisationUrl/*' element={<Layout />} />
+        <Route exact restricted={true} path='/:organisationUrl/*' element={<Layout />}>
+          <Route path='*' exact element={<div>Coming Soon...</div>} />
+        </Route>
         <Route path='*' element={<Home />} />
       </Routes>
     </div>
