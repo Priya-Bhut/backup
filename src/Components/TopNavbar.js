@@ -26,6 +26,7 @@ const TopNavbar = (props) => {
               alignright='true'
               title='Brilworks'
               id='dropdown-menu-align-right'
+              className='dropdown-myaccount-menu'
             >
               <Dropdown.Item onClick={handleProfile}>
                 <div className='workflow-options'>
