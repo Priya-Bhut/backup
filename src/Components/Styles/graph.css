@@ -1,0 +1,74 @@
+.graph-btn {
+  background-color: blue;
+  border-radius: 8px;
+  border-style: none;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 35px;
+  padding: 10px 16px;
+  text-align: center;
+}
+.left-div {
+  width: 50%;
+  padding: 20px;
+  border: 5px solid whitesmoke;
+  border-radius: 15px;
+}
+.left-div span {
+  margin-right: 90%;
+  font-weight: bold;
+}
+.main-div {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 20px;
+}
+.right-div {
+  width: 43%;
+  padding: 10px;
+  border: 5px solid whitesmoke;
+  border-radius: 10px;
+}
+.btn {
+  display: flex;
+  justify-content: flex-end;
+}
+.display_history .history {
+  text-align: left;
+  font-weight: bold;
+}
+.display_history .active-checkins {
+  width: 93%;
+  padding: 10px;
+  border: none;
+  margin: 10px;
+  background-color: rgb(226, 222, 222);
+}
+.active-checkins .filter {
+  width: max-content;
+  border: 1px solid white;
+  padding: 6px;
+  border-radius: 15px;
+  background-color: white;
+  float: left;
+  cursor: pointer;
+  border: 2px solid grey;
+}
+.active-checkins .active-label {
+  width: max-content;
+  border: 1px solid white;
+  padding: 6px;
+  border-radius: 30px;
+  background-color: white;
+  margin-left: 70px;
+}
+.no-checkins {
+  text-align: center;
+  font-style: italic;
+}
+.filter i:nth-child(2) {
+  margin-left: 5px;
+}
