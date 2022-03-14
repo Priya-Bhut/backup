@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'font-awesome/css/font-awesome.min.css';
+import SideBarToggle from '../SideBar/SideBarToggle';
 export default class IndividualOKRmain extends Component {
-  state = { isActive: false };
+  state = { isActive: false, isOpen: false };
 
   constructor() {
     super();
@@ -21,6 +22,11 @@ export default class IndividualOKRmain extends Component {
   handleStartDate = (date) => {
     this.setState({ startDate: date });
   };
+  toggleSideBar = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+    // setIsOpen((isOpen) => !isOpen);
+  };
+
   render() {
     return (
       <div>
@@ -79,7 +85,9 @@ export default class IndividualOKRmain extends Component {
                 <i className='fas fa-user-circle'></i>
               </div>
             </div>{' '}
-            <div className='trackSelect'>% Percentage Tracker</div>
+            <div className='trackSelect' onClick={this.toggleSideBar}>
+              % Percentage Tracker
+            </div>
             <div className='progress'>
               <div className='range-slider'>
                 <input type='range' min='0' max='100' step='10' defaultValue='0' />{' '}
@@ -92,6 +100,7 @@ export default class IndividualOKRmain extends Component {
             </div>
           </div>
         </div>
+        {this.state.isOpen && <SideBarToggle setIsOpen={!this.state.isOpen} toggleSideBar={this.toggleSideBar} />}
       </div>
     );
   }

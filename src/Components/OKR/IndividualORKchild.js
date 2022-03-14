@@ -3,6 +3,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'font-awesome/css/font-awesome.min.css';
+import SideBarToggle from '../SideBar/SideBarToggle';
 
 export default function IndividualORKchild() {
   const [isActive, setActive] = useState(false);
@@ -16,6 +17,11 @@ export default function IndividualORKchild() {
   };
   const handleStartDate = (date) => {
     setStartDate(date);
+  };
+
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleSideBar = () => {
+    setIsOpen((isOpen) => !isOpen);
   };
   return (
     <div>
@@ -64,16 +70,18 @@ export default function IndividualORKchild() {
                   />
                 </div>
               )}
-            </div>{' '}
+            </div>
             &nbsp;
             <div className='user'>
               <i className='fas fa-user-circle'></i>
             </div>
           </div>{' '}
-          <div className='trackSelect'>% Percentage Tracker</div>
+          <div className='trackSelect' onClick={toggleSideBar}>
+            % Percentage Tracker
+          </div>
           <div className='progress'>
             <div className='range-slider'>
-              <input type='range' min='0' max='100' step='10' defaultValue='0' />{' '}
+              <input type='range' min='0' max='100' step='10' defaultValue='0' />
             </div>
             <span className='showRange'> 0% </span>
             <div className='update'>
@@ -83,6 +91,7 @@ export default function IndividualORKchild() {
           </div>
         </div>
       </div>
+      {isOpen && <SideBarToggle setIsOpen={setIsOpen} toggleSideBar={toggleSideBar} />}
     </div>
   );
 }

@@ -14,7 +14,6 @@ import {
   Legend,
   TimeScale,
 } from 'chart.js';
-import SideBar from '../SideBar/SideBar';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, TimeScale, Legend);
 
@@ -44,7 +43,6 @@ function Graph() {
   return (
     <>
       <div className='main-div'>
-        <SideBar />
         {/*---------------------------------------Creating a Graph---------------------------------------- */}
         <div className='left-div'>
           <span>Check-ins</span>

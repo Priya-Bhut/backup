@@ -11,31 +11,28 @@
   text-align: center;
 }
 .left-div {
-  width: 50%;
+  width: 49%;
   padding: 20px;
   border: 5px solid whitesmoke;
   border-radius: 15px;
 }
 .left-div span {
-  margin-right: 90%;
+  /* margin-right: 90%; */
   font-weight: bold;
 }
 .main-div {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin: 20px;
+  /* margin: 20px; */
 }
 .right-div {
-  width: 43%;
+  width: 49%;
   padding: 10px;
   border: 5px solid whitesmoke;
   border-radius: 10px;
 }
-.btn {
-  display: flex;
-  justify-content: flex-end;
-}
+
 .display_history .history {
   text-align: left;
   font-weight: bold;
@@ -71,4 +68,8 @@
 }
 .filter i:nth-child(2) {
   margin-left: 5px;
+}
+.btn {
+  display: flex;
+  justify-content: flex-end;
 }
