@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'font-awesome/css/font-awesome.min.css';
+import SideBarToggle from '../SideBar/SideBarToggle';
 export default class IndividualOKRmain extends Component {
-  state = { isActive: false };
+  state = { isActive: false, isOpen: false };
 
   constructor() {
     super();
@@ -21,6 +22,11 @@ export default class IndividualOKRmain extends Component {
   handleStartDate = (date) => {
     this.setState({ startDate: date });
   };
+  toggleSideBar = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+    // setIsOpen((isOpen) => !isOpen);
+  };
+
   render() {
     return (
       <div>
@@ -31,7 +37,7 @@ export default class IndividualOKRmain extends Component {
             <div className='connect-tree'></div>
             <div className='child-tree'> </div>
             <div className='name-tree1'>
-              <i className='fas fa-dot-circle treeConnectorDot'></i> <span className='child'>OKR Child</span>
+              <i className='fa fa-dot-circle-o treeConnectorDot'></i> <span className='child'>OKR Child</span>
               <div className='addSubChild-btn'>
                 <i className='fa fa-plus-circle' onClick={() => this.props.subChild(this.props.id)}>
                   Add New Child
@@ -39,10 +45,10 @@ export default class IndividualOKRmain extends Component {
               </div>
               <div className='note-alignment1'>
                 <div className='tasks'>
-                  <i className='fas fa-list'></i>
+                  <i className='fa fa-list'></i>
                 </div>
                 <div className='notes'>
-                  <i className='far fa-sticky-note'></i>
+                  <i className='fa fa-sticky-note'></i>
                 </div>
                 <div className='alignment'>
                   <i className='fa fa-line-chart' aria-hidden='true'></i>
@@ -51,7 +57,7 @@ export default class IndividualOKRmain extends Component {
             </div>
             <div className='date-time'>
               <div className='calender'>
-                <i className='far fa-calendar-alt' onClick={this.handleCalender}></i>
+                <i className='fa fa-calendar-alt' onClick={this.handleCalender}></i>
                 {this.state.isActive && (
                   <div className='datePicker'>
                     <DatePicker
@@ -76,22 +82,25 @@ export default class IndividualOKRmain extends Component {
               </div>{' '}
               &nbsp;
               <div className='user'>
-                <i className='fas fa-user-circle'></i>
+                <i className='fa fa-user-circle'></i>
               </div>
             </div>{' '}
-            <div className='trackSelect'>% Percentage Tracker</div>
+            <div className='trackSelect' onClick={this.toggleSideBar}>
+              % Percentage Tracker
+            </div>
             <div className='progress'>
               <div className='range-slider'>
                 <input type='range' min='0' max='100' step='10' defaultValue='0' />{' '}
               </div>
               <span className='showRange'> 0% </span>
               <div className='update'>
-                <i data-toggle='tooltip' title='Update' className='fas fa-pencil-alt i-pencil' />
+                <i data-toggle='tooltip' title='Update' className='fa fa-pencil-alt i-pencil' />
                 <i className='fa fa-ellipsis-h other' aria-hidden='true'></i>
               </div>
             </div>
           </div>
         </div>
+        {this.state.isOpen && <SideBarToggle setIsOpen={!this.state.isOpen} toggleSideBar={this.toggleSideBar} />}
       </div>
     );
   }

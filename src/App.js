@@ -1,17 +1,23 @@
-import React from 'react';
-import './Components/Styles/style.css';
-import { Route, Routes } from 'react-router-dom';
+import './App.css';
 import Layout from './Components/Layout/Layout';
-import IndividualOKR from './Components/OKR/IndividualOKR';
+import './Components/style/style.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../node_modules/font-awesome/css/font-awesome.min.css';
+import { Route, Routes } from 'react-router-dom';
+import Home from './Components/Home/Home';
 import Graph from './Components/Graph/Graph';
+import IndividualOKR from './Components/OKR/IndividualOKR';
+
 function App() {
   return (
-    <div>
+    <div className='App'>
       <Routes>
-        <Route exact path='*' element={<Layout />}>
-          <Route path='home' exact element={<IndividualOKR />} />
-          <Route path='graph' exact element={<Graph />} />
+        <Route exact restricted={true} path='/:organisationUrl/*' element={<Layout />}>
+          <Route exact path='alignments' element={<Graph />} />
+          <Route exact path='action-center' element={<IndividualOKR />} />
+          <Route path='*' exact element={<div>Coming Soon...</div>} />
         </Route>
+        <Route path='*' element={<Home />} />
       </Routes>
     </div>
   );

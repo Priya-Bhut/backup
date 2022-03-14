@@ -1,39 +1,52 @@
-import React, { useState } from 'react';
-import ProfileDropDown from './RightBody/ProfileDropDown';
+import React from 'react';
+import { Dropdown, DropdownButton, Navbar } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import { Link } from 'react-router-dom';
 
-function TopNavbar(props) {
-  const { doShrink } = props;
-  const [expandProfile, setExpandProfile] = useState(false);
-  const profileDropDownExpand = () => {
-    setExpandProfile(!expandProfile);
+const TopNavbar = (props) => {
+  const { params } = props;
+  const { organisationUrl } = params || {};
+  const handleProfile = () => {
+    props?.history(`/${organisationUrl}/my-profile`);
+  };
+  const handleLogout = () => {
+    props?.setIsOpen(true);
   };
   return (
-    <div className={`top-nav ${doShrink && 'shrinked'}`}>
-      <div className='inner-top'>
-        <span className='logo-text'>BrilworksOKR</span>
-        <div className='profile-container' onClick={() => profileDropDownExpand()}>
-          <span className='profile-name'>Brilworks</span>
-          <span className='profile-expand'>
-            {expandProfile ? <i className='fa fa-caret-up' /> : <i className='fa fa-caret-down' />}
-          </span>
-        </div>
-        {expandProfile && <ProfileDropDown />}
-      </div>
-      <hr width='100%' />
-      <div className='inner-bottom'>
-        <span className='logo-text'>Projects</span>
-        <div className='inner-bottom-right'>
-          <div className='search-container'>
-            <input type='text' className='filter-search' placeholder='Search...' />
-            <i className='fa fa-search' />
+    <>
+      <Navbar className='upper-navbar'>
+        <div className='nav-container'>
+          <Navbar.Brand href=''>BrilOKR</Navbar.Brand>
+
+          <div className='top-nav-dropdown'>
+            <DropdownButton
+              variant='none'
+              // className='fa fa-user'
+              // aria-hidden='true'
+              alignright='true'
+              title='Brilworks'
+              id='dropdown-menu-align-right'
+              className='dropdown-myaccount-menu'
+            >
+              <Dropdown.Item onClick={handleProfile}>
+                <div className='workflow-options'>
+                  <i className='fa fa-user-circle	' />
+                  My profile
+                </div>
+              </Dropdown.Item>
+
+              <Dropdown.Item onClick={handleLogout}>
+                <div className='workflow-options'>
+                  <i className='fa fa-sign-out' />
+                  Logout
+                </div>
+              </Dropdown.Item>
+            </DropdownButton>
           </div>
-          <button className='project-button'>
-            <i className='fa fa-plus-square' /> &nbsp; Add Project
-          </button>
         </div>
-      </div>
-    </div>
+      </Navbar>
+    </>
   );
-}
+};
 
 export default TopNavbar;

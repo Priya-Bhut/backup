@@ -3,13 +3,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=M+PLUS+2:wght@300;400;500;600&family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
+@import './inviteUser.css';
 @import './sideMenu.css';
-@import './utility.css';
-@import './graph.css';
 @import './SideBar.css';
-
-
-
+@import './graph.css';
+@import './IndividualOKR.css';
+@import './utility.css';
 
 * {
   margin: 0;
@@ -119,18 +118,16 @@ nav {
 }
 
 .mainPart {
-  position: absolute;
+  /* position: absolute; */
   width: 100% !important;
   height: 100% !important;
-  left: 3%;
-  top:3%;
+  left: 15%;
   overflow-y: scroll;
   scrollbar-width: none;
   padding: 0 !important;
   padding-bottom: 0rem;
   transition: 0.3s;
 }
-
 
 .brilcrm-sidebar-submit-btn {
   width: 100% !important;
@@ -717,6 +714,8 @@ td .leave-status {
   background-color: var(--main-color) !important;
   /* padding: 0.5rem 1.3rem; */
   border-radius: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .brilCrmButton:focus {
@@ -755,7 +754,6 @@ td .leave-status {
 
 .layout-content {
   min-height: 88vh;
-  width: 95%;
   /* padding-left: 1rem;
   padding-right : 1rem; */
 }
@@ -798,7 +796,7 @@ td .leave-status {
 }
 .upper-navbar {
   width: 100%;
-  z-index: 110;
+  z-index: 5;
   background-color: white !important;
 }
 .upper-navbar .nav-container {
@@ -858,5 +856,7 @@ td .leave-status {
 .table-panel-container tbody tr:hover {
   background-color: #f7faff;
 }
-
-
+.dropdown-myaccount-menu > button {
+  display: flex;
+  align-items: center;
+}

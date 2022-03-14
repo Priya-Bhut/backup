@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import '../Styles/IndividualOKR.css';
 import IndividualOKRmain from './IndividualOKRmain';
 import IndividualORKchild from './IndividualORKchild';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'font-awesome/css/font-awesome.min.css';
+import SecondHeader from './SecondHeader';
 
 export default class IndividualOKR extends Component {
   state = { isActive: false };
@@ -52,19 +52,20 @@ export default class IndividualOKR extends Component {
     /* console.log("main: ", this.state.Newchild); */
     return (
       <div className='main'>
+        <SecondHeader />
         <div className='mainOKR'>
           <div className='parent'>
             <div className='all-content'>
               <div className='name-tree'>
-                <i className='fas fa-dot-circle treeConnectorDot'></i> <span>OKR</span>
+                <i className='fa fa-dot-circle-o treeConnectorDot'></i> <span>OKR</span>
                 <div className='addChild-btn'>
-                  <i className='fa fa-plus-circle ' onClick={(e) => this.addNewChild(e)}>
+                  <i className='fa fa-plus-circle' onClick={(e) => this.addNewChild(e)}>
                     Add New Key Result
                   </i>
                 </div>
                 <div className='note-alignment'>
                   <div className='notes'>
-                    <i className='far fa-sticky-note'></i>
+                    <i className='fa fa-sticky-note'></i>
                   </div>
                   <div className='alignment'>
                     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' width='20' height='20'>
@@ -83,7 +84,7 @@ export default class IndividualOKR extends Component {
               </div>
               <div className='date-time'>
                 <div className='calender'>
-                  <i className='far fa-calendar-alt' onClick={this.handleCalender}></i>
+                  <i className='fa fa-calendar-alt' onClick={this.handleCalender}></i>
                   {this.state.isActive && (
                     <>
                       <div className='datePicker'>
@@ -110,7 +111,7 @@ export default class IndividualOKR extends Component {
                 </div>
                 &nbsp;
                 <div className='user'>
-                  <i className='fas fa-user-circle'></i>
+                  <i className='fa fa-user-circle'></i>
                 </div>
               </div>{' '}
               <div className='trackSelect'></div>
@@ -130,7 +131,7 @@ export default class IndividualOKR extends Component {
                 </div>
                 <span className='showRange'> 100% </span>
                 <div className='update'>
-                  <i data-toggle='tooltip' title='Update' className='fas fa-pencil-alt i-pencil' />
+                  <i data-toggle='tooltip' title='Update' className='fa fa-pencil-alt i-pencil' />
                   <i className='fa fa-ellipsis-h other' aria-hidden='true'></i>
                 </div>
               </div>
