@@ -21,7 +21,6 @@
   margin: 0.5rem !important;
 }
 
-
 .designationTable thead tr {
   color: gray;
   text-align: center;
@@ -68,6 +67,8 @@
   /* background-color: var(--sidemenu-color); */
   padding: 0.5rem 1.3rem;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
 }
 
 .designationSearchContainer {
@@ -175,9 +176,9 @@
   background-color: var(--sidemenu-color) !important;
 }
 
-@media (max-width:425px){
+@media (max-width: 425px) {
   .designationSearchContainer input {
-  width: 10rem;
+    width: 10rem;
   }
 
   .designationTable {

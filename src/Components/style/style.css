@@ -30,7 +30,9 @@
 @import './checklist.css';
 @import './trigger.css';
 @import './payslipDocument.css';
-
+@import './SideBar.css';
+@import './graph.css';
+@import './IndividualOKR.css';
 * {
   margin: 0;
   padding: 0;
@@ -100,7 +102,7 @@ textarea::placeholder {
   font-family: var(--M-plus-font);
 } */
 body {
-  margin: 0!important;
+  margin: 0 !important;
   font-family: 'Cerebri Sans', sans-serif;
   font-size: 0.9375rem;
   font-weight: 400;
@@ -150,7 +152,7 @@ nav {
   transition: 0.3s;
 }
 
-.brilcrm-sidebar-submit-btn{
+.brilcrm-sidebar-submit-btn {
   width: 100% !important;
 }
 
@@ -786,20 +788,19 @@ td .leave-status {
   margin-left: 2px;
   -webkit-font-smoothing: subpixel-antialiased;
 }
-.complete{
-  background: #388E3C;
+.complete {
+  background: #388e3c;
   text-align: center;
   color: white;
   font-weight: 400;
 }
 .incomplete {
-  background: #512DA8;
+  background: #512da8;
   text-align: center;
   color: white;
   font-weight: 400;
-
 }
-.timeago{
+.timeago {
   font-size: 12px;
 }
 
@@ -816,7 +817,7 @@ td .leave-status {
 }
 .upper-navbar {
   width: 100%;
-  z-index: 110;
+  z-index: 5;
   background-color: white !important;
 }
 .upper-navbar .nav-container {
@@ -876,4 +877,3 @@ td .leave-status {
 .table-panel-container tbody tr:hover {
   background-color: #f7faff;
 }
-

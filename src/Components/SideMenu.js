@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Nav, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Nav } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 const SideMenu = (props) => {
   const { menuType } = props;
@@ -26,186 +26,136 @@ const SideMenu = (props) => {
       </div>
       {menuType ? (
         <Nav className='flex-column nav-link'>
-          {/* dashBoard */}
-          <OverlayTrigger placement='right' overlay={<Tooltip id='button-tooltip'>Dashboard</Tooltip>}>
-            <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
-              <Link className='my-2' to={`/${organisationUrl}`} onClick={() => onHandleClick()}>
-                <i className='fa fa-dashboard' />
-              </Link>
-            </div>
-          </OverlayTrigger>
-          {/* Organization */}
+          {/* Home */}
           <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
-            <div className='link-item' onClick={() => onHandleClick('organization')}>
+            <div className='link-item' onClick={() => onHandleClick('home')}>
               <p>
-                <i className='fa fa-building'></i>
+                <i className='fa fa-home'></i>
               </p>
             </div>
             <span className='side-menu-box t-11'>
-              <p className='tooltip-header-text'>Organization</p>
+              <p className='tooltip-header-text'>Home</p>
               <div>
                 <Nav className='flex-column dropdown-item p-0'>
-                  <Link to={`/${organisationUrl}/department`}>
-                    <span>Department</span>
+                  <Link to={`/${organisationUrl}/alignments`}>
+                    <span>Alignments</span>
                   </Link>
-                  <Link to={`/${organisationUrl}/designation`}>
-                    <span>Designation</span>
+                  <Link to={`/${organisationUrl}/action-center`}>
+                    <span>Action Center</span>
                   </Link>
-                  <Link to={`/${organisationUrl}/employee`}>
-                    <span>Employee</span>
+                  <Link to={`/${organisationUrl}/dependencies`}>
+                    <span>Alignments and Dependencies</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/notes`}>
+                    <span>Notes</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/company-dashboard`}>
+                    <span>Company Dashboard</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/dept-hierarchy`}>
+                    <span>Department hierarchy</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/news-feed`}>
+                    <span>News Feed</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/org-hierarchy`}>
+                    <span>Organization hierarchy</span>
                   </Link>
                 </Nav>
               </div>
             </span>
           </div>
-          <OverlayTrigger placement='right' overlay={<Tooltip id='button-tooltip'>Invite User</Tooltip>}>
-            <div className={`dropdown-link ${menuType && 'dropdown-link2'}`} onClick={() => onHandleClick()}>
-              <Link className='my-2' to={`/${organisationUrl}/invite-user`}>
-                <i className='fa fa-user'></i>
-              </Link>
-            </div>
-          </OverlayTrigger>
-          {/* Leave */}
-          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
-            <div className='link-item' onClick={() => onHandleClick('leave')}>
-              <p className='my-2'>
-                <i className='fa fa-calendar'></i>
-              </p>
-            </div>
-            <span className='side-menu-box t-28'>
-              <p className='tooltip-header-text'>Leave</p>
-              <div>
-                <Nav className='flex-column dropdown-item p-0'>
-                  <Link to={`/${organisationUrl}/leave`}>Leave Applications</Link>
-                  <Link to={`/${organisationUrl}/apply-leave`}>Apply Leave</Link>
-                </Nav>
-              </div>
-            </span>
-          </div>
-          {/* Files */}
-          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
-            <div className='link-item' onClick={() => onHandleClick('files')}>
-              <p className='my-2'>
-                <i className='fa fa-copy'></i>
-              </p>
-            </div>
-            <span className='side-menu-box t-37'>
-              <p className='tooltip-header-text'>Files</p>
-              <div>
-                <Nav className='flex-column dropdown-item p-0'>
-                  <Link to={`/${organisationUrl}/organization-file`}>Organizational Files</Link>
-                  <Link to={`/${organisationUrl}/hr-document`}>HR Documents</Link>
-                </Nav>
-              </div>
-            </span>
-          </div>
-          {/* Payroll */}
-          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
-            <div className='link-item' onClick={() => onHandleClick('payroll')}>
-              <p className='my-2'>
-                <i className='fa fa-dollar' />
-              </p>
-            </div>
-            <span className='side-menu-box t-46'>
-              <p className='tooltip-header-text'>Payrun</p>
-              <div>
-                <Nav className='flex-column dropdown-item p-0'>
-                  <Link to={`/${organisationUrl}/addBankAccount`}>Add Bank Account</Link>
-                  <Link to={`/${organisationUrl}/payrun/runPayRoll`}>Pay Run</Link>
-                </Nav>
-              </div>
-            </span>
-          </div>
-          {/* tasks */}
-          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
-            <div className='link-item' onClick={() => onHandleClick('task')}>
-              <p className='my-2'>
-                <i className='fa fa-line-chart'></i>
-              </p>
-            </div>
-            <span className='side-menu-box t-53'>
-              <p className='tooltip-header-text'>Projects</p>
-              <div>
-                <Nav className='flex-column dropdown-item p-0'>
-                  <Link to={`/${organisationUrl}/project`}>
-                    <span>Projects</span>
-                  </Link>
-                  <Link to={`/${organisationUrl}/tasks`}>
-                    <span>Tasks</span>
-                  </Link>
-                  <Link to={`/${organisationUrl}/workflow`}>
-                    <span>Workflows</span>
-                  </Link>
-                  <Link to={`/${organisationUrl}/checklist`}>
-                    <span>Checklist</span>
-                  </Link>
-                </Nav>
-              </div>
-            </span>
-          </div>
-          {/* Reports */}
-          <OverlayTrigger placement='right' overlay={<Tooltip id='button-tooltip'>Reports</Tooltip>}>
-            <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
-              <Link className='my-2' to={`/${organisationUrl}/reports`} onClick={() => onHandleClick()}>
-                <i className='fa fa-file'></i>
-              </Link>
-            </div>
-          </OverlayTrigger>
-          <OverlayTrigger placement='right' overlay={<Tooltip id='button-tooltip'>Roles & Permissions</Tooltip>}>
-            <div className={`dropdown-link ${menuType && 'dropdown-link2'}`} onClick={() => onHandleClick()}>
-              <Link className='my-2' to={`/${organisationUrl}/role`}>
-                <i className='fa fa-shield'></i>
-              </Link>
-            </div>
-          </OverlayTrigger>
-          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
-            <div className='link-item' onClick={() => onHandleClick('settings')}>
-              <p className='my-2'>
-                <i className='fa fa-cog'></i>
-              </p>
-            </div>
-            <span className='side-menu-box t-80'>
-              <p className='tooltip-header-text'>Settings</p>
-              <div>
-                <Nav className='flex-column dropdown-item p-0'>
-                  <Link className='my-2' to={`/${organisationUrl}/settings/statutory-components`}>
-                    <span>Statutory Components</span>
-                  </Link>
-                  <Link to={`/${organisationUrl}/settings/salary-template`}>
-                    <span>Salary Template</span>
-                  </Link>
-                  <Link className='my-2' to={`/${organisationUrl}/settings/orgProfile`}>
-                    <span>Organisation Profile</span>
-                  </Link>
-                  <Link className='my-2' to={`/${organisationUrl}/settings/salary-component`}>
-                    <span>Salary Components</span>
-                  </Link>
-                </Nav>
-              </div>
-            </span>
-          </div>
-          <OverlayTrigger placement='right' overlay={<Tooltip id='button-tooltip'>Announcements</Tooltip>}>
-            <div className={`dropdown-link ${menuType && 'dropdown-link2'}`} onClick={() => onHandleClick()}>
-              <Link className='my-2' to={`/${organisationUrl}/announcement`}>
-                <i className='fa fa-bullhorn'></i>
-              </Link>
-            </div>
-          </OverlayTrigger>
+          {/* OKRs */}
           <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
             <div className='link-item' onClick={() => onHandleClick('organization')}>
               <p>
                 <i className='fa fa-crosshairs'></i>
               </p>
             </div>
-            <span className='side-menu-box t-94'>
-              <p className='tooltip-header-text'>Trigger</p>
+            <span className='side-menu-box t-11'>
+              <p className='tooltip-header-text'>OKRs</p>
               <div>
                 <Nav className='flex-column dropdown-item p-0'>
-                  <Link to={`/${organisationUrl}/triggers`}>
-                    <span>Triggers</span>
+                  <Link to={`/${organisationUrl}/all`}>
+                    <span>All My OKRs</span>
                   </Link>
-                  <Link to={`/${organisationUrl}/webhook`}>
-                    <span>Webhook</span>
+                  <Link to={`/${organisationUrl}/individual`}>
+                    <span>My Individual OKRs</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/developer`}>
+                    <span>Developer OKRs</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/org`}>
+                    <span>My Org's OKRs</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/watched`}>
+                    <span>Watched OKRs</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/shared`}>
+                    <span>Shared OKRs</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/emplyee`}>
+                    <span>All Employees' OKRs</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/department`}>
+                    <span>All Departments' OKRs</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/manager`}>
+                    <span>Manager's OKRs</span>
+                  </Link>
+                </Nav>
+              </div>
+            </span>
+          </div>
+          {/* Tasks */}
+          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
+            <div className='link-item' onClick={() => onHandleClick('task')}>
+              <p>
+                <i className='fa fa-list'></i>
+              </p>
+            </div>
+            <span className='side-menu-box t-11'>
+              <p className='tooltip-header-text'>Tasks</p>
+              <div>
+                <Nav className='flex-column dropdown-item p-0'>
+                  <Link to={`/${organisationUrl}/my-task`}>
+                    <span>My Tasks</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/task-others`}>
+                    <span>My Tasks for Others</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/org-task`}>
+                    <span>My Org's Tasks</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/empl-task`}>
+                    <span>All Employees' Tasks</span>
+                  </Link>
+                </Nav>
+              </div>
+            </span>
+          </div>
+          {/* Leave */}
+          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
+            <div className='link-item' onClick={() => onHandleClick('leave')}>
+              <p className='my-2'>
+                <i className='fa fa-commenting'></i>
+              </p>
+            </div>
+            <span className='side-menu-box t-28'>
+              <p className='tooltip-header-text'>CFR</p>
+              <div>
+                <Nav className='flex-column dropdown-item p-0'>
+                  <Link to={`/${organisationUrl}/received`}>
+                    <span>Received</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/given`}>
+                    <span>Given</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/award-received`}>
+                    <span>Awards Received</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/award-given`}>
+                    <span>Awards Given</span>
                   </Link>
                 </Nav>
               </div>
@@ -214,19 +164,54 @@ const SideMenu = (props) => {
         </Nav>
       ) : (
         <Nav className='flex-column nav-link p-0'>
-          {/* dashBoard */}
+          {/* Home */}
           <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
-            <Link className='my-2' to={`/${organisationUrl}`} onClick={() => onHandleClick()}>
-              <i className='fa fa-dashboard' />
-              <span>Dashboard</span>
-            </Link>
+            <div className='link-item' onClick={() => onHandleClick('home')}>
+              <p>
+                <i className='fa fa-home'></i>
+                <span>Home</span>
+              </p>
+              {isOpen && dropdown === 'home' ? (
+                <i className='fa fa-chevron-up'></i>
+              ) : (
+                <i className='fa fa-chevron-down'></i>
+              )}
+            </div>
+            {isOpen && dropdown === 'home' && (
+              <Nav className='flex-column dropdown-item internal-menu-dropdown'>
+                <Link to={`/${organisationUrl}/alignments`}>
+                  <span>Alignments</span>
+                </Link>
+                <Link to={`/${organisationUrl}/action-center`}>
+                  <span>Action Center</span>
+                </Link>
+                <Link to={`/${organisationUrl}/dependencies`}>
+                  <span>Alignments and Dependencies</span>
+                </Link>
+                <Link to={`/${organisationUrl}/notes`}>
+                  <span>Notes</span>
+                </Link>
+                <Link to={`/${organisationUrl}/company-dashboard`}>
+                  <span>Company Dashboard</span>
+                </Link>
+                <Link to={`/${organisationUrl}/dept-hierarchy`}>
+                  <span>Department hierarchy</span>
+                </Link>
+                <Link to={`/${organisationUrl}/news-feed`}>
+                  <span>News Feed</span>
+                </Link>
+                <Link to={`/${organisationUrl}/org-hierarchy`}>
+                  <span>Organization hierarchy</span>
+                </Link>
+              </Nav>
+            )}
           </div>
-          {/* Organization */}
+          {/* OKRs */}
           <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
             <div className='link-item' onClick={() => onHandleClick('organization')}>
               <p>
-                <i className='fa fa-building'></i>
-                <span>Organization</span>
+                <i className='fa fa-crosshairs'></i>
+                <span>OKRs</span>
               </p>
               {isOpen && dropdown === 'organization' ? (
                 <i className='fa fa-chevron-up'></i>
@@ -235,31 +220,73 @@ const SideMenu = (props) => {
               )}
             </div>
             {isOpen && dropdown === 'organization' && (
-              <Nav className='flex-column dropdown-item'>
+              <Nav className='flex-column dropdown-item internal-menu-dropdown'>
+                <Link to={`/${organisationUrl}/all`}>
+                  <span>All My OKRs</span>
+                </Link>
+                <Link to={`/${organisationUrl}/individual`}>
+                  <span>My Individual OKRs</span>
+                </Link>
+                <Link to={`/${organisationUrl}/developer`}>
+                  <span>Developer OKRs</span>
+                </Link>
+                <Link to={`/${organisationUrl}/org`}>
+                  <span>My Org's OKRs</span>
+                </Link>
+                <Link to={`/${organisationUrl}/watched`}>
+                  <span>Watched OKRs</span>
+                </Link>
+                <Link to={`/${organisationUrl}/shared`}>
+                  <span>Shared OKRs</span>
+                </Link>
+                <Link to={`/${organisationUrl}/emplyee`}>
+                  <span>All Employees' OKRs</span>
+                </Link>
                 <Link to={`/${organisationUrl}/department`}>
-                  <span>Department</span>
+                  <span>All Departments' OKRs</span>
                 </Link>
-                <Link to={`/${organisationUrl}/designation`}>
-                  <span>Designation</span>
-                </Link>
-                <Link to={`/${organisationUrl}/employee`}>
-                  <span>Employee</span>
+                <Link to={`/${organisationUrl}/manager`}>
+                  <span>Manager's OKRs</span>
                 </Link>
               </Nav>
             )}
           </div>
-          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`} onClick={() => onHandleClick()}>
-            <Link className='my-2' to={`/${organisationUrl}/invite-user`}>
-              <i className='fa fa-user'></i>
-              <span>Invite&nbsp;User</span>
-            </Link>
+          {/* Tasks */}
+          <div className={`dropdown-link ${menuType && 'dropdown-link3'}`}>
+            <div className='link-item' onClick={() => onHandleClick('tasks')}>
+              <p>
+                <i className='fa fa-list'></i>
+                <span>Tasks</span>
+              </p>
+              {isOpen && dropdown === 'tasks' ? (
+                <i className='fa fa-chevron-up'></i>
+              ) : (
+                <i className='fa fa-chevron-down'></i>
+              )}
+            </div>
+            {isOpen && dropdown === 'tasks' && (
+              <Nav className='flex-column dropdown-item internal-menu-dropdown'>
+                <Link to={`/${organisationUrl}/my-task`}>
+                  <span>My Tasks</span>
+                </Link>
+                <Link to={`/${organisationUrl}/task-others`}>
+                  <span>My Tasks for Others</span>
+                </Link>
+                <Link to={`/${organisationUrl}/org-task`}>
+                  <span>My Org's Tasks</span>
+                </Link>
+                <Link to={`/${organisationUrl}/empl-task`}>
+                  <span>All Employees' Tasks</span>
+                </Link>
+              </Nav>
+            )}
           </div>
           {/* Leave */}
           <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
             <div className='link-item' onClick={() => onHandleClick('leave')}>
               <p className='my-2'>
-                <i className='fa fa-calendar'></i>
-                <span>Leave Tracker</span>
+                <i className='fa fa-dot-circle'></i>
+                <span>CFR</span>
               </p>
               {isOpen && dropdown === 'leave' ? (
                 <i className='fa fa-chevron-up'></i>
@@ -268,163 +295,18 @@ const SideMenu = (props) => {
               )}
             </div>
             {isOpen && dropdown === 'leave' && (
-              <Nav className='flex-column dropdown-item'>
-                <Link to={`/${organisationUrl}/leave`}>Leave Applications</Link>
-                <Link to={`/${organisationUrl}/apply-leave`}>Apply Leave</Link>
-              </Nav>
-            )}
-          </div>
-          {/* Files */}
-          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
-            <div className='link-item' onClick={() => onHandleClick('files')}>
-              <p className='my-2'>
-                <i className='fa fa-copy'></i>
-                <span>Files</span>
-              </p>
-              {isOpen && dropdown === 'files' ? (
-                <i className='fa fa-chevron-up'></i>
-              ) : (
-                <i className='fa fa-chevron-down'></i>
-              )}
-            </div>
-            {isOpen && dropdown === 'files' && (
-              <Nav className='flex-column dropdown-item'>
-                <Link to={`/${organisationUrl}/organization-file`}>Organizational Files</Link>
-                <Link to={`/${organisationUrl}/hr-document`}>HR Documents</Link>
-              </Nav>
-            )}
-          </div>
-          {/* Payroll */}
-          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
-            <div className='link-item' onClick={() => onHandleClick('payroll')}>
-              <p className='my-2'>
-                <i className='fa fa-dollar' />
-                <span>Payroll</span>
-              </p>
-              {isOpen && dropdown === 'payroll' ? (
-                <i className='fa fa-chevron-up'></i>
-              ) : (
-                <i className='fa fa-chevron-down'></i>
-              )}
-            </div>
-            {isOpen && dropdown === 'payroll' && (
-              <>
-                <Nav className='flex-column dropdown-item'>
-                  <Link to={`/${organisationUrl}/addBankAccount`}>Add Bank Account</Link>
-                </Nav>
-                <Nav className='flex-column dropdown-item'>
-                  <Link to={`/${organisationUrl}/payrun/runPayRoll`}>Pay Run</Link>
-                </Nav>
-              </>
-            )}
-          </div>
-          {/* tasks */}
-          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
-            <div className='link-item' onClick={() => onHandleClick('task')}>
-              <p className='my-2'>
-                <i className='fa fa-line-chart'></i>
-                <span>Projects</span>
-              </p>
-              {isOpen && dropdown === 'task' ? (
-                <i className='fa fa-chevron-up'></i>
-              ) : (
-                <i className='fa fa-chevron-down'></i>
-              )}
-            </div>
-            {isOpen && dropdown === 'task' && (
-              <>
-                <Nav className='flex-column dropdown-item'>
-                  <Link to={`/${organisationUrl}/tasks`}>
-                    <i className='fa fa-tasks'></i>
-                    <span>Tasks</span>
-                  </Link>
-                </Nav>
-                <Nav className='flex-column dropdown-item'>
-                  <Link to={`/${organisationUrl}/project`}>
-                    <i className='fa fa-clipboard'></i>
-                    <span>Boards</span>
-                  </Link>
-                </Nav>
-              </>
-            )}
-          </div>
-          {/* <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
-          <Link className='my-2' to={`/${organisationUrl}/tasks`} onClick={() => onHandleClick()}>
-            <i className='fas fa-tasks'></i>
-            <span>Tasks</span>
-          </Link>
-        </div> */}
-          {/* Reports */}
-          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
-            <Link className='my-2' to={`/${organisationUrl}/reports`} onClick={() => onHandleClick()}>
-              <i className='fa fa-file'></i>
-              <span>Reports</span>
-            </Link>
-          </div>
-          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`} onClick={() => onHandleClick()}>
-            <Link className='my-2' to={`/${organisationUrl}/role`}>
-              <i className='fa fa-shield'></i>
-              <span>Roles</span>
-            </Link>
-          </div>
-          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
-            <div className='link-item' onClick={() => onHandleClick('settings')}>
-              <p className='my-2'>
-                <i className='fa fa-cog'></i>
-                <span>Settings</span>
-              </p>
-              {isOpen && dropdown === 'settings' ? (
-                <i className='fa fa-chevron-up'></i>
-              ) : (
-                <i className='fa fa-chevron-down'></i>
-              )}
-            </div>
-            {isOpen && dropdown === 'settings' && (
-              <Nav className='flex-column dropdown-item'>
-                <Link className='my-2' to={`/${organisationUrl}/settings/statutory-components`}>
-                  <i className='fa fa-book'></i>
-                  <span>Statutory Components</span>
+              <Nav className='flex-column dropdown-item internal-menu-dropdown'>
+                <Link to={`/${organisationUrl}/received`}>
+                  <span>Received</span>
                 </Link>
-                <Link to={`/${organisationUrl}/settings/salary-template`}>
-                  <i className='fa fa-align-center'></i>
-                  <span>Salary Template</span>
+                <Link to={`/${organisationUrl}/given`}>
+                  <span>Given</span>
                 </Link>
-                <Link className='my-2' to={`/${organisationUrl}/settings/orgProfile`}>
-                  <i className='fa fa-building'></i>
-                  <span>Organisation Profile</span>
+                <Link to={`/${organisationUrl}/award-received`}>
+                  <span>Awards Received</span>
                 </Link>
-                <Link className='my-2' to={`/${organisationUrl}/settings/salary-component`}>
-                  <i className='fa fa-book'></i>
-                  <span>Salary Components</span>
-                </Link>
-              </Nav>
-            )}
-          </div>
-          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`} onClick={() => onHandleClick()}>
-            <Link className='my-2' to={`/${organisationUrl}/announcement`}>
-              <i className='fa fa-bullhorn'></i>
-              <span>Announcements</span>
-            </Link>
-          </div>
-          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
-            <div className='link-item' onClick={() => onHandleClick('trigger')}>
-              <p>
-                <i className='fa fa-crosshairs'></i>
-                <span>Trigger</span>
-              </p>
-              {isOpen && dropdown === 'trigger' ? (
-                <i className='fa fa-chevron-up'></i>
-              ) : (
-                <i className='fa fa-chevron-down'></i>
-              )}
-            </div>
-            {isOpen && dropdown === 'trigger' && (
-              <Nav className='flex-column dropdown-item p-0'>
-                <Link to={`/${organisationUrl}/triggers`}>
-                  <span>Triggers</span>
-                </Link>
-                <Link to={`/${organisationUrl}/webhook`}>
-                  <span>Webhook</span>
+                <Link to={`/${organisationUrl}/award-given`}>
+                  <span>Awards Given</span>
                 </Link>
               </Nav>
             )}
