@@ -451,7 +451,18 @@
   border-radius: 7px;
   padding-left: 0.7rem !important;
 }
-
+.side-menu-box-home {
+  top: 23px;
+}
+.side-menu-box-okr {
+  top: 57px;
+}
+.side-menu-box-task {
+  top: 91px;
+}
+.side-menu-box-cfr {
+  top: 125px;
+}
 .side-menu-box div div a {
   padding-left: 0.7rem !important;
 }

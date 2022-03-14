@@ -33,7 +33,7 @@ const SideMenu = (props) => {
                 <i className='fa fa-home'></i>
               </p>
             </div>
-            <span className='side-menu-box t-11'>
+            <span className='side-menu-box side-menu-box-home'>
               <p className='tooltip-header-text'>Home</p>
               <div>
                 <Nav className='flex-column dropdown-item p-0'>
@@ -72,7 +72,7 @@ const SideMenu = (props) => {
                 <i className='fa fa-crosshairs'></i>
               </p>
             </div>
-            <span className='side-menu-box t-11'>
+            <span className='side-menu-box side-menu-box-okr'>
               <p className='tooltip-header-text'>OKRs</p>
               <div>
                 <Nav className='flex-column dropdown-item p-0'>
@@ -114,7 +114,7 @@ const SideMenu = (props) => {
                 <i className='fa fa-list'></i>
               </p>
             </div>
-            <span className='side-menu-box t-11'>
+            <span className='side-menu-box side-menu-box-task'>
               <p className='tooltip-header-text'>Tasks</p>
               <div>
                 <Nav className='flex-column dropdown-item p-0'>
@@ -141,7 +141,7 @@ const SideMenu = (props) => {
                 <i className='fa fa-commenting'></i>
               </p>
             </div>
-            <span className='side-menu-box t-28'>
+            <span className='side-menu-box side-menu-box-cfr'>
               <p className='tooltip-header-text'>CFR</p>
               <div>
                 <Nav className='flex-column dropdown-item p-0'>
