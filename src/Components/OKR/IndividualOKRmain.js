@@ -37,7 +37,7 @@ export default class IndividualOKRmain extends Component {
             <div className='connect-tree'></div>
             <div className='child-tree'> </div>
             <div className='name-tree1'>
-              <i className='fa fa-dot-circle treeConnectorDot'></i> <span className='child'>OKR Child</span>
+              <i className='fa fa-dot-circle-o treeConnectorDot'></i> <span className='child'>OKR Child</span>
               <div className='addSubChild-btn'>
                 <i className='fa fa-plus-circle' onClick={() => this.props.subChild(this.props.id)}>
                   Add New Child

@@ -33,7 +33,7 @@ export default function IndividualORKchild() {
           <div className='connect-tree1'></div>
           <div className='child-tree1'> </div>
           <div className='name-tree2'>
-            <i className='fa fa-dot-circle treeConnectorDot'></i> <span className='child'>OKR Sub Child</span>
+            <i className='fa fa-dot-circle-o treeConnectorDot'></i> <span className='child'>OKR Sub Child</span>
             <div className='note-alignment1'>
               <div className='tasks'>
                 <i className='fa fa-list'></i>

@@ -285,7 +285,7 @@ const SideMenu = (props) => {
           <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
             <div className='link-item' onClick={() => onHandleClick('leave')}>
               <p className='my-2'>
-                <i className='fa fa-dot-circle'></i>
+                <i className='fa fa-commenting'></i>
                 <span>CFR</span>
               </p>
               {isOpen && dropdown === 'leave' ? (
