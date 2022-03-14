@@ -227,11 +227,7 @@ function SideBarToggle(props) {
 
           <div className='Location'>
             <div id='circleLocation'>
-<<<<<<< HEAD
               {/* <WhereToVoteIcon /> */}
-=======
-              <i className='fa fa-solid fa-location-dot-o'></i>
->>>>>>> 424717e1a17aa7215ae94347f4f1d9649a91feb2
               <span className='tooltiptext'>Frequency</span>
             </div>
             <div className='key'>
@@ -245,11 +241,7 @@ function SideBarToggle(props) {
             </div>
           </div>
 
-<<<<<<< HEAD
           <div className='SideBar-btn'>
-=======
-          <div className='btn'>
->>>>>>> 424717e1a17aa7215ae94347f4f1d9649a91feb2
             <button className='graph-btn'>Cancel</button>
             <button className='graph-btn'>Update</button>
           </div>

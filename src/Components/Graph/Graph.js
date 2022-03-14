@@ -14,10 +14,6 @@ import {
   Legend,
   TimeScale,
 } from 'chart.js';
-<<<<<<< HEAD
-=======
-import SideBar from '../SideBar/SideBar';
->>>>>>> 424717e1a17aa7215ae94347f4f1d9649a91feb2
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, TimeScale, Legend);
 
@@ -47,10 +43,6 @@ function Graph() {
   return (
     <>
       <div className='main-div'>
-<<<<<<< HEAD
-=======
-        <SideBar />
->>>>>>> 424717e1a17aa7215ae94347f4f1d9649a91feb2
         {/*---------------------------------------Creating a Graph---------------------------------------- */}
         <div className='left-div'>
           <span>Check-ins</span>
