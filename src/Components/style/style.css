@@ -9,6 +9,7 @@
 @import './graph.css';
 @import './IndividualOKR.css';
 @import './utility.css';
+@import './tempOKR.css';
 
 * {
   margin: 0;

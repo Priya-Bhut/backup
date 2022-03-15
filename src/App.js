@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './Components/Home/Home';
 import Graph from './Components/Graph/Graph';
 import IndividualOKR from './Components/OKR/IndividualOKR';
+import TempOKR from './Components/tempOKR/tempOKR';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route exact restricted={true} path='/:organisationUrl/*' element={<Layout />}>
           <Route exact path='alignments' element={<Graph />} />
           <Route exact path='action-center' element={<IndividualOKR />} />
+          <Route exact path='dependencies' element={<TempOKR />} />
           <Route path='*' exact element={<div>Coming Soon...</div>} />
         </Route>
         <Route path='*' element={<Home />} />
