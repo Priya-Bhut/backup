@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import SearchSelectSequenceModal from './SearchSelectSequenceModal';
-import { Button } from 'react-bootstrap';
-//import 'bootstrap/dist/css/bootstrap.min.css';
 
 function SideBarToggle(props) {
   const handleClicked = (e) => {
@@ -158,7 +156,7 @@ function SideBarToggle(props) {
                     'Percentage Tracked'
                   ) : Tracked === 'milestone' ? (
                     <div className='searchSequence'>
-                      <span onClick={() => setOpenSequence(!openSequence)}>Search Select Sequence</span>
+                      <span onClick={() => setOpenSequence(!openSequence)}>Search & Select Sequence</span>
                     </div>
                   ) : Tracked === 'task' ? (
                     'Task Tracked'
@@ -181,16 +179,6 @@ function SideBarToggle(props) {
                 <span>Jan 1-Jun 1</span>
               </div>
             </div>
-
-            {/* <div className="sideBar-Type4">
-              <div id="circle">
-                <i className="fa-solid fa-chart-pyramid-o"></i>
-              </div>
-              <div className="key">
-                <span className="span-key">Level</span>
-                <span>Associated Task</span>
-              </div>
-            </div> */}
           </div>
           <hr />
 
@@ -255,7 +243,6 @@ function SideBarToggle(props) {
           <div className='SideBar-btn'>
             <button className='graph-btn'>Cancel</button>
             <button className='graph-btn'>Update</button>
-            <Button variant='primary'>Primary</Button>
           </div>
         </div>
       </div>
