@@ -3,12 +3,10 @@ import { Modal, Button } from 'react-bootstrap';
 import SelectSequenceModal from './SelectSequenceModal';
 
 function SearchSelectSequence(props) {
-  const { openSequence, setOpenSequence } = props;
   const [selectSequence, setSelectSequence] = useState(false);
-
   return (
     <>
-      <Modal show={openSequence} onHide={() => setOpenSequence(!openSequence)}>
+      <Modal show={props?.openSequence} onHide={() => props?.setOpenSequence(!props?.openSequence)}>
         <Modal.Header closeButton>
           <Modal.Title> Select Sequence</Modal.Title>
         </Modal.Header>
@@ -18,7 +16,7 @@ function SearchSelectSequence(props) {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='secondary' onClick={() => setOpenSequence(!openSequence)}>
+          <Button variant='secondary' onClick={() => props?.setOpenSequence(!props?.openSequence)}>
             Cancel
           </Button>
           <Button variant='primary' onClick={() => setSelectSequence(!selectSequence)}>

@@ -3,11 +3,21 @@ import { Modal, Button } from 'react-bootstrap';
 import workFlow from '../../images/workflow.png';
 
 function SelectSequenceModal(props) {
-  const { selectSequence, setSelectSequence } = props;
   const [addMilestones, setAddMileStones] = useState([]);
+
+  const AddMileStoneSequence = () => {
+    let AddData = [...addMilestones];
+    AddData.push([]);
+    setAddMileStones(AddData);
+  };
+  const DeleteMileStoneSequence = () => {
+    let DeleteData = [...addMilestones];
+    DeleteData.pop();
+    setAddMileStones(DeleteData);
+  };
   return (
     <>
-      <Modal size='xl' show={selectSequence} onHide={() => setSelectSequence(!selectSequence)}>
+      <Modal size='xl' show={props?.selectSequence} onHide={() => props?.setSelectSequence(!props?.selectSequence)}>
         <Modal.Header closeButton>
           <Modal.Title> Select Sequence</Modal.Title>
         </Modal.Header>
@@ -75,28 +85,14 @@ function SelectSequenceModal(props) {
                   <input type='number' name=''></input>
                   <i className='fas fa-percentage unit'></i>
                 </div>
-                <i
-                  onClick={() => {
-                    let DeleteData = [...addMilestones];
-                    DeleteData.pop();
-                    setAddMileStones(DeleteData);
-                  }}
-                  className='fa fa-times fa-lg deleteMilestone'
-                ></i>
+                <i onClick={() => DeleteMileStoneSequence()} className='fa fa-times fa-lg deleteMilestone'></i>
               </div>
             </>
           ))}
-          <i
-            className='fas fa-plus-circle fa-2x addMilestone'
-            onClick={() => {
-              let AddData = [...addMilestones];
-              AddData.push([]);
-              setAddMileStones(AddData);
-            }}
-          ></i>
+          <i className='fas fa-plus-circle fa-2x addMilestone' onClick={() => AddMileStoneSequence()}></i>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='secondary' onClick={() => setSelectSequence(!selectSequence)}>
+          <Button variant='secondary' onClick={() => props?.setSelectSequence(!props?.selectSequence)}>
             Cancel
           </Button>
         </Modal.Footer>
