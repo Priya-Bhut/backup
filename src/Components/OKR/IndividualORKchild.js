@@ -33,13 +33,13 @@ export default function IndividualORKchild() {
           <div className='connect-tree1'></div>
           <div className='child-tree1'> </div>
           <div className='name-tree2'>
-            <i className='fas fa-dot-circle treeConnectorDot'></i> <span className='child'>OKR Sub Child</span>
+            <i className='fa fa-dot-circle-o treeConnectorDot'></i> <span className='child'>OKR Sub Child</span>
             <div className='note-alignment1'>
               <div className='tasks'>
-                <i className='fas fa-list'></i>
+                <i className='fa fa-list'></i>
               </div>
               <div className='notes'>
-                <i className='far fa-sticky-note'></i>
+                <i className='fa fa-sticky-note'></i>
               </div>
               <div className='alignment'>
                 <i className='fa fa-line-chart' aria-hidden='true'></i>
@@ -48,7 +48,7 @@ export default function IndividualORKchild() {
           </div>
           <div className='date-time'>
             <div className='calender'>
-              <i className='far fa-calendar-alt' onClick={(e) => handleCalender(e)}></i>
+              <i className='fa fa-calendar-alt' onClick={(e) => handleCalender(e)}></i>
               {isActive && (
                 <div className='datePicker'>
                   <DatePicker
@@ -73,9 +73,9 @@ export default function IndividualORKchild() {
             </div>
             &nbsp;
             <div className='user'>
-              <i className='fas fa-user-circle'></i>
+              <i className='fa fa-user-circle'></i>
             </div>
-          </div>{' '}
+          </div>
           <div className='trackSelect' onClick={toggleSideBar}>
             % Percentage Tracker
           </div>
@@ -85,7 +85,7 @@ export default function IndividualORKchild() {
             </div>
             <span className='showRange'> 0% </span>
             <div className='update'>
-              <i data-toggle='tooltip' title='Update' className='fas fa-pencil-alt i-pencil' />
+              <i data-toggle='tooltip' title='Update' className='fa fa-pencil-alt i-pencil' />
               <i className='fa fa-ellipsis-h other' aria-hidden='true'></i>
             </div>
           </div>
