@@ -20,6 +20,7 @@ export default function IndividualORKchild() {
   };
 
   const [isOpen, setIsOpen] = useState(false);
+
   const toggleSideBar = () => {
     setIsOpen((isOpen) => !isOpen);
   };

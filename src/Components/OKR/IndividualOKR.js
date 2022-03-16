@@ -5,6 +5,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'font-awesome/css/font-awesome.min.css';
 import SecondHeader from './SecondHeader';
+import CreateOKR from './CreateOKR';
 
 export default class IndividualOKR extends Component {
   state = { isActive: false };
@@ -15,8 +16,16 @@ export default class IndividualOKR extends Component {
       id: 0,
       startDate: new Date(),
       endDate: new Date(),
+      isActive: false,
+      isNewOkr: false,
     };
   }
+  addNewOkr = () => {
+    this.setState({ isNewOkr: true });
+  };
+  closeNewOkr = () => {
+    this.setState({ isNewOkr: false });
+  };
   addNewChild = () => {
     const { newChild } = this.state;
     const addChild = <IndividualOKRmain id={this.state.id} subChild={this.subChild} />;
@@ -54,34 +63,37 @@ export default class IndividualOKR extends Component {
     const { startDate, endDate } = this.state;
     /* console.log("main: ", this.state.Newchild); */
     return (
-      <div className='main'>
-        <SecondHeader />
-        <div className='mainOKR'>
-          <div className='parent'>
-            <div className='all-content'>
-              <div className='name-tree'>
-                <i className='fa fa-dot-circle-o treeConnectorDot'></i> <span>OKR</span>
-                <div className='addChild-btn'>
-                  <i className='fa fa-plus-circle' onClick={(e) => this.addNewChild(e)}>
-                    Add New Key Result
-                  </i>
-                </div>
-                <div className='note-alignment'>
-                  <div className='notes'>
-                    <i className='fa fa-sticky-note'></i>
+      <>
+        <SecondHeader addNewOkr={this.addNewOkr} />
+        <div className='main'>
+          {isNewOkr && <CreateOKR closeNewOkr={this.closeNewOkr} handleAlert={this.props.handleAlert} />}
+          <div className='mainOKR'>
+            <div className='parent'>
+              <div className='all-content'>
+                <div className='name-tree'>
+                  <i className='fa fa-dot-circle-o treeConnectorDot'></i> <span>OKR</span>
+                  <div className='addChild-btn'>
+                    <i className='fa fa-plus-circle' onClick={(e) => this.addNewChild(e)}>
+                      Add New Key Result
+                    </i>
                   </div>
-                  <div className='alignment'>
-                    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' width='20' height='20'>
-                      <path
-                        d='M1.5,12.9H5.7m14,0h4.2m-13,0h3.5M8.5,7h0a2.3,2.3,0,0,1,2.3,2.3v7.5a2.3,2.3,0,0,1-2.3,2.3h0a2.3,2.3,0,0,1-2.3-2.3V9.3A2.3,2.3,0,0,1,8.5,7ZM17,1h0a2.3,2.3,0,0,1,2.3,2.3V21.5A2.3,2.3,0,0,1,17,23.8h0a2.3,2.3,0,0,1-2.3-2.3V3.3A2.3,2.3,0,0,1,17,1Z '
-                        transform='translate(-0.5) '
-                        fill='none '
-                        stroke='currentcolor'
-                        strokeLinecap='round '
-                        strokeMiterlimit='10 '
-                        strokeWidth='1.5'
-                      ></path>
-                    </svg>
+                  <div className='note-alignment'>
+                    <div className='notes'>
+                      <i className='fa fa-sticky-note'></i>
+                    </div>
+                    <div className='alignment'>
+                      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' width='20' height='20'>
+                        <path
+                          d='M1.5,12.9H5.7m14,0h4.2m-13,0h3.5M8.5,7h0a2.3,2.3,0,0,1,2.3,2.3v7.5a2.3,2.3,0,0,1-2.3,2.3h0a2.3,2.3,0,0,1-2.3-2.3V9.3A2.3,2.3,0,0,1,8.5,7ZM17,1h0a2.3,2.3,0,0,1,2.3,2.3V21.5A2.3,2.3,0,0,1,17,23.8h0a2.3,2.3,0,0,1-2.3-2.3V3.3A2.3,2.3,0,0,1,17,1Z '
+                          transform='translate(-0.5) '
+                          fill='none '
+                          stroke='currentcolor'
+                          strokeLinecap='round '
+                          strokeMiterlimit='10 '
+                          strokeWidth='1.5'
+                        ></path>
+                      </svg>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -163,21 +175,21 @@ export default class IndividualOKR extends Component {
                 </div>
               </div>
             </div>
+            {this.state.newChild.map((addChild, index) => {
+              return (
+                <div className='mainSub' key={index}>
+                  {addChild.main}
+                  {addChild.child.map((subChild, index) => (
+                    <div className='subChild' key={index}>
+                      {subChild}
+                    </div>
+                  ))}
+                </div>
+              );
+            })}
           </div>
-          {this.state.newChild.map((addChild, index) => {
-            return (
-              <div className='mainSub' key={index}>
-                {addChild.main}
-                {addChild.child.map((subChild, index) => (
-                  <div className='subChild' key={index}>
-                    {subChild}
-                  </div>
-                ))}
-              </div>
-            );
-          })}
         </div>
-      </div>
+      </>
     );
   }
 }
