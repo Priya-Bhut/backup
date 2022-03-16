@@ -1,14 +1,7 @@
-.okr-view .level1 {
-  padding-left: 10px;
-}
-.okr-view .level2 {
-  padding-left: 40px;
-}
 .okr-view .level2::before,
 .okr-view .level3::before,
 .okr-view .level4::before,
 .okr-view .level5::before {
-  display: none;
   content: '';
   border: solid rgb(124, 121, 121);
   border-width: 0 0 2px 2px;
@@ -17,6 +10,12 @@
   height: 38px;
   width: 24px;
   margin-top: -30px;
+}
+.okr-view .level1 {
+  padding-left: 10px;
+}
+.okr-view .level2 {
+  padding-left: 40px;
 }
 .level2::before {
   left: 18px;
@@ -30,6 +29,12 @@
 .level5::before {
   left: 108px;
   width: 49px !important;
+}
+.okr-view .level1 {
+  padding-left: 10px;
+}
+.okr-view .level2 {
+  padding-left: 40px;
 }
 .okr-view .level3 {
   padding-left: 70px;
@@ -54,9 +59,11 @@
   display: block;
 }
 .okr-view .fa {
-  visibility: hidden;
   margin: 0 10px 0 0;
 }
 .okr-view .main-table:hover .fa {
   visibility: visible;
+}
+.okr-view .name {
+  width: 40%;
 }

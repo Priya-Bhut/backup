@@ -4,7 +4,7 @@ import { useState } from 'react';
 import list from './data.json';
 import FiberManualRecordOutlinedIcon from '@material-ui/icons/FiberManualRecordOutlined';
 
-function TempOKR() {
+function Index() {
   const [level1, setLevel1] = useState([]);
   const [level2, setLevel2] = useState([]);
   const [level3, setLevel3] = useState([]);
@@ -27,14 +27,15 @@ function TempOKR() {
 
   return (
     <div className='okr-view'>
-      <table cellPadding='10px' className='main-table'>
+      <table cellPadding='10px' className='main-table' width='100%'>
         <thead>
           <tr>
-            <th>Name</th>
+            <th className='name'>Name</th>
             <th>Icons</th>
             <th>Start Date</th>
             <th>End Date</th>
             <th>Assignee</th>
+            <th>Tracking System</th>
             <th>Progress</th>
             <th>Operations</th>
           </tr>
@@ -45,7 +46,11 @@ function TempOKR() {
               <tbody>
                 <tr>
                   <td className='level1'>
-                    <i className='fa fa-plus-circle' onClick={() => setRender(1)} />
+                    {renderLevel > 1 ? (
+                      <i className='fa fa-minus-circle' onClick={() => setRender(1)} />
+                    ) : (
+                      <i className='fa fa-plus-circle' onClick={() => setRender(1)} />
+                    )}
                     <FiberManualRecordOutlinedIcon className='mui-icon' />
                     {item.name}
                   </td>
@@ -68,6 +73,10 @@ function TempOKR() {
                   <td>
                     <i className='fa fa-user-circle' />
                   </td>
+                  <td>
+                    Percentage Tracked
+                    <i className='fa fa-user-circle' />
+                  </td>
                   <td>{item.progress}</td>
                   <td>
                     <i className='fa fa-pencil' />
@@ -84,7 +93,11 @@ function TempOKR() {
                         <tbody>
                           <tr>
                             <td className='level2'>
-                              <i className='fa fa-plus-circle' onClick={() => setRender(2)} />
+                              {renderLevel > 2 ? (
+                                <i className='fa fa-minus-circle' onClick={() => setRender(2)} />
+                              ) : (
+                                <i className='fa fa-plus-circle' onClick={() => setRender(2)} />
+                              )}
                               <FiberManualRecordOutlinedIcon className='mui-icon' />
                               {item.name}
                             </td>
@@ -113,6 +126,10 @@ function TempOKR() {
                             <td>
                               <i className='fa fa-user-circle' />
                             </td>
+                            <td>
+                              Percentage Tracked
+                              <i className='fa fa-user-circle' />
+                            </td>
                             <td>{item.progress}</td>
                             <td>
                               <i className='fa fa-pencil' />
@@ -129,7 +146,11 @@ function TempOKR() {
                                   <tbody>
                                     <tr>
                                       <td className='level3'>
-                                        <i className='fa fa-plus-circle' onClick={() => setRender(3)} />
+                                        {renderLevel > 3 ? (
+                                          <i className='fa fa-minus-circle' onClick={() => setRender(3)} />
+                                        ) : (
+                                          <i className='fa fa-plus-circle' onClick={() => setRender(3)} />
+                                        )}
                                         <FiberManualRecordOutlinedIcon className='mui-icon' />
                                         {item.name}
                                       </td>
@@ -158,6 +179,10 @@ function TempOKR() {
                                       <td>
                                         <i className='fa fa-user-circle' />
                                       </td>
+                                      <td>
+                                        Percentage Tracked
+                                        <i className='fa fa-user-circle' />
+                                      </td>
                                       <td>{item.progress}</td>
                                       <td>
                                         <i className='fa fa-pencil' />
@@ -174,7 +199,11 @@ function TempOKR() {
                                             <tbody>
                                               <tr>
                                                 <td className='level4'>
-                                                  <i className='fa fa-plus-circle' onClick={() => setRender(4)} />
+                                                  {renderLevel > 4 ? (
+                                                    <i className='fa fa-minus-circle' onClick={() => setRender(4)} />
+                                                  ) : (
+                                                    <i className='fa fa-plus-circle' onClick={() => setRender(4)} />
+                                                  )}
                                                   <FiberManualRecordOutlinedIcon className='mui-icon' />
                                                   {item.name}
                                                 </td>
@@ -201,6 +230,10 @@ function TempOKR() {
                                                 <td>{item.startDate}</td>
                                                 <td>{item.endDate}</td>
                                                 <td>
+                                                  <i className='fa fa-user-circle' />
+                                                </td>
+                                                <td>
+                                                  Percentage Tracked
                                                   <i className='fa fa-user-circle' />
                                                 </td>
                                                 <td>{item.progress}</td>
@@ -247,6 +280,10 @@ function TempOKR() {
                                                           <td>
                                                             <i className='fa fa-user-circle' />
                                                           </td>
+                                                          <td>
+                                                            Percentage Tracked
+                                                            <i className='fa fa-user-circle' />
+                                                          </td>
                                                           <td>{item.progress}</td>
                                                           <td>
                                                             <i className='fa fa-pencil' />
@@ -274,4 +311,4 @@ function TempOKR() {
   );
 }
 
-export default TempOKR;
+export default Index;
