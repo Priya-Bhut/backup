@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import SearchSelectSequenceModal from './SearchSelectSequenceModal';
-
 function SideBarToggle(props) {
   const handleClicked = (e) => {
     setTracked(e);
@@ -10,7 +9,6 @@ function SideBarToggle(props) {
   const [expandPerTracked, setexpandPerTracked] = useState(false);
   const [tracked, setTracked] = useState('percentage');
   const [openSequence, setOpenSequence] = useState(false);
-
   const expandPertageTracked = () => {
     return (
       <div className='keyresult-drop-down'>
@@ -60,7 +58,6 @@ function SideBarToggle(props) {
             </p>
             <i className={`fa fa-times closeModel`} onClick={props?.toggleSideBar}></i>
           </div>
-
           <div className='sideBar-type'>
             <div className='sideBar-type1'>
               <div id='circle'>
@@ -88,7 +85,6 @@ function SideBarToggle(props) {
                 {expandPerTracked ? expandPertageTracked() : null}
               </div>
             </div>
-
             <div className='sidebar-type2'>
               <div id='circle'>
                 {tracked === 'percentage' ? (
@@ -140,7 +136,6 @@ function SideBarToggle(props) {
                   </svg>
                 ) : null}
               </div>
-
               <div className='key'>
                 <span className='span-key'>
                   {tracked === 'percentage'
@@ -169,7 +164,6 @@ function SideBarToggle(props) {
                 )}
               </div>
             </div>
-
             <div className='sidebar-type3'>
               <div id='circle'>
                 <i className='fa fa-calendar'></i>
@@ -181,7 +175,6 @@ function SideBarToggle(props) {
             </div>
           </div>
           <hr />
-
           <div className='key-result'>
             <textarea cols={63} rows={3} placeholder='Type Your Key Result..' className='textareaKeyResult'></textarea>
           </div>
@@ -203,7 +196,6 @@ function SideBarToggle(props) {
               }}
             />
           </div>
-
           <div className='sidebar-user'>
             <div id='circlelocation'>
               <i className='fa fa-light fa-user' />
@@ -222,7 +214,6 @@ function SideBarToggle(props) {
               </i>
             </div>
           </div>
-
           <div className='Location'>
             <div id='circletag'>
               <i className='fa fa-map-marker fa-lg Icons' aria-hidden='true'>
@@ -239,7 +230,6 @@ function SideBarToggle(props) {
               </i>
             </div>
           </div>
-
           <div className='toggle-btn'>
             <button className='sidebar-btn'>Cancel</button>
             <button className='sidebar-btn'>Update</button>

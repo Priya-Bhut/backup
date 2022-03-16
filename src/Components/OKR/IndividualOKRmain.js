@@ -88,13 +88,13 @@ export default class IndividualOKRmain extends Component {
             <div className='trackSelect' onClick={this.toggleSideBar}>
               % Percentage Tracker
             </div>
-            <div className='progress'>
+            <div className='progressBar'>
               <div className='range-slider'>
                 <input type='range' min='0' max='100' step='10' defaultValue='0' />{' '}
               </div>
               <span className='showRange'> 0% </span>
               <div className='update'>
-                <i data-toggle='tooltip' title='Update' className='fa fa-pencil-alt i-pencil' />
+                <i data-toggle='tooltip' title='Update' className='fa fa-pencil i-pencil' />
                 <i className='fa fa-ellipsis-h other' aria-hidden='true'></i>
               </div>
             </div>

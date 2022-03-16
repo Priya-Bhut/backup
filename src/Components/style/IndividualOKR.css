@@ -4,9 +4,10 @@
   margin-top: 0.0625rem;
 } */
 .mainOKR {
-  padding: 1.25rem;
-  border: 2px solid gray;
-  border-radius: 0.9375rem;
+  width: 98%;
+  margin: 15px;
+  padding: 0.25rem;
+  border-radius: 0.4rem;
   box-shadow: 0 0 5px 2px gray;
 }
 .all-content {
@@ -83,7 +84,7 @@
   align-items: center;
   cursor: pointer;
 }
-.progress {
+.progressBar {
   flex-grow: 1;
   justify-content: center;
   display: flex;
@@ -552,3 +553,120 @@
 } 
  
  */
+
+.new-okr-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 2%;
+  width: 98%;
+  background-color: white;
+  border-radius: 0.4rem;
+  box-shadow: 0 0 5px 2px gray;
+  margin:15px;
+  font-size: 20px;
+  padding: 20px 17px;
+}
+
+.new-okr-title-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.new-okr-title-container input{
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 20px;
+}
+.new-okr-title-container input:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  font-size: 20px;
+}
+
+.new-okr-calendar-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 2.6rem;
+  border-radius: 3px;
+  cursor: pointer ;
+}
+
+.new-okr-assignee-container{
+  height: 1.8rem;
+  width: 5rem;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.new-okr-calendar-container div {
+ border: none;
+ outline: none;
+ box-shadow: none;
+}
+
+.new-okr-save-progress-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.new-okr-save-button{
+  height: 1.1rem;  
+  width: 5rem; 
+  justify-content: center !important;
+  line-height: 0.9rem !important;
+  padding: 0 !important;
+}
+
+.new-okr-save-button:focus{
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.new-okr-save-progress-container .progress {
+  width: 70%;
+}
+
+.new-okr-save-progress-container i{
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.new-okr-calendar-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 1.1rem;
+  width: 7rem;
+  background-color: grey;
+  /* justify-content: center !important; */
+  line-height: 0.9rem !important;
+  padding: 0 !important;
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.new-okr-calendar-button:focus {
+  background-color: grey !important;
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.new-okr-calendar-button:hover {
+  background-color: grey !important;
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+
+
