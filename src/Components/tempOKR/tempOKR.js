@@ -27,13 +27,12 @@ function Index() {
 
   return (
     <div className='okr-view'>
-      <table cellPadding='10px' className='main-table' width='100%'>
+      <table cellPadding='10px' border='1' className='main-table' width='100%'>
         <thead>
           <tr>
             <th className='name'>Name</th>
             <th>Icons</th>
-            <th>Start Date</th>
-            <th>End Date</th>
+            <th>Date</th>
             <th>Assignee</th>
             <th>Tracking System</th>
             <th>Progress</th>
@@ -68,8 +67,9 @@ function Index() {
                       ></path>
                     </svg>
                   </td>
-                  <td>{item.startDate}</td>
-                  <td>{item.endDate}</td>
+                  <td>
+                    <i className='fa fa-calendar' />
+                  </td>
                   <td>
                     <i className='fa fa-user-circle' />
                   </td>
@@ -121,8 +121,9 @@ function Index() {
                                 ></path>
                               </svg>
                             </td>
-                            <td>{item.startDate}</td>
-                            <td>{item.endDate}</td>
+                            <td>
+                              <i className='fa fa-calendar' />
+                            </td>
                             <td>
                               <i className='fa fa-user-circle' />
                             </td>
@@ -174,8 +175,9 @@ function Index() {
                                           ></path>
                                         </svg>
                                       </td>
-                                      <td>{item.startDate}</td>
-                                      <td>{item.endDate}</td>
+                                      <td>
+                                        <i className='fa fa-calendar' />
+                                      </td>
                                       <td>
                                         <i className='fa fa-user-circle' />
                                       </td>
@@ -227,8 +229,9 @@ function Index() {
                                                     ></path>
                                                   </svg>
                                                 </td>
-                                                <td>{item.startDate}</td>
-                                                <td>{item.endDate}</td>
+                                                <td>
+                                                  <i className='fa fa-calendar' />
+                                                </td>
                                                 <td>
                                                   <i className='fa fa-user-circle' />
                                                 </td>
@@ -275,8 +278,9 @@ function Index() {
                                                               ></path>
                                                             </svg>
                                                           </td>
-                                                          <td>{item.startDate}</td>
-                                                          <td>{item.endDate}</td>
+                                                          <td>
+                                                            <i className='fa fa-calendar' />
+                                                          </td>
                                                           <td>
                                                             <i className='fa fa-user-circle' />
                                                           </td>
