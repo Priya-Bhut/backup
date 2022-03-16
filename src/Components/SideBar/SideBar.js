@@ -9,7 +9,7 @@ function SideBar() {
   return (
     <div>
       <div className='container'>
-        <button variant='primary' className='dashboardBtn' type='submit' onClick={toggleSideBar}>
+        <button className='dashboardBtn' type='submit' onClick={toggleSideBar}>
           Submit
         </button>
         {isOpen && <SideBarToggle setIsOpen={setIsOpen} toggleSideBar={toggleSideBar} />}
