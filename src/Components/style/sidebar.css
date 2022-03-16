@@ -1,3 +1,5 @@
+/* --------------------------------------------Creating SideBarToggle CSS-------------------------------------------------*/
+
 .dashboardBtn {
   background-color: blue;
   padding: 0.5rem 1.3rem;
@@ -7,7 +9,6 @@
   float: center;
   margin-top: 10px;
   margin-right: 20px;
-  /* position: absolute; */
 }
 .sideBar {
   background-color: rgb(240, 236, 236);
@@ -15,7 +16,6 @@
   bottom: 0;
   width: 554px;
   animation: moveLeft 0.3s ease-in-out forwards;
-  /* overflow-y: scroll;  */
   float: right;
   position: fixed;
 }
@@ -31,7 +31,6 @@
   width: 100%;
   background-color: lightgray;
   position: absolute;
-  /* padding: 10px; */
 }
 @keyframes moveLeft {
   from {
@@ -56,13 +55,13 @@
   font-size: 1.5rem;
   cursor: pointer;
   color: #242387;
+  top: auto;
 }
 .sideBar-Header .closeModel:hover {
   color: blue;
 }
 .sideBar-Type {
   height: 80px;
-  /* background-color: black; */
 }
 .dropdown_list {
   display: flex;
@@ -79,7 +78,6 @@
   position: absolute;
   display: flex;
   align-items: center;
-  /* flex-wrap: wrap; */
   margin-top: 35px;
   margin-left: 30px;
 }
@@ -100,7 +98,6 @@ span {
   position: absolute;
   display: flex;
   align-items: center;
-  /* flex-wrap: wrap; */
   margin-top: 35px;
   margin-left: 36%;
 }
@@ -110,7 +107,6 @@ span {
   position: absolute;
   display: flex;
   align-items: center;
-  /* flex-wrap: wrap; */
   margin-top: 35px;
   margin-left: 400px;
 }
@@ -120,7 +116,6 @@ span {
   position: absolute;
   display: flex;
   align-items: center;
-  /* flex-wrap: wrap; */
   margin-top: 35px;
   margin-left: 300px;
 }
@@ -128,7 +123,6 @@ span {
   margin: 7px;
   cursor: pointer;
 }
-
 .sideBar-KRType {
   display: flex;
   justify-content: flex-start;
@@ -193,13 +187,10 @@ span {
   border-radius: 50%;
   width: 30px;
   height: 30px;
-}
-.fa-tags {
-  margin-top: 6px;
-  margin-left: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
-  position: relative;
-  display: inline-block;
 }
 
 .overlay {
@@ -219,6 +210,7 @@ span {
   position: relative;
   display: inline-block;
 }
+
 .frequency {
   margin-left: 5px;
   cursor: pointer;
@@ -274,11 +266,29 @@ span {
   padding: 5px 0;
   position: absolute;
   z-index: 1;
-  top: 160%;
-  left: 30%;
+  top: 534px;
+  left: 36px;
   margin-left: -30px;
 }
 .fa-tags:hover .tooltiptext {
+  visibility: visible;
+}
+
+.Icons .tooltiptext {
+  visibility: hidden;
+  width: 80px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 51px;
+  left: 9px;
+  margin-left: -30px;
+}
+.Icons:hover .tooltiptext {
   visibility: visible;
 }
 .SearchAssignee {
@@ -319,7 +329,7 @@ span {
   margin-left: 3px;
 }
 ::placeholder {
-  font-size: 20px;
+  font-size: 2fpx;
   color: rgba(189, 178, 178, 0.583);
   margin-left: 25px;
 }
@@ -332,11 +342,20 @@ span {
   white-space: pre-wrap;
   resize: none;
   border: 2px solid rgba(189, 178, 178, 0.583);
+  width: 93%;
+  overflow-y: scroll;
 }
 .Editor {
   margin-left: 35px;
   height: 100px;
   margin-right: 35px;
+}
+.searchSequence {
+  cursor: pointer;
+  color: blue;
+}
+.searchSequence:hover {
+  color: red;
 }
 .User {
   height: 50px;
@@ -375,4 +394,174 @@ ul {
 }
 .nonMeasurable_label {
   color: #8ba1b4;
+}
+
+/*  ----------------------------------Sequence Modal CSS ----------------------------------*/
+
+.sequence span {
+  margin-left: 150px;
+  font-size: medium;
+  font-weight: bold;
+}
+.sequenceLabel span {
+  font-size: medium;
+  font-weight: bold;
+  margin-left: 100px;
+}
+.sequence input {
+  border: 2px solid grey;
+  border-radius: 10px;
+  width: 100%;
+}
+.sequence {
+  width: 40%;
+}
+.sequence ::placeholder {
+  font-size: 15px;
+  color: black;
+}
+
+.sequence-main {
+  display: flex;
+  width: 100%;
+}
+.create-Sequence-Modal {
+  width: 800px;
+  margin: auto;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 56px;
+  height: 30px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 22px;
+  width: 21px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/*--------------------------------Creating a Milestones---------------------------------*/
+.milestone {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.milestone input {
+  border: 2px solid grey;
+  border-radius: 5px;
+}
+.milestone input:focus {
+  box-shadow: 3px 3px 3px 3px #888888;
+}
+.milestone :nth-child(3) {
+  width: 50%;
+}
+.milestone2-box {
+  position: relative;
+}
+.milestone2-box input {
+  display: block;
+  border: 2px solid grey;
+  /* background: rgb(230, 230, 230); */
+  width: 100%;
+}
+.milestone2-box input:focus {
+  box-shadow: 3px 3px 3px 3px #888888;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.milestone2-box .unit {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  right: 0;
+  left: 85%;
+  top: 2px;
+  width: 30px;
+  font-size: large;
+  font-weight: bold;
+  background: rgb(230, 230, 230);
+  height: 41px;
+  align-items: center;
+}
+
+.vertical-line {
+  border-left: 6px solid green;
+  height: 50px;
+}
+.fa-plus-circle {
+  cursor: pointer;
+}
+.addMilestone {
+  float: right;
+  margin-right: 10px;
+}
+.milestone .deleteMilestone {
+  cursor: pointer;
+  color: red;
+}
+.milestone .noDeleteMilestone {
+  color: white;
+}
+.switch-icon {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  width: 60%;
+}
+.switch-icon .switch-label {
+  font-size: 15px;
+  font-weight: bold;
+  color: #29278d;
+}
+.workflowImg {
+  height: 60px;
+  width: 18px;
+  margin-top: -15px;
 }

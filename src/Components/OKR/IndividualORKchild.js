@@ -75,7 +75,7 @@ export default function IndividualORKchild() {
             <div className='user'>
               <i className='fa fa-user-circle'></i>
             </div>
-          </div>{' '}
+          </div>
           <div className='trackSelect' onClick={toggleSideBar}>
             % Percentage Tracker
           </div>

@@ -1,4 +1,3 @@
-import './App.css';
 import Layout from './Components/Layout/Layout';
 import './Components/style/style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
