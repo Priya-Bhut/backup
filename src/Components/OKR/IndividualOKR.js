@@ -16,7 +16,7 @@ export default class IndividualOKR extends Component {
       startDate: new Date(),
       endDate: new Date(),
       isActive: false,
-      isNewOkr: true,
+      isNewOkr: false,
     };
   }
   addNewOkr = () => {

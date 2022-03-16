@@ -8,7 +8,6 @@ function CreateOKR(props) {
     name: '',
     assignees: [],
     timePeriod: {
-      // timePeriodId: 1,
       name: 'Q1-2022',
       code: 'Q1',
       type: 1,

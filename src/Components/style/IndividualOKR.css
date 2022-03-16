@@ -148,7 +148,7 @@
   border-right: 0;
   border-bottom: 0;
   min-height: 60px;
-  position: absolute;
+  position: relative;
 }
 .connect-tree {
   margin-left: 7px;
@@ -159,7 +159,7 @@
   border-bottom: 0;
   min-height: 30px;
   display: inline-block;
-  position: absolute;
+  position: relative;
 }
 .child-tree {
   margin-left: 7px;
@@ -171,7 +171,7 @@
   height: 1.25rem;
   width: 25px;
   display: inline-block;
-  position: absolute;
+  position: relative;
 }
 .main-tree1 {
   margin-left: 65px;
@@ -181,7 +181,7 @@
   border-right: 0;
   border-bottom: 0;
   min-height: 58px;
-  position: absolute;
+  position: relative;
 }
 .connect-tree1 {
   margin-left: 45px;
@@ -192,7 +192,7 @@
   border-bottom: 0;
   min-height: 31px;
   display: inline-block;
-  position: absolute;
+  position: relative;
 }
 .connect-tree1-1 {
   margin-left: 7px;
@@ -203,7 +203,7 @@
   border-bottom: 0;
   height: 120px;
   display: inline-block;
-  position: absolute;
+  position: relative;
 }
 .child-tree1 {
   margin-left: 45px;
@@ -215,7 +215,7 @@
   height: 1.25rem;
   width: 25px;
   display: inline-block;
-  position: absolute;
+  position: relative;
 }
 .mainOKR:last-child .mainSub:last-child .connect-tree1-1 {
   visibility: hidden;
@@ -240,7 +240,7 @@
   color: rgb(136, 136, 136);
   cursor: pointer;
   align-items: flex-start;
-  position: absolute;
+  position: relative;
   margin-left: 100px;
   margin-top: -18px;
   display: none;
@@ -250,7 +250,7 @@
   color: rgb(136, 136, 136);
   cursor: pointer;
   align-items: flex-start;
-  position: absolute;
+  position: relative;
   margin-left: 150px;
   margin-top: -18px;
   display: none;
@@ -263,7 +263,7 @@
 /* ------------------------------------- DATE PICKER -------------------------------------- */
 .datePicker {
   display: flex;
-  position: absolute;
+  position: relative;
   margin-left: -234px;
 }
 /* ------------------------------------- RANGE SLIDER -------------------------------------- */
@@ -355,7 +355,7 @@
   content: counter(x);
   display: var(--show-min-max, block);
   font: var(--min-max-font);
-  position: absolute;
+  position: relative;
   bottom: var(--flip-y, -2.5ch);
   top: calc(-2.5ch * var(--flip-y));
   opacity: Clamp(0, var(--at-edge), var(--min-max-opacity));
@@ -397,7 +397,7 @@
   --clip-end: calc(100% - (var(--cb)) * 1%);
   --clip-start: calc(var(--ca) * 1%);
   --clip: inset(-20px var(--clip-end) -20px var(--clip-start));
-  position: absolute;
+  position: relative;
   left: var(--start-end);
   right: var(--start-end);
   top: calc(
@@ -412,7 +412,7 @@
 }
 .range-slider__progress::before {
   content: "";
-  position: absolute;
+  position: relative;
   left: 0;
   right: 0;
   clip-path: var(--clip);
@@ -425,7 +425,7 @@
 }
 .range-slider__progress::after {
   content: "";
-  position: absolute;
+  position: relative;
   top: 0;
   right: 0;
   bottom: 0;
@@ -438,7 +438,7 @@
   width: 100%;
   height: var(--thumb-size);
   margin: 0;
-  position: absolute;
+  position: relative;
   left: 0;
   top: calc(
     50% - Max(var(--track-height), var(--thumb-size)) / 2 +
@@ -532,7 +532,7 @@
   --x-offset: calc(var(--completed-b) * -1%);
   --pos: calc(((var(--value) - var(--min)) / (var(--max) - var(--min))) * 100%);
   pointer-events: none;
-  position: absolute;
+  position: relative;
   z-index: 5;
   background: var(--value-background);
   border-radius: 10px;
