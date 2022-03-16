@@ -20,9 +20,11 @@ export default function IndividualORKchild() {
   };
 
   const [isOpen, setIsOpen] = useState(false);
+
   const toggleSideBar = () => {
     setIsOpen((isOpen) => !isOpen);
   };
+
   return (
     <div>
       {/* ---------------------------------------Subchild(Child1)------------------------------------------ */}
@@ -79,13 +81,13 @@ export default function IndividualORKchild() {
           <div className='trackSelect' onClick={toggleSideBar}>
             % Percentage Tracker
           </div>
-          <div className='progress'>
+          <div className='progressBar'>
             <div className='range-slider'>
               <input type='range' min='0' max='100' step='10' defaultValue='0' />
             </div>
             <span className='showRange'> 0% </span>
             <div className='update'>
-              <i data-toggle='tooltip' title='Update' className='fa fa-pencil-alt i-pencil' />
+              <i data-toggle='tooltip' title='Update' className='fa fa-pencil i-pencil' />
               <i className='fa fa-ellipsis-h other' aria-hidden='true'></i>
             </div>
           </div>
