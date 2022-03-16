@@ -136,7 +136,7 @@ export default class IndividualOKR extends Component {
                       textValue: '50',
                     }}
                   >
-                    <input type='range' min='0' max='100' step='10' defaultValue='75' />
+                    <input type='range' min='0' max='100' step='10' defaultValue='0' />
                     <output></output>
                   </div>
                   <span className='showRange'> 100% </span>
