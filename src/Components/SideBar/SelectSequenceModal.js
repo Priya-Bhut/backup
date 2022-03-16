@@ -28,10 +28,12 @@ function SelectSequenceModal(props) {
   };
   const handleChange = (e, id) => {
     const { name, value } = e.target;
-    let addData = [...addMilestones];
-    let index = addData.findIndex((item) => item.id === id);
-    name === 'Milestone-name' ? (addData[index].milestoneName = value) : (addData[index].percentage = value);
-    setAddMileStones(addData);
+    let changeData = [...addMilestones];
+    let index = changeData.findIndex((item) => item.id === id);
+    name === 'Milestone-name'
+      ? (changeData[index].milestoneName = value)
+      : (changeData[index].percentage = value < 101 && value > 0 && value);
+    setAddMileStones(changeData);
   };
 
   return (
@@ -92,11 +94,12 @@ function SelectSequenceModal(props) {
                     name='current-percentage'
                     onChange={(e) => handleChange(e, index.id)}
                     disabled={`${abc === 0 ? 'percentageinput' : ''}`}
+                    value={`${abc === 0 ? '0' : index.percentage}`}
                   ></input>
                   <i className='fas fa-percentage unit'></i>
                 </div>
                 <div className='milestone2-box'>
-                  <input type='number' name='' disabled></input>
+                  <input type='number' name='' value={`${abc === 0 ? '0' : ''}`} disabled></input>
                   <i className='fas fa-percentage unit'></i>
                 </div>
                 <i

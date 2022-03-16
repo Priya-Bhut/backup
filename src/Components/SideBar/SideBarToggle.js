@@ -204,7 +204,7 @@ function SideBarToggle(props) {
             />
           </div>
 
-          <div className='user'>
+          <div className='sidebar-user'>
             <div id='circlelocation'>
               <i className='fa fa-light fa-user' />
             </div>
@@ -240,9 +240,9 @@ function SideBarToggle(props) {
             </div>
           </div>
 
-          <div className='SideBar-btn'>
-            <button className='graph-btn'>Cancel</button>
-            <button className='graph-btn'>Update</button>
+          <div className='toggle-btn'>
+            <button className='sidebar-btn'>Cancel</button>
+            <button className='sidebar-btn'>Update</button>
           </div>
         </div>
       </div>
