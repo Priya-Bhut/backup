@@ -60,7 +60,7 @@ export default class IndividualOKR extends Component {
     this.setState({ startDate: new Date(startDate), endDate: new Date(endDate) });
   };
   render() {
-    const { startDate, endDate } = this.state;
+    const { startDate, endDate, isNewOkr } = this.state;
     /* console.log("main: ", this.state.Newchild); */
     return (
       <>
