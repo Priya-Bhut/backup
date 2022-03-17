@@ -6,8 +6,10 @@ import 'react-datepicker/dist/react-datepicker.css';
 import 'font-awesome/css/font-awesome.min.css';
 import SecondHeader from './SecondHeader';
 import CreateOKR from './CreateOKR';
+import { getObjective } from './Action';
+import { connect } from 'react-redux';
 
-export default class IndividualOKR extends Component {
+class IndividualOKR extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -55,6 +57,25 @@ export default class IndividualOKR extends Component {
   handleStartDate = (date) => {
     this.setState({ startDate: date });
   };
+
+  getObjective = () => {
+    this.props
+      ?.getObjective()
+      .then((response) => {
+        if (response && !response?.errorMessage && !response?.error) {
+          console.log(response);
+        } else {
+          this.props?.handleAlert(response?.errorMessage || response?.error || 'Something went wrong', 'error');
+        }
+      })
+      .catch((error) => {
+        this.props?.handleAlert(error?.message || 'Something went wrong', 'error');
+      });
+  };
+
+  componentDidMount = () => {
+    this.getObjective();
+  };
   render() {
     const { isNewOkr } = this.state;
 
@@ -62,7 +83,13 @@ export default class IndividualOKR extends Component {
       <>
         <SecondHeader addNewOkr={this.addNewOkr} />
         <div className='main'>
-          {isNewOkr && <CreateOKR closeNewOkr={this.closeNewOkr} handleAlert={this.props.handleAlert} />}
+          {isNewOkr && (
+            <CreateOKR
+              closeNewOkr={this.closeNewOkr}
+              handleAlert={this.props.handleAlert}
+              getObjective={this.getObjective}
+            />
+          )}
           <div className='mainOKR'>
             <div className='parent'>
               <div className='all-content'>
@@ -165,3 +192,8 @@ export default class IndividualOKR extends Component {
     );
   }
 }
+const mapDispatchToProps = {
+  getObjective,
+};
+
+export default connect(null, mapDispatchToProps)(IndividualOKR);

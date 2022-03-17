@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { ProgressBar, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { addObjective, getObjective } from './Action';
+import { addObjective } from './Action';
 
 function CreateOKR(props) {
   const [objective, setObjective] = useState({
@@ -24,23 +24,9 @@ function CreateOKR(props) {
         if (response && !response?.errorMessage && !response?.error) {
           props?.handleAlert('Obejctive created', 'success');
           props?.closeNewOkr();
+          props?.getObjective();
         } else {
           props?.handleAlert(!response?.errorMessage || !response?.error || 'Something went wrong', 'error');
-        }
-      })
-      .catch((error) => {
-        props?.handleAlert(error?.message || 'Something went wrong', 'error');
-      });
-  };
-
-  const getObjective = () => {
-    props
-      ?.getObjective()
-      .then((response) => {
-        if (response && !response?.errorMessage && !response?.error) {
-          console.log(response);
-        } else {
-          props?.handleAlert(response?.errorMessage || response?.error || 'Something went wrong', 'error');
         }
       })
       .catch((error) => {
@@ -53,10 +39,6 @@ function CreateOKR(props) {
       addObjective();
     }
   };
-
-  useEffect(() => {
-    getObjective();
-  }, []);
 
   return (
     <div className='new-okr-container' onKeyPress={handleKeyPress}>
@@ -94,7 +76,6 @@ function CreateOKR(props) {
 
 const mapDispatchToProps = {
   addObjective,
-  getObjective,
 };
 
 export default connect(null, mapDispatchToProps)(CreateOKR);
