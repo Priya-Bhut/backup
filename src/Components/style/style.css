@@ -3,13 +3,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=M+PLUS+2:wght@300;400;500;600&family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
-@import './inviteUser.css';
+@import './inviteuser.css';
 @import './sidemenu.css';
 @import './sidebar.css';
 @import './graph.css';
-@import './IndividualOKR.css';
+@import './Individualokr.css';
 @import './utility.css';
-@import './tempOKR.css';
+@import './tempokr.css';
+@import './calenderpicker.css';
 
 * {
   margin: 0;
