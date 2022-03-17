@@ -118,7 +118,7 @@
   flex-grow: 1;
   float: right;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .i-pencil {
   color: rgb(67, 122, 211);
