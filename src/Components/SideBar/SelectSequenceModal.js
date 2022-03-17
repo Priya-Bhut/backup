@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
+import { Droppable } from 'react-beautiful-dnd';
+import { Draggable } from 'react-beautiful-dnd';
+import { DragDropContext } from 'react-beautiful-dnd';
 import { Modal, Button } from 'react-bootstrap';
+
 import workFlow from '../../images/workflow.png';
 
 function SelectSequenceModal(props) {
@@ -10,6 +14,25 @@ function SelectSequenceModal(props) {
       percentage: '',
     },
   ]);
+  // const addmile = [
+  //   {
+  //     id: '1',
+  //     milestoneName: '',
+  //   },
+  // ];
+  const [data, setData] = useState(addMilestones);
+  const reorder = (data, startIndex, endIndex) => {
+    const result = Array.from(data);
+    console.log(result);
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+    setData(result);
+  };
+
+  const onEnd = (result) => {
+    console.log(result);
+    reorder(data, result.source.index, result.destination.index);
+  };
 
   const { selectSequence } = props;
   const addMileStoneSequence = () => {
@@ -77,24 +100,44 @@ function SelectSequenceModal(props) {
           <h5>Milestones</h5>
           <hr></hr>
 
-          {addMilestones?.map((index, abc) => (
-            <div key={index.id}>
+          {addMilestones?.map((index123, abc) => (
+            <div key={index123.id}>
               <div className='milestone'>
-                <img src={workFlow} alt='images' className='workflowimg'></img>
-                <i className='fas fa-ellipsis-v'></i>
-                <input
-                  type='text'
-                  name='Milestone-name'
-                  placeholder='Milestone Name'
-                  onChange={(e) => handleChange(e, index.id)}
-                ></input>
+                <DragDropContext onDragEnd={onEnd}>
+                  <Droppable droppableId='droppable'>
+                    {(provided) => (
+                      <div ref={provided.innerRef}>
+                        {addMilestones.map((item, index) => (
+                          <Draggable draggableId={item.id} key={item.id} index={index}>
+                            {(provided) => (
+                              <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                                <div>
+                                  <img src={workFlow} alt='images' className='workflowimg'></img>
+                                  <i className='fas fa-ellipsis-v'></i>
+                                  <input
+                                    type='text'
+                                    name='Milestone-name'
+                                    placeholder='Milestone Name'
+                                    onChange={(e) => handleChange(e, index123.id)}
+                                  ></input>
+                                </div>
+                              </div>
+                            )}
+                          </Draggable>
+                        ))}
+                        {provided.placeholder}
+                      </div>
+                    )}
+                  </Droppable>
+                </DragDropContext>
+
                 <div className='milestone2-box'>
                   <input
                     type='number'
                     name='current-percentage'
-                    onChange={(e) => handleChange(e, index.id)}
+                    onChange={(e) => handleChange(e, index123.id)}
                     disabled={`${abc === 0 ? 'percentageinput' : ''}`}
-                    value={`${abc === 0 ? '0' : index.percentage}`}
+                    value={`${abc === 0 ? '0' : index123.percentage}`}
                   ></input>
                   <i className='fas fa-percentage unit'></i>
                 </div>
@@ -103,7 +146,7 @@ function SelectSequenceModal(props) {
                   <i className='fas fa-percentage unit'></i>
                 </div>
                 <i
-                  onClick={() => deleteMileStoneSequence(index.id)}
+                  onClick={() => deleteMileStoneSequence(index123.id)}
                   className={`fa fa-times fa-lg  ${abc === 0 ? 'nodeletemilestone' : 'deletemilestone'}`}
                 ></i>
               </div>
