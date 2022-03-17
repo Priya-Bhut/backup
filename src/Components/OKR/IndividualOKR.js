@@ -6,12 +6,12 @@ import 'react-datepicker/dist/react-datepicker.css';
 import 'font-awesome/css/font-awesome.min.css';
 import SecondHeader from './SecondHeader';
 import CreateOKR from './CreateOKR';
+import { getObjective } from './Action';
+import { connect } from 'react-redux';
 
-export default class IndividualOKR extends Component {
-  state = { isActive: false };
-
-  constructor() {
-    super();
+class IndividualOKR extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       newChild: [],
       id: 0,
@@ -99,30 +99,52 @@ export default class IndividualOKR extends Component {
   handleStartDate = (date) => {
     this.setState({ startDate: date });
   };
-  handleRange = (startDate, endDate) => {
-    this.setState({ startDate: new Date(startDate), endDate: new Date(endDate) });
+
+  getObjective = () => {
+    this.props
+      ?.getObjective()
+      .then((response) => {
+        if (response && !response?.errorMessage && !response?.error) {
+          console.log(response);
+        } else {
+          this.props?.handleAlert(response?.errorMessage || response?.error || 'Something went wrong', 'error');
+        }
+      })
+      .catch((error) => {
+        this.props?.handleAlert(error?.message || 'Something went wrong', 'error');
+      });
+  };
+
+  componentDidMount = () => {
+    this.getObjective();
   };
   render() {
-    const { startDate, endDate, isNewOkr } = this.state;
-    /* console.log("main: ", this.state.Newchild); */
+    const { isNewOkr, startDate, endDate } = this.state;
+
     return (
       <>
         <SecondHeader addNewOkr={this.addNewOkr} />
         <div className='main'>
-          {isNewOkr && <CreateOKR closeNewOkr={this.closeNewOkr} handleAlert={this.props.handleAlert} />}
+          {isNewOkr && (
+            <CreateOKR
+              closeNewOkr={this.closeNewOkr}
+              handleAlert={this.props.handleAlert}
+              getObjective={this.getObjective}
+            />
+          )}
           <div className='mainOKR'>
             <div className='parent'>
               <div className='all-content'>
                 <div className='name-tree'>
-                  <i className='fas fa-dot-circle treeConnectorDot'></i> <span>OKR</span>
+                  <i className='fa fa-dot-circle-o treeConnectorDot'></i> <span>OKR</span>
                   <div className='addChild-btn'>
-                    <i className='fa fa-plus-circle ' onClick={(e) => this.addNewChild(e)}>
+                    <i className='fa fa-plus-circle' onClick={(e) => this.addNewChild(e)}>
                       Add New Key Result
                     </i>
                   </div>
                   <div className='note-alignment'>
                     <div className='notes'>
-                      <i className='far fa-sticky-note'></i>
+                      <i className='fa fa-sticky-note'></i>
                     </div>
                     <div className='alignment'>
                       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' width='20' height='20'>
@@ -141,7 +163,7 @@ export default class IndividualOKR extends Component {
                 </div>
                 <div className='date-time'>
                   <div className='calender'>
-                    <i className='far fa-calendar-alt' onClick={this.handleCalender}></i>
+                    <i className='fa fa-calendar-alt' onClick={this.handleCalender}></i>
                     {this.state.isActive && (
                       <div className='calender-main'>
                         <div className='calender-and-status'>
@@ -201,12 +223,13 @@ export default class IndividualOKR extends Component {
                         </div>
                       </div>
                     )}
+                    ;
                   </div>
                   &nbsp;
                   <div className='user'>
-                    <i className='fas fa-user-circle'></i>
+                    <i className='fa fa-user-circle'></i>
                   </div>
-                </div>{' '}
+                </div>
                 <div className='trackSelect'></div>
                 <div className='progressBar'>
                   <div
@@ -219,12 +242,12 @@ export default class IndividualOKR extends Component {
                       textValue: '50',
                     }}
                   >
-                    <input type='range' min='0' max='100' step='10' defaultValue='75' />
+                    <input type='range' min='0' max='100' step='10' defaultValue='0' />
                     <output></output>
                   </div>
                   <span className='showRange'> 100% </span>
                   <div className='update'>
-                    <i data-toggle='tooltip' title='Update' className='fas fa-pencil-alt i-pencil' />
+                    <i data-toggle='tooltip' title='Update' className='fa fa-pencil i-pencil' />
                     <i className='fa fa-ellipsis-h other' aria-hidden='true'></i>
                   </div>
                 </div>
@@ -248,3 +271,8 @@ export default class IndividualOKR extends Component {
     );
   }
 }
+const mapDispatchToProps = {
+  getObjective,
+};
+
+export default connect(null, mapDispatchToProps)(IndividualOKR);
