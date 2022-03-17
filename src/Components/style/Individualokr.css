@@ -127,7 +127,7 @@
   flex-grow: 1;
   float: right;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .i-pencil {
   color: rgb(67, 122, 211);
@@ -147,42 +147,6 @@
   border-radius: 12px;
   cursor: pointer;
   box-shadow: rgb(50 50 105 / 15%) 0px 2px 5px 0px, rgb(0 0 0 / 5%) 0px 1px 1px 0px;
-}
-.Line {
-  width: 100%;
-  height: 1px;
-  background-color: black;
-}
-.datePickerWrap {
-  display: flex;
-  flex-direction: column;
-}
-.dateConfirmation {
-  background-color: white;
-  position: absolute;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  width: 484px;
-  margin-left: -234px;
-  height: 70px;
-  margin-top: 274px;
-  border: 1px solid #aeaeae;
-  border-radius: 5px;
-}
-.dateConfirmation .buttons button {
-  border-radius: 5px;
-  padding: 3px;
-  outline: none;
-  border: none;
-}
-.dateConfirmation .buttons button:nth-child(1) {
-  background-color: white;
-}
-.dateConfirmation .buttons button:nth-child(2) {
-  background-color: #0366d6;
-  color: white;
 }
 /* -------------------------------------- TREE CREATE -------------------------------------- */
 .main-tree {
@@ -306,23 +270,3 @@
 }
 
 /* ------------------------------------- DATE PICKER -------------------------------------- */
-.datePicker {
-  display: flex;
-  position: absolute;
-  margin-left: -234px;
-}
-.range-picker {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #aeaeae;
-  border-radius: 5px;
-  width: 150px;
-  height: 100%;
-  align-items: center;
-  background-color: white;
-}
-.range-picker span {
-  width: 100%;
-  text-align: center;
-  margin: 9.5px 0;
-}

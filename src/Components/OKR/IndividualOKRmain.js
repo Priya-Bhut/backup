@@ -62,62 +62,76 @@ export default class IndividualOKRmain extends Component {
               <div className='calender'>
                 <i className='fa fa-calendar-alt' onClick={this.handleCalender}></i>
                 {this.state.isActive && (
-                  <div className='datePickerWrap'>
-                    <div className='datePicker'>
-                      <DatePicker
-                        selected={this.state.startDate}
-                        onChange={(date) => this.handleStartDate(date)}
-                        selectsStart
-                        startDate={this.state.startDate}
-                        endDate={this.state.endDate}
-                        inline
-                        fixedHeight
-                      />
-                      <DatePicker
-                        selected={this.state.endDate}
-                        onChange={(date) => this.handleEndDate(date)}
-                        selectsEnd
-                        startDate={this.state.startDate}
-                        endDate={this.state.endDate}
-                        minDate={this.state.startDate}
-                        inline
-                        fixedHeight
-                      />
-                      <div className='range-picker'>
-                        <span onClick={() => this.handleRange('1/1/22', '3/31/22')}>Q1-2022</span>
-                        <span onClick={() => this.handleRange('4/1/22', '6/30/22')}>Q2-2022</span>
-                        <span onClick={() => this.handleRange('7/1/22', '9/30/22')}>Q3-2022</span>
-                        <span onClick={() => this.handleRange('10/1/22', '12/31/22')}>Q4-2022</span>
-                        <div className='Line'></div>
-                        <span onClick={() => this.handleRange('1/1/22', '12/31/22')}>Annual-2022</span>
-                        <span onClick={() => this.handleRange('1/1/23', '12/31/23')}>Annual-2023</span>
-                        <span onClick={() => this.handleRange('1/1/24', '12/31/24')}>Annual-2024</span>
-                        <span onClick={() => this.handleRange('1/1/25', '12/31/25')}>Annual-2025</span>
-                        <div className='Line'></div>
-                        <span>Custom Range</span>
+                  <div className='calender-main'>
+                    <div className='calender-and-status'>
+                      <div className='calender-header'>
+                        <div className='start-header'>Start Date</div>
+                        <div className='end-header'>End Date</div>
+                      </div>
+                      <div className='calender-actual'>
+                        <DatePicker
+                          selected={startDate}
+                          onChange={(date) => this.handleStartDate(date)}
+                          selectsStart
+                          startDate={startDate}
+                          endDate={endDate}
+                          inline
+                          fixedHeight
+                        />
+                        <div className='line-v'></div>
+                        <DatePicker
+                          selected={endDate}
+                          onChange={(date) => this.handleEndDate(date)}
+                          selectsEnd
+                          startDate={startDate}
+                          endDate={endDate}
+                          inline
+                          fixedHeight
+                        />
+                      </div>
+                      <div className='line-h'></div>
+                      <div className='calender-date-and-confirm'>
+                        <div className='calender-date'>{`${startDate.getDate()}/${startDate.getMonth()}/${startDate.getYear()} - ${endDate.getDate()}/${endDate.getMonth()}/${endDate.getYear()}`}</div>
+                        <div className='calender-confirm'>
+                          <button onClick={this.handleCalender}>Cancel</button>
+                          <button onClick={this.handleCalender}>Apply</button>
+                        </div>
                       </div>
                     </div>
-                    <div className='dateConfirmation'>
-                      <div className='date-status'>{`${startDate.getDate()}/${startDate.getMonth()}/${startDate.getYear()} - ${endDate.getDate()}/${endDate.getMonth()}/${endDate.getYear()}`}</div>
-                      <div className='buttons'>
-                        <button onClick={this.handleCalender}>Cancel</button>
-                        <button onClick={this.handleCalender}>Apply</button>
+                    <div className='line-v'></div>
+                    <div className='calender-ranges'>
+                      <div className='range-quarter'>
+                        <span onClick={() => this.handleRange('1/1/22', '3/31/22')}>q1 - 2022</span>
+                        <span onClick={() => this.handleRange('4/1/22', '6/30/22')}>q2 - 2022</span>
+                        <span onClick={() => this.handleRange('7/1/22', '9/30/22')}>q3 - 2022</span>
+                        <span onClick={() => this.handleRange('10/1/22', '12/31/22')}>q4 - 2022</span>
+                      </div>
+                      <div className='line-h'></div>
+                      <div className='range-annual'>
+                        <span onClick={() => this.handleRange('1/1/22', '12/31/22')}>annual - 2022</span>
+                        <span onClick={() => this.handleRange('1/1/23', '12/31/23')}>annual - 2023</span>
+                        <span onClick={() => this.handleRange('1/1/24', '12/31/24')}>annual - 2024</span>
+                        <span onClick={() => this.handleRange('1/1/25', '12/31/25')}>annual - 2025</span>
+                      </div>
+                      <div className='line-h'></div>
+                      <div className='range-custom'>
+                        <span>Custom Range</span>
                       </div>
                     </div>
                   </div>
                 )}
-              </div>{' '}
+              </div>
               &nbsp;
               <div className='user'>
                 <i className='fa fa-user-circle'></i>
               </div>
-            </div>{' '}
+            </div>
             <div className='trackSelect' onClick={this.toggleSideBar}>
               % Percentage Tracker
             </div>
             <div className='progressBar'>
               <div className='range-slider'>
-                <input type='range' min='0' max='100' step='10' defaultValue='0' />{' '}
+                <input type='range' min='0' max='100' step='10' defaultValue='0' />
               </div>
               <span className='showRange'> 0% </span>
               <div className='update'>

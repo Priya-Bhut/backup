@@ -10,6 +10,7 @@
 @import './Individualokr.css';
 @import './utility.css';
 @import './tempokr.css';
+@import './calenderpicker.css';
 
 * {
   margin: 0;

@@ -1,0 +1,109 @@
+.calender-main {
+  display: flex;
+  position: absolute;
+  background-color: white;
+  margin-left: -141px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #999999;
+}
+.calender-and-status {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0;
+}
+.calender-ranges {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 0;
+}
+.calender-actual {
+  display: flex;
+  flex-direction: row;
+  border-radius: 0;
+}
+.calender-date-and-confirm {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 0;
+  padding: 7px;
+  align-items: center;
+}
+.react-datepicker {
+  border: none !important;
+  border-radius: 0 !important;
+  font-size: 0.65rem !important;
+}
+.calender-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: 7px;
+  background-color: #f0f0f0;
+}
+.calender-header > * {
+  width: 100%;
+  margin-left: 2px;
+}
+.react-datepicker__header {
+  background-color: white !important;
+}
+.line-v {
+  background-color: #999999;
+  width: 1px;
+  height: initial;
+}
+.line-h {
+  background-color: #999999;
+  width: 100%;
+  height: 1px;
+}
+.calender-date {
+  color: #90a5b7;
+}
+.calender-confirm > button {
+  border: none;
+  outline: none;
+  padding: 3px;
+}
+.calender-confirm > button:nth-child(2) {
+  background-color: #0366d6;
+  border-radius: 0 5px 5px 0;
+  color: white;
+  margin-left: 3px;
+}
+.calender-confirm > button:nth-child(1) {
+  background-color: white;
+  border-radius: 5px 0 0 5px;
+  margin-right: 3px;
+}
+.calender-ranges > * {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.calender-ranges span {
+  width: 100%;
+  text-align: center;
+  padding: 3px 10px;
+}
+.react-datepicker__day {
+  width: 1.2rem !important;
+  line-height: 1.2rem !important;
+  margin: 0 !important;
+}
+.react-datepicker__day-name {
+  width: 1.2rem !important;
+  margin: 0 !important;
+}
+.react-datepicker__current-month {
+  font-size: 0.8em !important;
+}
+.react-datepicker__navigation-icon {
+  position: relative;
+  margin-top: 5px;
+  font-size: 10px;
+  width: 0;
+}
