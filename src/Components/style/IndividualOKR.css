@@ -17,8 +17,9 @@
   border-radius: 1.25rem;
 }
 .parent:hover {
-  background-color: rgba(126, 126, 126, 0.342);
-  min-height: 50px;
+  background-color: #f9fbfd;
+  /* opacity: 20%; */
+  /* min-height: 50px; */
   border-radius: 10px;
 }
 .child:hover {
@@ -565,7 +566,7 @@
   box-shadow: 0 0 5px 2px gray;
   margin:15px;
   font-size: 20px;
-  padding: 20px 17px;
+  padding: 13px 17px;
 }
 
 .new-okr-title-container{
@@ -617,10 +618,10 @@
 }
 
 .new-okr-save-button{
-  height: 1.1rem;  
-  width: 5rem; 
+  height: 1.5rem;  
+  width: max-content; 
   justify-content: center !important;
-  line-height: 0.9rem !important;
+  line-height: 1.4rem !important;
   padding: 0 !important;
 }
 

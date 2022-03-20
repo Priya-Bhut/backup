@@ -18,24 +18,28 @@ function CreateOKR(props) {
   });
 
   const addObjective = () => {
-    props
-      ?.addObjective(objective)
-      .then((response) => {
-        if (response && !response?.errorMessage && !response?.error) {
-          props?.handleAlert('Obejctive created', 'success');
-          props?.closeNewOkr();
-          props?.getObjective();
-        } else {
-          props?.handleAlert(!response?.errorMessage || !response?.error || 'Something went wrong', 'error');
-        }
-      })
-      .catch((error) => {
-        props?.handleAlert(error?.message || 'Something went wrong', 'error');
-      });
+    if (objective.name.trim() !== '') {
+      props
+        ?.addObjective(objective)
+        .then((response) => {
+          if (response && !response?.errorMessage && !response?.error) {
+            props?.handleAlert('Obejctive created', 'success');
+            props?.closeNewOkr();
+            props?.getObjective();
+          } else {
+            props?.handleAlert(!response?.errorMessage || !response?.error || 'Something went wrong', 'error');
+          }
+        })
+        .catch((error) => {
+          props?.handleAlert(error?.message || 'Something went wrong', 'error');
+        });
+    } else {
+      props?.handleAlert('Enter Objective Name', 'error');
+    }
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter' && objective.name.trim() !== '') {
+    if (e.key === 'Enter') {
       addObjective();
     }
   };
