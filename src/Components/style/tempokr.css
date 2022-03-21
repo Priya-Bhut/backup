@@ -1,0 +1,72 @@
+.okr-view .level2::before,
+.okr-view .level3::before,
+.okr-view .level4::before,
+.okr-view .level5::before {
+  content: '';
+  border: solid rgb(124, 121, 121);
+  border-width: 0 0 2px 2px;
+  border-radius: 0 0 0 5px;
+  position: absolute;
+  height: 17px;
+  width: 24px;
+  margin-top: -6px;
+}
+.okr-view ::before {
+  box-sizing: content-box !important;
+}
+.okr-view .level1 {
+  padding-left: 10px;
+}
+.okr-view .level2 {
+  padding-left: 40px;
+}
+.level2::before {
+  left: 82px;
+}
+.level3::before {
+  left: 112px;
+}
+.level4::before {
+  left: 142px;
+}
+.level5::before {
+  left: 172px;
+  width: 49px !important;
+}
+.okr-view .level1 {
+  padding-left: 10px;
+}
+.okr-view .level2 {
+  padding-left: 40px;
+}
+.okr-view .level3 {
+  padding-left: 70px;
+}
+.okr-view .level4 {
+  padding-left: 100px;
+}
+.okr-view .level5 {
+  padding-left: 155px;
+}
+.okr-view table {
+  text-align: start;
+}
+.okr-view .mui-icon {
+  font-size: 0.8em;
+  color: lightskyblue;
+}
+.okr-view .main-table:hover .level2::before,
+.okr-view .main-table:hover .level3::before,
+.okr-view .main-table:hover .level4::before,
+.okr-view .main-table:hover .level5::before {
+  display: block;
+}
+.okr-view .fa {
+  margin: 0 10px 0 0;
+}
+.okr-view .main-table:hover .fa {
+  visibility: visible;
+}
+.okr-view .name {
+  width: 30%;
+}

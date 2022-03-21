@@ -1,220 +1,320 @@
-import { React, useState } from 'react';
-// import { Link } from 'react-router-dom';
-import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Nav } from 'react-bootstrap';
+import { Link, useParams } from 'react-router-dom';
+const SideMenu = (props) => {
+  const { menuType } = props;
+  const { organisationUrl } = useParams() || {};
+  const [isOpen, setIsOpen] = useState(false);
+  const [dropdown, setDropdown] = useState('');
+  // const [menuType, setMenuType] = useState(false);
+  const onHandleClick = (linkText = '') => {
+    if ((dropdown === linkText && isOpen) || !linkText) {
+      setIsOpen(false);
+    } else {
+      setDropdown(linkText);
+      setIsOpen(true);
+    }
+  };
+  const handleChange = () => {
+    props.handleMenu();
+  };
 
-function SideMenu(props) {
-  const { setExpendedMenu, showExpandedMenu } = props;
-  const [submenu, setSubmenu] = useState('');
-  const menuExpandToggle = () => {
-    setExpendedMenu(!showExpandedMenu);
-  };
-  const handleSubMenu = (menuName) => {
-    submenu === menuName ? setSubmenu('') : setSubmenu(menuName);
-  };
   return (
-    <div className={`side-menu ${showExpandedMenu && 'opened'}`}>
-      <span className='expander' onClick={() => menuExpandToggle()}>
-        <i className={`fa fa-chevron-${showExpandedMenu ? 'left' : 'right'}`} />
-      </span>
-
-      <div className='container'>
-        <div className={`data-left${showExpandedMenu ? '-opened' : ''}`}>
-          <div className='side-menu-item'>
-            <NavLink to='/home'>
-              <span className='link internal-item-left' onClick={() => handleSubMenu('home')}>
-                <i className='fa fa-home' />
-              </span>
-            </NavLink>
-            {/* {!showExpandedMenu && (
-              <div className='side-box-container'>
-                <span className='side-box-header'>Home</span>
-                <Link to='/home/alignments' className='side-box-item'>
-                  Alignments
-                </Link>
-                <Link to='/home/action-center' className='side-box-item'>
-                  Action Center
-                </Link>
-                <Link to='/home/dependencies' className='side-box-item'>
-                  Dependencies
-                </Link>
-                <Link to='/home/notes' className='side-box-item'>
-                  Notes
-                </Link>
-              </div>
-            )} */}
-            {/* {showExpandedMenu && (
-              <span className='internal-item-right'>
-                <span className='bold-font' onClick={() => handleSubMenu('home')}>
-                  Home &nbsp;
-                  <i className={`fa fa-chevron-${submenu === 'home' ? 'up' : 'down'} arrow`} />
-                </span>
-                {submenu === 'home' && (
-                  <div className='internal-sub-menu'>
-                    <Link to='/home/alignments' className='internal-sub-item'>
-                      Alignments
-                    </Link>
-                    <Link to='/home/action-center' className='internal-sub-item'>
-                      Action Center
-                    </Link>
-                    <Link to='/home/dependencies' className='internal-sub-item'>
-                      Dependencies
-                    </Link>
-                    <Link to='/home/notes' className='internal-sub-item'>
-                      Notes
-                    </Link>
-                  </div>
-                )}
-              </span>
-            )} */}
-          </div>
-          <div className='side-menu-item'>
-            <NavLink to='/graph'>
-              <span className='link internal-item-left' onClick={() => handleSubMenu('okr')}>
-                <i className='fa fa-crosshairs' />
-              </span>
-            </NavLink>
-            {/* {!showExpandedMenu && (
-              <span className='side-box-container'>
-                <span className='side-box-header'>OKRs</span>
-                <Link to='/okrs/all' className='side-box-item'>
-                  All My OKRs
-                </Link>
-                <Link to='/okrs/individual' className='side-box-item'>
-                  My Individual OKRs
-                </Link>
-                <Link to='/okrs/developer' className='side-box-item'>
-                  Developer OKRs
-                </Link>
-                <Link to='/okrs/org' className='side-box-item'>
-                  {`My Org's OKRs`}
-                </Link>
-              </span>
-            )} */}
-            {/* {showExpandedMenu && (
-              <span className='internal-item-right'>
-                <span className='bold-font' onClick={() => handleSubMenu('okr')}>
-                  OKRs &nbsp;
-                  <i className={`fa fa-chevron-${submenu === 'okr' ? 'up' : 'down'} arrow`} />
-                </span>
-                {submenu === 'okr' && (
-                  <div className='internal-sub-menu'>
-                    <Link to='/okrs/all' className='internal-sub-item'>
-                      All My OKRs
-                    </Link>
-                    <Link to='/okrs/individual' className='internal-sub-item'>
-                      My Individual OKRs
-                    </Link>
-                    <Link to='/okrs/developer' className='internal-sub-item'>
-                      Developer OKRs
-                    </Link>
-                    <Link to='/okrs/org' className='internal-sub-item'>
-                      {`My Org's OKRs`}
-                    </Link>
-                  </div>
-                )}
-              </span>
-            )} */}
-          </div>
-          {/*<div className='side-menu-item'>
-            <NavLink to='/tasks'>
-              <span className='link internal-item-left' onClick={() => handleSubMenu('task')}>
-                <i className='fa fa-tasks' />
-              </span>
-            </NavLink>
-            {!showExpandedMenu && (
-              <div className='side-box-container'>
-                <span className='side-box-header'>Tasks</span>
-                <Link to='/tasks/my-space' className='side-box-item'>
-                  My Space
-                </Link>
-                <Link to='/tasks/my-tasks' className='side-box-item'>
-                  My Tasks
-                </Link>
-                <Link to='/tasks/tasks-others' className='side-box-item'>
-                  My Tasks for Others
-                </Link>
-                <Link to='/tasks/org-tasks' className='side-box-item'>
-                  {`My Org's Tasks`}
-                </Link>
-              </div>
-            )}
-            {showExpandedMenu && (
-              <span className='internal-item-right'>
-                <span className='bold-font' onClick={() => handleSubMenu('task')}>
-                  Tasks&nbsp;
-                  <i className={`fa fa-chevron-${submenu === 'task' ? 'up' : 'down'} arrow`} />
-                </span>
-                {submenu === 'task' && (
-                  <div className='internal-sub-menu'>
-                    <Link to='/tasks/my-space' className='internal-sub-item'>
-                      My Space
-                    </Link>
-                    <Link to='/tasks/my-tasks' className='internal-sub-item'>
-                      My Tasks
-                    </Link>
-                    <Link to='/tasks/tasks-others' className='internal-sub-item'>
-                      My Tasks for Others
-                    </Link>
-                    <Link to='/tasks/org-tasks' className='internal-sub-item'>
-                      {`My Org's Tasks`}
-                    </Link>
-                  </div>
-                )}
-              </span>
-            )}
-          </div>
-          <div className='side-menu-item'>
-            <NavLink to='/cfrs'>
-              <span className='link internal-item-left' onClick={() => handleSubMenu('cfr')}>
-                <i className='fa fa-calendar' />
-              </span>
-            </NavLink>
-            {!showExpandedMenu && (
-              <div className='side-box-container'>
-                <span className='side-box-header'>CFRs</span>
-                <Link to='/cfr/leader' className='side-box-item'>
-                  Leader Board
-                </Link>
-                <Link to='/cfr/awards' className='side-box-item'>
-                  My Awards
-                </Link>
-                <Link to='/cfr/received' className='side-box-item'>
-                  Received
-                </Link>
-                <Link to='/cfr/given' className='side-box-item'>
-                  Given
-                </Link>
-              </div>
-            )}
-            {showExpandedMenu && (
-              <span className='internal-item-right'>
-                <span className='bold-font' onClick={() => handleSubMenu('cfr')}>
-                  CFRs&nbsp;
-                  <i className={`fa fa-chevron-${submenu === 'cfr' ? 'up' : 'down'} arrow`} />
-                </span>
-                {submenu === 'cfr' && (
-                  <div className='internal-sub-menu'>
-                    <Link to='/cfr/leader' className='internal-sub-item'>
-                      Leader Board
-                    </Link>
-                    <Link to='/cfr/awards' className='internal-sub-item'>
-                      My Awards
-                    </Link>
-                    <Link to='/cfr/received' className='internal-sub-item'>
-                      Received
-                    </Link>
-                    <Link to='/cfr/given' className='internal-sub-item'>
-                      Given
-                    </Link>
-                  </div>
-                )}
-              </span>
-            )}
-                </div>*/}
-        </div>
+    <div className='sidebar-main'>
+      <div className='sidebar-profile-section' onClick={handleChange}>
+        <span>{menuType ? <i className='fa fa-chevron-right' /> : <i className='fa fa-chevron-left' />}</span>
       </div>
+      {menuType ? (
+        <Nav className='flex-column nav-link'>
+          {/* Home */}
+          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
+            <div className='link-item' onClick={() => onHandleClick('home')}>
+              <p>
+                <i className='fa fa-home'></i>
+              </p>
+            </div>
+            <span className='side-menu-box side-menu-box-home'>
+              <p className='tooltip-header-text'>Home</p>
+              <div>
+                <Nav className='flex-column dropdown-item p-0'>
+                  <Link to={`/${organisationUrl}/alignments`}>
+                    <span>Alignments</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/action-center`}>
+                    <span>Action Center</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/dependencies`}>
+                    <span>Alignments and Dependencies</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/notes`}>
+                    <span>Notes</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/company-dashboard`}>
+                    <span>Company Dashboard</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/dept-hierarchy`}>
+                    <span>Department hierarchy</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/news-feed`}>
+                    <span>News Feed</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/org-hierarchy`}>
+                    <span>Organization hierarchy</span>
+                  </Link>
+                </Nav>
+              </div>
+            </span>
+          </div>
+          {/* OKRs */}
+          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
+            <div className='link-item' onClick={() => onHandleClick('organization')}>
+              <p>
+                <i className='fa fa-crosshairs'></i>
+              </p>
+            </div>
+            <span className='side-menu-box side-menu-box-okr'>
+              <p className='tooltip-header-text'>OKRs</p>
+              <div>
+                <Nav className='flex-column dropdown-item p-0'>
+                  <Link to={`/${organisationUrl}/all`}>
+                    <span>All My OKRs</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/individual`}>
+                    <span>My Individual OKRs</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/developer`}>
+                    <span>Developer OKRs</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/org`}>
+                    <span>My Org's OKRs</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/watched`}>
+                    <span>Watched OKRs</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/shared`}>
+                    <span>Shared OKRs</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/emplyee`}>
+                    <span>All Employees' OKRs</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/department`}>
+                    <span>All Departments' OKRs</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/manager`}>
+                    <span>Manager's OKRs</span>
+                  </Link>
+                </Nav>
+              </div>
+            </span>
+          </div>
+          {/* Tasks */}
+          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
+            <div className='link-item' onClick={() => onHandleClick('task')}>
+              <p>
+                <i className='fa fa-list'></i>
+              </p>
+            </div>
+            <span className='side-menu-box side-menu-box-task'>
+              <p className='tooltip-header-text'>Tasks</p>
+              <div>
+                <Nav className='flex-column dropdown-item p-0'>
+                  <Link to={`/${organisationUrl}/my-task`}>
+                    <span>My Tasks</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/task-others`}>
+                    <span>My Tasks for Others</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/org-task`}>
+                    <span>My Org's Tasks</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/empl-task`}>
+                    <span>All Employees' Tasks</span>
+                  </Link>
+                </Nav>
+              </div>
+            </span>
+          </div>
+          {/* Leave */}
+          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
+            <div className='link-item' onClick={() => onHandleClick('leave')}>
+              <p className='my-2'>
+                <i className='fa fa-commenting'></i>
+              </p>
+            </div>
+            <span className='side-menu-box side-menu-box-cfr'>
+              <p className='tooltip-header-text'>CFR</p>
+              <div>
+                <Nav className='flex-column dropdown-item p-0'>
+                  <Link to={`/${organisationUrl}/received`}>
+                    <span>Received</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/given`}>
+                    <span>Given</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/award-received`}>
+                    <span>Awards Received</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/award-given`}>
+                    <span>Awards Given</span>
+                  </Link>
+                </Nav>
+              </div>
+            </span>
+          </div>
+        </Nav>
+      ) : (
+        <Nav className='flex-column nav-link p-0'>
+          {/* Home */}
+          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
+            <div className='link-item' onClick={() => onHandleClick('home')}>
+              <p>
+                <i className='fa fa-home'></i>
+                <span>Home</span>
+              </p>
+              {isOpen && dropdown === 'home' ? (
+                <i className='fa fa-chevron-up'></i>
+              ) : (
+                <i className='fa fa-chevron-down'></i>
+              )}
+            </div>
+            {isOpen && dropdown === 'home' && (
+              <Nav className='flex-column dropdown-item internal-menu-dropdown'>
+                <Link to={`/${organisationUrl}/alignments`}>
+                  <span>Alignments</span>
+                </Link>
+                <Link to={`/${organisationUrl}/action-center`}>
+                  <span>Action Center</span>
+                </Link>
+                <Link to={`/${organisationUrl}/dependencies`}>
+                  <span>Alignments and Dependencies</span>
+                </Link>
+                <Link to={`/${organisationUrl}/notes`}>
+                  <span>Notes</span>
+                </Link>
+                <Link to={`/${organisationUrl}/company-dashboard`}>
+                  <span>Company Dashboard</span>
+                </Link>
+                <Link to={`/${organisationUrl}/dept-hierarchy`}>
+                  <span>Department hierarchy</span>
+                </Link>
+                <Link to={`/${organisationUrl}/news-feed`}>
+                  <span>News Feed</span>
+                </Link>
+                <Link to={`/${organisationUrl}/org-hierarchy`}>
+                  <span>Organization hierarchy</span>
+                </Link>
+              </Nav>
+            )}
+          </div>
+          {/* OKRs */}
+          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
+            <div className='link-item' onClick={() => onHandleClick('organization')}>
+              <p>
+                <i className='fa fa-crosshairs'></i>
+                <span>OKRs</span>
+              </p>
+              {isOpen && dropdown === 'organization' ? (
+                <i className='fa fa-chevron-up'></i>
+              ) : (
+                <i className='fa fa-chevron-down'></i>
+              )}
+            </div>
+            {isOpen && dropdown === 'organization' && (
+              <Nav className='flex-column dropdown-item internal-menu-dropdown'>
+                <Link to={`/${organisationUrl}/all`}>
+                  <span>All My OKRs</span>
+                </Link>
+                <Link to={`/${organisationUrl}/individual`}>
+                  <span>My Individual OKRs</span>
+                </Link>
+                <Link to={`/${organisationUrl}/developer`}>
+                  <span>Developer OKRs</span>
+                </Link>
+                <Link to={`/${organisationUrl}/org`}>
+                  <span>My Org's OKRs</span>
+                </Link>
+                <Link to={`/${organisationUrl}/watched`}>
+                  <span>Watched OKRs</span>
+                </Link>
+                <Link to={`/${organisationUrl}/shared`}>
+                  <span>Shared OKRs</span>
+                </Link>
+                <Link to={`/${organisationUrl}/emplyee`}>
+                  <span>All Employees' OKRs</span>
+                </Link>
+                <Link to={`/${organisationUrl}/department`}>
+                  <span>All Departments' OKRs</span>
+                </Link>
+                <Link to={`/${organisationUrl}/manager`}>
+                  <span>Manager's OKRs</span>
+                </Link>
+              </Nav>
+            )}
+          </div>
+          {/* Tasks */}
+          <div className={`dropdown-link ${menuType && 'dropdown-link3'}`}>
+            <div className='link-item' onClick={() => onHandleClick('tasks')}>
+              <p>
+                <i className='fa fa-list'></i>
+                <span>Tasks</span>
+              </p>
+              {isOpen && dropdown === 'tasks' ? (
+                <i className='fa fa-chevron-up'></i>
+              ) : (
+                <i className='fa fa-chevron-down'></i>
+              )}
+            </div>
+            {isOpen && dropdown === 'tasks' && (
+              <Nav className='flex-column dropdown-item internal-menu-dropdown'>
+                <Link to={`/${organisationUrl}/my-task`}>
+                  <span>My Tasks</span>
+                </Link>
+                <Link to={`/${organisationUrl}/task-others`}>
+                  <span>My Tasks for Others</span>
+                </Link>
+                <Link to={`/${organisationUrl}/org-task`}>
+                  <span>My Org's Tasks</span>
+                </Link>
+                <Link to={`/${organisationUrl}/empl-task`}>
+                  <span>All Employees' Tasks</span>
+                </Link>
+              </Nav>
+            )}
+          </div>
+          {/* Leave */}
+          <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
+            <div className='link-item' onClick={() => onHandleClick('leave')}>
+              <p className='my-2'>
+                <i className='fa fa-commenting'></i>
+                <span>CFR</span>
+              </p>
+              {isOpen && dropdown === 'leave' ? (
+                <i className='fa fa-chevron-up'></i>
+              ) : (
+                <i className='fa fa-chevron-down'></i>
+              )}
+            </div>
+            {isOpen && dropdown === 'leave' && (
+              <Nav className='flex-column dropdown-item internal-menu-dropdown'>
+                <Link to={`/${organisationUrl}/received`}>
+                  <span>Received</span>
+                </Link>
+                <Link to={`/${organisationUrl}/given`}>
+                  <span>Given</span>
+                </Link>
+                <Link to={`/${organisationUrl}/award-received`}>
+                  <span>Awards Received</span>
+                </Link>
+                <Link to={`/${organisationUrl}/award-given`}>
+                  <span>Awards Given</span>
+                </Link>
+              </Nav>
+            )}
+          </div>
+        </Nav>
+      )}
     </div>
   );
-}
+};
 
 export default SideMenu;

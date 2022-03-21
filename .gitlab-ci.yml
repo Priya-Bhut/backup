@@ -24,4 +24,4 @@ build:
          - build/    
       expire_in: 1 hour
    tags:
-    - brilcrm      
+    - brilcrm
