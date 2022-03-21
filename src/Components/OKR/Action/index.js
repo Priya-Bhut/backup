@@ -18,6 +18,22 @@ export const addObjective = (data) => {
       .catch((error) => idx(error, (_) => _.response.data));
 };
 
+export const addKeyResult = (data) => {
+  return () =>
+    axios({
+      method: 'post',
+      url: `${API_URL}objective`,
+      data,
+    })
+      .then((response) => {
+        if (response?.data) {
+          return response?.data;
+        }
+        return response.data;
+      })
+      .catch((error) => idx(error, (_) => _.response.data));
+};
+
 export const getObjective = () => {
   return () =>
     axios({

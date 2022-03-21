@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { ProgressBar, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { addObjective } from './Action';
+import { addKeyResult } from './Action';
 
-function CreateOKR(props) {
-  const [objective, setObjective] = useState({
+function CreateKeyResult(props) {
+  const [keyResult, setKeyResult] = useState({
     name: '',
     assignees: [],
     timePeriod: {
@@ -14,13 +14,13 @@ function CreateOKR(props) {
       startDate: '2022-03-15',
       endDate: '2022-03-15',
     },
-    overAllProgess: 0,
+    progress: 0,
   });
 
-  const addObjective = () => {
-    if (objective.name.trim() !== '') {
+  const addKeyResult = () => {
+    if (keyResult.name.trim() !== '') {
       props
-        ?.addObjective(objective)
+        ?.addKeyResult(keyResult)
         .then((response) => {
           if (response && !response?.errorMessage && !response?.error) {
             props?.handleAlert('Obejctive created', 'success');
@@ -34,24 +34,24 @@ function CreateOKR(props) {
           props?.handleAlert(error?.message || 'Something went wrong', 'error');
         });
     } else {
-      props?.handleAlert('Enter Objective Name', 'error');
+      props?.handleAlert('Enter keyResult Name', 'error');
     }
   };
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      addObjective();
+      addKeyResult();
     }
   };
 
   return (
     <div className='new-okr-container' onKeyPress={handleKeyPress}>
       <div className='new-okr-title-container w-55'>
-        <i className='fas fa-crosshairs'></i>
+        <i className='fas fa-key'></i>
         <input
           type='text'
-          placeholder='Create your new objective'
-          onChange={(e) => setObjective({ ...objective, name: e?.target?.value })}
+          placeholder='Enter your key result'
+          onChange={(e) => setKeyResult({ ...keyResult, name: e?.target?.value })}
         />
       </div>
       <div className='w-20 new-okr-calendar-container'>
@@ -64,12 +64,11 @@ function CreateOKR(props) {
         <div className='p-l-5 new-okr-assignee-container'>
           <i className='fa fa-user-circle'></i>
           <i className='fa fa-user-circle'></i>
-          <i className='fa fa-user-circle'></i>
         </div>
       </div>
       <div className='w-25 new-okr-save-progress-container'>
         <ProgressBar now={10} label={`0%`} />
-        <Button className='new-okr-save-button' onClick={addObjective}>
+        <Button className='new-okr-save-button' onClick={addKeyResult}>
           Save
         </Button>
         <i className='fas fa-times' onClick={props?.closeNewOkr}></i>
@@ -79,7 +78,7 @@ function CreateOKR(props) {
 }
 
 const mapDispatchToProps = {
-  addObjective,
+  addKeyResult,
 };
 
-export default connect(null, mapDispatchToProps)(CreateOKR);
+export default connect(null, mapDispatchToProps)(CreateKeyResult);
