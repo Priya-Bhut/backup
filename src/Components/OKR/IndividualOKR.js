@@ -223,7 +223,6 @@ class IndividualOKR extends Component {
                         </div>
                       </div>
                     )}
-                    ;
                   </div>
                   &nbsp;
                   <div className='user'>

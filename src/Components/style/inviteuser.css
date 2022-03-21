@@ -12,11 +12,11 @@
   font-size: 12px;
 }
 
-.inviteUserErrorMessage{
+.inviteUserErrorMessage {
   font-size: 0.9rem;
   color: rgb(209, 28, 28);
   padding: 0.3rem 0.5rem;
-  margin: 0
+  margin: 0;
 }
 
 /* <---------------------------------------------- User Table ------------------------------------------------------------> */
@@ -34,8 +34,26 @@
   border: 0;
 }
 
-.secondHeader h5{
+.secondHeader h5 {
   margin: 0;
+}
+.slideTab {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+
+.IndividualOKRs,
+.CorporateOKRs {
+  display: flex;
+  flex-direction: row;
+  margin-left:15px;
+  align-items: center;
+  color: rgba(87, 87, 87, 0.5);
+}
+.IndividualOKRs:hover,
+.CorporateOKRs:hover {
+  color: #12263f;
 }
 
 .userTableDesign {
@@ -302,11 +320,8 @@
   left: 1rem;
 }
 
-@media (max-width:425px){
+@media (max-width: 425px) {
   .userTableDesign {
     width: auto;
   }
-
-  
-
 }

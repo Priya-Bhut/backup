@@ -51,8 +51,31 @@ function App() {
       <Routes>
         <Route exact restricted={true} path='/:organisationUrl/*' element={<Layout />}>
           <Route exact path='alignments' element={<Graph />} />
-          <Route exact path='action-center' element={<IndividualOKR handleAlert={handleAlert} />} />
-          <Route path='*' exact element={<div>Coming Soon...</div>} />
+          <Route path='action-center' exact element={<div>Coming Soon...</div>} />
+          <Route path='dependencies' exact element={<div>Coming Soon...</div>} />
+          <Route path='notes' exact element={<div>Coming Soon...</div>} />
+          <Route path='company-dashboard' exact element={<div>Coming Soon...</div>} />
+          <Route path='dept-hierarchy' exact element={<div>Coming Soon...</div>} />
+          <Route path='news-feed' exact element={<div>Coming Soon...</div>} />
+          <Route path='org-hierarchy' exact element={<div>Coming Soon...</div>} />
+          <Route exact path='all' element={<IndividualOKR handleAlert={handleAlert} />} />
+          <Route path='individual' exact element={<div>Coming Soon...</div>} />
+          <Route path='developer' exact element={<div>Coming Soon...</div>} />
+          <Route path='org' exact element={<div>Coming Soon...</div>} />
+          <Route path='watched' exact element={<div>Coming Soon...</div>} />
+          <Route path='shared' exact element={<div>Coming Soon...</div>} />
+          <Route path='emplyee' exact element={<div>Coming Soon...</div>} />
+          <Route path='department' exact element={<div>Coming Soon...</div>} />
+          <Route path='manager' exact element={<div>Coming Soon...</div>} />
+          <Route path='*' exact element={<div></div>} />
+          <Route path='my-task' exact element={<div>Coming Soon...</div>} />
+          <Route path='task-others' exact element={<div>Coming Soon...</div>} />
+          <Route path='org-task' exact element={<div>Coming Soon...</div>} />
+          <Route path='empl-task' exact element={<div>Coming Soon...</div>} />
+          <Route path='received' exact element={<div>Coming Soon...</div>} />
+          <Route path='given' exact element={<div>Coming Soon...</div>} />
+          <Route path='award-received' exact element={<div>Coming Soon...</div>} />
+          <Route path='award-given' exact element={<div>Coming Soon...</div>} />
         </Route>
         <Route path='*' element={<Home />} />
       </Routes>
