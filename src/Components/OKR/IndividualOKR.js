@@ -134,7 +134,7 @@ class IndividualOKR extends Component {
           )}
           <div className='mainOKR'>
             <div className='parent'>
-              <div className='all-content'>
+              <div className='all-content objname'>
                 <div className='name-tree'>
                   <i className='fa fa-dot-circle-o treeConnectorDot'></i> <span>OKR</span>
                   <div className='addChild-btn'>
@@ -223,7 +223,6 @@ class IndividualOKR extends Component {
                         </div>
                       </div>
                     )}
-                    ;
                   </div>
                   &nbsp;
                   <div className='user'>
