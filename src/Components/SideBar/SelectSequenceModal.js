@@ -1,15 +1,27 @@
 import React, { useState } from 'react';
+import { Droppable, Draggable, DragDropContext } from 'react-beautiful-dnd';
 import { Modal, Button } from 'react-bootstrap';
 import workFlow from '../../images/workflow.png';
 
 function SelectSequenceModal(props) {
+  const [percentage, setPercentage] = useState([]);
   const [addMilestones, setAddMileStones] = useState([
     {
       id: '1',
       milestoneName: '',
-      percentage: '',
     },
   ]);
+  const [data, setData] = useState(addMilestones);
+  const reorder = (data, startIndex, endIndex) => {
+    const result = Array.from(data);
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+    setData(result);
+  };
+
+  const onEnd = (result) => {
+    reorder(data, result.source.index, result.destination.index);
+  };
 
   const { selectSequence } = props;
   const addMileStoneSequence = () => {
@@ -28,12 +40,15 @@ function SelectSequenceModal(props) {
   };
   const handleChange = (e, id) => {
     const { name, value } = e.target;
-    let addData = [...addMilestones];
-    let index = addData.findIndex((item) => item.id === id);
-    name === 'Milestone-name' ? (addData[index].milestoneName = value) : (addData[index].percentage = value);
-    setAddMileStones(addData);
+    let changeData = [...addMilestones];
+    let percentData = [...percentage];
+    let index = changeData.findIndex((item) => item.id === id);
+    name === 'Milestone-name'
+      ? (changeData[index].milestoneName = value)
+      : (percentData[index] = value < 101 && value > 0 && value);
+    setAddMileStones(changeData);
+    setPercentage(percentData);
   };
-
   return (
     <>
       <Modal size='xl' show={selectSequence} onHide={() => props?.setSelectSequence(!selectSequence)}>
@@ -75,37 +90,56 @@ function SelectSequenceModal(props) {
           <h5>Milestones</h5>
           <hr></hr>
 
-          {addMilestones?.map((index, abc) => (
-            <div key={index.id}>
-              <div className='milestone'>
-                <img src={workFlow} alt='images' className='workflowimg'></img>
-                <i className='fas fa-ellipsis-v'></i>
-                <input
-                  type='text'
-                  name='Milestone-name'
-                  placeholder='Milestone Name'
-                  onChange={(e) => handleChange(e, index.id)}
-                ></input>
-                <div className='milestone2-box'>
-                  <input
-                    type='number'
-                    name='current-percentage'
-                    onChange={(e) => handleChange(e, index.id)}
-                    disabled={`${abc === 0 ? 'percentageinput' : ''}`}
-                  ></input>
-                  <i className='fas fa-percentage unit'></i>
-                </div>
-                <div className='milestone2-box'>
-                  <input type='number' name='' disabled></input>
-                  <i className='fas fa-percentage unit'></i>
-                </div>
-                <i
-                  onClick={() => deleteMileStoneSequence(index.id)}
-                  className={`fa fa-times fa-lg  ${abc === 0 ? 'nodeletemilestone' : 'deletemilestone'}`}
-                ></i>
-              </div>
-            </div>
-          ))}
+          <div>
+            <DragDropContext onDragEnd={onEnd}>
+              <Droppable droppableId='droppable'>
+                {(provided) => (
+                  <div ref={provided.innerRef}>
+                    {addMilestones?.map((item, index) => (
+                      <Draggable draggableId={item.id} key={item.id} index={index}>
+                        {(provided) => (
+                          <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                            <div className='milestone'>
+                              <img src={workFlow} alt='images' className='workflowimg'></img>
+                              <i className='fas fa-ellipsis-v'></i>
+                              <input
+                                type='text'
+                                name='Milestone-name'
+                                placeholder='Milestone Name'
+                                onChange={(e) => handleChange(e, item.id)}
+                              ></input>
+                              <div className='milestone2-box'>
+                                <input
+                                  type='number'
+                                  name='current-percentage'
+                                  onChange={(e) => handleChange(e, item.id)}
+                                  disabled={`${index === 0 ? 'percentageinput' : ''}`}
+                                  value={`${index === 0 ? '0' : percentage[index]}`}
+                                ></input>
+                                <i className='fas fa-percentage unit'></i>
+                              </div>
+                              <div className='milestone2-box'>
+                                <input type='number' name='' value={`${index === 0 ? '0' : ''}`} disabled></input>
+                                <i className='fas fa-percentage unit'></i>
+                              </div>
+                              <i
+                                onClick={() => deleteMileStoneSequence(item.id)}
+                                className={`fa fa-times fa-lg  ${
+                                  index === 0 ? 'nodeletemilestone' : 'deletemilestone'
+                                }`}
+                              ></i>
+                            </div>
+                          </div>
+                        )}
+                      </Draggable>
+                    ))}
+                    {provided.placeholder}
+                  </div>
+                )}
+              </Droppable>
+            </DragDropContext>
+          </div>
+
           <i className='fas fa-plus-circle fa-2x addMilestone' onClick={addMileStoneSequence}></i>
         </Modal.Body>
         <Modal.Footer>

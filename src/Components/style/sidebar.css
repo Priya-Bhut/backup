@@ -490,6 +490,7 @@ input:checked + .slider:before {
   justify-content: space-between;
   margin-top: 10px;
 }
+
 .milestone input {
   border: 2px solid rgb(204, 199, 199);
   border-radius: 5px;
@@ -499,6 +500,7 @@ input:checked + .slider:before {
 .milestone :nth-child(3) {
   width: 50%;
 }
+
 .milestone2-box {
   position: relative;
 }
