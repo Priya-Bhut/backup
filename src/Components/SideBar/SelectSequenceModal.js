@@ -9,7 +9,6 @@ function SelectSequenceModal(props) {
   const [percentage, setPercentage] = useState([0]);
   const [buttonDisable, setButtonDisable] = useState(false);
   const [percentageTotal, setPercentageTotal] = useState([]);
-
   const [addMilestones, setAddMileStones] = useState([
     {
       id: '1',
@@ -83,6 +82,12 @@ function SelectSequenceModal(props) {
     props?.setSequenceName(e.target.value);
   };
 
+  const handleData = () => {
+    let percentageData = [...addMilestones];
+    percentageData.push(percentageTotal);
+    props?.setSequence(percentageData);
+    props?.setOpenSequence(!openSequence);
+  };
   return (
     <>
       <Modal size='xl' show={selectSequence} onHide={() => props?.setSelectSequence(!selectSequence)}>
@@ -200,7 +205,7 @@ function SelectSequenceModal(props) {
           )}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='primary' onClick={() => props?.setOpenSequence(!openSequence)}>
+          <Button variant='primary' onClick={handleData}>
             Add
           </Button>
           <Button variant='secondary' onClick={() => props?.setSelectSequence(!selectSequence)}>
