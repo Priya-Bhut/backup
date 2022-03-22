@@ -241,10 +241,12 @@ class IndividualOKR extends Component {
                       textValue: '50',
                     }}
                   >
-                    <input type='range' min='0' max='100' step='10' defaultValue='0' />
+                    <input className='range' type='range' defaultValue='0' />
                     <output></output>
                   </div>
-                  <span className='showRange'> 100% </span>
+                  <span className='showRange'>
+                    <b> 100% </b>
+                  </span>
                   <div className='update'>
                     <i data-toggle='tooltip' title='Update' className='fa fa-pencil i-pencil' />
                     <i className='fa fa-ellipsis-h other' aria-hidden='true'></i>

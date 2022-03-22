@@ -33,7 +33,7 @@ const SideMenu = (props) => {
                 <i className='fa fa-home'></i>
               </p>
             </div>
-            <span className='side-menu-box side-menu-box-home'>
+            {/* <span className='side-menu-box side-menu-box-home'>
               <p className='tooltip-header-text'>Home</p>
               <div>
                 <Nav className='flex-column dropdown-item p-0'>
@@ -63,7 +63,7 @@ const SideMenu = (props) => {
                   </Link>
                 </Nav>
               </div>
-            </span>
+            </span> */}
           </div>
           {/* OKRs */}
           <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
@@ -76,10 +76,10 @@ const SideMenu = (props) => {
               <p className='tooltip-header-text'>OKRs</p>
               <div>
                 <Nav className='flex-column dropdown-item p-0'>
-                  <Link to={`/${organisationUrl}/all`}>
+                  <Link to={`/${organisationUrl}/IndividualOKRs`}>
                     <span>All My OKRs</span>
                   </Link>
-                  <Link to={`/${organisationUrl}/individual`}>
+                  {/* <Link to={`/${organisationUrl}/individual`}>
                     <span>My Individual OKRs</span>
                   </Link>
                   <Link to={`/${organisationUrl}/developer`}>
@@ -102,7 +102,7 @@ const SideMenu = (props) => {
                   </Link>
                   <Link to={`/${organisationUrl}/manager`}>
                     <span>Manager's OKRs</span>
-                  </Link>
+                  </Link> */}
                 </Nav>
               </div>
             </span>
@@ -114,7 +114,7 @@ const SideMenu = (props) => {
                 <i className='fa fa-list'></i>
               </p>
             </div>
-            <span className='side-menu-box side-menu-box-task'>
+            {/*  <span className='side-menu-box side-menu-box-task'>
               <p className='tooltip-header-text'>Tasks</p>
               <div>
                 <Nav className='flex-column dropdown-item p-0'>
@@ -132,7 +132,7 @@ const SideMenu = (props) => {
                   </Link>
                 </Nav>
               </div>
-            </span>
+            </span> */}
           </div>
           {/* Leave */}
           <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
@@ -141,7 +141,7 @@ const SideMenu = (props) => {
                 <i className='fa fa-commenting'></i>
               </p>
             </div>
-            <span className='side-menu-box side-menu-box-cfr'>
+            {/*  <span className='side-menu-box side-menu-box-cfr'>
               <p className='tooltip-header-text'>CFR</p>
               <div>
                 <Nav className='flex-column dropdown-item p-0'>
@@ -159,7 +159,7 @@ const SideMenu = (props) => {
                   </Link>
                 </Nav>
               </div>
-            </span>
+            </span> */}
           </div>
         </Nav>
       ) : (
@@ -179,7 +179,7 @@ const SideMenu = (props) => {
             </div>
             {isOpen && dropdown === 'home' && (
               <Nav className='flex-column dropdown-item internal-menu-dropdown'>
-                <Link to={`/${organisationUrl}/alignments`}>
+                {/* <Link to={`/${organisationUrl}/alignments`}>
                   <span>Alignments</span>
                 </Link>
                 <Link to={`/${organisationUrl}/action-center`}>
@@ -202,7 +202,7 @@ const SideMenu = (props) => {
                 </Link>
                 <Link to={`/${organisationUrl}/org-hierarchy`}>
                   <span>Organization hierarchy</span>
-                </Link>
+                </Link> */}
               </Nav>
             )}
           </div>
@@ -221,10 +221,10 @@ const SideMenu = (props) => {
             </div>
             {isOpen && dropdown === 'organization' && (
               <Nav className='flex-column dropdown-item internal-menu-dropdown'>
-                <Link to={`/${organisationUrl}/all`}>
+                <Link to={`/${organisationUrl}/IndividualOKRs`}>
                   <span>All My OKRs</span>
                 </Link>
-                <Link to={`/${organisationUrl}/individual`}>
+                {/* <Link to={`/${organisationUrl}/individual`}>
                   <span>My Individual OKRs</span>
                 </Link>
                 <Link to={`/${organisationUrl}/developer`}>
@@ -247,7 +247,7 @@ const SideMenu = (props) => {
                 </Link>
                 <Link to={`/${organisationUrl}/manager`}>
                   <span>Manager's OKRs</span>
-                </Link>
+                </Link> */}
               </Nav>
             )}
           </div>
@@ -266,7 +266,7 @@ const SideMenu = (props) => {
             </div>
             {isOpen && dropdown === 'tasks' && (
               <Nav className='flex-column dropdown-item internal-menu-dropdown'>
-                <Link to={`/${organisationUrl}/my-task`}>
+                {/*  <Link to={`/${organisationUrl}/my-task`}>
                   <span>My Tasks</span>
                 </Link>
                 <Link to={`/${organisationUrl}/task-others`}>
@@ -277,7 +277,7 @@ const SideMenu = (props) => {
                 </Link>
                 <Link to={`/${organisationUrl}/empl-task`}>
                   <span>All Employees' Tasks</span>
-                </Link>
+                </Link> */}
               </Nav>
             )}
           </div>
@@ -296,7 +296,7 @@ const SideMenu = (props) => {
             </div>
             {isOpen && dropdown === 'leave' && (
               <Nav className='flex-column dropdown-item internal-menu-dropdown'>
-                <Link to={`/${organisationUrl}/received`}>
+                {/* <Link to={`/${organisationUrl}/received`}>
                   <span>Received</span>
                 </Link>
                 <Link to={`/${organisationUrl}/given`}>
@@ -307,7 +307,7 @@ const SideMenu = (props) => {
                 </Link>
                 <Link to={`/${organisationUrl}/award-given`}>
                   <span>Awards Given</span>
-                </Link>
+                </Link> */}
               </Nav>
             )}
           </div>
