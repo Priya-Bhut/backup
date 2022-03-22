@@ -25,7 +25,13 @@ function SearchSelectSequence(props) {
           </Button>
           <div>
             {selectSequence && (
-              <SelectSequenceModal setSelectSequence={setSelectSequence} selectSequence={selectSequence} />
+              <SelectSequenceModal
+                setSelectSequence={setSelectSequence}
+                selectSequence={selectSequence}
+                setSequenceName={props?.setSequenceName}
+                setOpenSequence={props?.setOpenSequence}
+                openSequence={openSequence}
+              />
             )}
           </div>
         </Modal.Footer>

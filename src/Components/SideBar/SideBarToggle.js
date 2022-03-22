@@ -8,6 +8,7 @@ function SideBarToggle(props) {
   };
   const [expandPerTracked, setexpandPerTracked] = useState(false);
   const [tracked, setTracked] = useState('percentage');
+  const [sequenceName, setSequenceName] = useState('');
   const [openSequence, setOpenSequence] = useState(false);
   const expandPertageTracked = () => {
     return (
@@ -151,7 +152,9 @@ function SideBarToggle(props) {
                     'Percentage Tracked'
                   ) : tracked === 'milestone' ? (
                     <div className='searchSequence'>
-                      <span onClick={() => setOpenSequence(!openSequence)}>Search & Select Sequence</span>
+                      <span onClick={() => setOpenSequence(!openSequence)}>
+                        {sequenceName === '' ? 'Search & Select Sequence ' : sequenceName}
+                      </span>
                     </div>
                   ) : tracked === 'task' ? (
                     'Task Tracked'
@@ -160,7 +163,11 @@ function SideBarToggle(props) {
               </div>
               <div>
                 {openSequence && (
-                  <SearchSelectSequenceModal setOpenSequence={setOpenSequence} openSequence={openSequence} />
+                  <SearchSelectSequenceModal
+                    setOpenSequence={setOpenSequence}
+                    openSequence={openSequence}
+                    setSequenceName={setSequenceName}
+                  />
                 )}
               </div>
             </div>
@@ -183,7 +190,7 @@ function SideBarToggle(props) {
               apiKey='h1a0ymnw0nixvy8bnuahlmmfo0422ltzxfsrv2gprc51cutm'
               init={{
                 statusbar: false,
-                placeholder: 'Additional Context Here..',
+                placeholder: 'Description...',
                 menubar: false,
                 plugins: [
                   'advlist autolink lists link image',
