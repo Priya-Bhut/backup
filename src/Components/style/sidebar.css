@@ -533,12 +533,15 @@ input::-webkit-inner-spin-button {
   border-left: 6px solid green;
   height: 50px;
 }
-.fa-plus-circle {
-  cursor: pointer;
-}
+
 .addMilestone {
   float: right;
   margin-right: 10px;
+  cursor: pointer;
+}
+
+.addMilestone[disabled] {
+  color: grey;
 }
 .milestone .deletemilestone {
   cursor: pointer;
@@ -565,4 +568,15 @@ input::-webkit-inner-spin-button {
 }
 .percentageinput {
   pointer-events: none;
+}
+.milestoneerrormsg {
+  background-color: #fce4e4;
+  border: 1px solid #fcc2c3;
+  float: left;
+  padding: 10px 30px;
+  color: #cc0033;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  margin: 25px 0 0 25px;
 }

@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Droppable, Draggable, DragDropContext } from 'react-beautiful-dnd';
 import { Modal, Button } from 'react-bootstrap';
 import workFlow from '../../images/workflow.png';
 
 function SelectSequenceModal(props) {
-  const [percentage, setPercentage] = useState([]);
+  const { openSequence } = props;
+
+  const [percentage, setPercentage] = useState([0]);
+  const [buttonDisable, setButtonDisable] = useState(false);
+  const [percentageTotal, setPercentageTotal] = useState([]);
+
   const [addMilestones, setAddMileStones] = useState([
     {
       id: '1',
       milestoneName: '',
     },
   ]);
+  useEffect(() => {
+    handleSum();
+  }, [percentage]);
+
   const [data, setData] = useState(addMilestones);
   const reorder = (data, startIndex, endIndex) => {
     const result = Array.from(data);
@@ -30,14 +39,22 @@ function SelectSequenceModal(props) {
     addData.push({ id: `${lastID + 1}`, milestoneName: '', percentage: '' });
     setAddMileStones(addData);
   };
+
   const deleteMileStoneSequence = (id) => {
     if (addMilestones.length > 1) {
       let deleteData = [...addMilestones];
+      let deleteTotal = [...percentageTotal];
+      let deletePercentage = [...percentage];
       let index = deleteData.findIndex((item) => item.id === id);
+      deleteTotal.splice(index, 1);
+      deletePercentage.splice(index, 1);
       deleteData.splice(index, 1);
+      setPercentage(deletePercentage);
+      setPercentageTotal(deleteTotal);
       setAddMileStones(deleteData);
     }
   };
+
   const handleChange = (e, id) => {
     const { name, value } = e.target;
     let changeData = [...addMilestones];
@@ -49,17 +66,39 @@ function SelectSequenceModal(props) {
     setAddMileStones(changeData);
     setPercentage(percentData);
   };
+
+  const handleSum = () => {
+    const Total = [...percentageTotal];
+    for (let j = 0; j < percentage.length; j++) {
+      let total = 0;
+      for (let i = 0; i <= j; i++) {
+        total += parseInt(percentage[i]);
+      }
+      Total[j] = total;
+      total >= 100 ? setButtonDisable(true) : setButtonDisable(false);
+    }
+    setPercentageTotal(Total);
+  };
+  const sequenceSet = (e) => {
+    props?.setSequenceName(e.target.value);
+  };
+
   return (
     <>
       <Modal size='xl' show={selectSequence} onHide={() => props?.setSelectSequence(!selectSequence)}>
         <Modal.Header closeButton>
           <Modal.Title> Select Sequence</Modal.Title>
         </Modal.Header>
-
         <Modal.Body>
           <div className='sequence-main'>
             <div className='sequence'>
-              <input type='text' name='name' placeholder='Sequence Name'></input>
+              <input
+                type='text'
+                name='sequencename'
+                placeholder='Sequence Name'
+                onChange={(e) => sequenceSet(e)}
+                required
+              ></input>
             </div>
             <div className='switch-icon'>
               <div>
@@ -69,7 +108,6 @@ function SelectSequenceModal(props) {
                 </label>
                 <span className='switch-label'> Save as a Template</span>
               </div>
-
               <div>
                 <label className='switch'>
                   <input type='checkbox' value='switch-toggle' />
@@ -112,6 +150,7 @@ function SelectSequenceModal(props) {
                                 <input
                                   type='number'
                                   name='current-percentage'
+                                  onBlur={handleSum}
                                   onChange={(e) => handleChange(e, item.id)}
                                   disabled={`${index === 0 ? 'percentageinput' : ''}`}
                                   value={`${index === 0 ? '0' : percentage[index]}`}
@@ -119,7 +158,12 @@ function SelectSequenceModal(props) {
                                 <i className='fas fa-percentage unit'></i>
                               </div>
                               <div className='milestone2-box'>
-                                <input type='number' name='' value={`${index === 0 ? '0' : ''}`} disabled></input>
+                                <input
+                                  type='number'
+                                  name='sum-percentage'
+                                  value={`${index === 0 ? '0' : percentageTotal[index]}`}
+                                  disabled
+                                ></input>
                                 <i className='fas fa-percentage unit'></i>
                               </div>
                               <i
@@ -139,10 +183,26 @@ function SelectSequenceModal(props) {
               </Droppable>
             </DragDropContext>
           </div>
-
-          <i className='fas fa-plus-circle fa-2x addMilestone' onClick={addMileStoneSequence}></i>
+          {buttonDisable && (
+            <div className='milestoneerrormsg'>
+              <i className='fa fa-exclamation-triangle'></i>
+              <span> Cumulative % reached 100%. Reduce it to add milestones. </span>
+            </div>
+          )}
+          {buttonDisable ? (
+            <i className='fas fa-plus-circle fa-2x addMilestone'></i>
+          ) : (
+            <i
+              className='fas fa-plus-circle fa-2x addMilestone'
+              onClick={addMileStoneSequence}
+              disabled={buttonDisable}
+            ></i>
+          )}
         </Modal.Body>
         <Modal.Footer>
+          <Button variant='primary' onClick={() => props?.setOpenSequence(!openSequence)}>
+            Add
+          </Button>
           <Button variant='secondary' onClick={() => props?.setSelectSequence(!selectSequence)}>
             Cancel
           </Button>
