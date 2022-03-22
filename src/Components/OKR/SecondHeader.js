@@ -8,8 +8,8 @@ function SecondHeader(props) {
   const [isActiveIndex, setIsActiveIndex] = useState(0);
   const { pathname } = useLocation();
   const liTags = [
-    { text: 'IndividualOKRs', path: `/${organisationUrl}/IndividualOKRs` },
-    { text: 'CorporateOKRs', path: `/${organisationUrl}/CorporateOKRs` },
+    { text: 'Individual OKR', path: `/${organisationUrl}/IndividualOKRs` },
+    { text: 'Corporate OKR', path: `/${organisationUrl}/CorporateOKRs` },
   ];
   const handleClick = (i) => {
     setIsActiveIndex(i);
@@ -35,12 +35,6 @@ function SecondHeader(props) {
             {text}
           </Link>
         ))}
-        {/* <Link to={`/${organisationUrl}/IndividualOKRs`}>
-          <span className='OKRs'>Individual OKRs</span>
-        </Link>
-        <Link to={`/${organisationUrl}/CorporateOKRs`}>
-          <span className='OKRs'>Corporate OKRs</span>
-        </Link> */}
       </div>
 
       <Button className='addDesignationButton brilCrmButton' onClick={props?.addNewOkr}>
