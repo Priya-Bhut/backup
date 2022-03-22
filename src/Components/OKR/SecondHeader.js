@@ -25,7 +25,7 @@ function SecondHeader(props) {
     <div className='secondHeader'>
       <h5>OKR</h5>
       <div className='slideTab'>
-        {liTags.map(({ text, path }, index) => (
+        {liTags?.map(({ text, path }, index) => (
           <Link
             to={path}
             key={index}
