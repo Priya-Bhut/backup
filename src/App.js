@@ -58,7 +58,7 @@ function App() {
           <Route path='dept-hierarchy' exact element={<div>Comming Soon...</div>} />
           <Route path='news-feed' exact element={<div>Comming Soon...</div>} />
           <Route path='org-hierarchy' exact element={<div>Comming Soon...</div>} />
-          <Route path='all' element={<IndividualOKR handleAlert={handleAlert} />} />
+          {/* <Route path='all' element={<IndividualOKR handleAlert={handleAlert} />} /> */}
           <Route path='IndividualOKRs' element={<IndividualOKR handleAlert={handleAlert} />} />
           <Route path='CorporateOKRs' element={<div>Comming Soon...</div>} />
           <Route path='individual' exact element={<div>Comming Soon...</div>} />

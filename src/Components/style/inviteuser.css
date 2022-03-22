@@ -42,16 +42,19 @@
   flex-direction: row;
   cursor: pointer;
 }
-.OKRs {
-  display: flex;
-  flex-direction: row;
-  margin-left:15px;
-  align-items: center;
-  color: rgba(87, 87, 87, 0.5);
-  font-size: 15px;
+.slideTab a {
+  padding: 0.5rem;
+  color: rgb(185, 185, 185);
 }
-.OKRs:hover {
-  color: #12263f;
+.slideTab a:hover {
+  color: #132746;
+}
+.slideTab a:active {
+  color: black;
+}
+.slideTab .active {
+  border-bottom: 2px solid #132746;
+  color: #132746;
 }
 
 .userTableDesign {
