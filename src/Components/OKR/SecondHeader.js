@@ -29,7 +29,7 @@ function SecondHeader(props) {
           <Link
             to={path}
             key={index}
-            className={isActiveIndex === index ? 'active' : undefined}
+            className={isActiveIndex === index && 'active'}
             onClick={() => handleClick(index)}
           >
             {text}
