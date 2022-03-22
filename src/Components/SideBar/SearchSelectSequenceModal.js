@@ -31,6 +31,7 @@ function SearchSelectSequence(props) {
                 setSequenceName={props?.setSequenceName}
                 setOpenSequence={props?.setOpenSequence}
                 openSequence={openSequence}
+                setSequence={props?.setSequence}
               />
             )}
           </div>
