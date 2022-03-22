@@ -51,14 +51,14 @@
   background-color: var(--sidemenu-color);
   padding: 1rem;
   position: absolute;
-  left: 87%;
-  top: -5%;
+  left: 91%;
+  top: -8%;
   border-radius: 50%;
   cursor: pointer;
 }
 .reduce-sidebar .sidebar-profile-section > span > i {
-  left: 60%;
-  top: -5%;
+  left: 80%;
+  top: -8%;
 }
 
 .sidebar a {
@@ -461,8 +461,12 @@
   top: 91px;
 }
 .side-menu-box-cfr {
-  top: 125px;
+  top: 130px;
 }
+.side-menu-box-user {
+  bottom: 600px;
+}
+
 .side-menu-box div div a {
   padding-left: 0.7rem !important;
 }
@@ -488,4 +492,16 @@
 
 .tooltip-arrow {
   display: none !important;
+}
+.usermenu {
+  position: absolute;
+  top: 925px;
+  font-size: 1rem;
+}
+.usermenu span {
+  font-size: 15px;
+}
+.logout {
+  position: absolute;
+  top: 976px;
 }

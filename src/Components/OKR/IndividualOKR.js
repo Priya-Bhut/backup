@@ -176,19 +176,6 @@ class IndividualOKR extends Component {
                     </div>
                   </div>
                 </div>
-                {this.state.newChild.map((addChild, index) => {
-                  console.log(addChild);
-                  return (
-                    <div className='mainSub' key={index}>
-                      {addChild.main}
-                      {addChild.child.map((subChild, index) => (
-                        <div className='subChild' key={index}>
-                          {subChild}
-                        </div>
-                      ))}
-                    </div>
-                  );
-                })}
                 {okr.keyResult?.map((addChild, index) => {
                   return (
                     <div key={index}>
@@ -255,6 +242,18 @@ class IndividualOKR extends Component {
                       {this.state?.isOpen && (
                         <SideBarToggle setIsOpen={!this.state.isOpen} toggleSideBar={this.toggleSideBar} />
                       )}
+                    </div>
+                  );
+                })}
+                {this.state.newChild.map((addChild, index) => {
+                  return (
+                    <div className='mainSub' key={index}>
+                      {addChild.main}
+                      {addChild.child.map((subChild, index) => (
+                        <div className='subChild' key={index}>
+                          {subChild}
+                        </div>
+                      ))}
                     </div>
                   );
                 })}

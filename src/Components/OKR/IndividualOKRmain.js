@@ -58,7 +58,7 @@ export default class IndividualOKRmain extends Component {
                 </div>
               </div>
             </div>
-            <div className='date-time'>
+            <div className='date-time1'>
               <div className='calender'>
                 <i className='fa fa-calendar-alt' onClick={this.handleCalender}></i>
                 {this.state.isActive && (
@@ -131,9 +131,12 @@ export default class IndividualOKRmain extends Component {
             </div>
             <div className='progressBar'>
               <div className='range-slider'>
-                <input type='range' min='0' max='100' step='10' defaultValue='0' />
+                <input className='range' type='range' min='0' max='100' step='10' defaultValue='0' />
               </div>
-              <span className='showRange'> 0% </span>
+              <span className='showRange'>
+                {' '}
+                <b>0%</b>{' '}
+              </span>
               <div className='update'>
                 <i data-toggle='tooltip' title='Update' className='fa fa-pencil other' />
                 <i className='fa fa-ellipsis-h other' aria-hidden='true'></i>

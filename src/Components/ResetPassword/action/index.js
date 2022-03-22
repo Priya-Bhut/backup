@@ -1,50 +1,49 @@
 import axios from 'axios';
 import idx from 'idx';
-import { okrUrl as API_URL } from '../../../clientConfig';
+// import { sessionService } from 'redux-react-session';
+import { apiUrl as API_URL } from '../../../clientConfig';
 
-export const addObjective = (data) => {
+export function doForgotPassword(email) {
   return () =>
     axios({
       method: 'post',
-      url: `${API_URL}objective`,
+      url: `${API_URL}forget-password/${email}`,
+    })
+      .then((response) => {
+        if (response?.data) {
+          return response.data;
+        }
+        return response;
+      })
+      .catch((error) => idx(error, (_) => _.response.data));
+}
+
+export function doResetPassword(data) {
+  return () =>
+    axios({
+      method: 'put',
+      url: `${API_URL}change-password`,
       data,
     })
       .then((response) => {
         if (response?.data) {
-          return response?.data;
+          return response.data;
         }
-        return response.data;
+        return response;
       })
       .catch((error) => idx(error, (_) => _.response.data));
-};
-
-export const addKeyResult = (data) => {
-  return () =>
-    axios({
-      method: 'post',
-      url: `${API_URL}keyresult`,
-      data,
-    })
-      .then((response) => {
-        if (response?.data) {
-          return response?.data;
-        }
-        return response.data;
-      })
-      .catch((error) => idx(error, (_) => _.response.data));
-};
-
-export const getObjective = () => {
+}
+export function doGetResetToken(token) {
   return () =>
     axios({
       method: 'get',
-      url: `${API_URL}objective`,
+      url: `${API_URL}get-emp-by-token/${token}`,
     })
       .then((response) => {
         if (response?.data) {
-          return response?.data;
+          return response.data;
         }
-        return response.data;
+        return response;
       })
       .catch((error) => idx(error, (_) => _.response.data));
-};
+}

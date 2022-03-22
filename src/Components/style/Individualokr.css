@@ -8,7 +8,8 @@
   margin: 15px;
   padding: 0.25rem;
   border-radius: 0.4rem;
-  box-shadow: 0 0 5px 2px gray;
+  background-color: white;
+  box-shadow: 0 1px 4px rgb(21 27 38 / 20%);
 }
 .all-content {
   padding: 1.25rem;
@@ -17,31 +18,32 @@
   border-radius: 1.25rem;
 }
 .parent:hover {
-  background-color: rgba(10, 4, 4, 0.342);
-  min-height: 50px;
+  background-color: #f3f4f7;
   border-radius: 10px;
 }
 .child:hover {
-  background-color: rgba(126, 126, 126, 0.342);
+  background-color: #f3f4f7;
   border-radius: 10px;
 }
 .all-content:hover .addChild-btn,
 .all-content:hover .addSubChild-btn,
 .all-content:hover .note-alignment,
-.all-content:hover .note-alignment1 {
+.all-content:hover .note-alignment1,
+.all-content:hover .note-alignment2,
+.all-content:hover .update {
   display: flex;
 }
 /* -------------------------------------- INSIDE >> All-content -------------------------------------- */
 .name-tree {
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   flex-grow: 7;
   width: 0%;
   /* text-align: left; */
 }
 .name-tree1 {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   flex-grow: 7;
   width: 0%;
   /* text-align: left; */
@@ -57,18 +59,26 @@
   display: none;
   flex-grow: 1;
   /* margin-top: 0.2575rem; */
-  margin-right: 1rem;
-  color: rgb(136, 136, 136);
+  margin-right: -1rem;
+  color: #b5b2b2;
   cursor: pointer;
   justify-content: flex-end;
 }
 .note-alignment1 {
   display: none;
   flex-grow: 1;
-  float: right;
   margin-right: 1rem;
   /* margin-top: 1.25rem; */
-  color: rgb(136, 136, 136);
+  color: #b5b2b2;
+  cursor: pointer;
+  justify-content: flex-end;
+}
+.note-alignment2 {
+  display: none;
+  flex-grow: 1;
+  margin-right: 3rem;
+  /* margin-top: 1.25rem; */
+  color: #b5b2b2;
   cursor: pointer;
   justify-content: flex-end;
 }
@@ -77,7 +87,23 @@
   justify-content: space-around;
   flex-grow: 1;
   width: 1%;
+  align-items: flex-start;
+}
+.date-time1 {
+  display: flex;
+  justify-content: space-around;
+  flex-grow: 1;
+  width: 1%;
   align-items: center;
+  margin-left: -31px;
+}
+.date-time2 {
+  display: flex;
+  justify-content: space-around;
+  flex-grow: 1;
+  width: 1%;
+  align-items: center;
+  margin-left: -62px;
 }
 .trackSelect {
   flex-grow: 1;
@@ -85,18 +111,19 @@
   justify-content: center;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
-/* .progress {
+.progress {
   flex-grow: 1;
   justify-content: center;
   display: flex;
   width: 20%;
   align-items: center;
-} */
+}
 
 .progressBar {
   flex-grow: 1;
-  justify-content: center;
+  justify-content: flex-start;
   display: flex;
   width: 20%;
   align-items: center;
@@ -116,10 +143,13 @@
   visibility: visible !important;
 }
 
+.range {
+  width: 325px;
+}
 .showRange {
-  background-color: rgb(125, 167, 206);
-  color: white;
-  border: 2px#0366d6 solid;
+  background-color: #e8f2ff;
+  color: #146efd;
+  border: 2px solid #d3e5ff;
   width: 50px;
   border-radius: 20px;
   margin-left: 10px;
@@ -127,7 +157,7 @@
   justify-content: center;
 }
 .update {
-  display: flex;
+  display: none;
   flex-grow: 1;
   float: right;
   align-items: center;
@@ -155,7 +185,7 @@
 /* -------------------------------------- TREE CREATE -------------------------------------- */
 .main-tree {
   margin-left: 25px;
-  margin-top: -46px;
+  margin-top: -52px;
   border: 3px solid rgb(136, 136, 136);
   border-top: 0;
   border-right: 0;
@@ -188,7 +218,7 @@
 }
 .main-tree1 {
   margin-left: 55px;
-  margin-top: -46px;
+  margin-top: -45px;
   border: 3px solid rgb(136, 136, 136);
   border-top: 0;
   border-right: 0;
@@ -209,7 +239,7 @@
 }
 .connect-tree1-1 {
   margin-left: 5px;
-  margin-top: -94px;
+  margin-top: -96px;
   border: 3px solid rgb(136, 136, 136);
   border-top: 0;
   border-right: 0;
@@ -236,12 +266,12 @@
 /* ------------------------------------- Fas Fa ICONE -------------------------------------- */
 .treeConnectorDot {
   color: #47aaf9;
-  margin-top: 10px;
+  margin-top: 2px;
   margin-right: 5px;
 }
 .name-tree1 .treeConnectorDot {
-  margin-left: -1px;
-  /* margin-top: 40px; */
+  /* margin-left: -3px; */
+  margin-top: -5px;
 }
 .name-tree2 .treeConnectorDot {
   /* margin-left: 79px; */
@@ -251,7 +281,7 @@
   cursor: pointer;
 }
 .addChild-btn {
-  color: rgb(136, 136, 136);
+  color: #b5b2b2;
   cursor: pointer;
   width: fit-content;
   align-items: flex-start;
@@ -262,7 +292,7 @@
 }
 
 .addSubChild-btn {
-  color: rgb(136, 136, 136);
+  color: #b5b2b2;
   cursor: pointer;
   width: fit-content;
   align-items: flex-start;
@@ -285,7 +315,7 @@
   width: 98%;
   background-color: white;
   border-radius: 0.4rem;
-  box-shadow: 0 0 5px 2px gray;
+  box-shadow: 0 1px 4px rgb(21 27 38 / 8%);
   margin: 15px;
   font-size: 20px;
   padding: 20px 17px;

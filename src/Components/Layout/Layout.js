@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 import SideMenu from '../SideMenu';
-import TopNavbar from '../TopNavbar';
+// import TopNavbar from '../TopNavbar';
 
 export class Layout extends Component {
   constructor(props) {
@@ -20,7 +20,7 @@ export class Layout extends Component {
                 <SideMenu menuType={menuType} handleMenu={this.handleMenu} />
               </Col>
               <Col xs={11} className={`mainPart ${menuType && `extendMainPart`}`}>
-                <TopNavbar setIsOpen={this.setIsOpen} />
+                {/* <TopNavbar setIsOpen={this.setIsOpen} /> */}
                 <div className='layout-content'>
                   <Outlet />
                 </div>

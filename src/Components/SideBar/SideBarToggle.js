@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import SearchSelectSequenceModal from './SearchSelectSequenceModal';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
+
 function SideBarToggle(props) {
   const handleClicked = (e) => {
     setTracked(e);
@@ -8,7 +10,9 @@ function SideBarToggle(props) {
   };
   const [expandPerTracked, setexpandPerTracked] = useState(false);
   const [tracked, setTracked] = useState('percentage');
+  const [sequenceName, setSequenceName] = useState('');
   const [openSequence, setOpenSequence] = useState(false);
+  const [setSequence] = useState([]);
   const expandPertageTracked = () => {
     return (
       <div className='keyresult-drop-down'>
@@ -151,7 +155,22 @@ function SideBarToggle(props) {
                     'Percentage Tracked'
                   ) : tracked === 'milestone' ? (
                     <div className='searchSequence'>
-                      <span onClick={() => setOpenSequence(!openSequence)}>Search & Select Sequence</span>
+                      <span onClick={() => setOpenSequence(!openSequence)}>
+                        <div className='top-nav-dropdown'>
+                          <DropdownButton
+                            title={sequenceName === '' ? 'Search & Select Sequence ' : sequenceName}
+                            className='dropdownhover'
+                          >
+                            <Dropdown.Item>
+                              <div className='workflow-options'>My profile</div>
+                            </Dropdown.Item>
+
+                            <Dropdown.Item>
+                              <div className='workflow-options'>Logout</div>
+                            </Dropdown.Item>
+                          </DropdownButton>
+                        </div>
+                      </span>
                     </div>
                   ) : tracked === 'task' ? (
                     'Task Tracked'
@@ -160,7 +179,12 @@ function SideBarToggle(props) {
               </div>
               <div>
                 {openSequence && (
-                  <SearchSelectSequenceModal setOpenSequence={setOpenSequence} openSequence={openSequence} />
+                  <SearchSelectSequenceModal
+                    setOpenSequence={setOpenSequence}
+                    openSequence={openSequence}
+                    setSequenceName={setSequenceName}
+                    setSequence={setSequence}
+                  />
                 )}
               </div>
             </div>
@@ -183,7 +207,7 @@ function SideBarToggle(props) {
               apiKey='h1a0ymnw0nixvy8bnuahlmmfo0422ltzxfsrv2gprc51cutm'
               init={{
                 statusbar: false,
-                placeholder: 'Additional Context Here..',
+                placeholder: 'Description...',
                 menubar: false,
                 plugins: [
                   'advlist autolink lists link image',
@@ -230,6 +254,7 @@ function SideBarToggle(props) {
               </i>
             </div>
           </div>
+
           <div className='toggle-btn'>
             <button className='sidebar-btn'>Cancel</button>
             <button className='sidebar-btn'>Update</button>
