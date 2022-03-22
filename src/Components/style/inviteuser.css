@@ -42,17 +42,15 @@
   flex-direction: row;
   cursor: pointer;
 }
-
-.IndividualOKRs,
-.CorporateOKRs {
+.OKRs {
   display: flex;
   flex-direction: row;
   margin-left:15px;
   align-items: center;
   color: rgba(87, 87, 87, 0.5);
+  font-size: 15px;
 }
-.IndividualOKRs:hover,
-.CorporateOKRs:hover {
+.OKRs:hover {
   color: #12263f;
 }
 
