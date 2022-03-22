@@ -5,20 +5,24 @@ import { addKeyResult } from './Action';
 
 function CreateKeyResult(props) {
   const [keyResult, setKeyResult] = useState({
-    name: '',
+    objectiveId: props?.id,
+    title: '',
+    description: '',
     assignees: [],
-    timePeriod: {
-      name: 'Q1-2022',
-      code: 'Q1',
-      type: 1,
-      startDate: '2022-03-15',
-      endDate: '2022-03-15',
-    },
+    // name: 'Q1-2022',
+    // code: 'Q1',
+    // type: 1,
+    startDate: '2022-03-15',
+    endDate: '2022-03-15',
     progress: 0,
+    parentKeyResultId: 0,
+    checkInFrequency: 0,
+    keyResultTypeName: '',
+    percenetData: '',
   });
 
   const addKeyResult = () => {
-    if (keyResult.name.trim() !== '') {
+    if (keyResult.title.trim() !== '') {
       props
         ?.addKeyResult(keyResult)
         .then((response) => {
@@ -51,7 +55,7 @@ function CreateKeyResult(props) {
         <input
           type='text'
           placeholder='Enter your key result'
-          onChange={(e) => setKeyResult({ ...keyResult, name: e?.target?.value })}
+          onChange={(e) => setKeyResult({ ...keyResult, title: e?.target?.value })}
         />
       </div>
       <div className='w-20 new-okr-calendar-container'>

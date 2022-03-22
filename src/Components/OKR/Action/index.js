@@ -22,7 +22,7 @@ export const addKeyResult = (data) => {
   return () =>
     axios({
       method: 'post',
-      url: `${API_URL}objective`,
+      url: `${API_URL}keyresult`,
       data,
     })
       .then((response) => {
