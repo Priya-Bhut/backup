@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import SearchSelectSequenceModal from './SearchSelectSequenceModal';
+import { Dropdown, DropdownButton } from 'react-bootstrap';
+
 function SideBarToggle(props) {
   const handleClicked = (e) => {
     setTracked(e);
@@ -10,6 +12,8 @@ function SideBarToggle(props) {
   const [tracked, setTracked] = useState('percentage');
   const [sequenceName, setSequenceName] = useState('');
   const [openSequence, setOpenSequence] = useState(false);
+  const [sequence, setSequence] = useState([]);
+  console.log(sequence);
   const expandPertageTracked = () => {
     return (
       <div className='keyresult-drop-down'>
@@ -153,7 +157,20 @@ function SideBarToggle(props) {
                   ) : tracked === 'milestone' ? (
                     <div className='searchSequence'>
                       <span onClick={() => setOpenSequence(!openSequence)}>
-                        {sequenceName === '' ? 'Search & Select Sequence ' : sequenceName}
+                        <div className='top-nav-dropdown'>
+                          <DropdownButton
+                            title={sequenceName === '' ? 'Search & Select Sequence ' : sequenceName}
+                            className='dropdownhover'
+                          >
+                            <Dropdown.Item>
+                              <div className='workflow-options'>My profile</div>
+                            </Dropdown.Item>
+
+                            <Dropdown.Item>
+                              <div className='workflow-options'>Logout</div>
+                            </Dropdown.Item>
+                          </DropdownButton>
+                        </div>
                       </span>
                     </div>
                   ) : tracked === 'task' ? (
@@ -167,6 +184,7 @@ function SideBarToggle(props) {
                     setOpenSequence={setOpenSequence}
                     openSequence={openSequence}
                     setSequenceName={setSequenceName}
+                    setSequence={setSequence}
                   />
                 )}
               </div>
@@ -237,6 +255,7 @@ function SideBarToggle(props) {
               </i>
             </div>
           </div>
+
           <div className='toggle-btn'>
             <button className='sidebar-btn'>Cancel</button>
             <button className='sidebar-btn'>Update</button>
