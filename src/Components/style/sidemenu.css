@@ -51,14 +51,14 @@
   background-color: var(--sidemenu-color);
   padding: 1rem;
   position: absolute;
-  left: 87%;
-  top: -5%;
+  left: 91%;
+  top: -8%;
   border-radius: 50%;
   cursor: pointer;
 }
 .reduce-sidebar .sidebar-profile-section > span > i {
-  left: 60%;
-  top: -5%;
+  left: 80%;
+  top: -8%;
 }
 
 .sidebar a {
