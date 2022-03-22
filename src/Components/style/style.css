@@ -4,6 +4,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
 @import './inviteuser.css';
+@import './noDataIndicatePage.css';
+@import './login.css';
+@import './loginOrganisation.css';
 @import './sidemenu.css';
 @import './sidebar.css';
 @import './graph.css';
@@ -16,6 +19,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none !important;
 }
 
 :root {
@@ -126,7 +130,7 @@ nav {
 }
 .gridStyle {
   /* position: relative */
-  display: grid;
+  display: grid !important;
   grid-template-columns: max-content auto;
   height: 100vh !important;
   margin: 0;
