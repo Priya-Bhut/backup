@@ -86,7 +86,6 @@ function SelectSequenceModal(props) {
     let percentageData = [...addMilestones];
     percentageData.push(percentageTotal);
     props?.setSequence(percentageData);
-    console.log(percentageTotal);
     props?.setOpenSequence(!openSequence);
   };
   return (

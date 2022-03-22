@@ -12,8 +12,7 @@ function SideBarToggle(props) {
   const [tracked, setTracked] = useState('percentage');
   const [sequenceName, setSequenceName] = useState('');
   const [openSequence, setOpenSequence] = useState(false);
-  const [sequence, setSequence] = useState([]);
-  console.log(sequence);
+  const [setSequence] = useState([]);
   const expandPertageTracked = () => {
     return (
       <div className='keyresult-drop-down'>
