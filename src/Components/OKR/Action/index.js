@@ -1,6 +1,6 @@
 import axios from 'axios';
 import idx from 'idx';
-import { apiUrl as API_URL } from '../../../clientConfig';
+import { okrUrl as API_URL } from '../../../clientConfig';
 
 export const addObjective = (data) => {
   return () =>
