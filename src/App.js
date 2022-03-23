@@ -16,6 +16,7 @@ import Layout from './Components/Layout/Layout';
 import LoginOrganisation from './Components/OrganisationMenu/LoginOrganisation';
 import IndividualOKR from './Components/OKR/IndividualOKR';
 import SuccessAlert from './Components/reusable/SuccessAlert';
+import CompanyDashboard from './Components/CompanyDashboard/CompanyDashboard';
 
 function App() {
   const [successAlert, setSuccessAlert] = useState({
@@ -122,7 +123,7 @@ function App() {
           <Route path='action-center' exact element={<div>Comming Soon...</div>} />
           <Route path='dependencies' exact element={<div>Comming Soon...</div>} />
           <Route path='notes' exact element={<div>Comming Soon...</div>} />
-          <Route path='company-dashboard' exact element={<div>Comming Soon...</div>} />
+          <Route path='company-dashboard' exact element={<CompanyDashboard />} />
           <Route path='dept-hierarchy' exact element={<div>Comming Soon...</div>} />
           <Route path='news-feed' exact element={<div>Comming Soon...</div>} />
           <Route path='org-hierarchy' exact element={<div>Comming Soon...</div>} />

@@ -1,0 +1,45 @@
+/*---------------------------------------------------------*/
+.dashboard-card-container {
+  display: grid;
+  grid-template-columns: 49% 49%;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  padding: 20px;
+  background-color: transparent;
+}
+
+.dashboard-card-container .maincard {
+  height: auto;
+  width: 100%;
+  border-radius: 10px;
+  background-color: white !important;
+  padding: 0;
+}
+.dashboard-card-container .maincard .line {
+  background-color: black;
+  height: 1px;
+  width: 100%;
+}
+
+.topcard .topcardsdesign {
+  height: auto;
+  width: 100%;
+  border-radius: 10px;
+  background-color: white !important;
+  padding: 0;
+}
+.topcard {
+  display: grid;
+  grid-template-columns: auto auto;
+  border-radius: 10px;
+  grid-column-gap: 30px;
+}
+.logo {
+  color: #2196f3;
+  float: right;
+  position: relative;
+}
+#canvas {
+  width: 100%;
+  position: relative;
+}
