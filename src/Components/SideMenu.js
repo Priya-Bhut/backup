@@ -81,7 +81,7 @@ const SideMenu = (props) => {
               <p className='tooltip-header-text'>OKRs</p>
               <div>
                 <Nav className='flex-column dropdown-item p-0'>
-                  <Link to={`/${organisationUrl}/IndividualOKRs`}>
+                  <Link to={`/${organisationUrl}/OKR`}>
                     <span>All My OKRs</span>
                   </Link>
                   {/* <Link to={`/${organisationUrl}/individual`}>
@@ -282,7 +282,7 @@ const SideMenu = (props) => {
             </div>
             {isOpen && dropdown === 'organization' && (
               <Nav className='flex-column dropdown-item internal-menu-dropdown'>
-                <Link to={`/${organisationUrl}/IndividualOKRs`}>
+                <Link to={`/${organisationUrl}/OKR`}>
                   <span>All My OKRs</span>
                 </Link>
                 {/* <Link to={`/${organisationUrl}/individual`}>
