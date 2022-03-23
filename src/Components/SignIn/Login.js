@@ -90,7 +90,7 @@ class Login extends Component {
             </p>
           </div>
           <div className='form-container'>
-            <h3>Sign in to BRIL OKR</h3>
+            <h3>Sign in to OKR</h3>
             <hr />
             <Form className='login-form'>
               <Form.Group className='mb-3' controlId='formBasicEmail'>
