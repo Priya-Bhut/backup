@@ -495,7 +495,7 @@
 }
 .usermenu {
   position: absolute;
-  top: 925px;
+  top: 820px;
   font-size: 1rem;
 }
 .usermenu span {
@@ -503,5 +503,5 @@
 }
 .logout {
   position: absolute;
-  top: 976px;
+  top: 865px;
 }
