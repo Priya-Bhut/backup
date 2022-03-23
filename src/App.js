@@ -13,10 +13,12 @@ import ForgotPassword from './Components/ResetPassword/ForgotPassword';
 import ResetPassword from './Components/ResetPassword/ResetPassword';
 import NotFound from './Components/NotFound';
 import Layout from './Components/Layout/Layout';
-import LoginOrganisation from './Components/OrganisationMenu/LoginOrganisation';
 import IndividualOKR from './Components/OKR/IndividualOKR';
+import CorporateOKR from './Components/OKR/CorporateOKR';
+import LoginOrganisation from './Components/OrganisationMenu/LoginOrganisation';
 import SuccessAlert from './Components/reusable/SuccessAlert';
 import CompanyDashboard from './Components/CompanyDashboard/CompanyDashboard';
+import OKR from './pages/OKR';
 
 function App() {
   const [successAlert, setSuccessAlert] = useState({
@@ -118,7 +120,7 @@ function App() {
             </ProtectedRoute>
           }
         >
-          <Route path='' exact element={<div>Comming Soon</div>} />
+          <Route path='' exact element={<div>Comming Soon...</div>} />
           <Route exact path='alignments' element={<div>Comming Soon...</div>} />
           <Route path='action-center' exact element={<div>Comming Soon...</div>} />
           <Route path='dependencies' exact element={<div>Comming Soon...</div>} />
@@ -127,9 +129,7 @@ function App() {
           <Route path='dept-hierarchy' exact element={<div>Comming Soon...</div>} />
           <Route path='news-feed' exact element={<div>Comming Soon...</div>} />
           <Route path='org-hierarchy' exact element={<div>Comming Soon...</div>} />
-          {/* <Route path='all' element={<IndividualOKR handleAlert={handleAlert} />} /> */}
-          <Route path='IndividualOKRs' element={<IndividualOKR handleAlert={handleAlert} />} />
-          <Route path='CorporateOKRs' element={<div>Comming Soon...</div>} />
+          {/* <Route path='all' element={<OKR handleAlert={handleAlert} />} /> */}
           <Route path='individual' exact element={<div>Comming Soon...</div>} />
           <Route path='developer' exact element={<div>Comming Soon...</div>} />
           <Route path='org' exact element={<div>Comming Soon...</div>} />
@@ -147,6 +147,10 @@ function App() {
           <Route path='given' exact element={<div>Comming Soon...</div>} />
           <Route path='award-received' exact element={<div>Comming Soon...</div>} />
           <Route path='award-given' exact element={<div>Comming Soon...</div>} />
+          <Route path='OKR/*' exact element={<OKR handleAlert={handleAlert} />}>
+            <Route path='IndividualOKR' exact element={<IndividualOKR handleAlert={handleAlert} />} />
+            <Route path='CorporateOKR' exact element={<CorporateOKR handleAlert={handleAlert} />} />
+          </Route>
         </Route>
       </Routes>
     </div>

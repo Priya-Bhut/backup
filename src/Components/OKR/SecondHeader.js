@@ -8,17 +8,17 @@ function SecondHeader(props) {
   const [isActiveIndex, setIsActiveIndex] = useState(0);
   const { pathname } = useLocation();
   const liTags = [
-    { text: 'Individual OKR', path: `/${organisationUrl}/IndividualOKRs` },
-    { text: 'Corporate OKR', path: `/${organisationUrl}/CorporateOKRs` },
+    { text: 'Individual OKR', path: `/${organisationUrl}/OKR/IndividualOKR` },
+    { text: 'Corporate OKR', path: `/${organisationUrl}/OKR/CorporateOKR` },
   ];
   const handleClick = (i) => {
     setIsActiveIndex(i);
   };
   useEffect(() => {
-    if (pathname === `/${organisationUrl}/IndividualOKRs`) {
-      setIsActiveIndex(0);
-    } else {
+    if (pathname === `/${organisationUrl}/OKR/CorporateOKR`) {
       setIsActiveIndex(1);
+    } else {
+      setIsActiveIndex(0);
     }
   }, [pathname]);
   return (

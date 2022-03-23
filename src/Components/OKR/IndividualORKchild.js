@@ -128,7 +128,7 @@ export default function IndividualORKchild() {
             </div>
             <span className='showRange'>
               {' '}
-              <b>0%</b>{' '}
+              <b>66.66%</b>{' '}
             </span>
             <div className='update'>
               <i data-toggle='tooltip' title='Update' className='fa fa-pencil other' />
