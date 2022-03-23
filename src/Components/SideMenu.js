@@ -18,7 +18,12 @@ const SideMenu = (props) => {
   const handleChange = () => {
     props.handleMenu();
   };
-
+  const handleProfile = () => {
+    props?.history(`/${organisationUrl}/my-profile`);
+  };
+  const handleLogout = () => {
+    props?.setIsOpen(true);
+  };
   return (
     <div className='sidebar-main'>
       <div className='sidebar-profile-section' onClick={handleChange}>
@@ -160,6 +165,62 @@ const SideMenu = (props) => {
                 </Nav>
               </div>
             </span> */}
+          </div>
+          <div className='usermenu'>
+            <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
+              <div className='link-item' onClick={() => onHandleClick('profile')}>
+                <p className='my-2'>
+                  <i className='fa fa-user-circle'></i>
+                </p>
+              </div>
+              {/*  <span className='side-menu-box side-menu-box-cfr'>
+              <p className='tooltip-header-text'>CFR</p>
+              <div>
+                <Nav className='flex-column dropdown-item p-0'>
+                  <Link to={`/${organisationUrl}/received`}>
+                    <span>Received</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/given`}>
+                    <span>Given</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/award-received`}>
+                    <span>Awards Received</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/award-given`}>
+                    <span>Awards Given</span>
+                  </Link>
+                </Nav>
+              </div>
+            </span> */}
+            </div>
+          </div>
+          <div className='logout'>
+            <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
+              <div className='link-item' onClick={handleLogout}>
+                <p className='my-2'>
+                  <i className='fas fa-sign-out-alt'></i>
+                </p>
+              </div>
+              {/*  <span className='side-menu-box side-menu-box-cfr'>
+              <p className='tooltip-header-text'>CFR</p>
+              <div>
+                <Nav className='flex-column dropdown-item p-0'>
+                  <Link to={`/${organisationUrl}/received`}>
+                    <span>Received</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/given`}>
+                    <span>Given</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/award-received`}>
+                    <span>Awards Received</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/award-given`}>
+                    <span>Awards Given</span>
+                  </Link>
+                </Nav>
+              </div>
+            </span> */}
+            </div>
           </div>
         </Nav>
       ) : (
@@ -311,10 +372,32 @@ const SideMenu = (props) => {
               </Nav>
             )}
           </div>
+          <div className='usermenu'>
+            <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
+              <div className='link-item' onClick={handleProfile}>
+                <p className='my-2'>
+                  <i className='fa fa-user-circle' aria-hidden='true'></i>
+
+                  <span>UserProfile</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/*logout*/}
+          <div className='logout'>
+            <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
+              <div className='link-item' onClick={handleLogout}>
+                <p className='my-2'>
+                  <i className='fas fa-sign-out-alt'></i>
+                  <span>Logout</span>
+                </p>
+              </div>
+            </div>
+          </div>
         </Nav>
       )}
     </div>
   );
 };
-
 export default SideMenu;

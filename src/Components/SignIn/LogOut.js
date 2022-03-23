@@ -6,7 +6,7 @@ function LogOut(props) {
   return (
     <Modal show={isOpen} onHide={() => props?.setIsOpen(false)}>
       <Modal.Header closeButton>
-        <Modal.Title>Modal heading</Modal.Title>
+        <Modal.Title>Confirmation</Modal.Title>
       </Modal.Header>
       <Modal.Body>Are you sure you want to logout?</Modal.Body>
       <Modal.Footer>

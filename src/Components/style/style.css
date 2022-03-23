@@ -100,7 +100,7 @@ textarea::placeholder {
 body {
   margin: 0 !important;
   font-family: 'Cerebri Sans', sans-serif;
-  font-size: 0.9375rem;
+  font-size: 0.9375rem !important;
   font-weight: 400;
   line-height: 1.5;
   color: #12263f;
@@ -772,7 +772,7 @@ td .leave-status {
 }
 
 .layout-content {
-  min-height: 88vh;
+  min-height: 100vh;
   background-color: #f9fbfd;
   /* padding-left: 1rem;
   padding-right : 1rem; */
