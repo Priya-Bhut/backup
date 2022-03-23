@@ -133,7 +133,7 @@ export default class IndividualOKRmain extends Component {
                 <input className='range' type='range' min='0' max='100' step='10' defaultValue='0' />
               </div>
               <span className='showRange'>
-                <b>0%</b>
+                <b>33.33%</b>
               </span>
               <div className='update'>
                 <i data-toggle='tooltip' title='Update' className='fa fa-pencil other' />

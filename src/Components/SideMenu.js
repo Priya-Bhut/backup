@@ -81,7 +81,7 @@ const SideMenu = (props) => {
               <p className='tooltip-header-text'>OKRs</p>
               <div>
                 <Nav className='flex-column dropdown-item p-0'>
-                  <Link to={`/${organisationUrl}/IndividualOKRs`}>
+                  <Link to={`/${organisationUrl}/OKR`}>
                     <span>All My OKRs</span>
                   </Link>
                   {/* <Link to={`/${organisationUrl}/individual`}>
@@ -196,7 +196,7 @@ const SideMenu = (props) => {
           </div>
           <div className='logout'>
             <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
-              <div className='link-item' onClick={() => onHandleClick('logout')}>
+              <div className='link-item' onClick={handleLogout}>
                 <p className='my-2'>
                   <i className='fas fa-sign-out-alt'></i>
                 </p>
@@ -282,7 +282,7 @@ const SideMenu = (props) => {
             </div>
             {isOpen && dropdown === 'organization' && (
               <Nav className='flex-column dropdown-item internal-menu-dropdown'>
-                <Link to={`/${organisationUrl}/IndividualOKRs`}>
+                <Link to={`/${organisationUrl}/OKR`}>
                   <span>All My OKRs</span>
                 </Link>
                 {/* <Link to={`/${organisationUrl}/individual`}>
@@ -390,7 +390,6 @@ const SideMenu = (props) => {
               <div className='link-item' onClick={handleLogout}>
                 <p className='my-2'>
                   <i className='fas fa-sign-out-alt'></i>
-
                   <span>Logout</span>
                 </p>
               </div>

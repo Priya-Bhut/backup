@@ -75,7 +75,6 @@ function OKR(props) {
     <div className='main'>
       {isNewOkr && <CreateOKR setIsNewOkr={setIsNewOkr} handleAlert={props.handleAlert} getObjective={getObjective} />}
       {okrs?.map((okr) => {
-        console.log(okr);
         return (
           <div className='mainOKR' key={okr?.id}>
             <div className='parent'>

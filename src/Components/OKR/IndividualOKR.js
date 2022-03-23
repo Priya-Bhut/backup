@@ -4,7 +4,7 @@ import IndividualORKchild from './IndividualORKchild';
 // import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'font-awesome/css/font-awesome.min.css';
-import SecondHeader from './SecondHeader';
+// import SecondHeader from './SecondHeader';
 import CreateOKR from './CreateOKR';
 import { getObjective } from './Action';
 import { connect } from 'react-redux';
@@ -88,7 +88,7 @@ class IndividualOKR extends Component {
 
     return (
       <>
-        <SecondHeader addNewOkr={this.addNewOkr} />
+        {/* <SecondHeader addNewOkr={this.addNewOkr} /> */}
         <div className='main'>
           {isNewOkr && (
             <CreateOKR

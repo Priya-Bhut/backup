@@ -135,15 +135,18 @@
 .alignment {
   visibility: visible !important;
 }
-
+.range-slider .range {
+  padding-left: 0% !important;
+  padding-right: 0% !important;
+}
 .range {
   width: 325px;
 }
 .showRange {
   background-color: #e8f2ff;
-  color: #146efd;
+  color: #122f78;
   border: 2px solid #d3e5ff;
-  width: 50px;
+  min-width: 50px;
   border-radius: 20px;
   margin-left: 10px;
   display: flex;
