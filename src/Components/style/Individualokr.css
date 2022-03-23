@@ -113,13 +113,6 @@
   align-items: center;
   cursor: pointer;
 }
-.progress {
-  flex-grow: 1;
-  justify-content: center;
-  display: flex;
-  width: 20%;
-  align-items: center;
-}
 
 .progressBar {
   flex-grow: 1;

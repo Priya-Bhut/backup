@@ -24,7 +24,7 @@ function CreateOKR(props) {
         .then((response) => {
           if (response && !response?.errorMessage && !response?.error) {
             props?.handleAlert('Obejctive created', 'success');
-            props?.closeNewOkr();
+            props?.setIsNewOkr(false);
             props?.getObjective();
           } else {
             props?.handleAlert(!response?.errorMessage || !response?.error || 'Something went wrong', 'error');
@@ -72,7 +72,7 @@ function CreateOKR(props) {
         <Button className='new-okr-save-button' onClick={addObjective}>
           Save
         </Button>
-        <i className='fas fa-times' onClick={props?.closeNewOkr}></i>
+        <i className='fas fa-times' onClick={() => props?.setIsNewOkr(false)}></i>
       </div>
     </div>
   );

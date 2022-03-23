@@ -31,6 +31,7 @@ export default class IndividualOKRmain extends Component {
   };
   render() {
     const { startDate, endDate } = this.state;
+    const { keyResult } = this.props;
     return (
       <div>
         {/* ---------------------------------------Child1(Main)------------------------------------------ */}
@@ -40,11 +41,9 @@ export default class IndividualOKRmain extends Component {
             <div className='connect-tree'></div>
             <div className='child-tree'> </div>
             <div className='name-tree1'>
-              <i className='fa fa-dot-circle-o treeConnectorDot'></i> <span className='child'>OKR Child</span>
+              <i className='fa fa-dot-circle-o treeConnectorDot'></i> <span className='child'>{keyResult?.title}</span>
               <div className='addSubChild-btn'>
-                <i className='fa fa-plus-circle' onClick={() => this.props.subChild(this.props.id)}>
-                  Add New Child
-                </i>
+                <i className='fa fa-plus-circle'>Add New Child</i>
               </div>
               <div className='note-alignment1'>
                 <div className='tasks'>
@@ -134,8 +133,7 @@ export default class IndividualOKRmain extends Component {
                 <input className='range' type='range' min='0' max='100' step='10' defaultValue='0' />
               </div>
               <span className='showRange'>
-                {' '}
-                <b>0%</b>{' '}
+                <b>0%</b>
               </span>
               <div className='update'>
                 <i data-toggle='tooltip' title='Update' className='fa fa-pencil other' />

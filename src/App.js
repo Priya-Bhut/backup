@@ -14,8 +14,9 @@ import ResetPassword from './Components/ResetPassword/ResetPassword';
 import NotFound from './Components/NotFound';
 import Layout from './Components/Layout/Layout';
 import LoginOrganisation from './Components/OrganisationMenu/LoginOrganisation';
-import IndividualOKR from './Components/OKR/IndividualOKR';
+// import IndividualOKR from './Components/OKR/IndividualOKR';
 import SuccessAlert from './Components/reusable/SuccessAlert';
+import OKR from './Components/OKR/OKR';
 
 function App() {
   const [successAlert, setSuccessAlert] = useState({
@@ -127,7 +128,7 @@ function App() {
           <Route path='news-feed' exact element={<div>Comming Soon...</div>} />
           <Route path='org-hierarchy' exact element={<div>Comming Soon...</div>} />
           {/* <Route path='all' element={<IndividualOKR handleAlert={handleAlert} />} /> */}
-          <Route path='IndividualOKRs' element={<IndividualOKR handleAlert={handleAlert} />} />
+          <Route path='IndividualOKRs' element={<OKR handleAlert={handleAlert} />} />
           <Route path='CorporateOKRs' element={<div>Comming Soon...</div>} />
           <Route path='individual' exact element={<div>Comming Soon...</div>} />
           <Route path='developer' exact element={<div>Comming Soon...</div>} />

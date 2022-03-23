@@ -5,7 +5,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import 'font-awesome/css/font-awesome.min.css';
 import SideBarToggle from '../SideBar/SideBarToggle';
 
-export default function IndividualORKchild() {
+export default function IndividualORKchild(props) {
+  const { child } = props;
   const [isActive, setActive] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -38,7 +39,7 @@ export default function IndividualORKchild() {
           <div className='connect-tree1'></div>
           <div className='child-tree1'> </div>
           <div className='name-tree2'>
-            <i className='fa fa-dot-circle-o treeConnectorDot'></i> <span className='child'>OKR Sub Child</span>
+            <i className='fa fa-dot-circle-o treeConnectorDot'></i> <span className='child'>{child?.title}</span>
             <div className='note-alignment2'>
               <div className='tasks'>
                 <i className='fa fa-list'></i>

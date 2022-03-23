@@ -494,14 +494,14 @@
   display: none !important;
 }
 .usermenu {
-  position: absolute;
-  top: 820px;
+  position: fixed;
   font-size: 1rem;
+  bottom: 50px;
 }
 .usermenu span {
   font-size: 15px;
 }
 .logout {
-  position: absolute;
-  top: 865px;
+  position: fixed;
+  bottom: 10px;
 }

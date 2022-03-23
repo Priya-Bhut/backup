@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import IndividualOKRmain from './IndividualOKRmain';
+import IndividualOKRmain from './IndividualOKRmain';
 import IndividualORKchild from './IndividualORKchild';
 // import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -9,7 +9,7 @@ import CreateOKR from './CreateOKR';
 import { getObjective } from './Action';
 import { connect } from 'react-redux';
 import Calendar from '../Calendar/Calendar';
-import SideBarToggle from '../SideBar/SideBarToggle';
+// import SideBarToggle from '../SideBar/SideBarToggle';
 import CreateKeyResult from './CreateKeyResult';
 
 class IndividualOKR extends Component {
@@ -177,73 +177,7 @@ class IndividualOKR extends Component {
                   </div>
                 </div>
                 {okr.keyResult?.map((addChild, index) => {
-                  return (
-                    <div key={index}>
-                      {/* ---------------------------------------Child1(Main)------------------------------------------ */}
-                      <div className='main-tree'></div>
-                      <div className='child'>
-                        <div className='all-content'>
-                          <div className='connect-tree'></div>
-                          <div className='child-tree'> </div>
-                          <div className='name-tree1'>
-                            <i className='fa fa-dot-circle-o treeConnectorDot'></i>{' '}
-                            <span className='child'>{addChild.title}</span>
-                            <div className='addSubChild-btn'>
-                              <i className='fa fa-plus-circle' onClick={() => this.props.subChild(this.props.id)}>
-                                Add New Child
-                              </i>
-                            </div>
-                            <div className='note-alignment1'>
-                              <div className='tasks'>
-                                <i className='fa fa-list'></i>
-                              </div>
-                              <div className='notes'>
-                                <i className='fa fa-sticky-note'></i>
-                              </div>
-                              <div className='alignment'>
-                                <i className='fa fa-line-chart' aria-hidden='true'></i>
-                              </div>
-                            </div>
-                          </div>
-                          <div className='date-time'>
-                            <div className='calender'>
-                              <i className='fa fa-calendar-alt' onClick={this.handleCalender}></i>
-                              {this.state.isActive && (
-                                <Calendar
-                                  handleRange={this.handleRange}
-                                  handleCalender={this.handleCalender}
-                                  handleEndDate={this.handleEndDate}
-                                  handleStartDate={this.handleStartDate}
-                                  startDate={startDate}
-                                  endDate={endDate}
-                                />
-                              )}
-                            </div>
-                            &nbsp;
-                            <div className='user'>
-                              <i className='fa fa-user-circle'></i>
-                            </div>
-                          </div>
-                          <div className='trackSelect' onClick={this.toggleSideBar}>
-                            % Percentage Tracker
-                          </div>
-                          <div className='progressBar'>
-                            <div className='range-slider'>
-                              <input type='range' min='0' max='100' step='10' defaultValue='0' />
-                            </div>
-                            <span className='showRange'> 0% </span>
-                            <div className='update'>
-                              <i data-toggle='tooltip' title='Update' className='fa fa-pencil other' />
-                              <i className='fa fa-ellipsis-h other' aria-hidden='true'></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      {this.state?.isOpen && (
-                        <SideBarToggle setIsOpen={!this.state.isOpen} toggleSideBar={this.toggleSideBar} />
-                      )}
-                    </div>
-                  );
+                  return <IndividualOKRmain key={index} okr={addChild} id={addChild.id} subChild={this.subChild} />;
                 })}
                 {this.state.newChild.map((addChild, index) => {
                   return (
