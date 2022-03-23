@@ -11,7 +11,7 @@
   flex-direction: row;
 }
 
-.organisation-logo{
+.organisation-logo {
   height: 150px;
   width: 150px;
 }
@@ -26,26 +26,26 @@
   outline: 0 !important;
 } */
 
-@media (max-width:520px) {
+@media (max-width: 520px) {
   .organisationContainer {
     width: 75%;
     margin: 6% auto;
-    font-size: small;  
+    font-size: small;
   }
 
   .profileOrganisation {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items : center;
+    align-items: center;
     gap: 10px;
   }
 
-  .organisation-detail{
+  .organisation-detail {
     text-align: center;
   }
 
-  .organisation-logo{
+  .organisation-logo {
     height: 70px;
     width: 70px;
   }

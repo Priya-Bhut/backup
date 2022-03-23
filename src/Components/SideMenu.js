@@ -196,7 +196,7 @@ const SideMenu = (props) => {
           </div>
           <div className='logout'>
             <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
-              <div className='link-item' onClick={() => onHandleClick('logout')}>
+              <div className='link-item' onClick={handleLogout}>
                 <p className='my-2'>
                   <i className='fas fa-sign-out-alt'></i>
                 </p>
@@ -390,7 +390,6 @@ const SideMenu = (props) => {
               <div className='link-item' onClick={handleLogout}>
                 <p className='my-2'>
                   <i className='fas fa-sign-out-alt'></i>
-
                   <span>Logout</span>
                 </p>
               </div>
