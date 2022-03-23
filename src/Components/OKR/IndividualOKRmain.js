@@ -135,7 +135,7 @@ export default class IndividualOKRmain extends Component {
               </div>
               <span className='showRange'>
                 {' '}
-                <b>0%</b>{' '}
+                <b>33.33%</b>{' '}
               </span>
               <div className='update'>
                 <i data-toggle='tooltip' title='Update' className='fa fa-pencil other' />
