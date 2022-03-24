@@ -1,12 +1,12 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import { Pie } from 'react-chartjs-2';
+import { Pie, Line } from 'react-chartjs-2';
 import { Chart, ArcElement, Title, Tooltip } from 'chart.js';
 Chart.register(ArcElement, Title, Tooltip);
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, TimeScale } from 'chart.js';
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, TimeScale);
 
-import './companydashboard.css';
 function CompanyDashboard() {
-  //
   const state = {
     labels: ['January', 'February', 'March', 'April'],
     datasets: [
@@ -16,6 +16,54 @@ function CompanyDashboard() {
         data: [100, 80, 70, 30],
       },
     ],
+  };
+
+  const data = {
+    labels: [
+      'Corporate',
+      'Customer Service',
+      'Engineering',
+      'Human Resouces',
+      'Manufactoring',
+      'Marketing',
+      'Quality',
+      'Research',
+      'Sales',
+    ],
+    datasets: [
+      {
+        label: null,
+        data: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        fill: true,
+        backgroundColor: 'rgba(75,192,192,0.2)',
+        borderColor: 'rgba(75,192,192,1)',
+      },
+    ],
+  };
+
+  const optionsLine = {
+    maintainAspectRatio: true,
+    plugins: {
+      legend: {
+        display: false,
+      },
+      scales: {
+        xAxes: [
+          {
+            gridLines: {
+              display: false,
+            },
+          },
+        ],
+        yAxes: [
+          {
+            gridLines: {
+              display: false,
+            },
+          },
+        ],
+      },
+    },
   };
 
   return (
@@ -122,10 +170,9 @@ function CompanyDashboard() {
         </Card>
         <Card className='maincard'>
           <Card.Body>
-            <Card.Title></Card.Title>
             <Card.Subtitle className='mb-2 text-muted'>OKRs by Department</Card.Subtitle>
             <hr></hr>
-            <Card.Text></Card.Text>
+            <Line data={data} options={optionsLine} />
           </Card.Body>
         </Card>
         <Card className='maincard'>
