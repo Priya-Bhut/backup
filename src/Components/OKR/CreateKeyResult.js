@@ -2,33 +2,36 @@ import React, { useState } from 'react';
 import { ProgressBar, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import withRouter from '../WrapperComponents/withRouter';
-import { addObjective } from './Action';
+import { addKeyResult } from './Action';
 
-function CreateOKR(props) {
-  const { params } = props;
+function CreateKeyResult(props) {
+  const { parentKeyResultId, params } = props;
   const { organisationUrl } = params || {};
-  const [objective, setObjective] = useState({
-    name: '',
+  const [keyResult, setKeyResult] = useState({
+    objectiveId: props?.id,
+    title: '',
+    description: '',
     assignees: [],
-    employeeId: 1,
-    timePeriod: {
-      name: 'Q1-2022',
-      code: 'Q1',
-      type: 1,
-      startDate: '2022-03-15',
-      endDate: '2022-03-15',
-    },
-    overAllProgess: 0,
+    // name: 'Q1-2022',
+    // code: 'Q1',
+    // type: 1,
+    startDate: '2022-03-15',
+    endDate: '2022-03-15',
+    progress: 0,
+    parentKeyResultId: parentKeyResultId,
+    checkInFrequency: 0,
+    keyResultTypeName: '',
+    percenetData: '',
   });
 
-  const addObjective = () => {
-    if (objective.name.trim() !== '') {
+  const addKeyResult = () => {
+    if (keyResult.title.trim() !== '') {
       props
-        ?.addObjective(organisationUrl, objective)
+        ?.addKeyResult(organisationUrl, keyResult)
         .then((response) => {
           if (response && !response?.errorMessage && !response?.error) {
-            props?.handleAlert('Obejctive created', 'success');
-            props?.setIsNewOkr(false);
+            props?.handleAlert('Key Result Created', 'success');
+            props?.setAddNewKeyResult(false);
             props?.getObjective();
           } else {
             props?.handleAlert(!response?.errorMessage || !response?.error || 'Something went wrong', 'error');
@@ -38,24 +41,24 @@ function CreateOKR(props) {
           props?.handleAlert(error?.message || 'Something went wrong', 'error');
         });
     } else {
-      props?.handleAlert('Enter Objective Name', 'error');
+      props?.handleAlert('Enter keyResult Name', 'error');
     }
   };
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
-      addObjective();
+      addKeyResult();
     }
   };
 
   return (
     <div className='new-okr-container' onKeyPress={handleKeyPress}>
       <div className='new-okr-title-container w-55'>
-        <i className='fas fa-crosshairs'></i>
+        <i className='fas fa-key'></i>
         <input
           type='text'
-          placeholder='Create your new objective'
-          onChange={(e) => setObjective({ ...objective, name: e?.target?.value })}
+          placeholder='Enter your key result'
+          onChange={(e) => setKeyResult({ ...keyResult, title: e?.target?.value })}
         />
       </div>
       <div className='w-20 new-okr-calendar-container'>
@@ -68,22 +71,21 @@ function CreateOKR(props) {
         <div className='p-l-5 new-okr-assignee-container'>
           <i className='fa fa-user-circle'></i>
           <i className='fa fa-user-circle'></i>
-          <i className='fa fa-user-circle'></i>
         </div>
       </div>
       <div className='w-25 new-okr-save-progress-container'>
         <ProgressBar now={10} label={`0%`} />
-        <Button className='new-okr-save-button' onClick={addObjective}>
+        <Button className='new-okr-save-button' onClick={addKeyResult}>
           Save
         </Button>
-        <i className='fas fa-times' onClick={() => props?.setIsNewOkr(false)}></i>
+        <i className='fas fa-times' onClick={() => props?.setAddNewKeyResult(false)}></i>
       </div>
     </div>
   );
 }
 
 const mapDispatchToProps = {
-  addObjective,
+  addKeyResult,
 };
 
-export default connect(null, mapDispatchToProps)(withRouter(CreateOKR));
+export default connect(null, mapDispatchToProps)(withRouter(CreateKeyResult));

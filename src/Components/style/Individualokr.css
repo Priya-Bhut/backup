@@ -113,13 +113,6 @@
   align-items: center;
   cursor: pointer;
 }
-.progress {
-  flex-grow: 1;
-  justify-content: center;
-  display: flex;
-  width: 20%;
-  align-items: center;
-}
 
 .progressBar {
   flex-grow: 1;
@@ -422,4 +415,8 @@
   outline: none;
   border: none;
   box-shadow: none;
+}
+
+.okr-hide-button {
+  padding: 1.25rem 3.4rem;
 }
