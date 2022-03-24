@@ -6,7 +6,7 @@ export default function OKR(props) {
   const [isNewOkr, setIsNewOkr] = useState(false);
   return (
     <div>
-      <SecondHeader setIsNewOkr={setIsNewOkr} handleAlert={props?.handleAlert} />
+      <SecondHeader setIsNewOkr={setIsNewOkr} handleAlert={props?.handleAlert} buttonName='Add OKR' />
       <OKRView isNewOkr={isNewOkr} handleAlert={props?.handleAlert} setIsNewOkr={setIsNewOkr} />
     </div>
   );

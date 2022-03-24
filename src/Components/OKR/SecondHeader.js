@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { useLocation } from 'react-router';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import withRouter from '../WrapperComponents/withRouter';
 
 function SecondHeader(props) {
-  const { organisationUrl } = useParams() || {};
+  const { params, buttonName } = props;
+  const { organisationUrl } = params;
   const [isActiveIndex, setIsActiveIndex] = useState(0);
   const { pathname } = useLocation();
   const liTags = [
@@ -37,12 +39,16 @@ function SecondHeader(props) {
         ))}
       </div>
 
-      <Button className='addDesignationButton brilCrmButton' onClick={() => props?.setIsNewOkr(true)}>
-        <i className='fa fa-plus-square' />
-        <span className='m-l-10'>Add OKR</span>
-      </Button>
+      {buttonName ? (
+        <Button className='addDesignationButton brilCrmButton' onClick={() => props?.setIsNewOkr(true)}>
+          <i className='fa fa-plus-square' />
+          <span className='m-l-10'>{buttonName}</span>
+        </Button>
+      ) : (
+        <span className='okr-hide-button'></span>
+      )}
     </div>
   );
 }
 
-export default SecondHeader;
+export default withRouter(SecondHeader);

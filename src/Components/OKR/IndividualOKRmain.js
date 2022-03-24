@@ -72,7 +72,7 @@ export default class IndividualOKRmain extends Component {
             <div className='date-time1'>
               <div className='calender'>
                 <i className='fa fa-calendar-alt' onClick={this.handleCalender}></i>
-                {this.state.isActive && (
+                {false && (
                   <div className='calender-main'>
                     <div className='calender-and-status'>
                       <div className='calender-header'>

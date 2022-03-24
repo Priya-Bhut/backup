@@ -416,3 +416,7 @@
   border: none;
   box-shadow: none;
 }
+
+.okr-hide-button {
+  padding: 1.25rem 3.4rem;
+}

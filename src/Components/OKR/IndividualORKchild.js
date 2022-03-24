@@ -63,7 +63,7 @@ export default function IndividualORKchild(props) {
           <div className='date-time2'>
             <div className='calender'>
               <i className='fa fa-calendar-alt' onClick={(e) => handleCalender(e)}></i>
-              {isActive && (
+              {false && (
                 <div className='calender-main'>
                   <div className='calender-and-status'>
                     <div className='calender-header'>
