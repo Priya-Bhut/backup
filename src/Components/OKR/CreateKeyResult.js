@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { ProgressBar, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import withRouter from '../WrapperComponents/withRouter';
 import { addKeyResult } from './Action';
 
 function CreateKeyResult(props) {
+  const { parentKeyResultId, params } = props;
+  const { organisationUrl } = params || {};
   const [keyResult, setKeyResult] = useState({
     objectiveId: props?.id,
     title: '',
@@ -15,7 +18,7 @@ function CreateKeyResult(props) {
     startDate: '2022-03-15',
     endDate: '2022-03-15',
     progress: 0,
-    parentKeyResultId: 0,
+    parentKeyResultId: parentKeyResultId,
     checkInFrequency: 0,
     keyResultTypeName: '',
     percenetData: '',
@@ -24,11 +27,11 @@ function CreateKeyResult(props) {
   const addKeyResult = () => {
     if (keyResult.title.trim() !== '') {
       props
-        ?.addKeyResult(keyResult)
+        ?.addKeyResult(organisationUrl, keyResult)
         .then((response) => {
           if (response && !response?.errorMessage && !response?.error) {
-            props?.handleAlert('Obejctive created', 'success');
-            props?.closeNewOkr();
+            props?.handleAlert('Key Result Created', 'success');
+            props?.setAddNewKeyResult(false);
             props?.getObjective();
           } else {
             props?.handleAlert(!response?.errorMessage || !response?.error || 'Something went wrong', 'error');
@@ -75,7 +78,7 @@ function CreateKeyResult(props) {
         <Button className='new-okr-save-button' onClick={addKeyResult}>
           Save
         </Button>
-        <i className='fas fa-times' onClick={props?.closeNewOkr}></i>
+        <i className='fas fa-times' onClick={() => props?.setAddNewKeyResult(false)}></i>
       </div>
     </div>
   );
@@ -85,4 +88,4 @@ const mapDispatchToProps = {
   addKeyResult,
 };
 
-export default connect(null, mapDispatchToProps)(CreateKeyResult);
+export default connect(null, mapDispatchToProps)(withRouter(CreateKeyResult));

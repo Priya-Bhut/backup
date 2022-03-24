@@ -37,7 +37,7 @@ function SecondHeader(props) {
         ))}
       </div>
 
-      <Button className='addDesignationButton brilCrmButton' onClick={props?.addNewOkr}>
+      <Button className='addDesignationButton brilCrmButton' onClick={() => props?.setIsNewOkr(true)}>
         <i className='fa fa-plus-square' />
         <span className='m-l-10'>Add OKR</span>
       </Button>

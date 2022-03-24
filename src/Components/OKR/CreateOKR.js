@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { ProgressBar, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import withRouter from '../WrapperComponents/withRouter';
 import { addObjective } from './Action';
 
 function CreateOKR(props) {
+  const { params } = props;
+  const { organisationUrl } = params || {};
   const [objective, setObjective] = useState({
     name: '',
     assignees: [],
+    employeeId: 1,
     timePeriod: {
       name: 'Q1-2022',
       code: 'Q1',
@@ -20,7 +24,7 @@ function CreateOKR(props) {
   const addObjective = () => {
     if (objective.name.trim() !== '') {
       props
-        ?.addObjective(objective)
+        ?.addObjective(organisationUrl, objective)
         .then((response) => {
           if (response && !response?.errorMessage && !response?.error) {
             props?.handleAlert('Obejctive created', 'success');
@@ -82,4 +86,4 @@ const mapDispatchToProps = {
   addObjective,
 };
 
-export default connect(null, mapDispatchToProps)(CreateOKR);
+export default connect(null, mapDispatchToProps)(withRouter(CreateOKR));

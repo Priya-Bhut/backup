@@ -13,11 +13,11 @@ import ForgotPassword from './Components/ResetPassword/ForgotPassword';
 import ResetPassword from './Components/ResetPassword/ResetPassword';
 import NotFound from './Components/NotFound';
 import Layout from './Components/Layout/Layout';
-import CorporateOKR from './Components/OKR/CorporateOKR';
 import LoginOrganisation from './Components/OrganisationMenu/LoginOrganisation';
 import SuccessAlert from './Components/reusable/SuccessAlert';
-import OKRView from './Components/OKR/OKRView';
+// import OKRView from './Components/OKR/OKRView';
 import OKR from './pages/OKR';
+import CorporateOKR from './pages/CorporateOKR';
 
 function App() {
   const [successAlert, setSuccessAlert] = useState({
@@ -146,10 +146,8 @@ function App() {
           <Route path='given' exact element={<div>Comming Soon...</div>} />
           <Route path='award-received' exact element={<div>Comming Soon...</div>} />
           <Route path='award-given' exact element={<div>Comming Soon...</div>} />
-          <Route path='OKR/*' exact element={<OKR handleAlert={handleAlert} />}>
-            <Route path='IndividualOKR' exact element={<OKRView handleAlert={handleAlert} />} />
-            <Route path='CorporateOKR' exact element={<CorporateOKR handleAlert={handleAlert} />} />
-          </Route>
+          <Route path='OKR/IndividualOKR' exact element={<OKR handleAlert={handleAlert} />} />
+          <Route path='OKR/CorporateOKR' exact element={<CorporateOKR handleAlert={handleAlert} />} />
         </Route>
       </Routes>
     </div>

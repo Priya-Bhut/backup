@@ -4,9 +4,10 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'font-awesome/css/font-awesome.min.css';
 import SideBarToggle from '../SideBar/SideBarToggle';
+import CreateKeyResult from './CreateKeyResult';
 
 export default function IndividualORKchild(props) {
-  const { child } = props;
+  const { child, addSubKeyFormAt, addNewKeyResult } = props;
   const [isActive, setActive] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -29,6 +30,10 @@ export default function IndividualORKchild(props) {
     setStartDate(new Date(startDate));
     setEndDate(new Date(endDate));
   };
+  const handleOpen = (id) => {
+    props?.setSubKeyFormAt(id);
+    props?.setAddNewKeyResult(true);
+  };
   return (
     <div>
       {/* ---------------------------------------Subchild(Child1)------------------------------------------ */}
@@ -40,6 +45,9 @@ export default function IndividualORKchild(props) {
           <div className='child-tree1'> </div>
           <div className='name-tree2'>
             <i className='fa fa-dot-circle-o treeConnectorDot'></i> <span className='child'>{child?.title}</span>
+            <div className='addSubChild-btn' onClick={() => handleOpen(child?.id)}>
+              <i className='fa fa-plus-circle'>Add New Child</i>
+            </div>
             <div className='note-alignment2'>
               <div className='tasks'>
                 <i className='fa fa-list'></i>
@@ -128,8 +136,7 @@ export default function IndividualORKchild(props) {
               <input className='range' type='range' min='0' max='100' step='10' defaultValue='0' />
             </div>
             <span className='showRange'>
-              {' '}
-              <b>66.66%</b>{' '}
+              <b>0%</b>
             </span>
             <div className='update'>
               <i data-toggle='tooltip' title='Update' className='fa fa-pencil other' />
@@ -139,6 +146,15 @@ export default function IndividualORKchild(props) {
         </div>
       </div>
       {isOpen && <SideBarToggle setIsOpen={setIsOpen} toggleSideBar={toggleSideBar} />}
+      {addNewKeyResult && addSubKeyFormAt === child?.id && (
+        <CreateKeyResult
+          id={child?.id}
+          parentKeyResultId={child?.id || 0}
+          handleAlert={props?.handleAlert}
+          setAddNewKeyResult={props?.setAddNewKeyResult}
+          getObjective={props?.getObjective}
+        />
+      )}
     </div>
   );
 }

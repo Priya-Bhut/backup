@@ -7,55 +7,39 @@ import CreateOKR from './CreateOKR';
 import IndividualOKRmain from './IndividualOKRmain';
 import IndividualORKchild from './IndividualORKchild';
 import CreateKeyResult from './CreateKeyResult';
+import withRouter from '../WrapperComponents/withRouter';
 
 function OKR(props) {
-  const [okrs, setOkrs] = useState([
-    // {
-    //   name: 'New',
-    //   keyResult: [
-    //     {
-    //       title: 'New1',
-    //       subChild: [
-    //         {
-    //           title: 'Sub New 2',
-    //           subChild: [
-    //             {
-    //               title: 'Sub Sub New1',
-    //               subChild: null,
-    //             },
-    //             {
-    //               title: 'Sub Sub New 2',
-    //               subChild: null,
-    //             },
-    //           ],
-    //         },
-    //       ],
-    //     },
-    //     {
-    //       title: 'New2',
-    //     },
-    //   ],
-    // },
-  ]);
-  const [isNewOkr, setIsNewOkr] = useState(false);
+  const { isNewOkr, params } = props;
+  const { organisationUrl } = params || {};
+  const [okrs, setOkrs] = useState([]);
   const [addNewKeyResult, setAddNewKeyResult] = useState(false);
+  const [addKeyFormAt, setKeyFormAt] = useState(-1);
+  const [addSubKeyFormAt, setSubKeyFormAt] = useState(-1);
   const startDate = new Date();
   const endDate = new Date();
 
   const handleChildRender = (keyResult) => {
-    return keyResult?.subChild?.map((child, index) => {
-      return (
-        <div className='subChild' key={index}>
-          <IndividualORKchild child={child} key={index} />
-          {isArray(child.subChild) && handleChildRender(child)}
-        </div>
-      );
-    });
+    return keyResult?.keyResults?.map((child, index) => (
+      <>
+        <IndividualORKchild
+          child={child}
+          key={index}
+          addSubKeyFormAt={addSubKeyFormAt}
+          addNewKeyResult={addNewKeyResult}
+          handleAlert={props?.handleAlert}
+          getObjective={getObjective}
+          setSubKeyFormAt={setSubKeyFormAt}
+          setAddNewKeyResult={setAddNewKeyResult}
+        />
+        {isArray(child.keyResults) && handleChildRender(child)}
+      </>
+    ));
   };
 
   const getObjective = () => {
     props
-      ?.getObjective()
+      ?.getObjective(organisationUrl)
       .then((response) => {
         if (response && !response?.errorMessage && !response?.error) {
           setOkrs(response);
@@ -68,12 +52,19 @@ function OKR(props) {
       });
   };
 
+  const handleRenderKeyResultForm = (id) => {
+    setKeyFormAt(id);
+    setAddNewKeyResult(true);
+  };
+
   useEffect(() => {
     getObjective();
   }, []);
   return (
     <div className='main'>
-      {isNewOkr && <CreateOKR setIsNewOkr={setIsNewOkr} handleAlert={props.handleAlert} getObjective={getObjective} />}
+      {isNewOkr && (
+        <CreateOKR setIsNewOkr={props?.setIsNewOkr} handleAlert={props.handleAlert} getObjective={getObjective} />
+      )}
       {okrs?.map((okr) => {
         return (
           <div className='mainOKR' key={okr?.id}>
@@ -82,7 +73,7 @@ function OKR(props) {
                 <div className='name-tree'>
                   <i className='fa fa-dot-circle-o treeConnectorDot'></i> <span>{okr?.name}</span>
                   <div className='addChild-btn'>
-                    <i className='fa fa-plus-circle' onClick={() => setAddNewKeyResult(true)}>
+                    <i className='fa fa-plus-circle' onClick={() => handleRenderKeyResultForm(okr?.id)}>
                       Add New Key Result
                     </i>
                   </div>
@@ -108,13 +99,13 @@ function OKR(props) {
                 </div>
                 <div className='date-time'>
                   <div className='calender'>
-                    <i className='fa fa-calendar-alt' onClick={() => this.handleCalender(okr?.id)}></i>
+                    <i className='fa fa-calendar-alt' /*onClick={() => this.handleCalender(okr?.id)}*/></i>
                     {false && (
                       <Calendar
-                        handleRange={this.handleRange}
-                        handleCalender={this.handleCalender}
-                        handleEndDate={this.handleEndDate}
-                        handleStartDate={this.handleStartDate}
+                        // handleRange={this.handleRange}
+                        // handleCalender={this.handleCalender}
+                        // handleEndDate={this.handleEndDate}
+                        // handleStartDate={this.handleStartDate}
                         startDate={startDate}
                         endDate={endDate}
                       />
@@ -137,10 +128,12 @@ function OKR(props) {
                       textValue: '50',
                     }}
                   >
-                    <input type='range' min='0' max='100' step='10' defaultValue='0' />
+                    <input type='range' className='range' defaultValue='0' />
                     <output></output>
                   </div>
-                  <span className='showRange'> 100% </span>
+                  <span className='showRange'>
+                    <b>0%</b>
+                  </span>
                   <div className='update'>
                     <i data-toggle='tooltip' title='Update' className='fa fa-pencil i-pencil' />
                     <i className='fa fa-ellipsis-h other' aria-hidden='true'></i>
@@ -148,15 +141,35 @@ function OKR(props) {
                 </div>
               </div>
             </div>
-            {okr.keyResult?.map((keyResult, index) => {
+            {okr.keyResults?.sort()?.map((keyResult, index) => {
               return (
-                <div className='subChild' key={index}>
-                  <IndividualOKRmain key={index} keyResult={keyResult} id={keyResult?.id} />
-                  {handleChildRender(keyResult)}
+                <div className='mainSub' key={index}>
+                  <div className='subChild'>
+                    <IndividualOKRmain
+                      key={index}
+                      keyResult={keyResult}
+                      handleAlert={props?.handleAlert}
+                      addSubKeyFormAt={addSubKeyFormAt}
+                      addNewKeyResult={addNewKeyResult}
+                      setSubKeyFormAt={setSubKeyFormAt}
+                      getObjective={getObjective}
+                      setAddNewKeyResult={setAddNewKeyResult}
+                      id={keyResult?.id}
+                    />
+                    {handleChildRender(keyResult)}
+                  </div>
                 </div>
               );
             })}
-            {addNewKeyResult && <CreateKeyResult />}
+            {addNewKeyResult && addKeyFormAt === okr?.id && (
+              <CreateKeyResult
+                id={okr?.id}
+                getObjective={getObjective}
+                parentKeyResultId={0}
+                handleAlert={props?.handleAlert}
+                setAddNewKeyResult={setAddNewKeyResult}
+              />
+            )}
           </div>
         );
       })}
@@ -167,4 +180,4 @@ const mapDispatchToProps = {
   getObjective,
 };
 
-export default connect(null, mapDispatchToProps)(OKR);
+export default connect(null, mapDispatchToProps)(withRouter(OKR));
