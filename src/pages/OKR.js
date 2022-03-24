@@ -1,12 +1,13 @@
-import React from 'react';
-import { Outlet } from 'react-router';
+import React, { useState } from 'react';
+import OKRView from '../Components/OKR/OKRView';
 import SecondHeader from '../Components/OKR/SecondHeader';
 
-export default function OKR() {
+export default function OKR(props) {
+  const [isNewOkr, setIsNewOkr] = useState(false);
   return (
     <div>
-      <SecondHeader />
-      <Outlet />
+      <SecondHeader setIsNewOkr={setIsNewOkr} handleAlert={props?.handleAlert} buttonName='Add OKR' />
+      <OKRView isNewOkr={isNewOkr} handleAlert={props?.handleAlert} setIsNewOkr={setIsNewOkr} />
     </div>
   );
 }
