@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import { Pie, Line } from 'react-chartjs-2';
+import { Dropdown } from 'react-bootstrap';
 import {
   Chart,
   ArcElement,
@@ -11,8 +12,24 @@ import {
   PointElement,
   LineElement,
   TimeScale,
+  LineController,
+  scales,
+  Legend,
 } from 'chart.js';
-Chart.register(ArcElement, Title, Tooltip, CategoryScale, LinearScale, PointElement, LineElement, TimeScale);
+
+Chart.register(
+  ArcElement,
+  Title,
+  Tooltip,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  TimeScale,
+  LineController,
+  scales,
+  Legend,
+);
 
 function CompanyDashboard() {
   const state = {
@@ -51,8 +68,8 @@ function CompanyDashboard() {
 
   const optionsLine = {
     maintainAspectRatio: true,
-    plugins: {
-      legend: {
+    options: {
+      Legend: {
         display: false,
       },
       scales: {
@@ -76,62 +93,123 @@ function CompanyDashboard() {
 
   return (
     <>
-      <div className='secondHeader'>
-        <h5>Company Dashboard</h5>
-      </div>
-      {/* <Dropdown>
-        <Dropdown.Toggle variant='success'>All Department</Dropdown.Toggle>
-        <Dropdown.Menu>
-          <Dropdown.Item href='#'>Corporate</Dropdown.Item>
-          <Dropdown.Item href='#'>Customer Service</Dropdown.Item>
-          <Dropdown.Item href='#'>Engineering</Dropdown.Item>
-          <Dropdown.Item href='#'>Human Resources</Dropdown.Item>
-          <Dropdown.Item href='#'>Manufacturing</Dropdown.Item>
-          <Dropdown.Item href='#'>Marketing</Dropdown.Item>
-          <Dropdown.Item href='#'>Quality</Dropdown.Item>
-          <Dropdown.Item href='#'>Research</Dropdown.Item>
-          <Dropdown.Item href='#'>Sales</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown> */}
+      <div className='main-dashboard'>
+        <div className='title-dashboard'>
+          <h5>Company Dashboard</h5>
+          <div className='right-dashboard'>
+            <Dropdown>
+              <Dropdown.Toggle className='department-dropdown' variant='default'>
+                All Department
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href='#'>All Departments</Dropdown.Item>
+                <hr></hr>
+                <div className='departments-item'>
+                  <Dropdown.Item href='#'>
+                    <i className='fa fa-solid fa-star star-icon'> </i>Corporate
+                  </Dropdown.Item>
+                </div>
+                <div className='departments-item'>
+                  <Dropdown.Item href='#'>
+                    <i className='fa fa-solid fa-star  star-icon'></i>Customer Service
+                  </Dropdown.Item>
+                </div>
+                <div className='departments-item'>
+                  <Dropdown.Item href='#'>
+                    <i className='fa fa-solid fa-star star-icon'></i>Engineering
+                  </Dropdown.Item>
+                </div>
+                <div className='departments-item'>
+                  <Dropdown.Item href='#'>
+                    <i className='fa fa-solid fa-star star-icon'></i>Human Resources
+                  </Dropdown.Item>
+                </div>
+                <div className='departments-item'>
+                  <Dropdown.Item href='#'>
+                    <i className='fa fa-solid fa-star star-icon'></i>Manufacturing
+                  </Dropdown.Item>
+                </div>
+                <div className='departments-item'>
+                  <Dropdown.Item href='#'>
+                    <i className='fa fa-solid fa-star star-icon'></i>Marketing
+                  </Dropdown.Item>
+                </div>
+                <div className='departments-item'>
+                  <Dropdown.Item href='#'>
+                    <i className='fa fa-solid fa-star star-icon'></i>Quality
+                  </Dropdown.Item>
+                </div>
+                <div className='departments-item'>
+                  <Dropdown.Item href='#'>
+                    <i className='fa fa-solid fa-star star-icon'></i>Research
+                  </Dropdown.Item>
+                </div>
+                <div className='departments-item'>
+                  <Dropdown.Item href='#'>
+                    <i className='fa fa-solid fa-star star-icon'></i>Sales
+                  </Dropdown.Item>
+                </div>
+              </Dropdown.Menu>
+            </Dropdown>
 
+            <Dropdown>
+              <Dropdown.Toggle className='department-dropdown-right' variant='default'>
+                Period
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href='#'>Corporate</Dropdown.Item>
+                <Dropdown.Item href='#'>Customer Service</Dropdown.Item>
+                <Dropdown.Item href='#'>Engineering</Dropdown.Item>
+                <Dropdown.Item href='#'>Human Resources</Dropdown.Item>
+                <Dropdown.Item href='#'>Manufacturing</Dropdown.Item>
+                <Dropdown.Item href='#'>Marketing</Dropdown.Item>
+                <Dropdown.Item href='#'>Quality</Dropdown.Item>
+                <Dropdown.Item href='#'>Research</Dropdown.Item>
+                <Dropdown.Item href='#'>Sales</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+            <i className='fa fa-download fa-lg download'></i>
+          </div>
+        </div>
+      </div>
       <div className='dashboard-card-container'>
         <div className='topcard'>
           <Card className='topcardsdesign'>
             <Card.Body>
-              <Card.Title>1</Card.Title>
-              <Card.Subtitle className='mb-2 text-muted'>
-                Users <i className='fa fa-solid fa-users fa-2x logo'></i>
-              </Card.Subtitle>
+              <div className='inner-body'>
+                <Card.Title>1</Card.Title>
+                <Card.Subtitle className='mb-2 text-muted'>Users</Card.Subtitle>
+              </div>
+              <i className='fa fa-solid fa-users fa-5x logo'></i>
             </Card.Body>
           </Card>
           <Card className='topcardsdesign'>
             <Card.Body>
-              <Card.Title>2</Card.Title>
-              <Card.Subtitle className='mb-2 text-muted'>
-                Objective <i className='fa fa-solid fa-bullseye fa-2x logo'></i>
-              </Card.Subtitle>
-
-              <Card.Text></Card.Text>
+              <div className='inner-body'>
+                <Card.Title>2</Card.Title>
+                <Card.Subtitle className='mb-2 text-muted'>Objective</Card.Subtitle>
+              </div>
+              <i className='fa fa-solid fa-bullseye fa-5x logo'></i>
             </Card.Body>
           </Card>
         </div>
         <div className='topcard'>
           <Card className='topcardsdesign'>
             <Card.Body>
-              <Card.Title>3</Card.Title>
-              <Card.Subtitle className='mb-2 text-muted'>
-                Key Results <i className='fa fa-solid fa-key fa-2x logo'></i>
-              </Card.Subtitle>
-              <Card.Text></Card.Text>
+              <div className='inner-body'>
+                <Card.Title>3</Card.Title>
+                <Card.Subtitle className='mb-2 text-muted'>Key Results</Card.Subtitle>
+              </div>
+              <i className='fa fa-solid fa-key fa-5x logo'></i>
             </Card.Body>
           </Card>
           <Card className='topcardsdesign'>
             <Card.Body>
-              <Card.Title>4</Card.Title>
-              <Card.Subtitle className='mb-2 text-muted'>
-                Tasks <i className='fa fa-solid fa-calendar-check fa-2x logo'></i>
-              </Card.Subtitle>
-              <Card.Text></Card.Text>
+              <div className='inner-body'>
+                <Card.Title>4</Card.Title>
+                <Card.Subtitle className='mb-2 text-muted'>Tasks</Card.Subtitle>
+              </div>
+              <i className='fa fa-solid fa-calendar-check fa-5x logo'></i>
             </Card.Body>
           </Card>
         </div>
@@ -150,6 +228,8 @@ function CompanyDashboard() {
                 }}
               />
             </div>
+            <hr></hr>
+            <span className='status'>Not started</span>
           </Card.Body>
         </Card>
         <Card className='maincard'>
@@ -163,15 +243,18 @@ function CompanyDashboard() {
                 width={'300px'}
                 options={{
                   maintainAspectRatio: false,
-                  title: {
-                    display: true,
-                  },
-                  legend: { display: true, position: 'right' },
                   tooltips: {
                     backgroundColor: '#5a6e7f',
                   },
+                  Legend: {
+                    display: false,
+                  },
                 }}
               />
+            </div>
+            <hr></hr>
+            <div className='display-status'>
+              <span className='status'>Remaining</span>
             </div>
           </Card.Body>
         </Card>
@@ -184,10 +267,9 @@ function CompanyDashboard() {
         </Card>
         <Card className='maincard'>
           <Card.Body>
-            <Card.Title></Card.Title>
             <Card.Subtitle className='mb-2 text-muted'>Individual OKRs by Departments</Card.Subtitle>
             <hr></hr>
-            <Card.Text></Card.Text>
+            <Line data={data} options={optionsLine} />
           </Card.Body>
         </Card>
         <Card className='maincard'>
@@ -195,7 +277,7 @@ function CompanyDashboard() {
             <Card.Title> </Card.Title>
             <Card.Subtitle className='mb-2 text-muted'>Remaining vs Achieved by Department</Card.Subtitle>
             <hr></hr>
-            <Card.Text></Card.Text>
+            <Line data={data} options={optionsLine} />
           </Card.Body>
         </Card>
         <Card className='maincard'>
@@ -203,7 +285,9 @@ function CompanyDashboard() {
             <Card.Title> </Card.Title>
             <Card.Subtitle className='mb-2 text-muted'>Individual OKRs by Teams</Card.Subtitle>
             <hr></hr>
-            <Card.Text></Card.Text>
+            <Card.Text className='text-span'>
+              <span> No data are available to display the chart</span>
+            </Card.Text>
           </Card.Body>
         </Card>
       </div>
