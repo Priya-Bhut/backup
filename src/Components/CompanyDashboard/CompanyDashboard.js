@@ -1,10 +1,18 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
 import { Pie, Line } from 'react-chartjs-2';
-import { Chart, ArcElement, Title, Tooltip } from 'chart.js';
-Chart.register(ArcElement, Title, Tooltip);
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, TimeScale } from 'chart.js';
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, TimeScale);
+import {
+  Chart,
+  ArcElement,
+  Title,
+  Tooltip,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  TimeScale,
+} from 'chart.js';
+Chart.register(ArcElement, Title, Tooltip, CategoryScale, LinearScale, PointElement, LineElement, TimeScale);
 
 function CompanyDashboard() {
   const state = {
@@ -157,7 +165,6 @@ function CompanyDashboard() {
                   maintainAspectRatio: false,
                   title: {
                     display: true,
-                    text: 'Hello',
                   },
                   legend: { display: true, position: 'right' },
                   tooltips: {
