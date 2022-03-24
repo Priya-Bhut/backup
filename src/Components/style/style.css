@@ -14,7 +14,7 @@
 @import './utility.css';
 @import './tempokr.css';
 @import './calenderpicker.css';
-
+@import './companydashboard.css';
 * {
   margin: 0;
   padding: 0;
