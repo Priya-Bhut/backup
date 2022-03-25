@@ -77,7 +77,6 @@ function SelectSequenceModal(props) {
       total >= 100 ? setButtonDisable(true) : setButtonDisable(false);
     }
     setPercentageTotal(Total);
-    console.log(Total);
   };
   const sequenceSet = (e) => {
     props?.setSequenceName(e.target.value);
