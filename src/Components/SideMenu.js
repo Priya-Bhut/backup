@@ -38,14 +38,14 @@ const SideMenu = (props) => {
                 <i className='fa fa-home'></i>
               </p>
             </div>
-            {/* <span className='side-menu-box side-menu-box-home'>
+            <span className='side-menu-box side-menu-box-home'>
               <p className='tooltip-header-text'>Home</p>
               <div>
                 <Nav className='flex-column dropdown-item p-0'>
-                  <Link to={`/${organisationUrl}/alignments`}>
-                    <span>Alignments</span>
+                  <Link to={`/${organisationUrl}/company-dashboard`}>
+                    <span>Company Dashboard</span>
                   </Link>
-                  <Link to={`/${organisationUrl}/action-center`}>
+                  {/* <Link to={`/${organisationUrl}/action-center`}>
                     <span>Action Center</span>
                   </Link>
                   <Link to={`/${organisationUrl}/dependencies`}>
@@ -65,10 +65,10 @@ const SideMenu = (props) => {
                   </Link>
                   <Link to={`/${organisationUrl}/org-hierarchy`}>
                     <span>Organization hierarchy</span>
-                  </Link>
+                  </Link> */}
                 </Nav>
               </div>
-            </span> */}
+            </span>
           </div>
           {/* OKRs */}
           <div className={`dropdown-link ${menuType && 'dropdown-link2'}`}>
@@ -81,8 +81,11 @@ const SideMenu = (props) => {
               <p className='tooltip-header-text'>OKRs</p>
               <div>
                 <Nav className='flex-column dropdown-item p-0'>
-                  <Link to={`/${organisationUrl}/OKR`}>
+                  <Link to={`/${organisationUrl}/OKR/IndividualOKR`}>
                     <span>All My OKRs</span>
+                  </Link>
+                  <Link to={`/${organisationUrl}/OKR/CorporateOKR`}>
+                    <span>Corporate OKR</span>
                   </Link>
                   {/* <Link to={`/${organisationUrl}/individual`}>
                     <span>My Individual OKRs</span>
@@ -240,10 +243,10 @@ const SideMenu = (props) => {
             </div>
             {isOpen && dropdown === 'home' && (
               <Nav className='flex-column dropdown-item internal-menu-dropdown'>
-                {/* <Link to={`/${organisationUrl}/alignments`}>
-                  <span>Alignments</span>
+                <Link to={`/${organisationUrl}/company-dashboard`}>
+                  <span>Company Dashboard</span>
                 </Link>
-                <Link to={`/${organisationUrl}/action-center`}>
+                {/* <Link to={`/${organisationUrl}/action-center`}>
                   <span>Action Center</span>
                 </Link>
                 <Link to={`/${organisationUrl}/dependencies`}>
@@ -263,7 +266,7 @@ const SideMenu = (props) => {
                 </Link>
                 <Link to={`/${organisationUrl}/org-hierarchy`}>
                   <span>Organization hierarchy</span>
-                </Link> */}
+                </Link>  */}
               </Nav>
             )}
           </div>
@@ -282,8 +285,11 @@ const SideMenu = (props) => {
             </div>
             {isOpen && dropdown === 'organization' && (
               <Nav className='flex-column dropdown-item internal-menu-dropdown'>
-                <Link to={`/${organisationUrl}/OKR`}>
+                <Link to={`/${organisationUrl}/OKR/IndividualOKR`}>
                   <span>All My OKRs</span>
+                </Link>
+                <Link to={`/${organisationUrl}/OKR/CorporateOKR`}>
+                  <span>Corporate OKR</span>
                 </Link>
                 {/* <Link to={`/${organisationUrl}/individual`}>
                   <span>My Individual OKRs</span>

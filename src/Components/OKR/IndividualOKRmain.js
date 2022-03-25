@@ -3,6 +3,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'font-awesome/css/font-awesome.min.css';
 import SideBarToggle from '../SideBar/SideBarToggle';
+import CreateKeyResult from './CreateKeyResult';
 export default class IndividualOKRmain extends Component {
   state = { isActive: false, isOpen: false };
 
@@ -11,6 +12,8 @@ export default class IndividualOKRmain extends Component {
     this.state = {
       startDate: new Date(),
       endDate: new Date(),
+      addKeyFormAt: -1,
+      addNewKeyResult: false,
     };
   }
   handleCalender = () => {
@@ -29,8 +32,18 @@ export default class IndividualOKRmain extends Component {
   handleRange = (startDate, endDate) => {
     this.setState({ startDate: new Date(startDate), endDate: new Date(endDate) });
   };
+  handleClose = () => {
+    this.setState({
+      addNewKeyResult: false,
+    });
+  };
+  handleOpen = (id) => {
+    this.props?.setSubKeyFormAt(id);
+    this.props?.setAddNewKeyResult(true);
+  };
   render() {
     const { startDate, endDate } = this.state;
+    const { keyResult, addSubKeyFormAt, addNewKeyResult } = this.props;
     return (
       <div>
         {/* ---------------------------------------Child1(Main)------------------------------------------ */}
@@ -40,11 +53,9 @@ export default class IndividualOKRmain extends Component {
             <div className='connect-tree'></div>
             <div className='child-tree'> </div>
             <div className='name-tree1'>
-              <i className='fa fa-dot-circle-o treeConnectorDot'></i> <span className='child'>OKR Child</span>
-              <div className='addSubChild-btn'>
-                <i className='fa fa-plus-circle' onClick={() => this.props.subChild(this.props.id)}>
-                  Add New Child
-                </i>
+              <i className='fa fa-dot-circle-o treeConnectorDot'></i> <span className='child'>{keyResult?.title}</span>
+              <div className='addSubChild-btn' onClick={() => this.handleOpen(keyResult?.id)}>
+                <i className='fa fa-plus-circle'>Add New Child</i>
               </div>
               <div className='note-alignment1'>
                 <div className='tasks'>
@@ -61,7 +72,7 @@ export default class IndividualOKRmain extends Component {
             <div className='date-time1'>
               <div className='calender'>
                 <i className='fa fa-calendar-alt' onClick={this.handleCalender}></i>
-                {this.state.isActive && (
+                {false && (
                   <div className='calender-main'>
                     <div className='calender-and-status'>
                       <div className='calender-header'>
@@ -134,8 +145,7 @@ export default class IndividualOKRmain extends Component {
                 <input className='range' type='range' min='0' max='100' step='10' defaultValue='0' />
               </div>
               <span className='showRange'>
-                {' '}
-                <b>33.33%</b>{' '}
+                <b>0%</b>
               </span>
               <div className='update'>
                 <i data-toggle='tooltip' title='Update' className='fa fa-pencil other' />
@@ -146,9 +156,18 @@ export default class IndividualOKRmain extends Component {
         </div>
         {this.state.isOpen && (
           <SideBarToggle
+            handleAlert={this.props.handleAlert}
             setIsOpen={!this.state.isOpen}
-            handleAlert={this?.props?.handleAlert}
             toggleSideBar={this.toggleSideBar}
+          />
+        )}
+        {addNewKeyResult && addSubKeyFormAt === keyResult?.id && (
+          <CreateKeyResult
+            id={keyResult?.id}
+            parentKeyResultId={keyResult?.id || 0}
+            handleAlert={this.props?.handleAlert}
+            setAddNewKeyResult={this.props?.setAddNewKeyResult}
+            getObjective={this.props?.getObjective}
           />
         )}
       </div>
