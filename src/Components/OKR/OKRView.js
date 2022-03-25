@@ -22,6 +22,7 @@ function OKR(props) {
   const handleChildRender = (keyResult) => {
     return keyResult?.keyResults?.map((child, index) => (
       <>
+        {console.log(keyResult)}
         <IndividualORKchild
           child={child}
           key={index}
@@ -60,6 +61,7 @@ function OKR(props) {
   useEffect(() => {
     getObjective();
   }, []);
+
   return (
     <div className='main'>
       {isNewOkr && (
@@ -141,6 +143,7 @@ function OKR(props) {
                 </div>
               </div>
             </div>
+
             {okr.keyResults?.sort()?.map((keyResult, index) => {
               return (
                 <div className='mainSub' key={index}>

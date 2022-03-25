@@ -166,14 +166,23 @@
   flex-direction: column;
   justify-content: space-between;
   position: fixed;
-  top: 155px;
-  right: 351px;
+  top: 165px;
+  right: 330px;
   width: fit-content;
   height: 15%;
   background-color: white;
   border-radius: 5px;
   box-shadow: 5px 5px rgb(240, 234, 234);
   z-index: 111;
+  animation: moving 0.3s ease-in-out;
+}
+@keyframes moving {
+  from {
+    right: 0;
+  }
+  to {
+    right: 330px;
+  }
 }
 .keyresult-drop-down span {
   margin: 20px;

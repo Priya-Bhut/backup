@@ -25,6 +25,7 @@ class IndividualOKR extends Component {
       okrs: [],
     };
   }
+
   addNewOkr = () => {
     this.setState({ isNewOkr: true });
   };

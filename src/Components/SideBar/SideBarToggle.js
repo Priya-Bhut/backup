@@ -8,7 +8,7 @@ function SideBarToggle(props) {
     setTracked(e);
     setexpandPerTracked(false);
   };
-  const [expandPerTracked, setexpandPerTracked] = useState(false);
+  const [expandPerTracked, setexpandPerTracked] = useState(props.expandTracked);
   const [tracked, setTracked] = useState('percentage');
   const [sequenceName, setSequenceName] = useState('');
   const [openSequence, setOpenSequence] = useState(false);
@@ -200,7 +200,13 @@ function SideBarToggle(props) {
           </div>
           <hr />
           <div className='key-result'>
-            <textarea cols={63} rows={3} placeholder='Type Your Key Result..' className='textareaKeyResult'></textarea>
+            <textarea
+              cols={63}
+              rows={3}
+              placeholder='Type Your Key Result..'
+              className='textareaKeyResult'
+              value={props?.child.title}
+            ></textarea>
           </div>
           <div className='editor'>
             <Editor

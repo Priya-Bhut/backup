@@ -9,8 +9,11 @@ import CreateKeyResult from './CreateKeyResult';
 export default function IndividualORKchild(props) {
   const { child, addSubKeyFormAt, addNewKeyResult } = props;
   const [isActive, setActive] = useState(false);
+  const [expandTracked, setExpandTracked] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const [isOpen, setIsOpen] = useState(false);
+
   const handleCalender = () => {
     setActive(!isActive);
   };
@@ -21,10 +24,9 @@ export default function IndividualORKchild(props) {
     setStartDate(date);
   };
 
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleSideBar = () => {
+  const toggleSideBar = (dropdownmenu) => {
     setIsOpen((isOpen) => !isOpen);
+    setExpandTracked(dropdownmenu);
   };
   const handleRange = (startDate, endDate) => {
     setStartDate(new Date(startDate));
@@ -33,6 +35,9 @@ export default function IndividualORKchild(props) {
   const handleOpen = (id) => {
     props?.setSubKeyFormAt(id);
     props?.setAddNewKeyResult(true);
+  };
+  const setEdit = () => {
+    toggleSideBar(false);
   };
   return (
     <div>
@@ -128,7 +133,7 @@ export default function IndividualORKchild(props) {
               <i className='fa fa-user-circle'></i>
             </div>
           </div>
-          <div className='trackSelect' onClick={toggleSideBar}>
+          <div className='trackSelect' onClick={() => toggleSideBar(true)}>
             % Percentage Tracker
           </div>
           <div className='progressBar'>
@@ -139,13 +144,20 @@ export default function IndividualORKchild(props) {
               <b>0%</b>
             </span>
             <div className='update'>
-              <i data-toggle='tooltip' title='Update' className='fa fa-pencil other' />
+              <i data-toggle='tooltip' title='Update' className='fa fa-pencil other' onClick={() => setEdit(child)} />
               <i className='fa fa-ellipsis-h other' aria-hidden='true'></i>
             </div>
           </div>
         </div>
       </div>
-      {isOpen && <SideBarToggle setIsOpen={setIsOpen} toggleSideBar={toggleSideBar} />}
+      {isOpen && (
+        <SideBarToggle
+          setIsOpen={setIsOpen}
+          toggleSideBar={toggleSideBar}
+          expandTracked={expandTracked}
+          child={child}
+        />
+      )}
       {addNewKeyResult && addSubKeyFormAt === child?.id && (
         <CreateKeyResult
           id={child?.id}
