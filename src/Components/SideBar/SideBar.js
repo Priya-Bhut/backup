@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SideBarToggle';
 import SideBarToggle from './SideBarToggle';
-function SideBar() {
+function SideBar(props) {
   const [isOpen, setIsOpen] = useState(false);
   const toggleSideBar = () => {
     setIsOpen((isOpen) => !isOpen);
@@ -12,7 +12,9 @@ function SideBar() {
         <button className='dashboardBtn' type='submit' onClick={toggleSideBar}>
           Submit
         </button>
-        {isOpen && <SideBarToggle setIsOpen={setIsOpen} toggleSideBar={toggleSideBar} />}
+        {isOpen && (
+          <SideBarToggle handleAlert={props?.handleAlert} setIsOpen={setIsOpen} toggleSideBar={toggleSideBar} />
+        )}
       </div>
     </div>
   );

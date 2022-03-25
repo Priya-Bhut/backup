@@ -6,8 +6,8 @@ import SideBarToggle from '../SideBar/SideBarToggle';
 export default class IndividualOKRmain extends Component {
   state = { isActive: false, isOpen: false };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       startDate: new Date(),
       endDate: new Date(),
@@ -48,13 +48,13 @@ export default class IndividualOKRmain extends Component {
               </div>
               <div className='note-alignment1'>
                 <div className='tasks'>
-                  <i className='fa fa-list'></i>
+                  <i data-toggle='tooltip' title='Tasks' className='fa fa-list'></i>
                 </div>
                 <div className='notes'>
-                  <i className='fa fa-sticky-note'></i>
+                  <i data-toggle='tooltip' title='Notes' className='fa fa-sticky-note'></i>
                 </div>
                 <div className='alignment'>
-                  <i className='fa fa-line-chart' aria-hidden='true'></i>
+                  <i data-toggle='tooltip' title='Check-ins' className='fa fa-line-chart' aria-hidden='true'></i>
                 </div>
               </div>
             </div>
@@ -139,12 +139,18 @@ export default class IndividualOKRmain extends Component {
               </span>
               <div className='update'>
                 <i data-toggle='tooltip' title='Update' className='fa fa-pencil other' />
-                <i className='fa fa-ellipsis-h other' aria-hidden='true'></i>
+                <i data-toggle='tooltip' title='Other' className='fa fa-ellipsis-h other' aria-hidden='true'></i>
               </div>
             </div>
           </div>
         </div>
-        {this.state.isOpen && <SideBarToggle setIsOpen={!this.state.isOpen} toggleSideBar={this.toggleSideBar} />}
+        {this.state.isOpen && (
+          <SideBarToggle
+            setIsOpen={!this.state.isOpen}
+            handleAlert={this?.props?.handleAlert}
+            toggleSideBar={this.toggleSideBar}
+          />
+        )}
       </div>
     );
   }

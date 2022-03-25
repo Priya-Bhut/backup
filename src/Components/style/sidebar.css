@@ -518,13 +518,14 @@ input::-webkit-inner-spin-button {
   justify-content: center;
   right: 0;
   left: 85%;
-  top: 2px;
-  width: 28px;
+  top: 1.5px;
+  width: 29px;
   font-size: large;
   font-weight: bold;
   background: rgb(230, 230, 230);
-  height: 37px;
+  height: 41px;
   align-items: center;
+  border-radius: 0 5px 5px 0;
 }
 .vertical-line {
   border-left: 6px solid green;

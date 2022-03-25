@@ -41,13 +41,13 @@ export default function IndividualORKchild() {
             <i className='fa fa-dot-circle-o treeConnectorDot'></i> <span className='child'>OKR Sub Child</span>
             <div className='note-alignment2'>
               <div className='tasks'>
-                <i className='fa fa-list'></i>
+                <i data-toggle='tooltip' title='Tasks' className='fa fa-list'></i>
               </div>
               <div className='notes'>
-                <i className='fa fa-sticky-note'></i>
+                <i data-toggle='tooltip' title='Notes' className='fa fa-sticky-note'></i>
               </div>
               <div className='alignment'>
-                <i className='fa fa-line-chart' aria-hidden='true'></i>
+                <i data-toggle='tooltip' title='Check-ins' className='fa fa-line-chart' aria-hidden='true'></i>
               </div>
             </div>
           </div>
@@ -132,7 +132,7 @@ export default function IndividualORKchild() {
             </span>
             <div className='update'>
               <i data-toggle='tooltip' title='Update' className='fa fa-pencil other' />
-              <i className='fa fa-ellipsis-h other' aria-hidden='true'></i>
+              <i data-toggle='tooltip' title='Other' className='fa fa-ellipsis-h other' aria-hidden='true'></i>
             </div>
           </div>
         </div>

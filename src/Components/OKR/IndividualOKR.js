@@ -71,7 +71,9 @@ class IndividualOKR extends Component {
   };
   addNewChild = () => {
     const { newChild } = this.state;
-    const addChild = <IndividualOKRmain id={this.state.id} subChild={this.subChild} />;
+    const addChild = (
+      <IndividualOKRmain id={this.state.id} subChild={this.subChild} handleAlert={this?.props?.handleAlert} />
+    );
     this.setState({
       newChild: newChild.concat({ main: addChild, child: [] }),
       id: this.state.id + 1,
@@ -81,7 +83,7 @@ class IndividualOKR extends Component {
   subChild = (index) => {
     // console.log("hii");
     const { newChild } = this.state;
-    const addSubChild = <IndividualORKchild />;
+    const addSubChild = <IndividualORKchild handleAlert={this?.props?.handleAlert} />;
     newChild[index] = {
       ...newChild[index],
       child: [...newChild[index].child, addSubChild],
@@ -105,7 +107,7 @@ class IndividualOKR extends Component {
       ?.getObjective()
       .then((response) => {
         if (response && !response?.errorMessage && !response?.error) {
-          console.log(response);
+          // console.log(response);
         } else {
           this.props?.handleAlert(response?.errorMessage || response?.error || 'Something went wrong', 'error');
         }
@@ -144,7 +146,7 @@ class IndividualOKR extends Component {
                   </div>
                   <div className='note-alignment'>
                     <div className='notes'>
-                      <i className='fa fa-sticky-note'></i>
+                      <i data-toggle='tooltip' title='Notes' className='fa fa-sticky-note'></i>
                     </div>
                     <div className='alignment'>
                       <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' width='20' height='20'>
@@ -249,7 +251,7 @@ class IndividualOKR extends Component {
                   </span>
                   <div className='update'>
                     <i data-toggle='tooltip' title='Update' className='fa fa-pencil i-pencil' />
-                    <i className='fa fa-ellipsis-h other' aria-hidden='true'></i>
+                    <i data-toggle='tooltip' title='Other' className='fa fa-ellipsis-h other' aria-hidden='true'></i>
                   </div>
                 </div>
               </div>

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import SearchSelectSequenceModal from './SearchSelectSequenceModal';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
+import { getSequencedata } from './Action';
+import { connect } from 'react-redux';
 
 function SideBarToggle(props) {
   const handleClicked = (e) => {
@@ -13,6 +15,19 @@ function SideBarToggle(props) {
   const [sequenceName, setSequenceName] = useState('');
   const [openSequence, setOpenSequence] = useState(false);
   const [setSequence] = useState([]);
+  const getSequencedata = () => {
+    getSequencedata()
+      .then((response) => {
+        if (response && !response?.errorMessage && !response?.error) {
+          // console.log(response);
+        } else {
+          props?.handleAlert(response?.errorMessage || response?.error || 'Something went wrong', 'error');
+        }
+      })
+      .catch((error) => {
+        props?.handleAlert(error?.message || 'Something went wrong', 'error');
+      });
+  };
   const expandPertageTracked = () => {
     return (
       <div className='keyresult-drop-down'>
@@ -180,10 +195,13 @@ function SideBarToggle(props) {
               <div>
                 {openSequence && (
                   <SearchSelectSequenceModal
+                    handleAlert={props?.handleAlert}
                     setOpenSequence={setOpenSequence}
                     openSequence={openSequence}
+                    sequenceName={sequenceName}
                     setSequenceName={setSequenceName}
                     setSequence={setSequence}
+                    getSequencedata={getSequencedata}
                   />
                 )}
               </div>
@@ -264,4 +282,8 @@ function SideBarToggle(props) {
     </>
   );
 }
-export default SideBarToggle;
+const mapDispatchToProps = {
+  getSequencedata,
+};
+
+export default connect(null, mapDispatchToProps)(SideBarToggle);
