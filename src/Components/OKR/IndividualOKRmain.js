@@ -45,30 +45,29 @@ export default class IndividualOKRmain extends Component {
     const { startDate, endDate } = this.state;
     const { keyResult, addSubKeyFormAt, addNewKeyResult } = this.props;
     return (
-      <div>
-        {/* ---------------------------------------Child1(Main)------------------------------------------ */}
-        <div className='main-tree'> </div>
-        <div className='child'>
-          <div className='all-content'>
-            <div className='connect-tree'></div>
-            <div className='child-tree'> </div>
-            <div className='name-tree1'>
-              <i className='fa fa-dot-circle-o treeConnectorDot'></i> <span className='child'>{keyResult?.title}</span>
-              <div className='addSubChild-btn' onClick={() => this.handleOpen(keyResult?.id)}>
-                <i className='fa fa-plus-circle'>Add New Child</i>
+      <div className='main key-result-hover'>
+        <div className='all-content'>
+          <div className={`okr-main ${this.props?.class}`}>
+            <div className='okr-name'>
+              <i className='fa fa-dot-circle-o treeConnectorDot'></i>
+              <span>{keyResult?.title}</span>
+            </div>
+            <div className='addSubChild-btn' onClick={() => this.handleOpen(keyResult?.id)}>
+              <i className='fa fa-plus-circle'>Add New Child</i>
+            </div>
+            <div className='note-alignment1'>
+              <div className='tasks'>
+                <i className='fa fa-list'></i>
               </div>
-              <div className='note-alignment1'>
-                <div className='tasks'>
-                  <i className='fa fa-list'></i>
-                </div>
-                <div className='notes'>
-                  <i className='fa fa-sticky-note'></i>
-                </div>
-                <div className='alignment'>
-                  <i className='fa fa-line-chart' aria-hidden='true'></i>
-                </div>
+              <div className='notes'>
+                <i className='fa fa-sticky-note'></i>
+              </div>
+              <div className='alignment'>
+                <i className='fa fa-line-chart' aria-hidden='true'></i>
               </div>
             </div>
+          </div>
+          <div className='keyresult-content-container'>
             <div className='date-time1'>
               <div className='calender'>
                 <i className='fa fa-calendar-alt' onClick={this.handleCalender}></i>
