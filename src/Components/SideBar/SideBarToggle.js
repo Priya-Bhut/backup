@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import SearchSelectSequenceModal from './SearchSelectSequenceModal';
-import { Dropdown, DropdownButton } from 'react-bootstrap';
+// import { DropdownButton } from 'react-bootstrap';
 
 function SideBarToggle(props) {
   const handleClicked = (e) => {
@@ -10,7 +10,7 @@ function SideBarToggle(props) {
   };
   const [expandPerTracked, setexpandPerTracked] = useState(props.expandTracked);
   const [tracked, setTracked] = useState('percentage');
-  const [sequenceName, setSequenceName] = useState('');
+  // const [sequenceName, setSequenceName] = useState('');
   const [openSequence, setOpenSequence] = useState(false);
   const [setSequence] = useState([]);
   const expandPertageTracked = () => {
@@ -156,20 +156,13 @@ function SideBarToggle(props) {
                   ) : tracked === 'milestone' ? (
                     <div className='searchSequence'>
                       <span onClick={() => setOpenSequence(!openSequence)}>
-                        <div className='top-nav-dropdown'>
+                        {/* <div className='top-nav-dropdown'>
                           <DropdownButton
                             title={sequenceName === '' ? 'Search & Select Sequence ' : sequenceName}
                             className='dropdownhover'
-                          >
-                            <Dropdown.Item>
-                              <div className='workflow-options'>My profile</div>
-                            </Dropdown.Item>
-
-                            <Dropdown.Item>
-                              <div className='workflow-options'>Logout</div>
-                            </Dropdown.Item>
-                          </DropdownButton>
-                        </div>
+                          ></DropdownButton>
+                        </div> */}
+                        Search & select Sequence
                       </span>
                     </div>
                   ) : tracked === 'task' ? (
@@ -182,7 +175,7 @@ function SideBarToggle(props) {
                   <SearchSelectSequenceModal
                     setOpenSequence={setOpenSequence}
                     openSequence={openSequence}
-                    setSequenceName={setSequenceName}
+                    // setSequenceName={setSequenceName}
                     setSequence={setSequence}
                   />
                 )}
@@ -205,7 +198,7 @@ function SideBarToggle(props) {
               rows={3}
               placeholder='Type Your Key Result..'
               className='textareaKeyResult'
-              value={props?.child.title}
+              defaultValue={props?.child === undefined ? props.keyResult.title : props.child.title}
             ></textarea>
           </div>
           <div className='editor'>

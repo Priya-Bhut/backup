@@ -22,7 +22,6 @@ function OKR(props) {
   const handleChildRender = (keyResult) => {
     return keyResult?.keyResults?.map((child, index) => (
       <>
-        {console.log(keyResult)}
         <IndividualORKchild
           child={child}
           key={index}

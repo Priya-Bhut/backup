@@ -5,6 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import 'font-awesome/css/font-awesome.min.css';
 import SideBarToggle from '../SideBar/SideBarToggle';
 import CreateKeyResult from './CreateKeyResult';
+import CheckinToggle from './CheckinToggle';
 
 export default function IndividualORKchild(props) {
   const { child, addSubKeyFormAt, addNewKeyResult } = props;
@@ -13,6 +14,7 @@ export default function IndividualORKchild(props) {
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
+  const [isCheckin, setIsCheckin] = useState(false);
 
   const handleCalender = () => {
     setActive(!isActive);
@@ -27,6 +29,10 @@ export default function IndividualORKchild(props) {
   const toggleSideBar = (dropdownmenu) => {
     setIsOpen((isOpen) => !isOpen);
     setExpandTracked(dropdownmenu);
+  };
+
+  const checkinSidebar = () => {
+    setIsCheckin((isCheckin) => !isCheckin);
   };
   const handleRange = (startDate, endDate) => {
     setStartDate(new Date(startDate));
@@ -138,7 +144,15 @@ export default function IndividualORKchild(props) {
           </div>
           <div className='progressBar'>
             <div className='range-slider'>
-              <input className='range' type='range' min='0' max='100' step='10' defaultValue='0' />
+              <input
+                className='range'
+                type='range'
+                min='0'
+                max='100'
+                step='10'
+                defaultValue='0'
+                onClick={() => checkinSidebar()}
+              />
             </div>
             <span className='showRange'>
               <b>0%</b>
@@ -158,6 +172,7 @@ export default function IndividualORKchild(props) {
           child={child}
         />
       )}
+      {isCheckin && <CheckinToggle setIsCheckin={setIsCheckin} checkinSidebar={checkinSidebar}></CheckinToggle>}
       {addNewKeyResult && addSubKeyFormAt === child?.id && (
         <CreateKeyResult
           id={child?.id}

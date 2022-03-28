@@ -45,6 +45,7 @@
 .slideTab a {
   padding: 0.5rem;
   color: rgb(185, 185, 185);
+  text-decoration: solid;
 }
 .slideTab a:hover {
   color: #132746;
