@@ -20,10 +20,9 @@ function OKR(props) {
   const endDate = new Date();
 
   const handleChildRender = (keyResult) => {
-    console.log(keyResult);
     return keyResult?.keyResults?.map((child, index) => (
       <li className='list-group-item' key={index}>
-        <div className={`okr-tree ${index < keyResult.length - 1 ? 'child-tree' : ''}`}></div>
+        <div className={`okr-tree ${index < keyResult.keyResults.length - 1 ? 'child-tree' : ''}`}></div>
         <div className='subChild'>
           <IndividualOKRmain
             key={index}
