@@ -1,16 +1,24 @@
 .checkinsidebar {
-  background-color: white;
-  top: 74px;
-  bottom: 0;
-  width: 600px;
-  animation: moveLeft 0.3s ease-in-out forwards;
-  float: right;
   position: fixed;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  row-gap: 10px;
+  top: 56px;
+  right: -40%;
+  width: 35%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 100;
+  -webkit-animation: moveLeft 0.3s ease-in-out forwards;
+  animation: moveLeft 0.3s ease-in-out forwards;
+  overflow-y: scroll;
+  padding: 1.5rem 1.5rem 5rem;
+}
+.sidebaroverlay {
+  position: fixed;
+  top: 56px;
+  left: 90px;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(66, 79, 116, 0.3);
+  z-index: 100;
 }
 
 .checkinsidebar-header {
@@ -131,6 +139,6 @@
 }
 .dropdown-menu {
   border-radius: 10px !important;
-  width: 100px !important;
+  width: 120% !important;
   box-shadow: rgb(0 0 0 / 25%) 0px 10px 10px, rgb(0 0 0 / 22%) 0px 0px 0px;
 }

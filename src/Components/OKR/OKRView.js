@@ -8,6 +8,7 @@ import IndividualOKRmain from './IndividualOKRmain';
 // import IndividualORKchild from './IndividualORKchild';
 import CreateKeyResult from './CreateKeyResult';
 import withRouter from '../WrapperComponents/withRouter';
+import OKRUpdateSidebar from './OKRUpdateSidebar';
 
 function OKR(props) {
   const { isNewOkr, params } = props;
@@ -18,7 +19,11 @@ function OKR(props) {
   const [addSubKeyFormAt, setSubKeyFormAt] = useState(-1);
   const startDate = new Date();
   const endDate = new Date();
+  const [isOpenOkr, setIsOpenOkr] = useState(false);
 
+  const setUpdate = () => {
+    setIsOpenOkr(true);
+  };
   const handleChildRender = (keyResult) => {
     return keyResult?.keyResults?.map((child, index) => (
       <li className='list-group-item' key={index}>
@@ -144,7 +149,12 @@ function OKR(props) {
                         <b>0%</b>
                       </span>
                       <div className='update'>
-                        <i data-toggle='tooltip' title='Update' className='fa fa-pencil i-pencil' />
+                        <i
+                          data-toggle='tooltip'
+                          title='Update'
+                          className='fa fa-pencil i-pencil'
+                          onClick={() => setUpdate()}
+                        />
                         <i className='fa fa-ellipsis-h other' aria-hidden='true'></i>
                       </div>
                     </div>
@@ -152,6 +162,8 @@ function OKR(props) {
                 </div>
               </div>
               {handleChildRender(okr)}
+
+              {isOpenOkr && <OKRUpdateSidebar setIsOpenOkr={setIsOpenOkr}></OKRUpdateSidebar>}
               {addNewKeyResult && addKeyFormAt === okr?.id && (
                 <CreateKeyResult
                   id={okr?.id}
