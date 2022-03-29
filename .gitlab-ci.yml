@@ -17,7 +17,7 @@ dev:
       - chmod +x ~/.local/bin/aws
       - aws s3 sync ./build s3://bril-okr
    rules:
-      - if: ($CI_COMMIT_BRANCH == "Develop")     
+      - if: ($CI_COMMIT_BRANCH == "Developer")     
    artifacts:    
       paths:      
          # Build folder      
