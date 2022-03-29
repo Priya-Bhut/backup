@@ -1,6 +1,6 @@
 stages:
    - buildAndDeploy
-build:  
+dev:  
    image: node:12.16.1
      
    stage: buildAndDeploy 
@@ -17,7 +17,7 @@ build:
       - chmod +x ~/.local/bin/aws
       - aws s3 sync ./build s3://bril-okr
    rules:
-      - if: ($CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_COMMIT_BRANCH == "Developer")     
+      - if: ($CI_COMMIT_BRANCH == "Developer")     
    artifacts:    
       paths:      
          # Build folder      
@@ -25,3 +25,28 @@ build:
       expire_in: 1 hour
    tags:
     - brilcrm
+prod:  
+   image: node:12.16.1
+     
+   stage: buildAndDeploy 
+   script:
+      # Set PATH
+      - echo "$TESTVAR"
+      - git reset --hard
+      - export PATH=$PATH:/usr/bin/npm    
+      # Install dependencies 
+      - yarn install   
+      # Build App    
+      - CI=false yarn run build
+      - pip3 install awscli
+      - chmod +x ~/.local/bin/aws
+      - aws s3 sync ./build s3://bril-okr
+   rules:
+      - if: ($CI_COMMIT_BRANCH == "master")     
+   artifacts:    
+      paths:      
+         # Build folder      
+         - build/    
+      expire_in: 1 hour
+   tags:
+    - brilcrm    
