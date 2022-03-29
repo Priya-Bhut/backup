@@ -38,6 +38,7 @@ function CheckinToggle(props) {
             <Card className='valuecard'>
               <Card.Body>
                 <Card.Subtitle className='mb-2 text-muted'>Values</Card.Subtitle>
+                <span> 1</span>
               </Card.Body>
             </Card>
             <Card className='valuecard'>

@@ -12,7 +12,7 @@ export const getDashboard = (organisationUrl = '') => {
         if (response?.data) {
           return response?.data;
         }
-        return response.data;
+        return response;
       })
       .catch((error) => idx(error, (_) => _.response.data));
 };

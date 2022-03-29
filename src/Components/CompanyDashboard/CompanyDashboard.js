@@ -204,7 +204,7 @@ function CompanyDashboard(props) {
           <Card className='topcardsdesign'>
             <Card.Body>
               <div className='inner-body'>
-                <Card.Title>{dashboardData.employeeCount}</Card.Title>
+                <Card.Title>{dashboardData?.employeeCount}</Card.Title>
                 <Card.Subtitle className='mb-2 text-muted'>Users</Card.Subtitle>
               </div>
               <i className='fa fa-solid fa-users fa-5x logo'></i>
@@ -213,7 +213,7 @@ function CompanyDashboard(props) {
           <Card className='topcardsdesign'>
             <Card.Body>
               <div className='inner-body'>
-                <Card.Title>{dashboardData.objectiveCount}</Card.Title>
+                <Card.Title>{dashboardData?.objectiveCount}</Card.Title>
                 <Card.Subtitle className='mb-2 text-muted'>Objective</Card.Subtitle>
               </div>
               <i className='fa fa-solid fa-bullseye fa-5x logo'></i>
@@ -224,7 +224,7 @@ function CompanyDashboard(props) {
           <Card className='topcardsdesign'>
             <Card.Body>
               <div className='inner-body'>
-                <Card.Title>{dashboardData.keyResultCount}</Card.Title>
+                <Card.Title>{dashboardData?.keyResultCount}</Card.Title>
                 <Card.Subtitle className='mb-2 text-muted'>Key Results</Card.Subtitle>
               </div>
               <i className='fa fa-solid fa-key fa-5x logo'></i>
