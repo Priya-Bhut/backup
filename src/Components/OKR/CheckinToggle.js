@@ -10,7 +10,7 @@ function CheckinToggle(props) {
   };
   return (
     <>
-      <div className='overlay'>
+      <div className='sidebaroverlay'>
         <div className='checkinsidebar'>
           <div className='checkinsidebar-header'>
             <p>
