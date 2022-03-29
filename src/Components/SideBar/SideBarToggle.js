@@ -1,17 +1,57 @@
+/*eslint-disable*/
 import React, { useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import SearchSelectSequenceModal from './SearchSelectSequenceModal';
+import { updateKeyResult } from './Action';
+import withRouter from '../WrapperComponents/withRouter';
+import { connect } from 'react-redux';
 // import { DropdownButton } from 'react-bootstrap';
 
 function SideBarToggle(props) {
+  const { okrDetail, keyResult, params } = props;
+  const { organisationUrl } = params || {};
+
   const handleClicked = (e) => {
     setTracked(e);
     setexpandPerTracked(false);
   };
+
   const [expandPerTracked, setexpandPerTracked] = useState(props.expandTracked);
   const [tracked, setTracked] = useState('percentage');
   // const [sequenceName, setSequenceName] = useState('');
   const [openSequence, setOpenSequence] = useState(false);
+  const [updateData, setUpdateData] = useState({
+    keyResultId: keyResult?.id || 0,
+    title: keyResult?.title || '',
+    description: keyResult?.description || '',
+    startDate: keyResult?.startDate || '',
+    endDate: keyResult?.endDate || '',
+    parentKeyResultId: keyResult?.parentKeyResultId || 0,
+    checkInFrequency: keyResult?.checkInFrequency || 0,
+    keyResultTypeName: keyResult?.keyResultTypeName || '',
+    percentData: keyResult?.percentData || '',
+    mileStoneData: keyResult?.mileStoneData || '',
+    taskData: keyResult?.taskData || '',
+    increasetKPIData: keyResult?.increasetKPIData || '',
+    objectiveId: keyResult?.objectiveId || 0,
+    keyResults: keyResult?.keyResults || [],
+  });
+
+  const updateKeyResult = () => {
+    props
+      ?.updateKeyResult(organisationUrl, updateData)
+      .then((response) => {
+        if (response && !response?.errorMessage && !response?.error) {
+          props?.handleAlert('Keyresult Updated', 'success');
+          props?.getObjective();
+        } else {
+          props?.handleAlert(!response?.errorMessage || !response?.error || 'Something went wrong', 'error');
+        }
+      })
+      .catch((error) => {
+        props?.handleAlert(error?.message || 'Something went wrong', 'error');
+      });
+  };
 
   const expandPertageTracked = () => {
     return (
@@ -58,7 +98,7 @@ function SideBarToggle(props) {
         <div className='sideBar'>
           <div className='sidebar-header'>
             <p>
-              Objective: <strong>ABC</strong>
+              Objective: <strong>{okrDetail?.name}</strong>
             </p>
             <i className={`fa fa-times closeModel`} onClick={props?.toggleSideBar}></i>
           </div>
@@ -197,12 +237,15 @@ function SideBarToggle(props) {
               rows={3}
               placeholder='Type Your Key Result..'
               className='textareaKeyResult'
-              defaultValue={props?.child === undefined ? props.keyResult.title : props.child.title}
+              value={updateData?.title}
+              onChange={(e) => setUpdateData({ ...updateData, title: e?.target?.value })}
             ></textarea>
           </div>
           <div className='editor'>
             <Editor
               apiKey='h1a0ymnw0nixvy8bnuahlmmfo0422ltzxfsrv2gprc51cutm'
+              value={updateData?.description}
+              onEditorChange={(content) => setUpdateData({ ...updateData, description: content })}
               init={{
                 statusbar: false,
                 placeholder: 'Description...',
@@ -255,11 +298,18 @@ function SideBarToggle(props) {
 
           <div className='toggle-btn'>
             <button className='sidebar-btn'>Cancel</button>
-            <button className='sidebar-btn'>Update</button>
+            <button className='sidebar-btn' onClick={updateKeyResult}>
+              Update
+            </button>
           </div>
         </div>
       </div>
     </>
   );
 }
-export default SideBarToggle;
+
+const mapDispatchToProps = {
+  updateKeyResult,
+};
+
+export default connect(null, mapDispatchToProps)(withRouter(SideBarToggle));
