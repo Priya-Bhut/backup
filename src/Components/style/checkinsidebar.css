@@ -1,0 +1,136 @@
+.checkinsidebar {
+  background-color: white;
+  top: 74px;
+  bottom: 0;
+  width: 600px;
+  animation: moveLeft 0.3s ease-in-out forwards;
+  float: right;
+  position: fixed;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.checkinsidebar-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  height: 30px;
+  width: 100%;
+  position: relative !important;
+}
+
+.checkinsidebar .keyresultcard {
+  height: auto;
+  border-radius: 10px;
+  background-color: white !important;
+}
+.checkinsidebar-header .closemodel {
+  position: absolute;
+  right: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #242387;
+  top: auto;
+}
+.keyresultcard .keytitle {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+.key-values {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 5px;
+}
+.key-values .valuecard {
+  border-radius: 5px;
+}
+.slideTab {
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+}
+.slideTab a {
+  padding: 0.5rem;
+  color: rgb(185, 185, 185);
+}
+.slideTab a:hover {
+  color: #132746;
+}
+.slideTab a:active {
+  color: black;
+}
+.slideTab .active {
+  border-bottom: 2px solid #132746;
+  color: #132746;
+}
+.status-dropdown {
+  padding: 0 !important;
+  margin: 0;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.dropdown-toggle::after {
+  display: none !important;
+}
+.statusicon-notstart {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: rgb(71, 170, 249);
+  margin-right: 8px;
+}
+.statusicon-risk {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: rgb(252, 160, 22);
+  margin-right: 8px;
+}
+.statusicon-trouble {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: rgb(192, 57, 43);
+  margin-right: 8px;
+}
+.statusicon-completed {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: rgb(22, 160, 133);
+  margin-right: 8px;
+}
+.statusicon-archived {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  background-color: rgb(119, 119, 119);
+}
+.statusicon-ontracked {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+  background-color: rgb(83, 199, 216);
+}
+.departments-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dropdown-menu {
+  border-radius: 10px !important;
+  width: 100px !important;
+  box-shadow: rgb(0 0 0 / 25%) 0px 10px 10px, rgb(0 0 0 / 22%) 0px 0px 0px;
+}

@@ -65,6 +65,7 @@ function OKR(props) {
   useEffect(() => {
     getObjective();
   }, []);
+
   return (
     <div className='main'>
       {isNewOkr && (

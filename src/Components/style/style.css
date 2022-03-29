@@ -15,6 +15,7 @@
 @import './tempokr.css';
 @import './calenderpicker.css';
 @import './companydashboard.css';
+@import './checkinsidebar.css';
 * {
   margin: 0;
   padding: 0;
