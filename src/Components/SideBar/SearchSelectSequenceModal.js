@@ -18,16 +18,6 @@ function SearchSelectSequence(props) {
             <span onClick={() => setSelectSequence(!selectSequence)}>Create new</span>
           </div>
           <hr></hr>
-          {/* <div className='templates'>
-            <ul>
-              <li>
-                <a href='#'>Predefined Templates</a>
-              </li>
-              <li>
-                <a href='#'>My Templates</a>
-              </li>
-            </ul>
-          </div> */}
           <div className='sequencecard'>
             <Card className='sequencecardsdesign'>
               <Card.Header>
@@ -38,7 +28,7 @@ function SearchSelectSequence(props) {
               </Card.Header>
               <Card.Body></Card.Body>
               <Card.Footer>
-                <Button className='primary'> select</Button>
+                <Button className='primary'>select</Button>
               </Card.Footer>
             </Card>
           </div>

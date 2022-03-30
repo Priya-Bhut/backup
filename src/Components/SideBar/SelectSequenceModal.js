@@ -5,7 +5,6 @@ import workFlow from '../../images/workflow.png';
 
 function SelectSequenceModal(props) {
   const { openSequence } = props;
-
   const [percentage, setPercentage] = useState([0]);
   const [buttonDisable, setButtonDisable] = useState(false);
   const [percentageTotal, setPercentageTotal] = useState([]);

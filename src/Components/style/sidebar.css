@@ -15,7 +15,7 @@
   right: -40%;
   width: 35%;
   height: 100%;
-  background-color: rgb(255, 253, 253);
+  background-color: #fff;
   -webkit-animation: moveLeft 0.3s ease-in-out forwards;
   animation: moveLeft 0.3s ease-in-out forwards;
   overflow-y: scroll;
@@ -79,12 +79,15 @@
 .dropdown-list {
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   margin-left: 10px;
   cursor: pointer;
 }
 .dropdown-list:hover {
   background-color: #eff4f7;
+}
+.keyresult-label {
+  font-size: small;
 }
 .sideBar-type1 {
   height: 50px;
@@ -98,6 +101,7 @@
 }
 .span-key {
   color: #8ba1b4;
+  margin-right: 10px;
 }
 .sidebar-type2 {
   height: 50px;
@@ -166,12 +170,11 @@
   justify-content: space-between;
   position: fixed;
   top: 19%;
-  right: 23%;
+  padding: 10px;
   width: fit-content;
-  height: 15%;
   background-color: white;
-  border-radius: 5px;
-  box-shadow: 5px 5px rgb(240, 234, 234);
+  border-radius: 10px;
+  box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
   z-index: 111;
   animation: moving 0.3s ease-in-out;
 }
@@ -183,8 +186,8 @@
     right: 330px;
   }
 }
-.keyresult-drop-down span {
-  margin: 20px;
+.keypercentage span {
+  margin: 6px;
 }
 #circletag {
   border: 2px solid grey;
@@ -449,6 +452,7 @@ ul {
 
 .card-header .btntrash {
   visibility: hidden;
+  cursor: pointer;
 }
 .card-header :hover .btntrash {
   visibility: visible;
@@ -459,30 +463,6 @@ ul {
 }
 .card-footer .btn {
   align-self: center;
-}
-.templates {
-  box-shadow: 0 0 10px #a9ceff;
-  border-radius: 6px;
-  border: 1px solid #e3e3e3;
-  width: 20%;
-}
-.templates ul {
-  list-style: none;
-  padding: 15px 0;
-  display: inline-block;
-  width: 100%;
-  margin: 0;
-}
-.templates > li.active > a {
-  color: #2196f3 !important;
-}
-
-.templates li {
-  border-bottom: 1px solid #ccc;
-  padding: 10px 20px;
-  float: left;
-  width: 100%;
-  position: relative;
 }
 
 .sequence input {
@@ -651,4 +631,48 @@ input::-webkit-inner-spin-button {
   font-size: 13px;
   font-weight: bold;
   margin: 25px 0 0 25px;
+}
+.frequency-dropdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  width: max-content;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 12px 28px 0 rgba(0, 0, 0, 0.2), 0 2px 4px 0 rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  left: 100px;
+  animation: moving 0.3s ease-in-out;
+  position: absolute;
+}
+.frequency-dropdown .dropdown-list input {
+  margin-right: 8px;
+}
+.hr-keyresult hr {
+  margin: 0.5rem 0px;
+}
+.week-item {
+  display: none;
+  left: 150px;
+  bottom: 40px;
+}
+.week:hover .week-item {
+  display: flex;
+}
+.week,
+.month {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  cursor: pointer;
+  padding-right: 20px;
+  width: 100%;
+}
+.month-item {
+  display: none;
+  left: 150px;
+  bottom: 10px;
+}
+.month:hover .month-item {
+  display: flex;
 }

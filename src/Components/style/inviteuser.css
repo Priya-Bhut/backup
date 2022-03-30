@@ -32,6 +32,9 @@
   font-family: Roboto, Helvetica, Arial, sans-serif;
   box-shadow: 0 1px 4px rgb(21 27 38 / 8%);
   border: 0;
+  position: sticky;
+  top: 0;
+  z-index: 3;
 }
 
 .secondHeader h5 {

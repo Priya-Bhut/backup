@@ -9,43 +9,78 @@ function SideBarToggle(props) {
   };
   const [expandPerTracked, setexpandPerTracked] = useState(props.expandTracked);
   const [tracked, setTracked] = useState('percentage');
-  // const [sequenceName, setSequenceName] = useState('');
   const [openSequence, setOpenSequence] = useState(false);
+  const [addFrequency, setAddFrequency] = useState(false);
 
   const expandPertageTracked = () => {
     return (
       <div className='keyresult-drop-down'>
-        <div className='list-content'>
-          <span className='nonmeasurable-label'> Non Measureables</span>
-          <div className='dropdown-list'>
-            <div id='circle3'>
-              <i className='fa fa-solid fa-percent' />
-            </div>
-            <div className='keypercentage'>
-              <span className='span-key' onClick={() => handleClicked('percentage')}>
-                Percentage Tracked
-              </span>
-            </div>
+        <span className='keyresult-label'> Non Measureables</span>
+        <div className='dropdown-list'>
+          <div id='circle3'>
+            <i className='fa fa-solid fa-percent' />
           </div>
-          <div className='dropdown-list'>
-            <div id='circle3'>
-              <i className='fa fa-solid fa-flag' />
-            </div>
-            <div className='keypercentage'>
-              <span className='span-key' onClick={() => handleClicked('milestone')}>
-                Milestone Tracked
-              </span>
-            </div>
+          <div className='keypercentage'>
+            <span className='span-key' onClick={() => handleClicked('percentage')}>
+              Percentage Tracked
+            </span>
           </div>
-          <div className='dropdown-list'>
-            <div id='circle3'>
-              <i className='fa fa-calendar'></i>
-            </div>
-            <div className='keypercentage'>
-              <span className='span-key' onClick={() => handleClicked('task')}>
-                Task Tracked
-              </span>
-            </div>
+        </div>
+        <div className='dropdown-list'>
+          <div id='circle3'>
+            <i className='fa fa-solid fa-flag' />
+          </div>
+          <div className='keypercentage'>
+            <span className='span-key' onClick={() => handleClicked('milestone')}>
+              Milestone Tracked
+            </span>
+          </div>
+        </div>
+        <div className='dropdown-list'>
+          <div id='circle3'>
+            <i className='fa fa-calendar'></i>
+          </div>
+          <div className='keypercentage'>
+            <span className='span-key' onClick={() => handleClicked('task')}>
+              Task Tracked
+            </span>
+          </div>
+        </div>
+        <div className='hr-keyresult'>
+          <hr></hr>
+        </div>
+
+        <span className='keyresult-label'> Measureables</span>
+        <div className='dropdown-list'>
+          <div id='circle3'>
+            <i className='fas fa-caret-up fa-2x'></i>
+          </div>
+          <div className='keypercentage'>
+            <span className='span-key' onClick={() => handleClicked('task')}>
+              Increase KPI
+            </span>
+          </div>
+        </div>
+
+        <div className='dropdown-list'>
+          <div id='circle3'>
+            <i className='fas fa-caret-down fa-2x'></i>
+          </div>
+          <div className='keypercentage'>
+            <span className='span-key' onClick={() => handleClicked('task')}>
+              Decrease KPI
+            </span>
+          </div>
+        </div>
+
+        <div className='dropdown-list'>
+          <div id='circle3'>
+            <i className='fa fa-solid fa-hourglass-end'></i>
+          </div>
+          <div className='keypercentage'>
+            <span className='span-key' onClick={() => handleClicked('task')}>
+              Control KPI
+            </span>
           </div>
         </div>
       </div>
@@ -153,8 +188,8 @@ function SideBarToggle(props) {
                   {tracked === 'percentage' ? (
                     'Percentage Tracked'
                   ) : tracked === 'milestone' ? (
-                    <div className='searchSequence'>
-                      <span onClick={() => setOpenSequence(!openSequence)}>
+                    <div className='searchSequence' onClick={() => setOpenSequence(!openSequence)}>
+                      <span>
                         {/* <div className='top-nav-dropdown'>
                           <DropdownButton
                             title={sequenceName === '' ? 'Search & Select Sequence ' : sequenceName}
@@ -189,7 +224,9 @@ function SideBarToggle(props) {
               </div>
             </div>
           </div>
+
           <hr />
+
           <div className='key-result'>
             <textarea
               cols={63}
@@ -247,9 +284,71 @@ function SideBarToggle(props) {
                 <span className='display-frequency'> Every Friday</span>
               </div>
               <div id='circleaddfre'>
-                <i className='fa fa-solid fa-plus'>
+                <i className='fa fa-solid fa-plus' onClick={() => setAddFrequency(!addFrequency)}>
                   <span className='tooltiptext'>Add Frequency</span>
                 </i>
+                {addFrequency && (
+                  <div className='frequency-dropdown'>
+                    <div className='week'>
+                      <span className='span-key'>Weekly Updates</span>
+                      <i className='fa fa-caret-right'></i>
+
+                      <div className='frequency-dropdown week-item'>
+                        <div className='dropdown-list'>
+                          <input type='checkbox' value='day' />
+                          <span className='span-key'>Every Day</span>
+                        </div>
+
+                        <div className='dropdown-list'>
+                          <input type='checkbox' value='monday' />
+                          <span className='span-key'>Every Monday</span>
+                        </div>
+
+                        <div className='dropdown-list'>
+                          <input type='checkbox' value='tuesday' />
+                          <span className='span-key'>Every Tuesday</span>
+                        </div>
+                        <div className='dropdown-list'>
+                          <input type='checkbox' value='wednesday' />
+                          <span className='span-key'>Every Wednesday</span>
+                        </div>
+                        <div className='dropdown-list'>
+                          <input type='checkbox' value='thrusday' />
+                          <span className='span-key'>Every Thrusday</span>
+                        </div>
+                        <div className='dropdown-list'>
+                          <input type='checkbox' value='friday' />
+                          <span className='span-key'>Every Friday</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className='month'>
+                      <span className='span-key'>Monthly Updates</span>
+                      <i className='fa fa-caret-right'></i>
+                      <div className='frequency-dropdown month-item'>
+                        <div className='dropdown-list'>
+                          <input type='checkbox' value='day' />
+                          <span className='span-key'>Last Day</span>
+                        </div>
+
+                        <div className='dropdown-list'>
+                          <input type='checkbox' value='monday' />
+                          <span className='span-key' onClick={() => handleClicked('percentage')}>
+                            1st Monday
+                          </span>
+                        </div>
+
+                        <div className='dropdown-list'>
+                          <input type='checkbox' value='tuesday' />
+                          <span className='span-key' onClick={() => handleClicked('percentage')}>
+                            Last Friday
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
