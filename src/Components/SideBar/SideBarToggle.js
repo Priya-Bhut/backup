@@ -94,7 +94,7 @@ function SideBarToggle(props) {
   };
   return (
     <>
-      <div className='overlay'>
+      <div className='sidebaroverlay'>
         <div className='sideBar'>
           <div className='sidebar-header'>
             <p>
@@ -261,41 +261,42 @@ function SideBarToggle(props) {
               }}
             />
           </div>
-          <div className='sidebar-user'>
-            <div id='circlelocation'>
-              <i className='fa fa-light fa-user' />
+          <div className='assignee'>
+            <div className='sidebar-user'>
+              <div id='circlelocation'>
+                <i className='fa fa-light fa-user' />
+              </div>
+              <div className='key'>
+                <span className='span-key'>Assignee</span>
+                <a href='#' className='SearchAssignee'>
+                  Search & Select Assignee
+                </a>
+              </div>
             </div>
-            <div className='key'>
-              <span className='span-key'>Assignee</span>
-              <a href='#' className='SearchAssignee'>
-                Search & Select Assignee
-              </a>
+            <div className='tag'>
+              <div id='circletag'>
+                <i className='fa fa-tags'>
+                  <span className='tooltiptext'>Tags</span>
+                </i>
+              </div>
+            </div>
+            <div className='Location'>
+              <div id='circletag'>
+                <i className='fa fa-map-marker fa-lg Icons' aria-hidden='true'>
+                  <span className='tooltiptext'>Frequency</span>
+                </i>
+              </div>
+              <div className='key'>
+                <span className='span-key'>Check-in Frequency</span>
+                <span className='display-frequency'> Every Friday</span>
+              </div>
+              <div id='circleaddfre'>
+                <i className='fa fa-solid fa-plus'>
+                  <span className='tooltiptext'>Add Frequency</span>
+                </i>
+              </div>
             </div>
           </div>
-          <div className='tag'>
-            <div id='circletag'>
-              <i className='fa fa-tags'>
-                <span className='tooltiptext'>Tags</span>
-              </i>
-            </div>
-          </div>
-          <div className='Location'>
-            <div id='circletag'>
-              <i className='fa fa-map-marker fa-lg Icons' aria-hidden='true'>
-                <span className='tooltiptext'>Frequency</span>
-              </i>
-            </div>
-            <div className='key'>
-              <span className='span-key'>Check-in Frequency</span>
-              <span className='display-frequency'> Every Friday</span>
-            </div>
-            <div id='circleaddfre'>
-              <i className='fa fa-solid fa-plus'>
-                <span className='tooltiptext'>Add Frequency</span>
-              </i>
-            </div>
-          </div>
-
           <div className='toggle-btn'>
             <button className='sidebar-btn'>Cancel</button>
             <button className='sidebar-btn' onClick={updateKeyResult}>
