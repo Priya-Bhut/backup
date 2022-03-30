@@ -384,7 +384,7 @@ const SideMenu = (props) => {
                 <p className='my-2'>
                   <i className='fa fa-user-circle' aria-hidden='true'></i>
 
-                  <span>UserProfile</span>
+                  <span>My Profile</span>
                 </p>
               </div>
             </div>
