@@ -422,6 +422,24 @@ ul {
 .sequencelabel span:nth-child(2):hover {
   color: #0a78d3;
 }
+.sequencecard .sequencecardsdesign {
+  height: auto;
+  width: 100%;
+  border-radius: 10px;
+  background-color: white !important;
+  padding: 0;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+.inner-bodysequence {
+  display: flex;
+  flex-direction: column;
+}
+.sequencecard {
+  display: grid;
+  grid-template-columns: auto auto;
+  border-radius: 10px;
+  grid-column-gap: 30px;
+}
 .cardtitle {
   display: flex;
   justify-content: space-between;

@@ -28,8 +28,8 @@ function SearchSelectSequence(props) {
               </li>
             </ul>
           </div> */}
-          <div className='topcard'>
-            <Card className='topcardsdesign'>
+          <div className='sequencecard'>
+            <Card className='sequencecardsdesign'>
               <Card.Header>
                 <div className='cardtitle'>
                   <Card.Subtitle>Sequence Name</Card.Subtitle>
