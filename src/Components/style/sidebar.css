@@ -410,11 +410,63 @@ ul {
   font-size: medium;
   font-weight: bold;
 }
-.sequencelabel span {
-  font-size: medium;
-  font-weight: bold;
-  margin-left: 100px;
+.sequencelabel {
+  display: flex;
+  justify-content: space-between;
 }
+.sequencelabel span:nth-child(2) {
+  color: #2196f3;
+  cursor: pointer;
+  font-weight: bold;
+}
+.sequencelabel span:nth-child(2):hover {
+  color: #0a78d3;
+}
+.cardtitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.card-header .btntrash {
+  visibility: hidden;
+}
+.card-header :hover .btntrash {
+  visibility: visible;
+}
+.card-footer {
+  width: 100%;
+  text-align: center !important;
+}
+.card-footer .btn {
+  align-self: center;
+}
+.templates {
+  box-shadow: 0 0 10px #a9ceff;
+  border-radius: 6px;
+  border: 1px solid #e3e3e3;
+  width: 20%;
+}
+.templates ul {
+  list-style: none;
+  padding: 15px 0;
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+}
+.templates > li.active > a {
+  color: #2196f3 !important;
+}
+
+.templates li {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 20px;
+  float: left;
+  width: 100%;
+  position: relative;
+}
+
 .sequence input {
   border: 2px solid rgb(204, 199, 199);
   border-radius: 10px;

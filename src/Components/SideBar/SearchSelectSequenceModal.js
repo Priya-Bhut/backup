@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import SelectSequenceModal from './SelectSequenceModal';
 
 function SearchSelectSequence(props) {
@@ -7,22 +8,49 @@ function SearchSelectSequence(props) {
   const [selectSequence, setSelectSequence] = useState(false);
   return (
     <>
-      <Modal show={openSequence} onHide={() => props?.setOpenSequence(!openSequence)}>
+      <Modal size='xl' show={openSequence} onHide={() => props?.setOpenSequence(!openSequence)}>
         <Modal.Header closeButton>
           <Modal.Title> Select Sequence</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div className='sequencelabel'>
             <span>Creating a new sequence</span>
+            <span onClick={() => setSelectSequence(!selectSequence)}>Create new</span>
+          </div>
+          <hr></hr>
+          {/* <div className='templates'>
+            <ul>
+              <li>
+                <a href='#'>Predefined Templates</a>
+              </li>
+              <li>
+                <a href='#'>My Templates</a>
+              </li>
+            </ul>
+          </div> */}
+          <div className='topcard'>
+            <Card className='topcardsdesign'>
+              <Card.Header>
+                <div className='cardtitle'>
+                  <Card.Subtitle>Sequence Name</Card.Subtitle>
+                  <i className='fa fa-solid fa-trash fa-2x btntrash'></i>
+                </div>
+              </Card.Header>
+              <Card.Body></Card.Body>
+              <Card.Footer>
+                <Button className='primary'> select</Button>
+              </Card.Footer>
+            </Card>
           </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant='secondary' onClick={() => props?.setOpenSequence(!openSequence)}>
             Cancel
           </Button>
-          <Button variant='primary' onClick={() => setSelectSequence(!selectSequence)}>
-            Create new
+          <Button variant='primary' onClick={() => props?.setOpenSequence(!openSequence)}>
+            Add
           </Button>
+
           <div>
             {selectSequence && (
               <SelectSequenceModal
