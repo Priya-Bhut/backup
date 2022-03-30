@@ -14,14 +14,18 @@ function OKR(props) {
   const { isNewOkr, params } = props;
   const { organisationUrl } = params || {};
   const [okrs, setOkrs] = useState([]);
+  const [calendarAt, setCalendarAt] = useState(-1);
   const [addNewKeyResult, setAddNewKeyResult] = useState(false);
   const [addKeyFormAt, setKeyFormAt] = useState(-1);
   const [addSubKeyFormAt, setSubKeyFormAt] = useState(-1);
-  const startDate = new Date();
-  const endDate = new Date();
   const [isOpenOkr, setIsOpenOkr] = useState(false);
+
   const setUpdate = () => {
     setIsOpenOkr(true);
+  };
+
+  const handleCalender = (id) => {
+    setCalendarAt(id);
   };
 
   const handleChildRender = (keyResult, okrDetail) => {
@@ -33,6 +37,8 @@ function OKR(props) {
             key={index}
             keyResult={child}
             handleAlert={props?.handleAlert}
+            calendarAt={calendarAt}
+            handleCalender={handleCalender}
             addSubKeyFormAt={addSubKeyFormAt}
             addNewKeyResult={addNewKeyResult}
             setSubKeyFormAt={setSubKeyFormAt}
@@ -114,15 +120,15 @@ function OKR(props) {
                   <div className='okr-content-container'>
                     <div className='date-time'>
                       <div className='calender'>
-                        <i className='fa fa-calendar-alt' /*onClick={() => this.handleCalender(okr?.id)}*/></i>
-                        {false && (
+                        <i className='fa fa-calendar-alt' onClick={() => handleCalender(okr?.id)}></i>
+                        {calendarAt === okr?.id && (
                           <Calendar
                             // handleRange={this.handleRange}
                             // handleCalender={this.handleCalender}
                             // handleEndDate={this.handleEndDate}
                             // handleStartDate={this.handleStartDate}
-                            startDate={startDate}
-                            endDate={endDate}
+                            startDate={new Date(okr?.timePeriod?.startDate)}
+                            endDate={new Date(okr?.timePeriod?.endDate)}
                           />
                         )}
                       </div>

@@ -6,6 +6,7 @@
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid #999999;
+  z-index: 1;
 }
 .calender-and-status {
   display: flex;
@@ -15,7 +16,7 @@
 .calender-ranges {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   border-radius: 0;
 }
 .calender-actual {
@@ -87,7 +88,7 @@
 .calender-ranges span {
   width: 100%;
   text-align: center;
-  padding: 3px 10px;
+  padding: 0.5px 8px;
 }
 .react-datepicker__day {
   width: 1.2rem !important;
