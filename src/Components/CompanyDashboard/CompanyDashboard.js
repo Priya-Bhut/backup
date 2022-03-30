@@ -210,6 +210,7 @@ function CompanyDashboard(props) {
               <i className='fa fa-solid fa-users fa-5x logo'></i>
             </Card.Body>
           </Card>
+
           <Card className='topcardsdesign'>
             <Card.Body>
               <div className='inner-body'>
