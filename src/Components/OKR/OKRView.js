@@ -14,17 +14,21 @@ function OKR(props) {
   const { isNewOkr, params } = props;
   const { organisationUrl } = params || {};
   const [okrs, setOkrs] = useState([]);
+  const [calendarAt, setCalendarAt] = useState(-1);
   const [addNewKeyResult, setAddNewKeyResult] = useState(false);
   const [addKeyFormAt, setKeyFormAt] = useState(-1);
   const [addSubKeyFormAt, setSubKeyFormAt] = useState(-1);
-  const startDate = new Date();
-  const endDate = new Date();
   const [isOpenOkr, setIsOpenOkr] = useState(false);
 
   const setUpdate = () => {
     setIsOpenOkr(true);
   };
-  const handleChildRender = (keyResult) => {
+
+  const handleCalender = (id) => {
+    setCalendarAt(id);
+  };
+
+  const handleChildRender = (keyResult, okrDetail) => {
     return keyResult?.keyResults?.map((child, index) => (
       <li className='list-group-item' key={index}>
         <div className={`okr-tree ${index < keyResult.keyResults.length - 1 ? 'child-tree' : ''}`}></div>
@@ -33,6 +37,8 @@ function OKR(props) {
             key={index}
             keyResult={child}
             handleAlert={props?.handleAlert}
+            calendarAt={calendarAt}
+            handleCalender={handleCalender}
             addSubKeyFormAt={addSubKeyFormAt}
             addNewKeyResult={addNewKeyResult}
             setSubKeyFormAt={setSubKeyFormAt}
@@ -40,8 +46,9 @@ function OKR(props) {
             setAddNewKeyResult={setAddNewKeyResult}
             class={size(child?.keyResults) <= 0 ? 'last-okr-main' : ''}
             id={child?.id}
+            okrDetail={okrDetail}
           />
-          {size(child?.keyResults) > 0 && handleChildRender(child)}
+          {size(child?.keyResults) > 0 && handleChildRender(child, okrDetail)}
         </div>
       </li>
     ));
@@ -113,15 +120,15 @@ function OKR(props) {
                   <div className='okr-content-container'>
                     <div className='date-time'>
                       <div className='calender'>
-                        <i className='fa fa-calendar-alt' /*onClick={() => this.handleCalender(okr?.id)}*/></i>
-                        {false && (
+                        <i className='fa fa-calendar-alt' onClick={() => handleCalender(okr?.id)}></i>
+                        {calendarAt === okr?.id && (
                           <Calendar
                             // handleRange={this.handleRange}
                             // handleCalender={this.handleCalender}
                             // handleEndDate={this.handleEndDate}
                             // handleStartDate={this.handleStartDate}
-                            startDate={startDate}
-                            endDate={endDate}
+                            startDate={new Date(okr?.timePeriod?.startDate)}
+                            endDate={new Date(okr?.timePeriod?.endDate)}
                           />
                         )}
                       </div>
@@ -161,9 +168,15 @@ function OKR(props) {
                   </div>
                 </div>
               </div>
-              {handleChildRender(okr)}
-
-              {isOpenOkr && <OKRUpdateSidebar setIsOpenOkr={setIsOpenOkr}></OKRUpdateSidebar>}
+              {handleChildRender(okr, okr)}
+              {isOpenOkr && (
+                <OKRUpdateSidebar
+                  setIsOpenOkr={setIsOpenOkr}
+                  handleAlert={props?.handleAlert}
+                  getObjective={getObjective}
+                  okr={okr}
+                />
+              )}
               {addNewKeyResult && addKeyFormAt === okr?.id && (
                 <CreateKeyResult
                   id={okr?.id}

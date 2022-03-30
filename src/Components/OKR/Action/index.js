@@ -48,3 +48,19 @@ export const getObjective = (organisationUrl = '') => {
       })
       .catch((error) => idx(error, (_) => _.response.data));
 };
+
+export const updateObjective = (organisationUrl = '', data) => {
+  return () =>
+    axios({
+      method: 'put',
+      url: `${API_URL}${organisationUrl}/objective`,
+      data,
+    })
+      .then((response) => {
+        if (response?.data) {
+          return response?.data;
+        }
+        return response.data;
+      })
+      .catch((error) => idx(error, (_) => _.response.data));
+};

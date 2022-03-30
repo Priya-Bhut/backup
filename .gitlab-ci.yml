@@ -12,7 +12,7 @@ dev:
       # Install dependencies 
       - yarn install   
       # Build App    
-      - CI=false yarn run build
+      - CI=false yarn run build:dev
       - pip3 install awscli
       - chmod +x ~/.local/bin/aws
       - aws s3 sync ./build s3://bril-okr
@@ -37,7 +37,7 @@ prod:
       # Install dependencies 
       - yarn install   
       # Build App    
-      - CI=false yarn run build
+      - CI=false yarn run build:prod
       - pip3 install awscli
       - chmod +x ~/.local/bin/aws
       - aws s3 sync ./build s3://bril-okr
