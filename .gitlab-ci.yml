@@ -40,7 +40,7 @@ prod:
       - CI=false yarn run build:prod
       - pip3 install awscli
       - chmod +x ~/.local/bin/aws
-      - aws s3 sync ./build s3://bril-okr
+      - aws s3 sync ./build s3://prod-bril-okr
    rules:
       - if: ($CI_COMMIT_BRANCH == "master")     
    artifacts:    
