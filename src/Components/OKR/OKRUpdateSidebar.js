@@ -1,10 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { Button, Card, Dropdown } from 'react-bootstrap';
-
 import ChangeHistoryIcon from '@material-ui/icons/ChangeHistory';
+import withRouter from '../WrapperComponents/withRouter';
+import { connect } from 'react-redux';
+import { updateObjective } from './Action';
 
 function OKRUpdateSidebar(props) {
+  const { okr, params } = props || {};
+  const { organisationUrl } = params || {};
+
+  const [updateData, setUpdateData] = useState({
+    id: okr?.id || 0,
+    description: okr?.description || '',
+    tags: okr?.tags || [],
+    timePeriod: okr?.timePeriod || {},
+    color: okr?.color || '',
+    selectedPeriodMonth: okr?.selectedPeriodMonth || '',
+    name: okr?.name || '',
+    employeeId: okr?.employeeId || 0,
+    objectiveStatus: okr?.objectiveStatus || '',
+  });
+
+  const updateObjective = () => {
+    props
+      ?.updateObjective(organisationUrl, updateData)
+      .then((response) => {
+        if (response && !response?.errorMessage && !response?.error) {
+          props?.handleAlert('Keyresult Updated', 'success');
+          props?.getObjective();
+        } else {
+          props?.handleAlert(!response?.errorMessage || !response?.error || 'Something went wrong', 'error');
+        }
+      })
+      .catch((error) => {
+        props?.handleAlert(error?.message || 'Something went wrong', 'error');
+      });
+  };
+
   return (
     <>
       <div className='updatesidebaroverlay'>
@@ -81,12 +114,15 @@ function OKRUpdateSidebar(props) {
               rows={3}
               placeholder='Type Your Objective..'
               className='textareaKeyResult'
-              //   defaultValue={props?.child === undefined ? props.keyResult.title : props.child.title}
+              value={updateData?.name}
+              onChange={(e) => setUpdateData({ ...updateData, name: e?.target?.value })}
             ></textarea>
           </div>
           <div className='editor'>
             <Editor
               apiKey='h1a0ymnw0nixvy8bnuahlmmfo0422ltzxfsrv2gprc51cutm'
+              value={updateData?.description}
+              onEditorChange={(content) => setUpdateData({ ...updateData, description: content })}
               init={{
                 statusbar: false,
                 placeholder: 'Additional Context...',
@@ -140,12 +176,17 @@ function OKRUpdateSidebar(props) {
           </div>
           <div className='toggle-btn'>
             <button className='updatesidebar-btn'>Cancel</button>
-            <button className='updatesidebar-btn'>Update</button>
+            <button className='updatesidebar-btn' onClick={updateObjective}>
+              Update
+            </button>
           </div>
         </div>
       </div>
     </>
   );
 }
+const mapDispacthToProps = {
+  updateObjective,
+};
 
-export default OKRUpdateSidebar;
+export default connect(null, mapDispacthToProps)(withRouter(OKRUpdateSidebar));

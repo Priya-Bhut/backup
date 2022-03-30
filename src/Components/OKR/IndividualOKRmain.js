@@ -53,7 +53,7 @@ export default class IndividualOKRmain extends Component {
   };
   render() {
     const { startDate, endDate } = this.state;
-    const { keyResult, addSubKeyFormAt, addNewKeyResult } = this.props;
+    const { keyResult, addSubKeyFormAt, addNewKeyResult, okrDetail } = this.props;
     return (
       <div className='main key-result-hover'>
         <div className='all-content'>
@@ -181,7 +181,10 @@ export default class IndividualOKRmain extends Component {
             setIsOpen={!this.state.isOpen}
             toggleSideBar={this.toggleSideBar}
             expandTracked={this.state.expandTracked}
+            handleAlert={this.props?.handleAlert}
+            getObjective={this.props?.getObjective}
             keyResult={keyResult}
+            okrDetail={okrDetail}
           />
         )}
         {this.state.isCheckin && (

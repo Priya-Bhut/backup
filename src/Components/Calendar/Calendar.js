@@ -1,7 +1,7 @@
 import React from 'react';
 import DatePicker from 'react-datepicker';
 
-export default function Calendar(props) {
+function Calendar(props) {
   const { startDate, endDate } = props;
   return (
     <div className='calender-main'>
@@ -63,3 +63,4 @@ export default function Calendar(props) {
     </div>
   );
 }
+export default Calendar;

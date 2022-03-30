@@ -20,11 +20,11 @@ function OKR(props) {
   const startDate = new Date();
   const endDate = new Date();
   const [isOpenOkr, setIsOpenOkr] = useState(false);
-
   const setUpdate = () => {
     setIsOpenOkr(true);
   };
-  const handleChildRender = (keyResult) => {
+
+  const handleChildRender = (keyResult, okrDetail) => {
     return keyResult?.keyResults?.map((child, index) => (
       <li className='list-group-item' key={index}>
         <div className={`okr-tree ${index < keyResult.keyResults.length - 1 ? 'child-tree' : ''}`}></div>
@@ -40,8 +40,9 @@ function OKR(props) {
             setAddNewKeyResult={setAddNewKeyResult}
             class={size(child?.keyResults) <= 0 ? 'last-okr-main' : ''}
             id={child?.id}
+            okrDetail={okrDetail}
           />
-          {size(child?.keyResults) > 0 && handleChildRender(child)}
+          {size(child?.keyResults) > 0 && handleChildRender(child, okrDetail)}
         </div>
       </li>
     ));
@@ -161,9 +162,15 @@ function OKR(props) {
                   </div>
                 </div>
               </div>
-              {handleChildRender(okr)}
-
-              {isOpenOkr && <OKRUpdateSidebar setIsOpenOkr={setIsOpenOkr}></OKRUpdateSidebar>}
+              {handleChildRender(okr, okr)}
+              {isOpenOkr && (
+                <OKRUpdateSidebar
+                  setIsOpenOkr={setIsOpenOkr}
+                  handleAlert={props?.handleAlert}
+                  getObjective={getObjective}
+                  okr={okr}
+                />
+              )}
               {addNewKeyResult && addKeyFormAt === okr?.id && (
                 <CreateKeyResult
                   id={okr?.id}
