@@ -156,9 +156,9 @@ export default class IndividualOKRmain extends Component {
         </div>
         {this.state.isOpen && (
           <SideBarToggle
-            handleAlert={this.props.handleAlert}
-            setIsOpen={!this.state.isOpen}
-            toggleSideBar={this.toggleSideBar}
+            handleAlert={this?.props?.handleAlert}
+            setIsOpen={!this?.state?.isOpen}
+            toggleSideBar={this?.toggleSideBar}
           />
         )}
         {addNewKeyResult && addSubKeyFormAt === keyResult?.id && (

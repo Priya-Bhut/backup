@@ -3,26 +3,25 @@ import { Droppable, Draggable, DragDropContext } from 'react-beautiful-dnd';
 import { Modal, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import workFlow from '../../images/workflow.png';
-import { addSequencedata } from './Action';
+import { addSequenceData, updateSequenceData } from './Action';
 import withRouter from '../WrapperComponents/withRouter';
+import { size, trim } from 'lodash';
 
 class SelectSequenceModal extends Component {
   constructor(props) {
     super(props);
-
+    const { updateData } = this?.props;
     this.state = {
-      percentage: [0],
       buttonDisable: false,
-      percentageTotal: [],
       addSequence: {
-        id: 0,
-        name: '',
-        isSaveInTemp: true,
-        isShareTemp: false,
-        isSaveInSetting: false,
-        milestones: [
+        id: updateData?.id || 0,
+        name: updateData?.name || '',
+        isSaveInTemp: updateData?.isSaveInTemp || false,
+        isShareTemp: updateData?.isShareTemp || false,
+        isSaveInSetting: updateData?.isSaveInSetting || false,
+        milestones: updateData?.milestones || [
           {
-            id: 0,
+            id: 1,
             name: '',
             carryPercentage: 0,
             overAllPercentage: 0,
@@ -32,133 +31,163 @@ class SelectSequenceModal extends Component {
     };
     this.data = this?.state?.addSequence;
   }
+
   reorder = (data, startIndex, endIndex) => {
-    const result = Array.from(data);
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
-    this.setState({ data: result });
+    if (endIndex !== 0 && startIndex !== 0) {
+      const result = data?.milestones;
+      const [removed] = result.splice(startIndex, 1);
+      result.splice(endIndex, 0, removed);
+      this.setState({ data: result });
+      this.handleSum();
+    }
   };
 
   onEnd = (result) => {
-    this.reorder(this?.data, result.source.index, result.destination.index);
+    this.reorder(this?.state?.addSequence, result.source.index, result.destination.index);
   };
 
   addMileStoneSequence = () => {
     let addData = [...this?.state?.addSequence?.milestones];
     let lastID = parseInt(addData[addData.length - 1].id);
-    addData.push({ id: `${lastID + 1}`, name: '', carryPercentage: '', overAllPercentage: '' });
+    addData.push({
+      id: `${lastID + 1}`,
+      name: '',
+      carryPercentage: '  ',
+      overAllPercentage: addData[addData.length - 1].overAllPercentage,
+    });
     this.setState({ addSequence: { ...this?.state?.addSequence, milestones: addData } });
   };
+
   deleteMileStoneSequence = (id) => {
     if (this?.state?.addSequence.milestones.length > 1) {
       let deleteData = [...this?.state?.addSequence.milestones];
-      let deleteTotal = [...this?.state?.percentageTotal];
-      let deletePercentage = [...this?.state?.percentage];
       let index = deleteData.findIndex((item) => item.id === id);
-      deleteTotal.splice(index, 1);
-      deletePercentage.splice(index, 1);
       deleteData.splice(index, 1);
-      this.setState({ percentage: deletePercentage });
-      this.setState({ percentageTotal: deleteTotal });
-      this.setState({ addSequence: { milestones: deleteData } });
+      this.setState({ addSequence: { ...this?.state?.addSequence, milestones: deleteData } }, () => this.handleSum());
+
+      //  this.handleSum();
     }
   };
 
   handleMilestone = (e, id) => {
     const { name, value } = e?.target;
     let changeData = [...this.state.addSequence.milestones];
-    let percentData = [...this.state.percentage];
     let index = changeData.findIndex((item) => item.id === id);
-    name === 'name' ? (changeData[index].name = value) : (percentData[index] = value < 101 && value > 0 && value);
+
+    name === 'name'
+      ? (changeData[index].name = value)
+      : (changeData[index].carryPercentage = value < 101 && value > 0 && value);
+
     switch (name) {
       case 'name':
         changeData[index].name = value;
         break;
+
       case 'carryPercentage':
         changeData[index].carryPercentage = value;
-        this?.setState(
-          { addSequence: { milestones: changeData } },
-          () => (changeData[index].overAllPercentage = this?.handleSum()),
-        );
-
+        this?.setState({ addSequence: { milestones: changeData } }, this?.handleSum(index));
         break;
+
       default:
         break;
     }
     this?.setState({ addSequence: { ...this.state.addSequence, milestones: changeData } });
-    this?.setState({ percentage: percentData });
   };
 
-  handleSequence = (e) => {
-    const { name, value } = e?.target;
-    this?.setState({ addSequence: { ...this?.state?.addSequence, [name]: value } });
-    this?.props?.setSequenceName(e?.target?.value);
-  };
-
-  handleIsSaveInTemp = () => {
-    this?.setState({
-      addSequence: { ...this?.state?.addSequence, isSaveInTemp: !this?.state?.addSequence?.isSaveInTemp },
-    });
-  };
-
-  handleIsShareTemp = () => {
-    this?.setState({
-      addSequence: { ...this?.state?.addSequence, isShareTemp: !this?.state?.addSequence?.isShareTemp },
-    });
-  };
-  handleIsSaveInSetting = () => {
-    this?.setState({
-      addSequence: { ...this?.state?.addSequence, isSaveInSetting: !this?.state?.addSequence?.isSaveInSetting },
-    });
+  handleChaneData = (e) => {
+    const { name, value, checked } = e?.target;
+    name == 'name'
+      ? this?.setState({ addSequence: { ...this?.state?.addSequence, [name]: value } })
+      : this?.setState({ addSequence: { ...this?.state?.addSequence, [name]: checked } });
   };
 
   handleSum = () => {
-    const Total = [...this?.state?.percentageTotal];
-    let finalTotal = 0;
-    for (let j = 0; j < this?.state?.percentage?.length; j++) {
-      let total = 0;
-      for (let i = 0; i <= j; i++) {
-        total += parseInt(this?.state?.percentage[i]);
-      }
-      finalTotal = total;
-      Total[j] = total;
-      total >= 100 ? this.setState({ buttonDisable: true }) : this.setState({ buttonDisable: false });
+    let milestoneData = [...this?.state?.addSequence?.milestones];
+    const Total = milestoneData?.map((percentage) => percentage.carryPercentage);
+    let total = 0;
+    for (let j = 0; j < Total.length; j++) {
+      total = parseInt(total) + parseInt(Total[j]);
+      milestoneData[j].overAllPercentage = total;
     }
-    this?.setState({ percentageTotal: Total });
-    return finalTotal;
+    total >= 100 ? this.setState({ buttonDisable: true }) : this.setState({ buttonDisable: false });
+    this.setState({
+      addSequence: {
+        ...this.state.addSequence,
+        milestones: milestoneData,
+      },
+    });
   };
 
-  addSequencedata = () => {
-    const { params } = this.props || {};
-    const { organisationUrl } = params || {};
-    let percentageData = [...this?.state?.addSequence?.milestones];
-    percentageData.push(this?.state?.percentageTotal);
-    // this?.props?.setSequence(percentageData); //!important
-    this?.props?.setOpenSequence(!this?.openSequence);
-    this?.props
-      ?.addSequencedata(this?.state?.addSequence, organisationUrl)
-      .then((response) => {
-        if (response && !response?.errorMessage && !response?.error) {
-          this?.props?.handleAlert('Sequence Added', 'success');
-          this?.props?.getSequenceData;
-        } else {
-          this?.props?.handleAlert(response?.errorMessage || response?.error || 'Something went wrong', 'error');
+  validation = () => {
+    const { addSequence } = this.state;
+    const { milestones } = addSequence;
+    if (trim(addSequence.name) === '') {
+      this?.props?.handleAlert('Please Enter Sequence Name', 'error');
+      return false;
+    } else if (size(milestones)) {
+      for (let index = 0; index < milestones.length; index++) {
+        if (trim(milestones[index].name) === '') {
+          this?.props?.handleAlert('Please Enter All Milestone Names', 'error');
+          return false;
         }
-        this?.props?.setSelectSequence(!this?.props?.selectSequence);
-        this?.props?.setOpenSequence(!this?.props?.openSequence);
-      })
-      .catch((error) => {
-        this?.props?.handleAlert(error?.message || 'Something went wrong', 'error');
-      });
+        if (index === milestones.length - 1) {
+          if (milestones[index].overAllPercentage > 100) {
+            this?.props?.handleAlert('OverAll percentage should be maximum 100% only', 'error');
+            return false;
+          } else if (milestones[index].overAllPercentage < 100) {
+            this?.props?.handleAlert('OverAll percentage must be 100% only', 'error');
+            return false;
+          }
+        }
+      }
+    }
+    return true;
+  };
+
+  addSequenceData = () => {
+    const { params, updateData } = this.props || {};
+    const { organisationUrl } = params || {};
+    const validate = this.validation();
+    if (validate) {
+      !(size(updateData) > 0)
+        ? this?.props
+            ?.addSequenceData(this?.state?.addSequence, organisationUrl)
+            .then((response) => {
+              if (response && !response?.errorMessage && !response?.error) {
+                this?.props?.handleAlert('Sequence Added', 'success');
+                this?.props?.handleAddSequenceModal();
+                this?.props?.getSequenceData();
+                // this?.props?.setOpenSequence(!this?.props?.openSequence);
+              } else {
+                this?.props?.handleAlert(response?.errorMessage || response?.error || 'Something went wrong', 'error');
+              }
+              // this?.props?.setOpenSequence(!this?.props?.openSequence);
+            })
+            .catch((error) => {
+              this?.props?.handleAlert(error?.message || 'Something went wrong', 'error');
+            })
+        : this?.props
+            ?.updateSequenceData(this?.state?.addSequence, organisationUrl)
+            .then((response) => {
+              if (response && !response?.errorMessage && !response?.error) {
+                this?.props?.handleAlert('Sequence Updated', 'success');
+                this?.props?.handleAddSequenceModal();
+                this?.props?.getSequenceData();
+                // this?.props?.setOpenSequence(!this?.props?.openSequence);
+              } else {
+                this?.props?.handleAlert(response?.errorMessage || response?.error || 'Something went wrong', 'error');
+              }
+              // this?.props?.setOpenSequence(!this?.props?.openSequence);
+            })
+            .catch((error) => {
+              this?.props?.handleAlert(error?.message || 'Something went wrong', 'error');
+            });
+    }
   };
   render() {
     return (
       <>
-        <Modal
-          size='xl'
-          show={this?.props?.selectSequence}
-          onHide={() => this?.props?.setSelectSequence(!this?.props?.selectSequence)}
-        >
+        <Modal size='xl' show={this?.props?.selectSequence} onHide={() => this?.props?.handleAddSequenceModal()}>
           <Modal.Header closeButton>
             <Modal.Title> Select Sequence</Modal.Title>
           </Modal.Header>
@@ -169,8 +198,8 @@ class SelectSequenceModal extends Component {
                   type='text'
                   name='name'
                   placeholder='Sequence Name'
-                  onChange={(e) => this?.handleSequence(e)}
-                  value={this?.state?.addSequence?.name}
+                  onChange={this.handleChaneData}
+                  value={this?.state?.addSequence?.name || ''}
                   required
                 ></input>
               </div>
@@ -180,8 +209,8 @@ class SelectSequenceModal extends Component {
                     <input
                       type='checkbox'
                       name='isSaveInTemp'
-                      onChange={(e) => this?.handleIsSaveInTemp(e)}
-                      value={this?.state?.addSequence?.isSaveInTemp}
+                      onChange={this.handleChaneData}
+                      value={this?.state?.addSequence?.isSaveInTemp || true}
                       checked={this?.state?.addSequence?.isSaveInTemp}
                     />
                     <span className='slider round'> </span>
@@ -193,8 +222,8 @@ class SelectSequenceModal extends Component {
                     <input
                       type='checkbox'
                       name='isShareTemp'
-                      onChange={(e) => this?.handleIsShareTemp(e)}
-                      value={this?.state?.addSequence?.isShareTemp}
+                      onChange={this.handleChaneData}
+                      value={this?.state?.addSequence?.isShareTemp || false}
                       checked={this?.state?.addSequence?.isShareTemp}
                     />
                     <span className='slider round'> </span>
@@ -206,8 +235,8 @@ class SelectSequenceModal extends Component {
                     <input
                       type='checkbox'
                       name='isSaveInSetting'
-                      onChange={(e) => this?.handleIsSaveInSetting(e)}
-                      value={this?.state?.addSequence?.isSaveInSetting}
+                      onChange={this.handleChaneData}
+                      value={this?.state?.addSequence?.isSaveInSetting || false}
                       checked={this?.state?.addSequence?.isSaveInSetting}
                     />
                     <span className='slider round'> </span>
@@ -226,7 +255,7 @@ class SelectSequenceModal extends Component {
                   {(provided) => (
                     <div ref={provided.innerRef}>
                       {this?.state?.addSequence?.milestones?.map((item, index) => (
-                        <Draggable draggableId={item.id} key={item.id} index={index}>
+                        <Draggable draggableId={`${item?.id}`} key={item?.id} index={index}>
                           {(provided) => (
                             <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                               <div className='milestone'>
@@ -237,16 +266,15 @@ class SelectSequenceModal extends Component {
                                   name='name'
                                   placeholder='Milestone Name'
                                   onChange={(e) => this?.handleMilestone(e, item.id)}
-                                  value={this?.state?.addSequence?.milestones?.name}
+                                  value={item?.name || ''}
                                 ></input>
                                 <div className='milestone2-box'>
                                   <input
                                     type='number'
                                     name='carryPercentage'
-                                    onBlur={this?.handleSum}
                                     onChange={(e) => this?.handleMilestone(e, item.id)}
                                     disabled={`${index === 0 ? 'percentageinput' : ''}`}
-                                    value={`${index === 0 ? '0' : this?.state?.percentage[index]}`}
+                                    value={item?.carryPercentage}
                                   ></input>
                                   <i className='fas fa-percentage unit'></i>
                                 </div>
@@ -254,7 +282,7 @@ class SelectSequenceModal extends Component {
                                   <input
                                     type='number'
                                     name='overAllPercentage'
-                                    value={`${index === 0 ? '0' : this?.state?.percentageTotal[index]}`}
+                                    value={item?.overAllPercentage}
                                     disabled
                                   ></input>
                                   <i className='fas fa-percentage unit'></i>
@@ -293,10 +321,10 @@ class SelectSequenceModal extends Component {
             )}
           </Modal.Body>
           <Modal.Footer>
-            <Button variant='primary' onClick={this?.addSequencedata}>
-              Add
+            <Button variant='primary' onClick={this?.addSequenceData}>
+              {!size(this?.props?.updateData) > 0 ? 'Add' : 'Update'}
             </Button>
-            <Button variant='secondary' onClick={() => this?.props?.setSelectSequence(!this?.props?.selectSequence)}>
+            <Button variant='secondary' onClick={this?.props?.handleAddSequenceModal}>
               Cancel
             </Button>
           </Modal.Footer>
@@ -306,7 +334,8 @@ class SelectSequenceModal extends Component {
   }
 }
 const mapDispatchToProps = {
-  addSequencedata,
+  addSequenceData,
+  updateSequenceData,
 };
 
 export default connect(null, mapDispatchToProps)(withRouter(SelectSequenceModal));

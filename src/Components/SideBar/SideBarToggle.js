@@ -1,25 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import SearchSelectSequenceModal from './SearchSelectSequenceModal';
 import { Dropdown, DropdownButton } from 'react-bootstrap';
-import { getSequencedata } from './Action';
+import { getSequenceData } from './Action';
 import { connect } from 'react-redux';
+import withRouter from '../WrapperComponents/withRouter';
+import SelectSequenceModal from './SelectSequenceModal';
 
 function SideBarToggle(props) {
   const handleClicked = (e) => {
     setTracked(e);
     setexpandPerTracked(false);
   };
+  const { params } = props;
+  const { organisationUrl } = params || {};
   const [expandPerTracked, setexpandPerTracked] = useState(false);
   const [tracked, setTracked] = useState('percentage');
-  const [sequenceName, setSequenceName] = useState('');
+  // const [sequenceName, setSequenceName] = useState('');
   const [openSequence, setOpenSequence] = useState(false);
   const [setSequence] = useState([]);
-  const getSequencedata = () => {
-    getSequencedata()
+  const [sequenceData, setSequenceData] = useState([]);
+  const [selectSequence, setSelectSequence] = useState(false);
+  const [updateData, setUpdateData] = useState([]);
+  const getSequenceData = () => {
+    console.log(organisationUrl);
+    props
+      ?.getSequenceData(organisationUrl)
       .then((response) => {
         if (response && !response?.errorMessage && !response?.error) {
-          // console.log(response);
+          setSequenceData(response);
         } else {
           props?.handleAlert(response?.errorMessage || response?.error || 'Something went wrong', 'error');
         }
@@ -28,6 +37,16 @@ function SideBarToggle(props) {
         props?.handleAlert(error?.message || 'Something went wrong', 'error');
       });
   };
+  useEffect(() => {
+    getSequenceData();
+  }, []);
+
+  const handleAddSequenceModal = () => {
+    setUpdateData([]);
+    setSelectSequence(!selectSequence);
+    setOpenSequence(false);
+  };
+
   const expandPertageTracked = () => {
     return (
       <div className='keyresult-drop-down'>
@@ -172,10 +191,7 @@ function SideBarToggle(props) {
                     <div className='searchSequence'>
                       <span onClick={() => setOpenSequence(!openSequence)}>
                         <div className='top-nav-dropdown'>
-                          <DropdownButton
-                            title={sequenceName === '' ? 'Search & Select Sequence ' : sequenceName}
-                            className='dropdownhover'
-                          >
+                          <DropdownButton title='Search & Select Sequence' className='dropdownhover'>
                             <Dropdown.Item>
                               <div className='workflow-options'>My profile</div>
                             </Dropdown.Item>
@@ -198,10 +214,26 @@ function SideBarToggle(props) {
                     handleAlert={props?.handleAlert}
                     setOpenSequence={setOpenSequence}
                     openSequence={openSequence}
-                    sequenceName={sequenceName}
-                    setSequenceName={setSequenceName}
+                    setUpdateData={setUpdateData}
+                    setSelectSequence={setSelectSequence}
                     setSequence={setSequence}
-                    getSequencedata={getSequencedata}
+                    sequenceData={sequenceData}
+                    getSequenceData={getSequenceData}
+                    handleAddSequenceModal={handleAddSequenceModal}
+                  />
+                )}
+                {selectSequence && (
+                  <SelectSequenceModal
+                    updateData={updateData}
+                    handleAlert={props?.handleAlert}
+                    // setSelectSequence={setSelectSequence}
+                    handleAddSequenceModal={handleAddSequenceModal}
+                    selectSequence={selectSequence}
+                    // setSequenceName={props?.setSequenceName}
+                    setOpenSequence={setOpenSequence}
+                    openSequence={openSequence}
+                    setSequence={props?.setSequence}
+                    getSequenceData={getSequenceData}
                   />
                 )}
               </div>
@@ -283,7 +315,7 @@ function SideBarToggle(props) {
   );
 }
 const mapDispatchToProps = {
-  getSequencedata,
+  getSequenceData,
 };
 
-export default connect(null, mapDispatchToProps)(SideBarToggle);
+export default connect(null, mapDispatchToProps)(withRouter(SideBarToggle));
