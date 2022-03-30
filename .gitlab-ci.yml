@@ -5,13 +5,9 @@ dev:
      
    stage: buildAndDeploy 
    script:
-      # Set PATH
-      - echo "$TESTVAR"
       - git reset --hard
       - export PATH=$PATH:/usr/bin/npm    
-      # Install dependencies 
       - yarn install   
-      # Build App    
       - CI=false yarn run build:dev
       - pip3 install awscli
       - chmod +x ~/.local/bin/aws
@@ -20,7 +16,6 @@ dev:
       - if: ($CI_COMMIT_BRANCH == "Developer")     
    artifacts:    
       paths:      
-         # Build folder      
          - build/    
       expire_in: 1 hour
    tags:
@@ -30,13 +25,9 @@ prod:
      
    stage: buildAndDeploy 
    script:
-      # Set PATH
-      - echo "$TESTVAR"
       - git reset --hard
       - export PATH=$PATH:/usr/bin/npm    
-      # Install dependencies 
       - yarn install   
-      # Build App    
       - CI=false yarn run build:prod
       - pip3 install awscli
       - chmod +x ~/.local/bin/aws
@@ -45,7 +36,6 @@ prod:
       - if: ($CI_COMMIT_BRANCH == "master")     
    artifacts:    
       paths:      
-         # Build folder      
          - build/    
       expire_in: 1 hour
    tags:
