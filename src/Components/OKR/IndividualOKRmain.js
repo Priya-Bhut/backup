@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'font-awesome/css/font-awesome.min.css';
 import SideBarToggle from '../SideBar/SideBarToggle';
 import CreateKeyResult from './CreateKeyResult';
 import CheckinToggle from './CheckinToggle';
+import Calendar from '../Calendar/Calendar';
 export default class IndividualOKRmain extends Component {
   state = { isActive: false, isOpen: false, isCheckin: false };
 
@@ -16,6 +16,8 @@ export default class IndividualOKRmain extends Component {
       addKeyFormAt: -1,
       addNewKeyResult: false,
       expandTracked: false,
+      calendarAt: -1,
+      isActive: true,
     };
   }
   toggleSideBar = (dropdownmenu) => {
@@ -29,8 +31,8 @@ export default class IndividualOKRmain extends Component {
   setEdit = () => {
     this.toggleSideBar(false);
   };
-  handleCalender = () => {
-    this.setState({ isActive: !this.state.isActive });
+  handleCalender = (id) => {
+    this.setState({ calendarAt: id });
   };
   handleEndDate = (date) => {
     this.setState({ endDate: date });
@@ -53,7 +55,8 @@ export default class IndividualOKRmain extends Component {
   };
   render() {
     const { startDate, endDate } = this.state;
-    const { keyResult, addSubKeyFormAt, addNewKeyResult, okrDetail } = this.props;
+    const { keyResult, addSubKeyFormAt, addNewKeyResult, okrDetail, calendarAt } = this.props;
+
     return (
       <div className='main key-result-hover'>
         <div className='all-content'>
@@ -80,66 +83,8 @@ export default class IndividualOKRmain extends Component {
           <div className='keyresult-content-container'>
             <div className='date-time1'>
               <div className='calender'>
-                <i className='fa fa-calendar-alt' onClick={this.handleCalender}></i>
-                {false && (
-                  <div className='calender-main'>
-                    <div className='calender-and-status'>
-                      <div className='calender-header'>
-                        <div className='start-header'>Start Date</div>
-                        <div className='end-header'>End Date</div>
-                      </div>
-                      <div className='calender-actual'>
-                        <DatePicker
-                          selected={startDate}
-                          onChange={(date) => this.handleStartDate(date)}
-                          selectsStart
-                          startDate={startDate}
-                          endDate={endDate}
-                          inline
-                          fixedHeight
-                        />
-                        <div className='line-v'></div>
-                        <DatePicker
-                          selected={endDate}
-                          onChange={(date) => this.handleEndDate(date)}
-                          selectsEnd
-                          startDate={startDate}
-                          endDate={endDate}
-                          inline
-                          fixedHeight
-                        />
-                      </div>
-                      <div className='line-h'></div>
-                      <div className='calender-date-and-confirm'>
-                        <div className='calender-date'>{`${startDate.getDate()}/${startDate.getMonth()}/${startDate.getYear()} - ${endDate.getDate()}/${endDate.getMonth()}/${endDate.getYear()}`}</div>
-                        <div className='calender-confirm'>
-                          <button onClick={this.handleCalender}>Cancel</button>
-                          <button onClick={this.handleCalender}>Apply</button>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='line-v'></div>
-                    <div className='calender-ranges'>
-                      <div className='range-quarter'>
-                        <span onClick={() => this.handleRange('1/1/22', '3/31/22')}>q1 - 2022</span>
-                        <span onClick={() => this.handleRange('4/1/22', '6/30/22')}>q2 - 2022</span>
-                        <span onClick={() => this.handleRange('7/1/22', '9/30/22')}>q3 - 2022</span>
-                        <span onClick={() => this.handleRange('10/1/22', '12/31/22')}>q4 - 2022</span>
-                      </div>
-                      <div className='line-h'></div>
-                      <div className='range-annual'>
-                        <span onClick={() => this.handleRange('1/1/22', '12/31/22')}>annual - 2022</span>
-                        <span onClick={() => this.handleRange('1/1/23', '12/31/23')}>annual - 2023</span>
-                        <span onClick={() => this.handleRange('1/1/24', '12/31/24')}>annual - 2024</span>
-                        <span onClick={() => this.handleRange('1/1/25', '12/31/25')}>annual - 2025</span>
-                      </div>
-                      <div className='line-h'></div>
-                      <div className='range-custom'>
-                        <span>Custom Range</span>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                <i className='fa fa-calendar-alt' onClick={() => this.props?.handleCalender(keyResult?.id)}></i>
+                {calendarAt === keyResult?.id && <Calendar startDate={startDate} endDate={endDate} />}
               </div>
               &nbsp;
               <div className='user'>
