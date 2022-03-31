@@ -74,7 +74,7 @@ class SelectSequenceModal extends Component {
   handleMilestone = (e, id) => {
     const { name, value } = e?.target;
     let changeData = [...this.state.addSequence.milestones];
-    let index = changeData.?findIndex((item) => item.mileId === id);
+    let index = changeData?.findIndex((item) => item.mileId === id);
 
     name === 'name'
       ? (changeData[index].name = value)
