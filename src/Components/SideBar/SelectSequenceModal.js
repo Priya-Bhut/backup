@@ -35,8 +35,8 @@ class SelectSequenceModal extends Component {
   reorder = (data, startIndex, endIndex) => {
     if (endIndex !== 0 && startIndex !== 0) {
       const result = data?.milestones;
-      const [removed] = result.splice(startIndex, 1);
-      result.splice(endIndex, 0, removed);
+      const [removed] = result?.splice(startIndex, 1);
+      result?.splice(endIndex, 0, removed);
       this.setState({ data: result });
       this.handleSum();
     }
@@ -63,8 +63,8 @@ class SelectSequenceModal extends Component {
     const { addSequence } = this?.state;
     if (addSequence.milestones.length > 1) {
       let deleteData = [...addSequence.milestones];
-      let index = deleteData.findIndex((item) => item.mileId === id);
-      deleteData.splice(index, 1);
+      let index = deleteData?.findIndex((item) => item.mileId === id);
+      deleteData?.splice(index, 1);
       this.setState({ addSequence: { ...addSequence, milestones: deleteData } }, () => this.handleSum());
 
       //  this.handleSum();
@@ -74,7 +74,7 @@ class SelectSequenceModal extends Component {
   handleMilestone = (e, id) => {
     const { name, value } = e?.target;
     let changeData = [...this.state.addSequence.milestones];
-    let index = changeData.findIndex((item) => item.mileId === id);
+    let index = changeData.?findIndex((item) => item.mileId === id);
 
     name === 'name'
       ? (changeData[index].name = value)
