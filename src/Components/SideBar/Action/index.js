@@ -12,7 +12,7 @@ export const getSequenceData = (organisationUrl = '') => {
         if (response?.data) {
           return response?.data;
         }
-        return response.data;
+        return response;
       })
       .catch((error) => idx(error, (_) => _.response.data));
 };
@@ -27,7 +27,7 @@ export const addSequenceData = (data, organisationUrl = '') => {
         if (response?.data) {
           return response?.data;
         }
-        return response.data;
+        return response;
       })
       .catch((error) => idx(error, (_) => _.response.data));
 };
@@ -42,7 +42,7 @@ export const updateSequenceData = (data, organisationUrl = '') => {
         if (response?.data) {
           return response?.data;
         }
-        return response.data;
+        return response;
       })
       .catch((error) => idx(error, (_) => _.response.data));
 };
@@ -56,7 +56,7 @@ export const deleteSequenceData = (id, organisationUrl = '') => {
         if (response?.data) {
           return response?.data;
         }
-        return response.data;
+        return response;
       })
       .catch((error) => idx(error, (_) => _.response.data));
 };
@@ -71,7 +71,7 @@ export const updateKeyResult = (organisationUrl = '', data) => {
         if (response?.data) {
           return response?.data;
         }
-        return response.data;
+        return response;
       })
       .catch((error) => idx(error, (_) => _.response.data));
 };
