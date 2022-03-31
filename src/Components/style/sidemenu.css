@@ -1,12 +1,11 @@
 .sidebar {
-  /* position: fixed; */
-  width: max-content !important;
+  width: max-content;
   height: 100%;
-  /* font-size: .9rem !important; */
-  padding: 1.8rem 0;
   background-color: var(--sidemenu-color);
   overflow: none;
   z-index: 6;
+  padding: 0 !important;
+  padding-top: 1rem !important;
 }
 .false {
   width: 12rem !important;
@@ -16,6 +15,12 @@
   grid-template-columns: auto max-content;
   place-items: center;
   margin-bottom: 1rem;
+  position: absolute;
+  top: 0;
+  left: 88%;
+}
+.reduce-sidebar .sidebar-profile-section {
+  left: 67%;
 }
 
 .sidebar-profile-section img {
@@ -49,16 +54,8 @@
 .sidebar-profile-section > span > i {
   color: white;
   background-color: var(--sidemenu-color);
-  padding: 1rem;
-  position: absolute;
-  left: 87%;
-  top: -5%;
+  padding: 0.8rem;
   border-radius: 50%;
-  cursor: pointer;
-}
-.reduce-sidebar .sidebar-profile-section > span > i {
-  left: 60%;
-  top: -5%;
 }
 
 .sidebar a {
@@ -207,6 +204,7 @@
 .sidebar-main {
   position: relative;
   width: 100%;
+  top: 0;
 }
 
 .sidemenu-btn > i {
@@ -261,7 +259,7 @@
 /* ___________Small SIDEMENU STYLES ______________ */
 
 .reduce-sidebar {
-  width: 8rem;
+  width: 3.5rem !important;
 }
 
 .reduce-sidebar .sidebar-main {
@@ -280,6 +278,7 @@
   overflow-y: scroll;
   height: max-content;
   max-height: 52rem;
+  padding-top: 1rem !important;
 }
 .reduce-sidebar .nav-link span {
   font-size: 0.8rem;
@@ -461,8 +460,12 @@
   top: 91px;
 }
 .side-menu-box-cfr {
-  top: 125px;
+  top: 130px;
 }
+.side-menu-box-user {
+  bottom: 600px;
+}
+
 .side-menu-box div div a {
   padding-left: 0.7rem !important;
 }
@@ -488,4 +491,16 @@
 
 .tooltip-arrow {
   display: none !important;
+}
+.usermenu {
+  position: fixed;
+  font-size: 1rem;
+  bottom: 50px;
+}
+.usermenu span {
+  font-size: 15px;
+}
+.logout {
+  position: fixed;
+  bottom: 10px;
 }

@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { ProgressBar, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import withRouter from '../WrapperComponents/withRouter';
 import { addObjective } from './Action';
 
 function CreateOKR(props) {
+  const { params } = props;
+  const { organisationUrl } = params || {};
   const [objective, setObjective] = useState({
     name: '',
     assignees: [],
+    employeeId: 1,
     timePeriod: {
       name: 'Q1-2022',
       code: 'Q1',
@@ -18,24 +22,28 @@ function CreateOKR(props) {
   });
 
   const addObjective = () => {
-    props
-      ?.addObjective(objective)
-      .then((response) => {
-        if (response && !response?.errorMessage && !response?.error) {
-          props?.handleAlert('Obejctive created', 'success');
-          props?.closeNewOkr();
-          props?.getObjective();
-        } else {
-          props?.handleAlert(!response?.errorMessage || !response?.error || 'Something went wrong', 'error');
-        }
-      })
-      .catch((error) => {
-        props?.handleAlert(error?.message || 'Something went wrong', 'error');
-      });
+    if (objective.name.trim() !== '') {
+      props
+        ?.addObjective(organisationUrl, objective)
+        .then((response) => {
+          if (response && !response?.errorMessage && !response?.error) {
+            props?.handleAlert('Obejctive created', 'success');
+            props?.setIsNewOkr(false);
+            props?.getObjective();
+          } else {
+            props?.handleAlert(!response?.errorMessage || !response?.error || 'Something went wrong', 'error');
+          }
+        })
+        .catch((error) => {
+          props?.handleAlert(error?.message || 'Something went wrong', 'error');
+        });
+    } else {
+      props?.handleAlert('Enter Objective Name', 'error');
+    }
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter' && objective.name.trim() !== '') {
+    if (e.key === 'Enter') {
       addObjective();
     }
   };
@@ -64,11 +72,11 @@ function CreateOKR(props) {
         </div>
       </div>
       <div className='w-25 new-okr-save-progress-container'>
-        <ProgressBar now={5} label={`0%`} />
+        <ProgressBar now={10} label={`0%`} />
         <Button className='new-okr-save-button' onClick={addObjective}>
           Save
         </Button>
-        <i className='fas fa-times' onClick={props?.closeNewOkr}></i>
+        <i className='fas fa-times' onClick={() => props?.setIsNewOkr(false)}></i>
       </div>
     </div>
   );
@@ -78,4 +86,4 @@ const mapDispatchToProps = {
   addObjective,
 };
 
-export default connect(null, mapDispatchToProps)(CreateOKR);
+export default connect(null, mapDispatchToProps)(withRouter(CreateOKR));

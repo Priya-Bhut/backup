@@ -10,14 +10,25 @@
   margin-right: 20px;
 }
 .sideBar {
-  background-color: white;
-  top: 55px;
-  bottom: 0;
-  width: 554px;
-  animation: moveLeft 0.3s ease-in-out forwards;
-  float: right;
   position: fixed;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  top: 56px;
+  right: -40%;
+  width: 35%;
+  height: 100%;
+  background-color: rgb(255, 253, 253);
+  -webkit-animation: moveLeft 0.3s ease-in-out forwards;
+  animation: moveLeft 0.3s ease-in-out forwards;
+  overflow-y: scroll;
+  padding: 1.5rem 1.5rem 5rem;
+}
+.sidebaroverlay {
+  position: fixed;
+  top: 56px;
+  left: 90px;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(66, 79, 116, 0.3);
+  z-index: 100;
 }
 .fly_joiner {
   margin-top: 4px;
@@ -29,8 +40,7 @@
   justify-content: space-between;
   height: 30px;
   width: 100%;
-  background-color: lightgray;
-  position: absolute;
+  position: relative !important;
 }
 @keyframes moveLeft {
   from {
@@ -62,6 +72,9 @@
 }
 .sideBar-type {
   height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .dropdown-list {
   display: flex;
@@ -75,38 +88,26 @@
 }
 .sideBar-type1 {
   height: 50px;
-  position: absolute;
   display: flex;
   align-items: center;
-  margin-top: 35px;
-  margin-left: 30px;
 }
 .key {
   display: flex;
   flex-direction: column;
   margin-left: 10px;
 }
-span {
-  font-size: small;
-}
 .span-key {
   color: #8ba1b4;
 }
 .sidebar-type2 {
   height: 50px;
-  position: absolute;
   display: flex;
   align-items: center;
-  margin-top: 35px;
-  margin-left: 36%;
 }
 .sidebar-type3 {
   height: 50px;
-  position: absolute;
   display: flex;
   align-items: center;
-  margin-top: 35px;
-  margin-left: 400px;
 }
 .sideBar-Type4 {
   height: 50px;
@@ -128,17 +129,12 @@ span {
 .sideBar-KRType p {
   margin: 0;
 }
-.tag {
-  margin-top: 33%;
-  margin-left: 25px;
-}
+
 .Location {
   height: 50px;
-  position: absolute;
+
   display: flex;
   align-items: center;
-  margin-top: 15px;
-  margin-left: 5%;
 }
 #circlelocation {
   border: 2px solid grey;
@@ -169,14 +165,23 @@ span {
   flex-direction: column;
   justify-content: space-between;
   position: fixed;
-  top: 133px;
-  right: 351px;
+  top: 19%;
+  right: 23%;
   width: fit-content;
   height: 15%;
   background-color: white;
   border-radius: 5px;
   box-shadow: 5px 5px rgb(240, 234, 234);
   z-index: 111;
+  animation: moving 0.3s ease-in-out;
+}
+@keyframes moving {
+  from {
+    right: 0;
+  }
+  to {
+    right: 330px;
+  }
 }
 .keyresult-drop-down span {
   margin: 20px;
@@ -191,16 +196,7 @@ span {
   align-items: center;
   cursor: pointer;
 }
-.overlay {
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: fixed;
-  z-index: 30;
-}
+
 .fa-user {
   cursor: pointer;
   position: relative;
@@ -251,7 +247,7 @@ span {
 .fa-plus:hover .tooltiptext {
   visibility: visible;
 }
-.fa-tags .tooltiptext {
+.tag .tooltiptext {
   visibility: hidden;
   width: 80px;
   background-color: black;
@@ -261,12 +257,22 @@ span {
   padding: 5px 0;
   position: absolute;
   z-index: 1;
-  top: 534px;
-  left: 36px;
-  margin-left: -30px;
+  margin-top: 4%;
+  left: 10%;
+  margin-left: -60px;
 }
-.fa-tags:hover .tooltiptext {
+.tag:hover .tooltiptext {
   visibility: visible;
+}
+.tag .tooltiptext::after {
+  content: ' ';
+  position: absolute;
+  bottom: 100%; /* At the top of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
 }
 .Icons .tooltiptext {
   visibility: hidden;
@@ -327,24 +333,17 @@ span {
   color: rgba(189, 178, 178, 0.583);
   margin-left: 25px;
 }
-.key-result {
-  margin-left: 35px;
-  margin-top: 23px;
-}
+
 .textareaKeyResult {
   white-space: pre-wrap;
   resize: none;
   border: 2px solid rgba(189, 178, 178, 0.583);
-  width: 93%;
+  width: 100%;
   overflow-y: scroll;
   outline: none;
   box-shadow: none !important;
 }
-.editor {
-  margin-left: 35px;
-  height: 100px;
-  margin-right: 35px;
-}
+
 .searchSequence {
   cursor: pointer;
   color: blue;
@@ -354,16 +353,12 @@ span {
 }
 .sidebar-user {
   height: 50px;
-  position: absolute;
   display: flex;
   align-items: center;
   /* flex-wrap: wrap; */
-  margin-top: 120px;
-  margin-left: 4%;
 }
 .display-frequency {
   border: 1px solid rgb(172, 169, 169);
-  margin-top: 5px;
   border-radius: 25px;
   text-align: center;
   cursor: pointer;
@@ -374,7 +369,8 @@ span {
 .toggle-btn {
   display: flex;
   justify-content: flex-end;
-  margin-top: 55%;
+  align-items: flex-end;
+  margin-top: 40%;
 }
 .percentage-track {
   cursor: pointer;
@@ -402,17 +398,93 @@ ul {
   padding: 10px 16px;
   text-align: center;
 }
+.assignee {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: space-between;
+}
 /*  ----------------------------------Sequence Modal CSS ----------------------------------*/
 .sequence span {
   margin-left: 150px;
   font-size: medium;
   font-weight: bold;
 }
-.sequencelabel span {
-  font-size: medium;
-  font-weight: bold;
-  margin-left: 100px;
+.sequencelabel {
+  display: flex;
+  justify-content: space-between;
 }
+.sequencelabel span:nth-child(2) {
+  color: #2196f3;
+  cursor: pointer;
+  font-weight: bold;
+}
+.sequencelabel span:nth-child(2):hover {
+  color: #0a78d3;
+}
+.sequencecard .sequencecardsdesign {
+  height: auto;
+  width: 100%;
+  border-radius: 10px;
+  background-color: white !important;
+  padding: 0;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+.inner-bodysequence {
+  display: flex;
+  flex-direction: column;
+}
+.sequencecard {
+  display: grid;
+  grid-template-columns: auto auto;
+  border-radius: 10px;
+  grid-column-gap: 30px;
+}
+.cardtitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.card-header .btntrash {
+  visibility: hidden;
+}
+.card-header :hover .btntrash {
+  visibility: visible;
+}
+.card-footer {
+  width: 100%;
+  text-align: center !important;
+}
+.card-footer .btn {
+  align-self: center;
+}
+.templates {
+  box-shadow: 0 0 10px #a9ceff;
+  border-radius: 6px;
+  border: 1px solid #e3e3e3;
+  width: 20%;
+}
+.templates ul {
+  list-style: none;
+  padding: 15px 0;
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+}
+.templates > li.active > a {
+  color: #2196f3 !important;
+}
+
+.templates li {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 20px;
+  float: left;
+  width: 100%;
+  position: relative;
+}
+
 .sequence input {
   border: 2px solid rgb(204, 199, 199);
   border-radius: 10px;
@@ -490,6 +562,7 @@ input:checked + .slider:before {
   justify-content: space-between;
   margin-top: 10px;
 }
+
 .milestone input {
   border: 2px solid rgb(204, 199, 199);
   border-radius: 5px;
@@ -499,6 +572,7 @@ input:checked + .slider:before {
 .milestone :nth-child(3) {
   width: 50%;
 }
+
 .milestone2-box {
   position: relative;
 }
@@ -531,12 +605,15 @@ input::-webkit-inner-spin-button {
   border-left: 6px solid green;
   height: 50px;
 }
-.fa-plus-circle {
-  cursor: pointer;
-}
+
 .addMilestone {
   float: right;
   margin-right: 10px;
+  cursor: pointer;
+}
+
+.addMilestone[disabled] {
+  color: grey;
 }
 .milestone .deletemilestone {
   cursor: pointer;
@@ -563,4 +640,15 @@ input::-webkit-inner-spin-button {
 }
 .percentageinput {
   pointer-events: none;
+}
+.milestoneerrormsg {
+  background-color: #fce4e4;
+  border: 1px solid #fcc2c3;
+  float: left;
+  padding: 10px 30px;
+  color: #cc0033;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  margin: 25px 0 0 25px;
 }

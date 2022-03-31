@@ -1,20 +1,38 @@
 import React, { Component } from 'react';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'font-awesome/css/font-awesome.min.css';
 import SideBarToggle from '../SideBar/SideBarToggle';
+import CreateKeyResult from './CreateKeyResult';
+import CheckinToggle from './CheckinToggle';
+import Calendar from '../Calendar/Calendar';
 export default class IndividualOKRmain extends Component {
-  state = { isActive: false, isOpen: false };
+  state = { isActive: false, isOpen: false, isCheckin: false };
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       startDate: new Date(),
       endDate: new Date(),
+      addKeyFormAt: -1,
+      addNewKeyResult: false,
+      expandTracked: false,
+      calendarAt: -1,
+      isActive: true,
     };
   }
-  handleCalender = () => {
-    this.setState({ isActive: !this.state.isActive });
+  toggleSideBar = (dropdownmenu) => {
+    this.setState({ isOpen: !this.state.isOpen });
+    this.setState({ expandTracked: dropdownmenu });
+  };
+
+  checkinSidebar = () => {
+    this.setState({ isCheckin: !this.state.isCheckin });
+  };
+  setEdit = () => {
+    this.toggleSideBar(false);
+  };
+  handleCalender = (id) => {
+    this.setState({ calendarAt: id });
   };
   handleEndDate = (date) => {
     this.setState({ endDate: date });
@@ -22,126 +40,110 @@ export default class IndividualOKRmain extends Component {
   handleStartDate = (date) => {
     this.setState({ startDate: date });
   };
-  toggleSideBar = () => {
-    this.setState({ isOpen: !this.state.isOpen });
-    // setIsOpen((isOpen) => !isOpen);
-  };
+
   handleRange = (startDate, endDate) => {
     this.setState({ startDate: new Date(startDate), endDate: new Date(endDate) });
   };
+  handleClose = () => {
+    this.setState({
+      addNewKeyResult: false,
+    });
+  };
+  handleOpen = (id) => {
+    this.props?.setSubKeyFormAt(id);
+    this.props?.setAddNewKeyResult(true);
+  };
   render() {
     const { startDate, endDate } = this.state;
+    const { keyResult, addSubKeyFormAt, addNewKeyResult, okrDetail, calendarAt } = this.props;
+
     return (
-      <div>
-        {/* ---------------------------------------Child1(Main)------------------------------------------ */}
-        <div className='main-tree'> </div>
-        <div className='child'>
-          <div className='all-content'>
-            <div className='connect-tree'></div>
-            <div className='child-tree'> </div>
-            <div className='name-tree1'>
-              <i className='fa fa-dot-circle-o treeConnectorDot'></i> <span className='child'>OKR Child</span>
-              <div className='addSubChild-btn'>
-                <i className='fa fa-plus-circle' onClick={() => this.props.subChild(this.props.id)}>
-                  Add New Child
-                </i>
+      <div className='main key-result-hover'>
+        <div className='all-content'>
+          <div className={`okr-main ${this.props?.class}`}>
+            <div className='okr-name'>
+              <i className='fa fa-dot-circle-o treeConnectorDot'></i>
+              <span>{keyResult?.title}</span>
+            </div>
+            <div className='addSubChild-btn' onClick={() => this.handleOpen(keyResult?.id)}>
+              <i className='fa fa-plus-circle'>Add New Child</i>
+            </div>
+            <div className='note-alignment1'>
+              <div className='tasks'>
+                <i className='fa fa-list'></i>
               </div>
-              <div className='note-alignment1'>
-                <div className='tasks'>
-                  <i className='fa fa-list'></i>
-                </div>
-                <div className='notes'>
-                  <i className='fa fa-sticky-note'></i>
-                </div>
-                <div className='alignment'>
-                  <i className='fa fa-line-chart' aria-hidden='true'></i>
-                </div>
+              <div className='notes'>
+                <i className='fa fa-sticky-note'></i>
+              </div>
+              <div className='alignment'>
+                <i className='fa fa-line-chart' aria-hidden='true'></i>
               </div>
             </div>
-            <div className='date-time'>
+          </div>
+          <div className='keyresult-content-container'>
+            <div className='date-time1'>
               <div className='calender'>
-                <i className='fa fa-calendar-alt' onClick={this.handleCalender}></i>
-                {this.state.isActive && (
-                  <div className='calender-main'>
-                    <div className='calender-and-status'>
-                      <div className='calender-header'>
-                        <div className='start-header'>Start Date</div>
-                        <div className='end-header'>End Date</div>
-                      </div>
-                      <div className='calender-actual'>
-                        <DatePicker
-                          selected={startDate}
-                          onChange={(date) => this.handleStartDate(date)}
-                          selectsStart
-                          startDate={startDate}
-                          endDate={endDate}
-                          inline
-                          fixedHeight
-                        />
-                        <div className='line-v'></div>
-                        <DatePicker
-                          selected={endDate}
-                          onChange={(date) => this.handleEndDate(date)}
-                          selectsEnd
-                          startDate={startDate}
-                          endDate={endDate}
-                          inline
-                          fixedHeight
-                        />
-                      </div>
-                      <div className='line-h'></div>
-                      <div className='calender-date-and-confirm'>
-                        <div className='calender-date'>{`${startDate.getDate()}/${startDate.getMonth()}/${startDate.getYear()} - ${endDate.getDate()}/${endDate.getMonth()}/${endDate.getYear()}`}</div>
-                        <div className='calender-confirm'>
-                          <button onClick={this.handleCalender}>Cancel</button>
-                          <button onClick={this.handleCalender}>Apply</button>
-                        </div>
-                      </div>
-                    </div>
-                    <div className='line-v'></div>
-                    <div className='calender-ranges'>
-                      <div className='range-quarter'>
-                        <span onClick={() => this.handleRange('1/1/22', '3/31/22')}>q1 - 2022</span>
-                        <span onClick={() => this.handleRange('4/1/22', '6/30/22')}>q2 - 2022</span>
-                        <span onClick={() => this.handleRange('7/1/22', '9/30/22')}>q3 - 2022</span>
-                        <span onClick={() => this.handleRange('10/1/22', '12/31/22')}>q4 - 2022</span>
-                      </div>
-                      <div className='line-h'></div>
-                      <div className='range-annual'>
-                        <span onClick={() => this.handleRange('1/1/22', '12/31/22')}>annual - 2022</span>
-                        <span onClick={() => this.handleRange('1/1/23', '12/31/23')}>annual - 2023</span>
-                        <span onClick={() => this.handleRange('1/1/24', '12/31/24')}>annual - 2024</span>
-                        <span onClick={() => this.handleRange('1/1/25', '12/31/25')}>annual - 2025</span>
-                      </div>
-                      <div className='line-h'></div>
-                      <div className='range-custom'>
-                        <span>Custom Range</span>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                <i className='fa fa-calendar-alt' onClick={() => this.props?.handleCalender(keyResult?.id)}></i>
+                {calendarAt === keyResult?.id && <Calendar startDate={startDate} endDate={endDate} />}
               </div>
               &nbsp;
               <div className='user'>
                 <i className='fa fa-user-circle'></i>
               </div>
             </div>
-            <div className='trackSelect' onClick={this.toggleSideBar}>
+            <div className='trackSelect' onClick={() => this.toggleSideBar(true)}>
               % Percentage Tracker
             </div>
             <div className='progressBar'>
               <div className='range-slider'>
-                <input type='range' min='0' max='100' step='10' defaultValue='0' />
+                <input
+                  className='range'
+                  type='range'
+                  min='0'
+                  max='100'
+                  step='10'
+                  defaultValue='0'
+                  onClick={() => this.checkinSidebar()}
+                />
               </div>
-              <span className='showRange'> 0% </span>
+              <span className='showRange'>
+                <b>0%</b>
+              </span>
               <div className='update'>
-                <i data-toggle='tooltip' title='Update' className='fa fa-pencil other' />
+                <i
+                  data-toggle='tooltip'
+                  title='Update'
+                  className='fa fa-pencil other'
+                  onClick={() => this.setEdit(keyResult)}
+                />
                 <i className='fa fa-ellipsis-h other' aria-hidden='true'></i>
               </div>
             </div>
           </div>
         </div>
-        {this.state.isOpen && <SideBarToggle setIsOpen={!this.state.isOpen} toggleSideBar={this.toggleSideBar} />}
+        {this.state.isOpen && (
+          <SideBarToggle
+            setIsOpen={!this.state.isOpen}
+            toggleSideBar={this.toggleSideBar}
+            expandTracked={this.state.expandTracked}
+            handleAlert={this.props?.handleAlert}
+            getObjective={this.props?.getObjective}
+            keyResult={keyResult}
+            okrDetail={okrDetail}
+          />
+        )}
+        {this.state.isCheckin && (
+          <CheckinToggle setIsCheckin={!this.state.isCheckin} checkinSidebar={this.checkinSidebar}></CheckinToggle>
+        )}
+        {addNewKeyResult && addSubKeyFormAt === keyResult?.id && (
+          <CreateKeyResult
+            id={keyResult?.id}
+            parentKeyResultId={keyResult?.id || 0}
+            handleAlert={this.props?.handleAlert}
+            setAddNewKeyResult={this.props?.setAddNewKeyResult}
+            getObjective={this.props?.getObjective}
+          />
+        )}
       </div>
     );
   }

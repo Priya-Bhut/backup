@@ -1,16 +1,54 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
+import { useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
+import withRouter from '../WrapperComponents/withRouter';
 
 function SecondHeader(props) {
+  const { params, buttonName } = props;
+  const { organisationUrl } = params;
+  const [isActiveIndex, setIsActiveIndex] = useState(0);
+  const { pathname } = useLocation();
+  const liTags = [
+    { text: 'Individual OKR', path: `/${organisationUrl}/OKR/IndividualOKR` },
+    { text: 'Corporate OKR', path: `/${organisationUrl}/OKR/CorporateOKR` },
+  ];
+  const handleClick = (i) => {
+    setIsActiveIndex(i);
+  };
+  useEffect(() => {
+    if (pathname === `/${organisationUrl}/OKR/CorporateOKR`) {
+      setIsActiveIndex(1);
+    } else {
+      setIsActiveIndex(0);
+    }
+  }, [pathname]);
   return (
     <div className='secondHeader'>
       <h5>OKR</h5>
-      <Button className='addDesignationButton brilCrmButton' onClick={props?.addNewOkr}>
-        <i className='fa fa-plus-square' />
-        <span className='m-l-10'>Add OKR</span>
-      </Button>
+      <div className='slideTab'>
+        {liTags?.map(({ text, path }, index) => (
+          <Link
+            to={path}
+            key={index}
+            className={isActiveIndex === index && 'active'}
+            onClick={() => handleClick(index)}
+          >
+            {text}
+          </Link>
+        ))}
+      </div>
+
+      {buttonName ? (
+        <Button className='addDesignationButton brilCrmButton' onClick={() => props?.setIsNewOkr(true)}>
+          <i className='fa fa-plus-square' />
+          <span className='m-l-10'>{buttonName}</span>
+        </Button>
+      ) : (
+        <span className='okr-hide-button'></span>
+      )}
     </div>
   );
 }
 
-export default SecondHeader;
+export default withRouter(SecondHeader);

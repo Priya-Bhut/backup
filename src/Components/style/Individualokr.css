@@ -8,94 +8,116 @@
   margin: 15px;
   padding: 0.25rem;
   border-radius: 0.4rem;
-  box-shadow: 0 0 5px 2px gray;
+  background-color: white;
+  box-shadow: 0 1px 4px rgb(21 27 38 / 20%);
 }
 .all-content {
-  padding: 1.25rem;
+  /* padding: 1.25rem; */
+  width: 100%;
   display: flex;
   flex-direction: row;
   border-radius: 1.25rem;
 }
 .parent:hover {
-  background-color: rgba(126, 126, 126, 0.342);
-  min-height: 50px;
+  background-color: #f3f4f7;
   border-radius: 10px;
 }
 .child:hover {
-  background-color: rgba(126, 126, 126, 0.342);
+  background-color: #f3f4f7;
   border-radius: 10px;
 }
 .all-content:hover .addChild-btn,
 .all-content:hover .addSubChild-btn,
 .all-content:hover .note-alignment,
-.all-content:hover .note-alignment1 {
+.all-content:hover .note-alignment1,
+.all-content:hover .note-alignment2,
+.all-content:hover .update {
   display: flex;
 }
 /* -------------------------------------- INSIDE >> All-content -------------------------------------- */
 .name-tree {
+  display: flex;
+  align-items: flex-start;
   flex-grow: 7;
   width: 0%;
-  text-align: left;
+  /* text-align: left; */
 }
 .name-tree1 {
+  display: flex;
+  align-items: center;
   flex-grow: 7;
   width: 0%;
-  text-align: left;
+  /* text-align: left; */
 }
 .name-tree2 {
+  display: flex;
+  align-items: center;
   flex-grow: 7;
   width: 0%;
-  text-align: left;
+  /* text-align: left; */
 }
 .note-alignment {
   display: none;
   flex-grow: 1;
-  float: right;
-  align-items: center;
-  margin-top: 0.2575rem;
-  margin-right: 2rem;
-  color: rgb(136, 136, 136);
+  /* margin-top: 0.2575rem; */
+  margin-right: -1rem;
+  color: #b5b2b2;
   cursor: pointer;
-  justify-content: space-around;
+  justify-content: flex-end;
 }
 .note-alignment1 {
   display: none;
   flex-grow: 1;
-  float: right;
-  align-items: center;
-  margin-right: 2rem;
-  margin-top: 1.25rem;
-  color: rgb(136, 136, 136);
+  margin-right: 1rem;
+  /* margin-top: 1.25rem; */
+  color: #b5b2b2;
   cursor: pointer;
-  justify-content: space-around;
+  justify-content: flex-end;
+}
+.note-alignment2 {
+  display: none;
+  flex-grow: 1;
+  margin-right: 3rem;
+  /* margin-top: 1.25rem; */
+  color: #b5b2b2;
+  cursor: pointer;
+  justify-content: flex-end;
 }
 .date-time {
+  display: flex;
+  justify-content: space-between;
+  width: 10%;
+  align-items: center;
+}
+
+.date-time1 {
+  display: flex;
+  justify-content: space-between;
+  width: 10%;
+  align-items: center;
+}
+
+.date-time2 {
   display: flex;
   justify-content: space-around;
   flex-grow: 1;
   width: 1%;
   align-items: center;
+  margin-left: -62px;
 }
 .trackSelect {
-  flex-grow: 1;
-  width: 10%;
+  width: 35%;
   justify-content: center;
   display: flex;
   align-items: center;
-}
-.progress {
-  flex-grow: 1;
-  justify-content: center;
-  display: flex;
-  width: 20%;
-  align-items: center;
+  cursor: pointer;
 }
 
 .progressBar {
-  flex-grow: 1;
-  justify-content: center;
+  width: 50%;
+  justify-content: flex-start;
   display: flex;
-  width: 20%;
+  flex-direction: row;
   align-items: center;
 }
 .progressBar input:focus {
@@ -112,19 +134,25 @@
 .alignment {
   visibility: visible !important;
 }
-
+.range-slider .range {
+  padding-left: 0% !important;
+  padding-right: 0% !important;
+}
+.range {
+  width: 325px;
+}
 .showRange {
-  background-color: rgb(125, 167, 206);
-  color: white;
-  border: 2px#0366d6 solid;
-  width: 50px;
+  background-color: #e8f2ff;
+  color: #122f78;
+  border: 2px solid #d3e5ff;
+  min-width: 50px;
   border-radius: 20px;
   margin-left: 10px;
   display: flex;
   justify-content: center;
 }
 .update {
-  display: flex;
+  display: none;
   flex-grow: 1;
   float: right;
   align-items: center;
@@ -151,73 +179,61 @@
 }
 /* -------------------------------------- TREE CREATE -------------------------------------- */
 .main-tree {
-  margin-left: 26.5px;
-  margin-top: -31px;
+  margin-left: 25px;
+  margin-top: -52px;
   border: 3px solid rgb(136, 136, 136);
   border-top: 0;
   border-right: 0;
   border-bottom: 0;
-  min-height: 60px;
-  position: absolute;
+  min-height: 64px;
+  /* position: absolute; */
 }
 .connect-tree {
-  margin-left: 7px;
-  margin-top: 5px;
+  margin-left: 5px;
+  margin-top: -38px;
   border: 3px solid rgb(136, 136, 136);
   border-top: 0;
   border-right: 0;
   border-bottom: 0;
-  min-height: 30px;
+  height: 45px;
   display: inline-block;
-  position: absolute;
-}
-.child-tree {
-  margin-left: 7px;
-  margin-top: 29px;
-  border: 3px solid rgb(136, 136, 136);
-  border-top: 0;
-  border-right: 0;
-  border-bottom-left-radius: 8px;
-  height: 1.25rem;
-  width: 25px;
-  display: inline-block;
-  position: absolute;
+  /* position: absolute; */
 }
 .main-tree1 {
-  margin-left: 65px;
-  margin-top: -30px;
+  margin-left: 55px;
+  margin-top: -45px;
   border: 3px solid rgb(136, 136, 136);
   border-top: 0;
   border-right: 0;
   border-bottom: 0;
-  min-height: 58px;
-  position: absolute;
+  height: 72px;
+  /* position: absolute; */
 }
 .connect-tree1 {
-  margin-left: 45px;
-  margin-top: 5px;
+  margin-left: 27px;
+  margin-top: -22px;
   border: 3px solid rgb(136, 136, 136);
   border-top: 0;
   border-right: 0;
   border-bottom: 0;
-  min-height: 31px;
+  height: 31px;
   display: inline-block;
-  position: absolute;
+  /* position: absolute; */
 }
 .connect-tree1-1 {
-  margin-left: 7px;
-  margin-top: -59px;
+  margin-left: 5px;
+  margin-top: -96px;
   border: 3px solid rgb(136, 136, 136);
   border-top: 0;
   border-right: 0;
   border-bottom: 0;
   height: 120px;
   display: inline-block;
-  position: absolute;
+  /* position: absolute; */
 }
 .child-tree1 {
-  margin-left: 45px;
-  margin-top: 29px;
+  margin-left: -3px;
+  margin-top: 0px;
   border: 3px solid rgb(136, 136, 136);
   border-top: 0;
   border-right: 0;
@@ -225,7 +241,7 @@
   height: 1.25rem;
   width: 25px;
   display: inline-block;
-  position: absolute;
+  /* position: absolute; */
 }
 .mainOKR:last-child .mainSub:last-child .connect-tree1-1 {
   visibility: hidden;
@@ -233,36 +249,39 @@
 /* ------------------------------------- Fas Fa ICONE -------------------------------------- */
 .treeConnectorDot {
   color: #47aaf9;
-  margin-top: 10px;
+  margin-top: 2px;
+  margin-right: 5px;
 }
 .name-tree1 .treeConnectorDot {
-  margin-left: 39px;
-  margin-top: 40px;
+  /* margin-left: -3px; */
+  margin-top: -5px;
 }
 .name-tree2 .treeConnectorDot {
-  margin-left: 79px;
-  margin-top: 38px;
+  /* margin-left: 79px; */
+  margin-top: -1px;
 }
 .user {
   cursor: pointer;
 }
 .addChild-btn {
-  color: rgb(136, 136, 136);
+  color: #b5b2b2;
   cursor: pointer;
+  width: fit-content;
   align-items: flex-start;
-  position: absolute;
-  margin-left: 100px;
-  margin-top: -18px;
+  /* position: absolute; */
+  margin-left: 20px;
+  /* margin-top: -18px; */
   display: none;
 }
 
 .addSubChild-btn {
-  color: rgb(136, 136, 136);
+  color: #b5b2b2;
   cursor: pointer;
+  width: fit-content;
   align-items: flex-start;
-  position: absolute;
-  margin-left: 150px;
-  margin-top: -18px;
+  /* position: absolute; */
+  margin-left: 20px;
+  /* margin-top: -18px; */
   display: none;
 }
 .calender {
@@ -279,10 +298,10 @@
   width: 98%;
   background-color: white;
   border-radius: 0.4rem;
-  box-shadow: 0 0 5px 2px gray;
-  margin: 15px;
+  box-shadow: 0 1px 4px rgb(21 27 38 / 8%);
+  margin: 4px 12px;
   font-size: 20px;
-  padding: 20px 17px;
+  padding: 8px;
 }
 
 .new-okr-title-container {
@@ -383,4 +402,101 @@
   outline: none;
   border: none;
   box-shadow: none;
+}
+
+.okr-hide-button {
+  padding: 1.25rem 3.4rem;
+}
+
+.main {
+  padding: 10px 0px;
+  display: flex;
+  flex-direction: column;
+}
+.mainOKR {
+  width: 98%;
+  margin: 1%;
+  padding: 0.25rem;
+  border-radius: 0.4rem;
+  background-color: white;
+  box-shadow: 0 1px 4px rgb(21 27 38 / 20%);
+}
+.list-group-item {
+  border: 0 !important;
+}
+.list-group-item .list-group-item:last-child .okr-tree {
+  display: none;
+}
+subChild:last-child .okr-tree {
+  display: block !important;
+}
+.child-tree {
+  display: block !important;
+}
+.last-okr-main::before {
+  display: none;
+}
+.parent {
+  position: relative;
+}
+.okr-main {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 0px;
+  width: 50%;
+  align-items: center;
+  /* width: 30%; */
+}
+.okr-main::before {
+  content: '' !important;
+  position: absolute;
+  height: calc(100% + -50px);
+  /* left: 21px; */
+  border-left: 3px solid rgb(161, 161, 161);
+  border-radius: 0;
+  top: 39px;
+}
+.okr-tree {
+  position: absolute;
+  height: calc(100%);
+  z-index: 2;
+  left: calc(0px);
+  top: 0;
+  border-left: 3px solid rgb(161, 161, 161);
+}
+.okr-name {
+  width: 10%;
+  margin-left: 4px;
+  /* margin-top: -20px; */
+}
+.okr-name::before {
+  content: '';
+  position: absolute;
+  border-bottom: 3px solid rgb(161, 161, 161);
+  height: 44px;
+  width: 19px;
+  border-bottom-left-radius: 7px;
+  left: 0px;
+  top: -5px;
+  border-left: 3px solid rgb(161, 161, 161);
+}
+.time-line {
+  display: flex;
+  width: 10%;
+  justify-content: space-between;
+}
+.keyresult-content-container {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+}
+.okr-content-container {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+}
+
+.key-result-hover:hover {
+  background-color: #f3f4f7;
+  border-radius: 10px;
 }

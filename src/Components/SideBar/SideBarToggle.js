@@ -1,14 +1,58 @@
+/*eslint-disable*/
 import React, { useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import SearchSelectSequenceModal from './SearchSelectSequenceModal';
+import { updateKeyResult } from './Action';
+import withRouter from '../WrapperComponents/withRouter';
+import { connect } from 'react-redux';
+// import { DropdownButton } from 'react-bootstrap';
+
 function SideBarToggle(props) {
+  const { okrDetail, keyResult, params } = props;
+  const { organisationUrl } = params || {};
+
   const handleClicked = (e) => {
     setTracked(e);
     setexpandPerTracked(false);
   };
-  const [expandPerTracked, setexpandPerTracked] = useState(false);
+
+  const [expandPerTracked, setexpandPerTracked] = useState(props.expandTracked);
   const [tracked, setTracked] = useState('percentage');
+  // const [sequenceName, setSequenceName] = useState('');
   const [openSequence, setOpenSequence] = useState(false);
+  const [updateData, setUpdateData] = useState({
+    keyResultId: keyResult?.id || 0,
+    title: keyResult?.title || '',
+    description: keyResult?.description || '',
+    startDate: keyResult?.startDate || '',
+    endDate: keyResult?.endDate || '',
+    parentKeyResultId: keyResult?.parentKeyResultId || 0,
+    checkInFrequency: keyResult?.checkInFrequency || 0,
+    keyResultTypeName: keyResult?.keyResultTypeName || '',
+    percentData: keyResult?.percentData || '',
+    mileStoneData: keyResult?.mileStoneData || '',
+    taskData: keyResult?.taskData || '',
+    increasetKPIData: keyResult?.increasetKPIData || '',
+    objectiveId: keyResult?.objectiveId || 0,
+    keyResults: keyResult?.keyResults || [],
+  });
+
+  const updateKeyResult = () => {
+    props
+      ?.updateKeyResult(organisationUrl, updateData)
+      .then((response) => {
+        if (response && !response?.errorMessage && !response?.error) {
+          props?.handleAlert('Keyresult Updated', 'success');
+          props?.getObjective();
+        } else {
+          props?.handleAlert(!response?.errorMessage || !response?.error || 'Something went wrong', 'error');
+        }
+      })
+      .catch((error) => {
+        props?.handleAlert(error?.message || 'Something went wrong', 'error');
+      });
+  };
+
   const expandPertageTracked = () => {
     return (
       <div className='keyresult-drop-down'>
@@ -50,11 +94,11 @@ function SideBarToggle(props) {
   };
   return (
     <>
-      <div className='overlay'>
+      <div className='sidebaroverlay'>
         <div className='sideBar'>
           <div className='sidebar-header'>
             <p>
-              Objective: <strong>ABC</strong>
+              Objective: <strong>{okrDetail?.name}</strong>
             </p>
             <i className={`fa fa-times closeModel`} onClick={props?.toggleSideBar}></i>
           </div>
@@ -151,7 +195,15 @@ function SideBarToggle(props) {
                     'Percentage Tracked'
                   ) : tracked === 'milestone' ? (
                     <div className='searchSequence'>
-                      <span onClick={() => setOpenSequence(!openSequence)}>Search & Select Sequence</span>
+                      <span onClick={() => setOpenSequence(!openSequence)}>
+                        {/* <div className='top-nav-dropdown'>
+                          <DropdownButton
+                            title={sequenceName === '' ? 'Search & Select Sequence ' : sequenceName}
+                            className='dropdownhover'
+                          ></DropdownButton>
+                        </div> */}
+                        Search & select Sequence
+                      </span>
                     </div>
                   ) : tracked === 'task' ? (
                     'Task Tracked'
@@ -160,7 +212,11 @@ function SideBarToggle(props) {
               </div>
               <div>
                 {openSequence && (
-                  <SearchSelectSequenceModal setOpenSequence={setOpenSequence} openSequence={openSequence} />
+                  <SearchSelectSequenceModal
+                    setOpenSequence={setOpenSequence}
+                    openSequence={openSequence}
+                    // setSequenceName={setSequenceName}
+                  />
                 )}
               </div>
             </div>
@@ -176,14 +232,23 @@ function SideBarToggle(props) {
           </div>
           <hr />
           <div className='key-result'>
-            <textarea cols={63} rows={3} placeholder='Type Your Key Result..' className='textareaKeyResult'></textarea>
+            <textarea
+              cols={63}
+              rows={3}
+              placeholder='Type Your Key Result..'
+              className='textareaKeyResult'
+              value={updateData?.title}
+              onChange={(e) => setUpdateData({ ...updateData, title: e?.target?.value })}
+            ></textarea>
           </div>
           <div className='editor'>
             <Editor
               apiKey='h1a0ymnw0nixvy8bnuahlmmfo0422ltzxfsrv2gprc51cutm'
+              value={updateData?.description}
+              onEditorChange={(content) => setUpdateData({ ...updateData, description: content })}
               init={{
                 statusbar: false,
-                placeholder: 'Additional Context Here..',
+                placeholder: 'Description...',
                 menubar: false,
                 plugins: [
                   'advlist autolink lists link image',
@@ -196,47 +261,56 @@ function SideBarToggle(props) {
               }}
             />
           </div>
-          <div className='sidebar-user'>
-            <div id='circlelocation'>
-              <i className='fa fa-light fa-user' />
+          <div className='assignee'>
+            <div className='sidebar-user'>
+              <div id='circlelocation'>
+                <i className='fa fa-light fa-user' />
+              </div>
+              <div className='key'>
+                <span className='span-key'>Assignee</span>
+                <a href='#' className='SearchAssignee'>
+                  Search & Select Assignee
+                </a>
+              </div>
             </div>
-            <div className='key'>
-              <span className='span-key'>Assignee</span>
-              <a href='#' className='SearchAssignee'>
-                Search & Select Assignee
-              </a>
+            <div className='tag'>
+              <div id='circletag'>
+                <i className='fa fa-tags'>
+                  <span className='tooltiptext'>Tags</span>
+                </i>
+              </div>
             </div>
-          </div>
-          <div className='tag'>
-            <div id='circletag'>
-              <i className='fa fa-tags'>
-                <span className='tooltiptext'>Tags</span>
-              </i>
-            </div>
-          </div>
-          <div className='Location'>
-            <div id='circletag'>
-              <i className='fa fa-map-marker fa-lg Icons' aria-hidden='true'>
-                <span className='tooltiptext'>Frequency</span>
-              </i>
-            </div>
-            <div className='key'>
-              <span className='span-key'>Check-in Frequency</span>
-              <span className='display-frequency'> Every Friday</span>
-            </div>
-            <div id='circleaddfre'>
-              <i className='fa fa-solid fa-plus'>
-                <span className='tooltiptext'>Add Frequency</span>
-              </i>
+            <div className='Location'>
+              <div id='circletag'>
+                <i className='fa fa-map-marker fa-lg Icons' aria-hidden='true'>
+                  <span className='tooltiptext'>Frequency</span>
+                </i>
+              </div>
+              <div className='key'>
+                <span className='span-key'>Check-in Frequency</span>
+                <span className='display-frequency'> Every Friday</span>
+              </div>
+              <div id='circleaddfre'>
+                <i className='fa fa-solid fa-plus'>
+                  <span className='tooltiptext'>Add Frequency</span>
+                </i>
+              </div>
             </div>
           </div>
           <div className='toggle-btn'>
             <button className='sidebar-btn'>Cancel</button>
-            <button className='sidebar-btn'>Update</button>
+            <button className='sidebar-btn' onClick={updateKeyResult}>
+              Update
+            </button>
           </div>
         </div>
       </div>
     </>
   );
 }
-export default SideBarToggle;
+
+const mapDispatchToProps = {
+  updateKeyResult,
+};
+
+export default connect(null, mapDispatchToProps)(withRouter(SideBarToggle));
