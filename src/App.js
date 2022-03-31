@@ -124,7 +124,7 @@ function App() {
           <Route path='action-center' exact element={<div>Comming Soon...</div>} />
           <Route path='dependencies' exact element={<div>Comming Soon...</div>} />
           <Route path='notes' exact element={<div>Comming Soon...</div>} />
-          <Route path='company-dashboard' exact element={<CompanyDashboard />} />
+          <Route path='company-dashboard' exact element={<CompanyDashboard handleAlert={handleAlert} />} />
           <Route path='dept-hierarchy' exact element={<div>Comming Soon...</div>} />
           <Route path='news-feed' exact element={<div>Comming Soon...</div>} />
           <Route path='org-hierarchy' exact element={<div>Comming Soon...</div>} />

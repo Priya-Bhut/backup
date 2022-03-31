@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import { Pie, Line } from 'react-chartjs-2';
 import { Dropdown } from 'react-bootstrap';
@@ -16,6 +16,7 @@ import {
   scales,
   Legend,
 } from 'chart.js';
+import { connect } from 'react-redux';
 
 Chart.register(
   ArcElement,
@@ -30,8 +31,36 @@ Chart.register(
   scales,
   Legend,
 );
+import { getDashboard } from './Action';
+import withRouter from '../WrapperComponents/withRouter';
 
-function CompanyDashboard() {
+function CompanyDashboard(props) {
+  const [dashboardData, setDashboardData] = useState({
+    keyResultCount: 0,
+    objectiveCount: 0,
+    employeeCount: 0,
+  });
+
+  const { params } = props;
+  const { organisationUrl } = params || {};
+  const getDashboard = () => {
+    props
+      ?.getDashboard(organisationUrl)
+      .then((response) => {
+        if (response && !response?.errorMessage && !response?.error) {
+          setDashboardData(response);
+        } else {
+          props?.handleAlert(response?.errorMessage || response?.error || 'Something went wrong', 'error');
+        }
+      })
+      .catch((error) => {
+        props?.handleAlert(error?.message || 'Something went wrong', 'error');
+      });
+  };
+  useEffect(() => {
+    getDashboard();
+  }, []);
+
   const state = {
     labels: ['January', 'February', 'March', 'April'],
     datasets: [
@@ -68,7 +97,7 @@ function CompanyDashboard() {
 
   const optionsLine = {
     maintainAspectRatio: true,
-    options: {
+    option: {
       Legend: {
         display: false,
       },
@@ -76,15 +105,13 @@ function CompanyDashboard() {
         xAxes: [
           {
             gridLines: {
-              display: false,
+              drawOnChartArea: false,
             },
           },
         ],
         yAxes: [
           {
-            gridLines: {
-              display: false,
-            },
+            stacked: true,
           },
         ],
       },
@@ -177,16 +204,17 @@ function CompanyDashboard() {
           <Card className='topcardsdesign'>
             <Card.Body>
               <div className='inner-body'>
-                <Card.Title>1</Card.Title>
+                <Card.Title>{dashboardData?.employeeCount}</Card.Title>
                 <Card.Subtitle className='mb-2 text-muted'>Users</Card.Subtitle>
               </div>
               <i className='fa fa-solid fa-users fa-5x logo'></i>
             </Card.Body>
           </Card>
+
           <Card className='topcardsdesign'>
             <Card.Body>
               <div className='inner-body'>
-                <Card.Title>2</Card.Title>
+                <Card.Title>{dashboardData?.objectiveCount}</Card.Title>
                 <Card.Subtitle className='mb-2 text-muted'>Objective</Card.Subtitle>
               </div>
               <i className='fa fa-solid fa-bullseye fa-5x logo'></i>
@@ -197,7 +225,7 @@ function CompanyDashboard() {
           <Card className='topcardsdesign'>
             <Card.Body>
               <div className='inner-body'>
-                <Card.Title>3</Card.Title>
+                <Card.Title>{dashboardData?.keyResultCount}</Card.Title>
                 <Card.Subtitle className='mb-2 text-muted'>Key Results</Card.Subtitle>
               </div>
               <i className='fa fa-solid fa-key fa-5x logo'></i>
@@ -294,5 +322,8 @@ function CompanyDashboard() {
     </>
   );
 }
+const mapDispatchToProps = {
+  getDashboard,
+};
 
-export default CompanyDashboard;
+export default connect(null, mapDispatchToProps)(withRouter(CompanyDashboard));

@@ -4,8 +4,9 @@ import 'react-datepicker/dist/react-datepicker.css';
 import 'font-awesome/css/font-awesome.min.css';
 import SideBarToggle from '../SideBar/SideBarToggle';
 import CreateKeyResult from './CreateKeyResult';
+import CheckinToggle from './CheckinToggle';
 export default class IndividualOKRmain extends Component {
-  state = { isActive: false, isOpen: false };
+  state = { isActive: false, isOpen: false, isCheckin: false };
 
   constructor(props) {
     super(props);
@@ -14,8 +15,20 @@ export default class IndividualOKRmain extends Component {
       endDate: new Date(),
       addKeyFormAt: -1,
       addNewKeyResult: false,
+      expandTracked: false,
     };
   }
+  toggleSideBar = (dropdownmenu) => {
+    this.setState({ isOpen: !this.state.isOpen });
+    this.setState({ expandTracked: dropdownmenu });
+  };
+
+  checkinSidebar = () => {
+    this.setState({ isCheckin: !this.state.isCheckin });
+  };
+  setEdit = () => {
+    this.toggleSideBar(false);
+  };
   handleCalender = () => {
     this.setState({ isActive: !this.state.isActive });
   };
@@ -25,10 +38,7 @@ export default class IndividualOKRmain extends Component {
   handleStartDate = (date) => {
     this.setState({ startDate: date });
   };
-  toggleSideBar = () => {
-    this.setState({ isOpen: !this.state.isOpen });
-    // setIsOpen((isOpen) => !isOpen);
-  };
+
   handleRange = (startDate, endDate) => {
     this.setState({ startDate: new Date(startDate), endDate: new Date(endDate) });
   };
@@ -43,32 +53,31 @@ export default class IndividualOKRmain extends Component {
   };
   render() {
     const { startDate, endDate } = this.state;
-    const { keyResult, addSubKeyFormAt, addNewKeyResult } = this.props;
+    const { keyResult, addSubKeyFormAt, addNewKeyResult, okrDetail } = this.props;
     return (
-      <div>
-        {/* ---------------------------------------Child1(Main)------------------------------------------ */}
-        <div className='main-tree'> </div>
-        <div className='child'>
-          <div className='all-content'>
-            <div className='connect-tree'></div>
-            <div className='child-tree'> </div>
-            <div className='name-tree1'>
-              <i className='fa fa-dot-circle-o treeConnectorDot'></i> <span className='child'>{keyResult?.title}</span>
-              <div className='addSubChild-btn' onClick={() => this.handleOpen(keyResult?.id)}>
-                <i className='fa fa-plus-circle'>Add New Child</i>
+      <div className='main key-result-hover'>
+        <div className='all-content'>
+          <div className={`okr-main ${this.props?.class}`}>
+            <div className='okr-name'>
+              <i className='fa fa-dot-circle-o treeConnectorDot'></i>
+              <span>{keyResult?.title}</span>
+            </div>
+            <div className='addSubChild-btn' onClick={() => this.handleOpen(keyResult?.id)}>
+              <i className='fa fa-plus-circle'>Add New Child</i>
+            </div>
+            <div className='note-alignment1'>
+              <div className='tasks'>
+                <i className='fa fa-list'></i>
               </div>
-              <div className='note-alignment1'>
-                <div className='tasks'>
-                  <i data-toggle='tooltip' title='Tasks' className='fa fa-list'></i>
-                </div>
-                <div className='notes'>
-                  <i data-toggle='tooltip' title='Notes' className='fa fa-sticky-note'></i>
-                </div>
-                <div className='alignment'>
-                  <i data-toggle='tooltip' title='Check-ins' className='fa fa-line-chart' aria-hidden='true'></i>
-                </div>
+              <div className='notes'>
+                <i className='fa fa-sticky-note'></i>
+              </div>
+              <div className='alignment'>
+                <i className='fa fa-line-chart' aria-hidden='true'></i>
               </div>
             </div>
+          </div>
+          <div className='keyresult-content-container'>
             <div className='date-time1'>
               <div className='calender'>
                 <i className='fa fa-calendar-alt' onClick={this.handleCalender}></i>
@@ -137,29 +146,49 @@ export default class IndividualOKRmain extends Component {
                 <i className='fa fa-user-circle'></i>
               </div>
             </div>
-            <div className='trackSelect' onClick={this.toggleSideBar}>
+            <div className='trackSelect' onClick={() => this.toggleSideBar(true)}>
               % Percentage Tracker
             </div>
             <div className='progressBar'>
               <div className='range-slider'>
-                <input className='range' type='range' min='0' max='100' step='10' defaultValue='0' />
+                <input
+                  className='range'
+                  type='range'
+                  min='0'
+                  max='100'
+                  step='10'
+                  defaultValue='0'
+                  onClick={() => this.checkinSidebar()}
+                />
               </div>
               <span className='showRange'>
                 <b>0%</b>
               </span>
               <div className='update'>
-                <i data-toggle='tooltip' title='Update' className='fa fa-pencil other' />
-                <i data-toggle='tooltip' title='Other' className='fa fa-ellipsis-h other' aria-hidden='true'></i>
+                <i
+                  data-toggle='tooltip'
+                  title='Update'
+                  className='fa fa-pencil other'
+                  onClick={() => this.setEdit(keyResult)}
+                />
+                <i className='fa fa-ellipsis-h other' aria-hidden='true'></i>
               </div>
             </div>
           </div>
         </div>
         {this.state.isOpen && (
           <SideBarToggle
-            handleAlert={this?.props?.handleAlert}
-            setIsOpen={!this?.state?.isOpen}
-            toggleSideBar={this?.toggleSideBar}
+            setIsOpen={!this.state.isOpen}
+            toggleSideBar={this.toggleSideBar}
+            expandTracked={this.state.expandTracked}
+            handleAlert={this.props?.handleAlert}
+            getObjective={this.props?.getObjective}
+            keyResult={keyResult}
+            okrDetail={okrDetail}
           />
+        )}
+        {this.state.isCheckin && (
+          <CheckinToggle setIsCheckin={!this.state.isCheckin} checkinSidebar={this.checkinSidebar}></CheckinToggle>
         )}
         {addNewKeyResult && addSubKeyFormAt === keyResult?.id && (
           <CreateKeyResult

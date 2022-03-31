@@ -21,7 +21,7 @@ class SelectSequenceModal extends Component {
         isSaveInSetting: updateData?.isSaveInSetting || false,
         milestones: updateData?.milestones || [
           {
-            id: 1,
+            mileId: 1,
             name: '',
             carryPercentage: 0,
             overAllPercentage: 0,
@@ -48,11 +48,11 @@ class SelectSequenceModal extends Component {
 
   addMileStoneSequence = () => {
     let addData = [...this?.state?.addSequence?.milestones];
-    let lastID = parseInt(addData[addData.length - 1].id);
+    let lastID = parseInt(addData[addData.length - 1].mileId);
     addData.push({
-      id: `${lastID + 1}`,
+      mileId: `${lastID + 1}`,
       name: '',
-      carryPercentage: '  ',
+      carryPercentage: 0,
       overAllPercentage: addData[addData.length - 1].overAllPercentage,
     });
     this.setState({ addSequence: { ...this?.state?.addSequence, milestones: addData } });
@@ -61,7 +61,7 @@ class SelectSequenceModal extends Component {
   deleteMileStoneSequence = (id) => {
     if (this?.state?.addSequence.milestones.length > 1) {
       let deleteData = [...this?.state?.addSequence.milestones];
-      let index = deleteData.findIndex((item) => item.id === id);
+      let index = deleteData.findIndex((item) => item.mileId === id);
       deleteData.splice(index, 1);
       this.setState({ addSequence: { ...this?.state?.addSequence, milestones: deleteData } }, () => this.handleSum());
 
@@ -72,7 +72,7 @@ class SelectSequenceModal extends Component {
   handleMilestone = (e, id) => {
     const { name, value } = e?.target;
     let changeData = [...this.state.addSequence.milestones];
-    let index = changeData.findIndex((item) => item.id === id);
+    let index = changeData.findIndex((item) => item.mileId === id);
 
     name === 'name'
       ? (changeData[index].name = value)
@@ -255,7 +255,7 @@ class SelectSequenceModal extends Component {
                   {(provided) => (
                     <div ref={provided.innerRef}>
                       {this?.state?.addSequence?.milestones?.map((item, index) => (
-                        <Draggable draggableId={`${item?.id}`} key={item?.id} index={index}>
+                        <Draggable draggableId={`${item?.mileId}`} key={item?.mileId} index={index}>
                           {(provided) => (
                             <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                               <div className='milestone'>
@@ -265,14 +265,14 @@ class SelectSequenceModal extends Component {
                                   type='text'
                                   name='name'
                                   placeholder='Milestone Name'
-                                  onChange={(e) => this?.handleMilestone(e, item.id)}
+                                  onChange={(e) => this?.handleMilestone(e, item.mileId)}
                                   value={item?.name || ''}
                                 ></input>
                                 <div className='milestone2-box'>
                                   <input
                                     type='number'
                                     name='carryPercentage'
-                                    onChange={(e) => this?.handleMilestone(e, item.id)}
+                                    onChange={(e) => this?.handleMilestone(e, item.mileId)}
                                     disabled={`${index === 0 ? 'percentageinput' : ''}`}
                                     value={item?.carryPercentage}
                                   ></input>
@@ -288,7 +288,7 @@ class SelectSequenceModal extends Component {
                                   <i className='fas fa-percentage unit'></i>
                                 </div>
                                 <i
-                                  onClick={() => this?.deleteMileStoneSequence(item.id)}
+                                  onClick={() => this?.deleteMileStoneSequence(item.mileId)}
                                   className={`fa fa-times fa-lg  ${
                                     index === 0 ? 'nodeletemilestone' : 'deletemilestone'
                                   }`}

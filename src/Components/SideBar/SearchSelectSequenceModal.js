@@ -1,9 +1,9 @@
 import React /* useEffect, */ /* useState */ from 'react';
 import { Modal, Button } from 'react-bootstrap';
-// import SelectSequenceModal from './SelectSequenceModal';
-import { deleteSequenceData } from './Action';
+import { Card } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import withRouter from '../WrapperComponents/withRouter';
+import { deleteSequenceData } from './Action';
 
 function SearchSelectSequence(props) {
   const { openSequence, params } = props;
@@ -34,51 +34,70 @@ function SearchSelectSequence(props) {
   };
   return (
     <>
-      <Modal show={openSequence} onHide={() => props?.setOpenSequence(!openSequence)}>
+      <Modal size='xl' show={openSequence} onHide={() => props?.setOpenSequence(!openSequence)}>
         <Modal.Header closeButton>
           <Modal.Title>
             <span>Select Sequence</span>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div className='sequencelabel'>
+          <div className='sequence-label'>
             <span>Creating a new sequence</span>
             <br />
+            <span onClick={() => props?.handleAddSequenceModal()}>Create new</span>
+          </div>
+          <hr></hr>
+          {/* <div className='templates'>
+            <ul>
+            <li>
+            <a href='#'>Predefined Templates</a>
+            </li>
+            <li>
+            <a href='#'>My Templates</a>
+            </li>
+            </ul>
+          </div> */}
+          <div className='row milestn'>
             {props?.sequenceData?.map((data, index) => {
               return (
-                <>
-                  <Button key={index} variant='primary' onClick={() => handleClick(data)}>
-                    {data?.name}
-                  </Button>
-                  <span onClick={() => handleDelete(data?.id)}>X</span>
-                </>
+                <div className='col mb-3' key={index}>
+                  <Card className='sequence-card'>
+                    <Card.Header>
+                      <div className='card-title'>
+                        <Card.Subtitle>{data?.name}</Card.Subtitle>
+                        <i className='fa fa-solid fa-trash fa-2x btntrash' onClick={() => handleDelete(data?.id)}></i>
+                      </div>
+                    </Card.Header>
+                    <Card.Body>
+                      <ul className='mile'>
+                        {data.milestones.map((mile, index) => {
+                          return (
+                            <li key={index}>
+                              <span>{mile.overAllPercentage}%</span>
+                              <div>{mile.name}</div>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </Card.Body>
+                    <Card.Footer>
+                      <Button className='primary' onClick={() => handleClick(data)}>
+                        select
+                      </Button>
+                    </Card.Footer>
+                  </Card>
+                </div>
               );
             })}
           </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant='primary' onClick={() => props?.handleAddSequenceModal()}>
-            Create new
+            Add
           </Button>
           <Button variant='secondary' onClick={() => props?.setOpenSequence(!openSequence)}>
             Cancel
           </Button>
-          {/*  <div>
-            {selectSequence && (
-              <SelectSequenceModal
-                updateData={propsupdateData}
-                handleAlert={props?.handleAlert}
-                // setSelectSequence={setSelectSequence}
-                handleAddSequenceModal={props?.handleAddSequenceModal}
-                selectSequence={props?.selectSequence}
-                // setSequenceName={props?.setSequenceName}
-                setOpenSequence={props?.setOpenSequence}
-                openSequence={openSequence}
-                setSequence={props?.setSequence}
-                getSequenceData={props?.getSequenceData}
-              />
-            )}
-          </div> */}
         </Modal.Footer>
       </Modal>
     </>
