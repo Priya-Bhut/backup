@@ -417,37 +417,19 @@ ul {
   font-size: medium;
   font-weight: bold;
 }
-.sequencelabel {
+.sequence-label span {
+  font-weight: 500;
+  font-size: medium;
+}
+.sequence-label {
   display: flex;
   justify-content: space-between;
 }
-.sequencelabel span:nth-child(2) {
-  color: #2196f3;
-  cursor: pointer;
-  font-weight: bold;
-}
-.sequencelabel span:nth-child(2):hover {
-  color: #0a78d3;
-}
-.sequencecard .sequencecardsdesign {
-  height: auto;
-  width: 100%;
+.sequence-card {
   border-radius: 10px;
-  background-color: white !important;
-  padding: 0;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
 }
-.inner-bodysequence {
-  display: flex;
-  flex-direction: column;
-}
-.sequencecard {
-  display: grid;
-  grid-template-columns: auto auto;
-  border-radius: 10px;
-  grid-column-gap: 30px;
-}
-.cardtitle {
+.card-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -461,13 +443,12 @@ ul {
 .card-header :hover .btntrash {
   visibility: visible;
 }
-.card-footer {
-  width: 100%;
+/* .card-footer {
   text-align: center !important;
-}
-.card-footer .btn {
+} */
+/* .card-footer .btn {
   align-self: center;
-}
+} */
 
 .sequence input {
   border: 2px solid rgb(204, 199, 199);
@@ -577,13 +558,14 @@ input::-webkit-inner-spin-button {
   justify-content: center;
   right: 0;
   left: 85%;
-  top: 2px;
-  width: 28px;
+  top: 1.5px;
+  width: 29px;
   font-size: large;
   font-weight: bold;
   background: rgb(230, 230, 230);
-  height: 37px;
+  height: 41px;
   align-items: center;
+  border-radius: 0 5px 5px 0;
 }
 .vertical-line {
   border-left: 6px solid green;
@@ -681,4 +663,67 @@ input::-webkit-inner-spin-button {
 }
 .month:hover .month-item {
   display: flex;
+}
+.mile {
+  position: relative;
+  list-style: none;
+  margin-left: 30px;
+  margin-top: 15px;
+}
+.milestn .card:hover {
+  box-shadow: 0 15px 45px 0 rgb(0 0 0 / 20%);
+}
+.milestn {
+  display: flex;
+  justify-content: center;
+  margin-top: 3%;
+  align-items: stretch;
+}
+.mile::before {
+  width: 5px;
+  height: 100%;
+  border-radius: 15px;
+  left: 21px;
+  top: -3px;
+}
+.mile li:before,
+.mile:before {
+  position: absolute;
+  content: '';
+  background-color: #d8e0f3;
+}
+.mile li {
+  position: relative;
+  padding-bottom: 15px;
+}
+.mile li:before {
+  width: 15px;
+  height: 15px;
+  left: -16px;
+  top: 3px;
+  border-radius: 50%;
+}
+
+.mile li:first-child:before {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: #2196f3;
+  left: -16px;
+  border-radius: 50%;
+  top: 0;
+}
+.mile li:last-child {
+  position: relative;
+  padding-bottom: 0;
+}
+.mile li span {
+  left: -66px;
+  position: absolute;
+  text-align: right;
+  width: 40px;
+}
+.mile div {
+  margin-left: 10px;
 }
