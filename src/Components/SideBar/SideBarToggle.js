@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import SearchSelectSequenceModal from './SearchSelectSequenceModal';
 import { updateKeyResult } from './Action';
@@ -20,6 +20,8 @@ function SideBarToggle(props) {
   const [tracked, setTracked] = useState('percentage');
   const [openSequence, setOpenSequence] = useState(false);
   const [addFrequency, setAddFrequency] = useState(false);
+  const container = useRef();
+
   const [updateData, setUpdateData] = useState({
     keyResultId: keyResult?.id || 0,
     title: keyResult?.title || '',
@@ -53,9 +55,22 @@ function SideBarToggle(props) {
       });
   };
 
+  const handleKeyDown = (e) => {
+    if (container.current && !container.current.contains(e.target)) {
+      setexpandPerTracked(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener('mousedown', handleKeyDown);
+    return () => {
+      window.removeEventListener('mousedown', handleKeyDown);
+    };
+  }, []);
+
   const expandPertageTracked = () => {
     return (
-      <div className='keyresult-drop-down'>
+      <div className='keyresult-drop-down' ref={container}>
         <span className='keyresult-label'> Non Measureables</span>
         <div className='dropdown-list'>
           <div id='circle3'>
@@ -152,7 +167,7 @@ function SideBarToggle(props) {
               </div>
               <div className='key'>
                 <span className='span-key'>Key Result Type</span>
-                <span className='percentage-track' onClick={() => setexpandPerTracked(!expandPerTracked)}>
+                <span className='percentage-track' onClick={() => setexpandPerTracked(true)}>
                   {tracked === 'percentage'
                     ? 'Percentage tracked'
                     : tracked === 'milestone'

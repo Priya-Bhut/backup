@@ -11,7 +11,7 @@
 }
 .sideBar {
   position: fixed;
-  top: 56px;
+  top: 70px;
   right: -40%;
   width: 35%;
   height: 100%;
@@ -23,12 +23,16 @@
 }
 .sidebaroverlay {
   position: fixed;
-  top: 56px;
+  /* top: 56px;
   left: 90px;
   right: 0;
-  bottom: 0;
+  bottom: 0; */
+  height: 100%;
+  width: 100%;
   background-color: rgba(66, 79, 116, 0.3);
   z-index: 100;
+  left: 0;
+  top: 0;
 }
 .fly_joiner {
   margin-top: 4px;
@@ -635,7 +639,7 @@ input::-webkit-inner-spin-button {
 .frequency-dropdown {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 10px;
   width: max-content;
   background-color: white;
@@ -645,6 +649,7 @@ input::-webkit-inner-spin-button {
   animation: moving 0.3s ease-in-out;
   position: absolute;
 }
+
 .frequency-dropdown .dropdown-list input {
   margin-right: 8px;
 }
@@ -653,7 +658,7 @@ input::-webkit-inner-spin-button {
 }
 .week-item {
   display: none;
-  left: 150px;
+  left: 170px;
   bottom: 40px;
 }
 .week:hover .week-item {
@@ -667,10 +672,11 @@ input::-webkit-inner-spin-button {
   cursor: pointer;
   padding-right: 20px;
   width: 100%;
+  justify-content: space-between;
 }
 .month-item {
   display: none;
-  left: 150px;
+  left: 170px;
   bottom: 10px;
 }
 .month:hover .month-item {

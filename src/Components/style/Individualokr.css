@@ -4,7 +4,7 @@
   margin-top: 0.0625rem;
 } */
 .mainOKR {
-  width: 98%;
+  width: 100%;
   margin: 15px;
   padding: 0.25rem;
   border-radius: 0.4rem;
@@ -13,7 +13,7 @@
 }
 .all-content {
   /* padding: 1.25rem; */
-  width: 100%;
+  /* width: 100%; */
   display: flex;
   flex-direction: row;
   border-radius: 1.25rem;
@@ -106,10 +106,8 @@
   margin-left: -62px;
 }
 .trackSelect {
-  width: 35%;
-  justify-content: center;
-  display: flex;
-  align-items: center;
+  min-width: 160px;
+
   cursor: pointer;
 }
 
@@ -119,9 +117,13 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  padding-left: 25px;
 }
 .progressBar input:focus {
   box-shadow: none !important;
+}
+.progressBar .range-slider {
+  padding-left: 25px;
 }
 .notes,
 .alignment,
@@ -414,7 +416,7 @@
   flex-direction: column;
 }
 .mainOKR {
-  width: 98%;
+  width: 100%;
   margin: 1%;
   padding: 0.25rem;
   border-radius: 0.4rem;
@@ -465,7 +467,7 @@ subChild:last-child .okr-tree {
   border-left: 3px solid rgb(161, 161, 161);
 }
 .okr-name {
-  width: 10%;
+  /* width: 10%; */
   margin-left: 4px;
   /* margin-top: -20px; */
 }
@@ -495,8 +497,13 @@ subChild:last-child .okr-tree {
   display: flex;
   flex-direction: row;
 }
-
 .key-result-hover:hover {
   background-color: #f3f4f7;
   border-radius: 10px;
+}
+@media screen and (max-width: 900px) {
+  .all-content {
+    /* display: flex; */
+    flex-direction: column;
+  }
 }

@@ -91,10 +91,10 @@ export default class IndividualOKRmain extends Component {
                 <i className='fa fa-user-circle'></i>
               </div>
             </div>
-            <div className='trackSelect' onClick={() => this.toggleSideBar(true)}>
-              % Percentage Tracker
-            </div>
             <div className='progressBar'>
+              <div className='trackSelect' onClick={() => this.toggleSideBar(true)}>
+                % Percentage Tracker
+              </div>
               <div className='range-slider'>
                 <input
                   className='range'
