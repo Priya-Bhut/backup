@@ -6,7 +6,7 @@ import withRouter from '../WrapperComponents/withRouter';
 import { deleteSequenceData } from './Action';
 
 function SearchSelectSequence(props) {
-  const { openSequence, params } = props;
+  const { openSequence, selectSequence, params } = props;
   const { organisationUrl } = params;
 
   const deleteSequenceData = (id) => {
@@ -26,8 +26,8 @@ function SearchSelectSequence(props) {
   };
   const handleClick = (data) => {
     props?.setUpdateData(data);
-    props?.setSelectSequence(!props?.selectSequence);
-    props?.setOpenSequence(!props?.openSequence);
+    props?.setSelectSequence(!selectSequence);
+    props?.setOpenSequence(!openSequence);
   };
   const handleDelete = (id) => {
     deleteSequenceData(id);
@@ -70,11 +70,11 @@ function SearchSelectSequence(props) {
                     </Card.Header>
                     <Card.Body>
                       <ul className='mile'>
-                        {data.milestones.map((mile, index) => {
+                        {data?.milestones?.map((mile, index) => {
                           return (
                             <li key={index}>
-                              <span>{mile.overAllPercentage}%</span>
-                              <div>{mile.name}</div>
+                              <span>{mile?.overAllPercentage}%</span>
+                              <div>{mile?.name}</div>
                             </li>
                           );
                         })}

@@ -47,7 +47,8 @@ class SelectSequenceModal extends Component {
   };
 
   addMileStoneSequence = () => {
-    let addData = [...this?.state?.addSequence?.milestones];
+    const { addSequence } = this?.state;
+    let addData = [...addSequence?.milestones];
     let lastID = parseInt(addData[addData.length - 1].mileId);
     addData.push({
       mileId: `${lastID + 1}`,
@@ -55,15 +56,16 @@ class SelectSequenceModal extends Component {
       carryPercentage: 0,
       overAllPercentage: addData[addData.length - 1].overAllPercentage,
     });
-    this.setState({ addSequence: { ...this?.state?.addSequence, milestones: addData } });
+    this.setState({ addSequence: { ...addSequence, milestones: addData } });
   };
 
   deleteMileStoneSequence = (id) => {
-    if (this?.state?.addSequence.milestones.length > 1) {
-      let deleteData = [...this?.state?.addSequence.milestones];
+    const { addSequence } = this?.state;
+    if (addSequence.milestones.length > 1) {
+      let deleteData = [...addSequence.milestones];
       let index = deleteData.findIndex((item) => item.mileId === id);
       deleteData.splice(index, 1);
-      this.setState({ addSequence: { ...this?.state?.addSequence, milestones: deleteData } }, () => this.handleSum());
+      this.setState({ addSequence: { ...addSequence, milestones: deleteData } }, () => this.handleSum());
 
       //  this.handleSum();
     }
@@ -119,7 +121,7 @@ class SelectSequenceModal extends Component {
   };
 
   validation = () => {
-    const { addSequence } = this.state;
+    const { addSequence } = this?.state;
     const { milestones } = addSequence;
     if (trim(addSequence.name) === '') {
       this?.props?.handleAlert('Please Enter Sequence Name', 'error');
@@ -185,6 +187,7 @@ class SelectSequenceModal extends Component {
     }
   };
   render() {
+    const { addSequence } = this?.state;
     return (
       <>
         <Modal size='xl' show={this?.props?.selectSequence} onHide={() => this?.props?.handleAddSequenceModal()}>
@@ -199,7 +202,7 @@ class SelectSequenceModal extends Component {
                   name='name'
                   placeholder='Sequence Name'
                   onChange={this.handleChaneData}
-                  value={this?.state?.addSequence?.name || ''}
+                  value={addSequence?.name || ''}
                   required
                 ></input>
               </div>
@@ -210,8 +213,8 @@ class SelectSequenceModal extends Component {
                       type='checkbox'
                       name='isSaveInTemp'
                       onChange={this.handleChaneData}
-                      value={this?.state?.addSequence?.isSaveInTemp || true}
-                      checked={this?.state?.addSequence?.isSaveInTemp}
+                      value={addSequence?.isSaveInTemp || true}
+                      checked={addSequence?.isSaveInTemp}
                     />
                     <span className='slider round'> </span>
                   </label>
@@ -223,8 +226,8 @@ class SelectSequenceModal extends Component {
                       type='checkbox'
                       name='isShareTemp'
                       onChange={this.handleChaneData}
-                      value={this?.state?.addSequence?.isShareTemp || false}
-                      checked={this?.state?.addSequence?.isShareTemp}
+                      value={addSequence?.isShareTemp || false}
+                      checked={addSequence?.isShareTemp}
                     />
                     <span className='slider round'> </span>
                   </label>
@@ -236,8 +239,8 @@ class SelectSequenceModal extends Component {
                       type='checkbox'
                       name='isSaveInSetting'
                       onChange={this.handleChaneData}
-                      value={this?.state?.addSequence?.isSaveInSetting || false}
-                      checked={this?.state?.addSequence?.isSaveInSetting}
+                      value={addSequence?.isSaveInSetting || false}
+                      checked={addSequence?.isSaveInSetting}
                     />
                     <span className='slider round'> </span>
                   </label>
@@ -254,7 +257,7 @@ class SelectSequenceModal extends Component {
                 <Droppable droppableId='droppable'>
                   {(provided) => (
                     <div ref={provided.innerRef}>
-                      {this?.state?.addSequence?.milestones?.map((item, index) => (
+                      {addSequence?.milestones?.map((item, index) => (
                         <Draggable draggableId={`${item?.mileId}`} key={item?.mileId} index={index}>
                           {(provided) => (
                             <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
