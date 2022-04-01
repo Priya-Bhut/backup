@@ -86,7 +86,13 @@ class SelectSequenceModal extends Component {
         break;
 
       case 'carryPercentage':
-        changeData[index].carryPercentage = value;
+        if (value === '') {
+          changeData[index].carryPercentage = 0;
+        } else if (size(value) > 1 && value.slice(0, 1) === '0') {
+          changeData[index].carryPercentage = value.slice(1);
+        } else {
+          changeData[index].carryPercentage = value;
+        }
         this?.setState({ addSequence: { milestones: changeData } }, this?.handleSum(index));
         break;
 
@@ -140,6 +146,10 @@ class SelectSequenceModal extends Component {
             this?.props?.handleAlert('OverAll percentage must be 100% only', 'error');
             return false;
           }
+        }
+        if (milestones[index].carryPercentage === '') {
+          this?.props?.handleAlert('Please enter a carryPercentage', 'error');
+          return false;
         }
       }
     }
