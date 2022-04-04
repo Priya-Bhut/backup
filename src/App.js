@@ -18,6 +18,7 @@ import SuccessAlert from './Components/reusable/SuccessAlert';
 import CompanyDashboard from './Components/CompanyDashboard/CompanyDashboard';
 import OKR from './pages/OKR';
 import CorporateOKR from './pages/CorporateOKR';
+import Notes from './Components/Notes/Notes';
 
 function App() {
   const [successAlert, setSuccessAlert] = useState({
@@ -123,7 +124,7 @@ function App() {
           <Route exact path='alignments' element={<div>Comming Soon...</div>} />
           <Route path='action-center' exact element={<div>Comming Soon...</div>} />
           <Route path='dependencies' exact element={<div>Comming Soon...</div>} />
-          <Route path='notes' exact element={<div>Comming Soon...</div>} />
+          <Route path='notes' exact element={<Notes handleAlert={handleAlert} />} />
           <Route path='company-dashboard' exact element={<CompanyDashboard handleAlert={handleAlert} />} />
           <Route path='dept-hierarchy' exact element={<div>Comming Soon...</div>} />
           <Route path='news-feed' exact element={<div>Comming Soon...</div>} />

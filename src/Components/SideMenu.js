@@ -45,14 +45,14 @@ const SideMenu = (props) => {
                   <Link to={`/${organisationUrl}/company-dashboard`}>
                     <span>Company Dashboard</span>
                   </Link>
+                  <Link to={`/${organisationUrl}/notes`}>
+                    <span>Notes</span>
+                  </Link>
                   {/* <Link to={`/${organisationUrl}/action-center`}>
                     <span>Action Center</span>
                   </Link>
                   <Link to={`/${organisationUrl}/dependencies`}>
                     <span>Alignments and Dependencies</span>
-                  </Link>
-                  <Link to={`/${organisationUrl}/notes`}>
-                    <span>Notes</span>
                   </Link>
                   <Link to={`/${organisationUrl}/company-dashboard`}>
                     <span>Company Dashboard</span>
@@ -246,14 +246,14 @@ const SideMenu = (props) => {
                 <Link to={`/${organisationUrl}/company-dashboard`}>
                   <span>Company Dashboard</span>
                 </Link>
+                <Link to={`/${organisationUrl}/notes`}>
+                  <span>Notes</span>
+                </Link>
                 {/* <Link to={`/${organisationUrl}/action-center`}>
                   <span>Action Center</span>
                 </Link>
                 <Link to={`/${organisationUrl}/dependencies`}>
                   <span>Alignments and Dependencies</span>
-                </Link>
-                <Link to={`/${organisationUrl}/notes`}>
-                  <span>Notes</span>
                 </Link>
                 <Link to={`/${organisationUrl}/company-dashboard`}>
                   <span>Company Dashboard</span>

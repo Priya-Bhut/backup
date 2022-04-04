@@ -9,6 +9,8 @@ import IndividualOKRmain from './IndividualOKRmain';
 import CreateKeyResult from './CreateKeyResult';
 import withRouter from '../WrapperComponents/withRouter';
 import OKRUpdateSidebar from './OKRUpdateSidebar';
+import { ProgressBar } from 'react-bootstrap';
+import CreateNotes from './CreateNotes';
 
 function OKR(props) {
   const { isNewOkr, params } = props;
@@ -19,6 +21,8 @@ function OKR(props) {
   const [addKeyFormAt, setKeyFormAt] = useState(-1);
   const [addSubKeyFormAt, setSubKeyFormAt] = useState(-1);
   const [isOpenOkr, setIsOpenOkr] = useState(false);
+  const [isOpenMore, setIsOpenMore] = useState(false);
+  const [isOpenNote, setisOpenNote] = useState(false);
 
   const setUpdate = () => {
     setIsOpenOkr(true);
@@ -74,6 +78,23 @@ function OKR(props) {
     setAddNewKeyResult(true);
   };
 
+  const openMore = () => {
+    return (
+      <div className='more-drop-down'>
+        <li className='list-group-item okr-menu' onClick={() => setUpdate()}>
+          <i data-toggle='tooltip' title='Update' className='fa fa-pencil i-pencil' />
+          <span>Edit</span>
+        </li>
+        <li className='list-group-item okr-menu'>
+          <i className='fas fa-trash i-delete'></i>
+          <span>Delete</span>
+        </li>
+      </div>
+    );
+  };
+  const createNotes = () => {
+    setisOpenNote(!isOpenNote);
+  };
   useEffect(() => {
     getObjective();
   }, []);
@@ -98,7 +119,7 @@ function OKR(props) {
                       </i>
                     </div>
                     <div className='note-alignment'>
-                      <div className='notes'>
+                      <div className='notes' onClick={() => createNotes()}>
                         <i className='fa fa-sticky-note'></i>
                       </div>
                       <div className='alignment'>
@@ -149,8 +170,7 @@ function OKR(props) {
                           textValue: '50',
                         }}
                       >
-                        <input type='range' className='range' defaultValue='0' />
-                        <output></output>
+                        <ProgressBar className='total-progress' now={10} label={`0%`} />
                       </div>
                       <span className='showRange'>
                         <b>0%</b>
@@ -162,12 +182,19 @@ function OKR(props) {
                           className='fa fa-pencil i-pencil'
                           onClick={() => setUpdate()}
                         />
-                        <i className='fa fa-ellipsis-h other' aria-hidden='true'></i>
+                        <i
+                          className='fa fa-ellipsis-h other'
+                          aria-hidden='true'
+                          onClick={() => setIsOpenMore(!isOpenMore)}
+                        ></i>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+              {isOpenNote && <CreateNotes handleAlert={props?.handleAlert} />}
+              {isOpenMore && openMore()}
+
               {handleChildRender(okr, okr)}
               {isOpenOkr && (
                 <OKRUpdateSidebar
@@ -177,6 +204,7 @@ function OKR(props) {
                   okr={okr}
                 />
               )}
+
               {addNewKeyResult && addKeyFormAt === okr?.id && (
                 <CreateKeyResult
                   id={okr?.id}

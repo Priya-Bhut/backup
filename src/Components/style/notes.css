@@ -1,0 +1,62 @@
+.notes-dropdown-toggle {
+  border: 1px solid black !important;
+  box-shadow: none !important;
+  border-radius: 35px !important;
+}
+.notes-dropdown {
+  margin-left: -100rem;
+}
+.title-notes {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.notes-menu {
+  width: fit-content !important;
+}
+.notes-header {
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 0rem;
+  background-color: white;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+  box-shadow: 0 1px 4px rgb(21 27 38 / 8%);
+  border: 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.notes-cards {
+  border-radius: 10px;
+  width: 98%;
+  margin-left: 1%;
+}
+.notes-card .notes-card-design {
+  height: fit-content;
+  width: 100%;
+  border-radius: 10px;
+  background-color: white !important;
+  padding: 0;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+.notes-card-design {
+  margin-top: 1%;
+}
+.note-editor {
+  padding: 5px;
+}
+.update-cancle-btn {
+  padding: 5px;
+  display: flex;
+  width: 170px;
+  justify-content: space-around;
+  margin-right: 0;
+}
+.notes-button {
+  color: #3aa3f2;
+  font-size: 20px;
+  cursor: pointer;
+}
