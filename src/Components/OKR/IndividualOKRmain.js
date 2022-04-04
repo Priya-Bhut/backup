@@ -10,6 +10,7 @@ export default class IndividualOKRmain extends Component {
 
   constructor(props) {
     super(props);
+    this.escFunction = this.escFunction.bind(this);
     this.state = {
       startDate: new Date(),
       endDate: new Date(),
@@ -19,6 +20,17 @@ export default class IndividualOKRmain extends Component {
       calendarAt: -1,
       isActive: true,
     };
+  }
+  escFunction(event) {
+    if (event.key === 'Escape') {
+      this.setState({ isOpen: false });
+    }
+  }
+  componentDidMount() {
+    document.addEventListener('keydown', this.escFunction, false);
+  }
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.escFunction, false);
   }
   toggleSideBar = (dropdownmenu) => {
     this.setState({ isOpen: !this.state.isOpen });
@@ -53,12 +65,13 @@ export default class IndividualOKRmain extends Component {
     this.props?.setSubKeyFormAt(id);
     this.props?.setAddNewKeyResult(true);
   };
+
   render() {
     const { startDate, endDate } = this.state;
     const { keyResult, addSubKeyFormAt, addNewKeyResult, okrDetail, calendarAt } = this.props;
 
     return (
-      <div className='main key-result-hover'>
+      <div className='main'>
         <div className='all-content'>
           <div className={`okr-main ${this.props?.class}`}>
             <div className='okr-name'>
@@ -84,7 +97,9 @@ export default class IndividualOKRmain extends Component {
             <div className='date-time1'>
               <div className='calender'>
                 <i className='fa fa-calendar-alt' onClick={() => this.props?.handleCalender(keyResult?.id)}></i>
-                {calendarAt === keyResult?.id && <Calendar startDate={startDate} endDate={endDate} />}
+                {calendarAt === keyResult?.id && (
+                  <Calendar startDate={startDate} endDate={endDate} handleCalender={this.handleCalender} />
+                )}
               </div>
               &nbsp;
               <div className='user'>
@@ -121,6 +136,7 @@ export default class IndividualOKRmain extends Component {
             </div>
           </div>
         </div>
+
         {this.state.isOpen && (
           <SideBarToggle
             setIsOpen={!this.state.isOpen}

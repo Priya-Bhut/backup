@@ -79,13 +79,7 @@
   justify-content: center;
   align-items: center;
 }
-.toggle-btn {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  margin-top: 25%;
-}
-.updatesidebar-btn {
+.toggle-btn .updatesidebar-btn {
   background-color: blue;
   border-radius: 8px;
   border-style: none;

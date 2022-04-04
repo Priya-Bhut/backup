@@ -48,6 +48,7 @@ function SideBarToggle(props) {
         if (response && !response?.errorMessage && !response?.error) {
           props?.handleAlert('Keyresult Updated', 'success');
           props?.getObjective();
+          props?.toggleSideBar();
         } else {
           props?.handleAlert(!response?.errorMessage || !response?.error || 'Something went wrong', 'error');
         }
@@ -177,287 +178,296 @@ function SideBarToggle(props) {
             </p>
             <i className={`fa fa-times closeModel`} onClick={props?.toggleSideBar}></i>
           </div>
-          <div className='sideBar-type'>
-            <div className='sideBar-type1'>
-              <div id='circle'>
-                <div id='circle2'>
-                  {tracked === 'percentage' ? (
-                    <i className='fa fa-solid fa-percent' />
-                  ) : tracked === 'milestone' ? (
-                    <i className='fa fa-solid fa-flag' />
-                  ) : tracked === 'task' ? (
-                    <i className='fa fa-solid fa-calendar-check-o'></i>
-                  ) : null}
+          <div className='sidebar-content'>
+            <div className='sideBar-type'>
+              <div className='sideBar-type1'>
+                <div id='circle'>
+                  <div id='circle2'>
+                    {tracked === 'percentage' ? (
+                      <i className='fa fa-solid fa-percent' />
+                    ) : tracked === 'milestone' ? (
+                      <i className='fa fa-solid fa-flag' />
+                    ) : tracked === 'task' ? (
+                      <i className='fa fa-solid fa-calendar-check-o'></i>
+                    ) : null}
+                  </div>
+                </div>
+                <div className='key'>
+                  <span className='span-key'>Key Result Type</span>
+                  <span className='percentage-track' onClick={() => setexpandPerTracked(true)}>
+                    {tracked === 'percentage'
+                      ? 'Percentage tracked'
+                      : tracked === 'milestone'
+                      ? 'Milestone Tracked'
+                      : tracked === 'task'
+                      ? 'Task Tracked'
+                      : null}
+                  </span>
+                  {expandPerTracked ? expandPertageTracked() : null}
                 </div>
               </div>
-              <div className='key'>
-                <span className='span-key'>Key Result Type</span>
-                <span className='percentage-track' onClick={() => setexpandPerTracked(true)}>
-                  {tracked === 'percentage'
-                    ? 'Percentage tracked'
-                    : tracked === 'milestone'
-                    ? 'Milestone Tracked'
-                    : tracked === 'task'
-                    ? 'Task Tracked'
-                    : null}
-                </span>
-                {expandPerTracked ? expandPertageTracked() : null}
-              </div>
-            </div>
-            <div className='sidebar-type2'>
-              <div id='circle'>
-                {tracked === 'percentage' ? (
-                  <svg
-                    className='fly_joiner'
-                    xmlns='http://www.w3.org/2000/svg'
-                    viewBox='0 0 24 24'
-                    fill='white'
-                    width='24'
-                    height='24'
-                  >
-                    <path
-                      d='M8.9,19a2.3,2.3,0,0,1-2.3,2.3A2.4,2.4,0,0,1,4.3,19a2.3,2.3,0,0,1,2.3-2.3A2.3,2.3,0,0,1,8.9,19ZM18.8,3.9a2.2,2.2,0,0,0-2.2,2.3,2.3,2.3,0,1,0,4.5,0A2.3,2.3,0,0,0,18.8,3.9ZM9,19.1h4.8V14.3h5V8.6'
-                      fill='none'
-                      stroke='currentcolor'
-                      // stroke-linecap='round'
-                      // stroke-linejoin='round'
-                      // stroke-width='1.39'
-                    ></path>
-                  </svg>
-                ) : tracked === 'milestone' ? (
-                  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' width='20' height='20'>
-                    <path
-                      d='M16,6.8,14.2,9.9H10.6L8.8,6.8l1.8-3.1h3.6ZM7.4,14.1H3.9L2.1,17.2l1.8,3.1H7.4l1.8-3.1Zm13.7-.2H17.5L15.7,17l1.8,3.1h3.6L22.8,17ZM9.2,17.2c3.5-1.6,3.1-6.5,3.1-6.5m.3,0s-.4,4.9,3.1,6.5'
-                      fill='none'
-                      stroke='currentcolor'
-                      // stroke-linecap='round'
-                      // stroke-linejoin='round'
-                      // stroke-width='1.58'
-                    ></path>
-                  </svg>
-                ) : tracked === 'task' ? (
-                  <svg
-                    className='fly_joiner'
-                    xmlns='http://www.w3.org/2000/svg'
-                    viewBox='0 0 24 24'
-                    fill='white'
-                    width='24'
-                    height='24'
-                  >
-                    <path
-                      d='M8.9,19a2.3,2.3,0,0,1-2.3,2.3A2.4,2.4,0,0,1,4.3,19a2.3,2.3,0,0,1,2.3-2.3A2.3,2.3,0,0,1,8.9,19ZM18.8,3.9a2.2,2.2,0,0,0-2.2,2.3,2.3,2.3,0,1,0,4.5,0A2.3,2.3,0,0,0,18.8,3.9ZM9,19.1h4.8V14.3h5V8.6'
-                      fill='none'
-                      stroke='currentcolor'
-                      // stroke-linecap='round'
-                      // stroke-linejoin='round'
-                      // stroke-width='1.39'
-                    ></path>
-                  </svg>
-                ) : null}
-              </div>
-              <div className='key'>
-                <span className='span-key'>
-                  {tracked === 'percentage'
-                    ? 'What are you Tracking?'
-                    : tracked === 'milestone'
-                    ? 'Sequence Name'
-                    : tracked === 'task'
-                    ? 'Tracking Tasks'
-                    : null}
-                </span>
-                <span>
+              <div className='sidebar-type2'>
+                <div id='circle'>
                   {tracked === 'percentage' ? (
-                    'Percentage Tracked'
-                  ) : tracked === 'milestone' ? (
-                    <div
-                      role='button'
-                      tabIndex='0'
-                      className='text-primary pe-auto'
-                      onClick={() => setOpenSequence(!openSequence)}
+                    <svg
+                      className='fly_joiner'
+                      xmlns='http://www.w3.org/2000/svg'
+                      viewBox='0 0 24 24'
+                      fill='white'
+                      width='24'
+                      height='24'
                     >
-                      <span>Search & Select Sequence</span>
-                    </div>
+                      <path
+                        d='M8.9,19a2.3,2.3,0,0,1-2.3,2.3A2.4,2.4,0,0,1,4.3,19a2.3,2.3,0,0,1,2.3-2.3A2.3,2.3,0,0,1,8.9,19ZM18.8,3.9a2.2,2.2,0,0,0-2.2,2.3,2.3,2.3,0,1,0,4.5,0A2.3,2.3,0,0,0,18.8,3.9ZM9,19.1h4.8V14.3h5V8.6'
+                        fill='none'
+                        stroke='currentcolor'
+                        // stroke-linecap='round'
+                        // stroke-linejoin='round'
+                        // stroke-width='1.39'
+                      ></path>
+                    </svg>
+                  ) : tracked === 'milestone' ? (
+                    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' width='20' height='20'>
+                      <path
+                        d='M16,6.8,14.2,9.9H10.6L8.8,6.8l1.8-3.1h3.6ZM7.4,14.1H3.9L2.1,17.2l1.8,3.1H7.4l1.8-3.1Zm13.7-.2H17.5L15.7,17l1.8,3.1h3.6L22.8,17ZM9.2,17.2c3.5-1.6,3.1-6.5,3.1-6.5m.3,0s-.4,4.9,3.1,6.5'
+                        fill='none'
+                        stroke='currentcolor'
+                        // stroke-linecap='round'
+                        // stroke-linejoin='round'
+                        // stroke-width='1.58'
+                      ></path>
+                    </svg>
                   ) : tracked === 'task' ? (
-                    'Task Tracked'
+                    <svg
+                      className='fly_joiner'
+                      xmlns='http://www.w3.org/2000/svg'
+                      viewBox='0 0 24 24'
+                      fill='white'
+                      width='24'
+                      height='24'
+                    >
+                      <path
+                        d='M8.9,19a2.3,2.3,0,0,1-2.3,2.3A2.4,2.4,0,0,1,4.3,19a2.3,2.3,0,0,1,2.3-2.3A2.3,2.3,0,0,1,8.9,19ZM18.8,3.9a2.2,2.2,0,0,0-2.2,2.3,2.3,2.3,0,1,0,4.5,0A2.3,2.3,0,0,0,18.8,3.9ZM9,19.1h4.8V14.3h5V8.6'
+                        fill='none'
+                        stroke='currentcolor'
+                        // stroke-linecap='round'
+                        // stroke-linejoin='round'
+                        // stroke-width='1.39'
+                      ></path>
+                    </svg>
                   ) : null}
-                </span>
+                </div>
+                <div className='key'>
+                  <span className='span-key'>
+                    {tracked === 'percentage'
+                      ? 'What are you Tracking?'
+                      : tracked === 'milestone'
+                      ? 'Sequence Name'
+                      : tracked === 'task'
+                      ? 'Tracking Tasks'
+                      : null}
+                  </span>
+                  <span>
+                    {tracked === 'percentage' ? (
+                      'Percentage Tracked'
+                    ) : tracked === 'milestone' ? (
+                      <div
+                        role='button'
+                        tabIndex='0'
+                        className='text-primary pe-auto'
+                        onClick={() => setOpenSequence(!openSequence)}
+                      >
+                        <span>Search & Select Sequence</span>
+                      </div>
+                    ) : tracked === 'task' ? (
+                      'Task Tracked'
+                    ) : null}
+                  </span>
+                </div>
+                <div>
+                  {openSequence && (
+                    <SearchSelectSequenceModal
+                      handleAlert={props?.handleAlert}
+                      setOpenSequence={setOpenSequence}
+                      openSequence={openSequence}
+                      setUpdateData={setUpdateSequenceData}
+                      setSelectSequence={setSelectSequence}
+                      // setSequence={setSequence}
+                      sequenceData={sequenceData}
+                      getSequenceData={getSequenceData}
+                      handleAddSequenceModal={handleAddSequenceModal}
+                    />
+                  )}
+                  {selectSequence && (
+                    <SelectSequenceModal
+                      updateData={updateSequneceData}
+                      handleAlert={props?.handleAlert}
+                      // setSelectSequence={setSelectSequence}
+                      handleAddSequenceModal={handleAddSequenceModal}
+                      selectSequence={selectSequence}
+                      // setSequenceName={props?.setSequenceName}
+                      setOpenSequence={setOpenSequence}
+                      openSequence={openSequence}
+                      setSequence={props?.setSequence}
+                      getSequenceData={getSequenceData}
+                    />
+                  )}
+                </div>
               </div>
-              <div>
-                {openSequence && (
-                  <SearchSelectSequenceModal
-                    handleAlert={props?.handleAlert}
-                    setOpenSequence={setOpenSequence}
-                    openSequence={openSequence}
-                    setUpdateData={setUpdateSequenceData}
-                    setSelectSequence={setSelectSequence}
-                    // setSequence={setSequence}
-                    sequenceData={sequenceData}
-                    getSequenceData={getSequenceData}
-                    handleAddSequenceModal={handleAddSequenceModal}
-                  />
-                )}
-                {selectSequence && (
-                  <SelectSequenceModal
-                    updateData={updateSequneceData}
-                    handleAlert={props?.handleAlert}
-                    // setSelectSequence={setSelectSequence}
-                    handleAddSequenceModal={handleAddSequenceModal}
-                    selectSequence={selectSequence}
-                    // setSequenceName={props?.setSequenceName}
-                    setOpenSequence={setOpenSequence}
-                    openSequence={openSequence}
-                    setSequence={props?.setSequence}
-                    getSequenceData={getSequenceData}
-                  />
-                )}
-              </div>
-            </div>
-            <div className='sidebar-type3'>
-              <div id='circle'>
-                <i className='fa fa-calendar'></i>
-              </div>
-              <div className='key'>
-                <span className='span-key'>Target Date1</span>
-                <span>Jan 1-Jun 1</span>
-              </div>
-            </div>
-          </div>
-
-          <hr />
-
-          <div className='key-result'>
-            <textarea
-              cols={63}
-              rows={3}
-              placeholder='Type Your Key Result..'
-              className='textareaKeyResult'
-              value={updateData?.title}
-              onChange={(e) => setUpdateData({ ...updateData, title: e?.target?.value })}
-            ></textarea>
-          </div>
-          <div className='editor'>
-            <Editor
-              apiKey='h1a0ymnw0nixvy8bnuahlmmfo0422ltzxfsrv2gprc51cutm'
-              value={updateData?.description}
-              onEditorChange={(content) => setUpdateData({ ...updateData, description: content })}
-              init={{
-                statusbar: false,
-                placeholder: 'Description...',
-                menubar: false,
-                plugins: [
-                  'advlist autolink lists link image',
-                  'charmap print preview anchor help',
-                  'searchreplace visualblocks code',
-                  'insertdatetime media table paste wordcount',
-                ],
-                toolbar:
-                  'undo redo | formatselect | bold italic |   alignleft aligncenter alignright | bullist numlist outdent indent',
-              }}
-            />
-          </div>
-          <div className='assignee'>
-            <div className='sidebar-user'>
-              <div id='circlelocation'>
-                <i className='fa fa-light fa-user' />
-              </div>
-              <div className='key'>
-                <span className='span-key'>Assignee</span>
-                <a href='#' className='SearchAssignee'>
-                  Search & Select Assignee
-                </a>
+              <div className='sidebar-type3'>
+                <div id='circle'>
+                  <i className='fa fa-calendar'></i>
+                </div>
+                <div className='key'>
+                  <span className='span-key'>Target Date1</span>
+                  <span>Jan 1-Jun 1</span>
+                </div>
               </div>
             </div>
-            <div className='tag'>
-              <div id='circletag'>
-                <i className='fa fa-tags'>
-                  <span className='tooltiptext'>Tags</span>
-                </i>
-              </div>
+
+            <hr />
+
+            <div className='key-result'>
+              <textarea
+                cols={63}
+                rows={3}
+                placeholder='Type Your Key Result..'
+                className='textareaKeyResult'
+                value={updateData?.title}
+                onChange={(e) => setUpdateData({ ...updateData, title: e?.target?.value })}
+              ></textarea>
             </div>
-            <div className='Location'>
-              <div id='circletag'>
-                <i className='fa fa-map-marker fa-lg Icons' aria-hidden='true'>
-                  <span className='tooltiptext'>Frequency</span>
-                </i>
+            <div className='editor'>
+              <Editor
+                apiKey='h1a0ymnw0nixvy8bnuahlmmfo0422ltzxfsrv2gprc51cutm'
+                value={updateData?.description}
+                onEditorChange={(content) => setUpdateData({ ...updateData, description: content })}
+                init={{
+                  statusbar: false,
+                  placeholder: 'Description...',
+                  menubar: false,
+                  selector: 'textarea#premiumskinsandicons-material-classic',
+                  skin: 'material-classic',
+                  icons: 'small',
+                  toolbar_location: 'bottom',
+
+                  plugins: [
+                    'advlist autolink lists link image',
+                    'charmap print preview anchor help',
+                    'searchreplace visualblocks code',
+                    'insertdatetime media table paste wordcount',
+                  ],
+                  toolbar:
+                    'undo redo | formatselect | bold italic |   alignleft aligncenter alignright | bullist numlist outdent indent',
+                }}
+              />
+            </div>
+            <div className='assignee'>
+              <div className='sidebar-user'>
+                <div id='circle'>
+                  <i className='fa fa-light fa-user' />
+                </div>
+                <div className='key'>
+                  <span className='span-key'>Assignee</span>
+                  <a href='#' className='SearchAssignee'>
+                    Search & Select Assignee
+                  </a>
+                </div>
               </div>
-              <div className='key'>
-                <span className='span-key'>Check-in Frequency</span>
-                <span className='display-frequency'> Every Friday</span>
+              <div className='tag'>
+                <div id='circle'>
+                  <i className='fa fa-tags'>
+                    <span className='tooltiptext'>Tags</span>
+                  </i>
+                </div>
               </div>
-              <div id='circleaddfre'>
-                <i className='fa fa-solid fa-plus' onClick={() => setAddFrequency(!addFrequency)}>
-                  <span className='tooltiptext'>Add Frequency</span>
-                </i>
-                {addFrequency && (
-                  <div className='frequency-dropdown'>
-                    <div className='week'>
-                      <span className='span-key'>Weekly Updates</span>
-                      <i className='fa fa-caret-right'></i>
+              <div className='Location'>
+                <div id='circle'>
+                  <i className='fa fa-map-marker fa-lg Icons' aria-hidden='true'>
+                    <span className='tooltiptext'>Frequency</span>
+                  </i>
+                </div>
+                <div className='key'>
+                  <span className='span-key'>Check-in Frequency</span>
+                  <span className='display-frequency'> Every Friday</span>
+                </div>
+                <div id='circleaddfre'>
+                  <i className='fa fa-solid fa-plus' onClick={() => setAddFrequency(!addFrequency)}>
+                    <span className='tooltiptext'>Add Frequency</span>
+                  </i>
+                  {addFrequency && (
+                    <div className='frequency-dropdown' ref={container}>
+                      <div className='week'>
+                        <span className='span-key'>Weekly Updates</span>
+                        <i className='fa fa-caret-right'></i>
 
-                      <div className='frequency-dropdown week-item'>
-                        <div className='dropdown-list'>
-                          <input type='checkbox' value='day' />
-                          <span className='span-key'>Every Day</span>
-                        </div>
+                        <div className='frequency-dropdown week-item'>
+                          <div className='dropdown-list'>
+                            <input type='checkbox' value='day' />
+                            <span className='span-key'>Every Day</span>
+                          </div>
 
-                        <div className='dropdown-list'>
-                          <input type='checkbox' value='monday' />
-                          <span className='span-key'>Every Monday</span>
-                        </div>
+                          <div className='dropdown-list'>
+                            <input type='checkbox' value='monday' />
+                            <span className='span-key'>Every Monday</span>
+                          </div>
 
-                        <div className='dropdown-list'>
-                          <input type='checkbox' value='tuesday' />
-                          <span className='span-key'>Every Tuesday</span>
+                          <div className='dropdown-list'>
+                            <input type='checkbox' value='tuesday' />
+                            <span className='span-key'>Every Tuesday</span>
+                          </div>
+                          <div className='dropdown-list'>
+                            <input type='checkbox' value='wednesday' />
+                            <span className='span-key'>Every Wednesday</span>
+                          </div>
+                          <div className='dropdown-list'>
+                            <input type='checkbox' value='thrusday' />
+                            <span className='span-key'>Every Thrusday</span>
+                          </div>
+                          <div className='dropdown-list'>
+                            <input type='checkbox' value='friday' />
+                            <span className='span-key'>Every Friday</span>
+                          </div>
                         </div>
-                        <div className='dropdown-list'>
-                          <input type='checkbox' value='wednesday' />
-                          <span className='span-key'>Every Wednesday</span>
-                        </div>
-                        <div className='dropdown-list'>
-                          <input type='checkbox' value='thrusday' />
-                          <span className='span-key'>Every Thrusday</span>
-                        </div>
-                        <div className='dropdown-list'>
-                          <input type='checkbox' value='friday' />
-                          <span className='span-key'>Every Friday</span>
+                      </div>
+
+                      <div className='month'>
+                        <span className='span-key'>Monthly Updates</span>
+                        <i className='fa fa-caret-right'></i>
+                        <div className='frequency-dropdown month-item'>
+                          <div className='dropdown-list'>
+                            <input type='checkbox' value='day' />
+                            <span className='span-key'>Last Day</span>
+                          </div>
+
+                          <div className='dropdown-list'>
+                            <input type='checkbox' value='monday' />
+                            <span className='span-key' onClick={() => handleClicked('percentage')}>
+                              1st Monday
+                            </span>
+                          </div>
+
+                          <div className='dropdown-list'>
+                            <input type='checkbox' value='tuesday' />
+                            <span className='span-key' onClick={() => handleClicked('percentage')}>
+                              Last Friday
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
-
-                    <div className='month'>
-                      <span className='span-key'>Monthly Updates</span>
-                      <i className='fa fa-caret-right'></i>
-                      <div className='frequency-dropdown month-item'>
-                        <div className='dropdown-list'>
-                          <input type='checkbox' value='day' />
-                          <span className='span-key'>Last Day</span>
-                        </div>
-
-                        <div className='dropdown-list'>
-                          <input type='checkbox' value='monday' />
-                          <span className='span-key' onClick={() => handleClicked('percentage')}>
-                            1st Monday
-                          </span>
-                        </div>
-
-                        <div className='dropdown-list'>
-                          <input type='checkbox' value='tuesday' />
-                          <span className='span-key' onClick={() => handleClicked('percentage')}>
-                            Last Friday
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
             </div>
-          </div>
-          <div className='toggle-btn'>
-            <button className='sidebar-btn'>Cancel</button>
-            <button className='sidebar-btn' onClick={updateKeyResult}>
-              Update
-            </button>
+            <div className='toggle-btnsidebar'>
+              <button className='sidebar-btn' onClick={props?.toggleSideBar}>
+                Cancel
+              </button>
+              <button className='sidebar-btn' onClick={updateKeyResult}>
+                Update
+              </button>
+            </div>
           </div>
         </div>
       </div>
