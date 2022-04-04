@@ -10,7 +10,7 @@ import CreateKeyResult from './CreateKeyResult';
 import withRouter from '../WrapperComponents/withRouter';
 import OKRUpdateSidebar from './OKRUpdateSidebar';
 import { ProgressBar } from 'react-bootstrap';
-import CreateNotes from './CreateNotes';
+import CreateNotes from '../Notes/CreateNotes';
 
 function OKR(props) {
   const { isNewOkr, params } = props;

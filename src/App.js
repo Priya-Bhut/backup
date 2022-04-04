@@ -120,7 +120,7 @@ function App() {
             </ProtectedRoute>
           }
         >
-          <Route path='' exact element={<div>Comming Soon...</div>} />
+          <Route path='' exact element={<CompanyDashboard handleAlert={handleAlert} />} />
           <Route exact path='alignments' element={<div>Comming Soon...</div>} />
           <Route path='action-center' exact element={<div>Comming Soon...</div>} />
           <Route path='dependencies' exact element={<div>Comming Soon...</div>} />
