@@ -19,6 +19,7 @@ export default class IndividualOKRmain extends Component {
       expandTracked: false,
       calendarAt: -1,
       isActive: true,
+      isOpenMore: false,
     };
   }
   escFunction(event) {
@@ -32,8 +33,22 @@ export default class IndividualOKRmain extends Component {
   componentWillUnmount() {
     document.removeEventListener('keydown', this.escFunction, false);
   }
+  openMore = () => {
+    return (
+      <div className='more-drop-down'>
+        <li className='list-group-item okr-menu' onClick={() => this.setEdit(this?.keyResult)}>
+          <i data-toggle='tooltip' title='Update' className='fa fa-pencil i-pencil' />
+          <span>Edit</span>
+        </li>
+        <li className='list-group-item okr-menu'>
+          <i className='fas fa-trash i-delete'></i>
+          <span>Delete</span>
+        </li>
+      </div>
+    );
+  };
   toggleSideBar = (dropdownmenu) => {
-    this.setState({ isOpen: !this.state.isOpen });
+    this.setState({ isOpen: !this?.state?.isOpen });
     this.setState({ expandTracked: dropdownmenu });
   };
 
@@ -65,7 +80,9 @@ export default class IndividualOKRmain extends Component {
     this.props?.setSubKeyFormAt(id);
     this.props?.setAddNewKeyResult(true);
   };
-
+  handleMore = () => {
+    this?.setState({ isOpenMore: !this?.state?.isOpenMore });
+  };
   render() {
     const { startDate, endDate } = this.state;
     const { keyResult, addSubKeyFormAt, addNewKeyResult, okrDetail, calendarAt } = this.props;
@@ -131,12 +148,12 @@ export default class IndividualOKRmain extends Component {
                   className='fa fa-pencil other'
                   onClick={() => this.setEdit(keyResult)}
                 />
-                <i className='fa fa-ellipsis-h other' aria-hidden='true'></i>
+                <i className='fa fa-ellipsis-h other' aria-hidden='true' onClick={() => this?.handleMore()}></i>
               </div>
             </div>
           </div>
         </div>
-
+        {this?.state?.isOpenMore && this?.openMore()}
         {this.state.isOpen && (
           <SideBarToggle
             setIsOpen={!this.state.isOpen}

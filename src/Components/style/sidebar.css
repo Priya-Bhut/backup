@@ -433,9 +433,18 @@ ul {
   display: flex;
   justify-content: space-between;
 }
+.sequence-label .returnSequence {
+  display: flex;
+}
+
 .sequence-card {
   border-radius: 10px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+.sequence-card-body {
+  height: 25rem;
+  overflow: scroll;
+  margin: auto;
 }
 .card-title {
   display: flex;
@@ -443,9 +452,41 @@ ul {
   align-items: center;
   width: 100%;
 }
-
+.btnchevron {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #6c757d;
+}
+.btnchevron:hover {
+  color: #565e64;
+}
+.createNew {
+  cursor: pointer;
+}
+.createNew:hover {
+  color: #2196f3;
+}
+.sequence-card-subtitle {
+  word-break: break-all;
+}
+.pe-auto {
+  height: 30px;
+}
+.selected-sequence {
+  z-index: 2;
+  visibility: hidden;
+  height: 300px;
+}
+.pe-auto:hover .selected-sequence {
+  visibility: visible;
+}
+.card-header {
+  background-color: white !important;
+}
 .card-header .btntrash {
   visibility: hidden;
+  color: lightcoral;
+  font-size: 1.5rem;
   cursor: pointer;
 }
 .card-header :hover .btntrash {
@@ -453,11 +494,8 @@ ul {
 }
 /* .card-footer {
   text-align: center !important;
-} */
-/* .card-footer .btn {
-  align-self: center;
-} */
-
+  background-color: white !important;
+}
 .sequence input {
   border: 2px solid rgb(204, 199, 199);
   border-radius: 10px;

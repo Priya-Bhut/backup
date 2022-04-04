@@ -6,6 +6,7 @@ import { getSequenceData, updateKeyResult } from './Action';
 import { connect } from 'react-redux';
 import withRouter from '../WrapperComponents/withRouter';
 import SelectSequenceModal from './SelectSequenceModal';
+import { Button, Card } from 'react-bootstrap';
 
 function SideBarToggle(props) {
   const { okrDetail, keyResult, params } = props;
@@ -18,7 +19,7 @@ function SideBarToggle(props) {
     setexpandPerTracked(false);
   };
 
-  const [expandPerTracked, setexpandPerTracked] = useState(props.expandTracked);
+  const [expandPerTracked, setexpandPerTracked] = useState(props?.expandTracked);
   const [tracked, setTracked] = useState('percentage');
   const [openSequence, setOpenSequence] = useState(false);
   const [addFrequency, setAddFrequency] = useState(false);
@@ -40,7 +41,58 @@ function SideBarToggle(props) {
     objectiveId: keyResult?.objectiveId || 0,
     keyResults: keyResult?.keyResults || [],
   });
-
+  const data = [
+    {
+      id: 1,
+      name: 'jagat',
+      overAllPercentage: 10,
+    },
+    {
+      id: 2,
+      name: 'jenish',
+      overAllPercentage: 10,
+    },
+    {
+      id: 3,
+      name: 'arshit',
+      overAllPercentage: 10,
+    },
+    {
+      id: 4,
+      name: 'jagat',
+      overAllPercentage: 10,
+    },
+    {
+      id: 5,
+      name: 'jenish',
+      overAllPercentage: 10,
+    },
+    {
+      id: 6,
+      name: 'arshit',
+      overAllPercentage: 10,
+    },
+    {
+      id: 7,
+      name: 'jagat',
+      overAllPercentage: 10,
+    },
+    {
+      id: 8,
+      name: 'jenish',
+      overAllPercentage: 10,
+    },
+    {
+      id: 9,
+      name: 'arshit',
+      overAllPercentage: 10,
+    },
+    {
+      id: 10,
+      name: 'arshit',
+      overAllPercentage: 10,
+    },
+  ];
   const updateKeyResult = () => {
     props
       ?.updateKeyResult(organisationUrl, updateData)
@@ -271,14 +323,33 @@ function SideBarToggle(props) {
                     {tracked === 'percentage' ? (
                       'Percentage Tracked'
                     ) : tracked === 'milestone' ? (
-                      <div
-                        role='button'
-                        tabIndex='0'
-                        className='text-primary pe-auto'
-                        onClick={() => setOpenSequence(!openSequence)}
-                      >
+                      <>
+                        <div className='text-primary pe-auto' onClick={() => setOpenSequence(!openSequence)}>
+                          {/* {addSequence?.name == null ? (
                         <span>Search & Select Sequence</span>
-                      </div>
+                      ) : (
+                        <span>{addSequence?.name}</span>
+                      )} */}
+                          <span>Search & Select Sequence</span>
+                          <Card className='selected-sequence'>
+                            <Card.Body className='sequence-card-body text-dark'>
+                              <ul className='mile'>
+                                {data?.map((mile, index) => {
+                                  return (
+                                    <li key={index}>
+                                      <span>{mile?.overAllPercentage}%</span>
+                                      <div>{mile?.name}</div>
+                                    </li>
+                                  );
+                                })}
+                              </ul>
+                            </Card.Body>
+                            <Card.Footer className='selected-sequence-footer'>
+                              <Button className='primary'>Edit</Button>
+                            </Card.Footer>
+                          </Card>
+                        </div>
+                      </>
                     ) : tracked === 'task' ? (
                       'Task Tracked'
                     ) : null}
