@@ -10,7 +10,7 @@ export default class IndividualOKRmain extends Component {
 
   constructor(props) {
     super(props);
-    this.escFunction = this.escFunction.bind(this);
+
     this.state = {
       startDate: new Date(),
       endDate: new Date(),
@@ -22,11 +22,12 @@ export default class IndividualOKRmain extends Component {
       isOpenMore: false,
     };
   }
-  escFunction(event) {
+  escFunction = (event) => {
     if (event.key === 'Escape') {
       this.setState({ isOpen: false });
+      this.setState({ isCheckin: false });
     }
-  }
+  };
   componentDidMount() {
     document.addEventListener('keydown', this.escFunction, false);
   }
