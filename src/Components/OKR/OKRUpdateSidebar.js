@@ -40,7 +40,7 @@ function OKRUpdateSidebar(props) {
 
   return (
     <>
-      <div className='updatesidebaroverlay'>
+      <div className='sidebaroverlay'>
         <div className='updatesideBar'>
           <div className='sideBar-type'>
             <div className='sideBar-type1'>

@@ -1,6 +1,8 @@
+/*-------------------------------Checkin sidebar css ----------------------------------------*/
+
 .checkinsidebar {
   position: fixed;
-  top: 56px;
+  top: 70px;
   right: -40%;
   width: 35%;
   height: 100%;
@@ -9,7 +11,7 @@
   -webkit-animation: moveLeft 0.3s ease-in-out forwards;
   animation: moveLeft 0.3s ease-in-out forwards;
   overflow-y: scroll;
-  padding: 1rem 1rem 1rem;
+  padding: 0.7rem 0.7rem 0.7rem;
   display: flex;
   flex-direction: column;
   row-gap: 10px;
@@ -29,7 +31,6 @@
   background-color: white !important;
   border: 1px solid #f2f3f7 !important;
   border-radius: 10px !important;
-
   box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
 }
 .checkinsidebar-header .closemodel {
@@ -41,9 +42,14 @@
   top: auto;
 }
 .keyresultcard .keytitle {
-  display: flex;
+  display: flex !important;
+  justify-content: flex-start !important;
   align-items: center;
-  column-gap: 10px;
+}
+.keyresultcard .keytitle span {
+  margin-left: 10px;
+  color: #53575e !important;
+  font-weight: 500 !important;
 }
 .key-values {
   display: grid;
@@ -52,6 +58,9 @@
 }
 .key-values .valuecard {
   border-radius: 5px;
+}
+.card-body {
+  padding: 0.5rem !important;
 }
 .slideTab {
   display: flex;
@@ -147,9 +156,10 @@
   padding-left: 15px;
   padding-top: 10px;
 }
-.key-values .valuecard:hover {
-  border: 2px solid #becdda !important;
-}
-.checkindate:hover {
-  border: 2px solid #becdda !important;
+
+.statusdropdown {
+  box-shadow: 0 12px 28px 0 rgb(0 0 0 / 20%), 0 2px 4px 0 rgb(0 0 0 / 10%), inset 0 0 0 1px rgb(255 255 255 / 50%);
+  border: none !important;
+  width: max-content !important;
+  margin-left: 20px;
 }

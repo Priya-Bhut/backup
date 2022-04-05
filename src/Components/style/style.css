@@ -286,14 +286,7 @@ nav {
 }
 
 /* == sidebarUpdate == */
-.sidebarOverlay {
-  position: fixed;
-  top: 56px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgb(66 79 116 / 30%);
-}
+
 .sidebarUpdate {
   position: fixed;
   top: 56px;
@@ -584,6 +577,19 @@ td .leave-status {
   content: '';
 }
 
+.sidebaroverlay {
+  position: fixed;
+  /* top: 56px;
+  left: 90px;
+  right: 0;
+  bottom: 0; */
+  height: 100%;
+  width: 100%;
+  background-color: rgba(66, 79, 116, 0.3);
+  z-index: 100;
+  left: 0;
+  top: 0;
+}
 .controler {
   margin-bottom: 0.8rem;
   position: relative;

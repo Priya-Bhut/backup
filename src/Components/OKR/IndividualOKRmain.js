@@ -5,12 +5,12 @@ import SideBarToggle from '../SideBar/SideBarToggle';
 import CreateKeyResult from './CreateKeyResult';
 import CheckinToggle from './CheckinToggle';
 import Calendar from '../Calendar/Calendar';
+import AddTagModal from './AddTagModal';
 export default class IndividualOKRmain extends Component {
-  state = { isActive: false, isOpen: false, isCheckin: false };
+  state = { isActive: false, isOpen: false };
 
   constructor(props) {
     super(props);
-
     this.state = {
       startDate: new Date(),
       endDate: new Date(),
@@ -20,6 +20,8 @@ export default class IndividualOKRmain extends Component {
       calendarAt: -1,
       isActive: true,
       isOpenMore: false,
+      isAddTagOpen: false,
+      isCheckin: false,
     };
   }
   escFunction = (event) => {
@@ -84,6 +86,9 @@ export default class IndividualOKRmain extends Component {
   handleMore = () => {
     this?.setState({ isOpenMore: !this?.state?.isOpenMore });
   };
+  handleTag = () => {
+    this.setState({ isAddTagOpen: !this.state.isAddTagOpen });
+  };
   render() {
     const { startDate, endDate } = this.state;
     const { keyResult, addSubKeyFormAt, addNewKeyResult, okrDetail, calendarAt } = this.props;
@@ -98,6 +103,11 @@ export default class IndividualOKRmain extends Component {
             </div>
             <div className='addSubChild-btn' onClick={() => this.handleOpen(keyResult?.id)}>
               <i className='fa fa-plus-circle'>Add New Child</i>
+            </div>
+            <div className='addtags-btn' onClick={() => this.handleTag()}>
+              <div className='tagcircle'>
+                <i className='fa fa-tags'></i>
+              </div>
             </div>
             <div className='note-alignment1'>
               <div className='tasks'>
@@ -168,6 +178,10 @@ export default class IndividualOKRmain extends Component {
         )}
         {this.state.isCheckin && (
           <CheckinToggle setIsCheckin={!this.state.isCheckin} checkinSidebar={this.checkinSidebar}></CheckinToggle>
+        )}
+
+        {this.state.isAddTagOpen && (
+          <AddTagModal setAddTagOpen={this.handleTag} isAddTagOpen={this.state.isAddTagOpen} />
         )}
         {addNewKeyResult && addSubKeyFormAt === keyResult?.id && (
           <CreateKeyResult

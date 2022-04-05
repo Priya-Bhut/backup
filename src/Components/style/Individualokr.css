@@ -30,6 +30,7 @@
 
 .all-content:hover .addChild-btn,
 .all-content:hover .addSubChild-btn,
+.all-content:hover .addtags-btn,
 .all-content:hover .note-alignment,
 .all-content:hover .note-alignment1,
 .all-content:hover .note-alignment2 {
@@ -327,6 +328,7 @@
   /* margin-top: -18px; */
   display: none;
 }
+
 .calender {
   font-size: larger;
   cursor: pointer;
@@ -596,4 +598,76 @@ subChild:last-child .okr-tree {
     display: flex;
     flex-direction: column;
   }
+}
+
+/*------------------------------------------Tags css-----------------------------------------------------*/
+
+.setmodal {
+  width: 20px;
+}
+
+.tagcircle {
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.input-group {
+  display: inline-flex;
+  align-items: center;
+  width: 150px;
+  max-width: 150px;
+  padding: 4px 12px;
+  border: 1px solid #bfc9d9;
+  border-radius: 4px;
+}
+input[type='color'] {
+  margin-right: 8px;
+  -webkit-appearance: none;
+  border: none;
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  background: none;
+}
+input[type='text'] {
+  border: none;
+  width: 100%;
+  font-size: 14px;
+}
+
+.addtags-btn {
+  color: #b5b2b2;
+  cursor: pointer;
+  width: fit-content;
+  align-items: flex-start;
+  /* position: absolute; */
+  margin-left: 20px;
+  /* margin-top: -18px; */
+  display: none;
+}
+.tagmodal-body {
+  padding: 1.25rem !important;
+  display: flex;
+  flex-direction: column;
+}
+.tagcolor input,
+.displaycolor input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.5rem;
+  font-size: 1rem;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  outline: none;
+}
+.chromepicker {
+  cursor: pointer;
 }
